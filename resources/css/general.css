@@ -1,0 +1,38 @@
+/* ./resources/css/app.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: "Delius";
+    src: url("/storage/font/DeliusSwashCaps-Regular.woff") format("woff"), url("/storage/font/DeliusSwashCaps-Regular.ttf") format("ttf"), url("/storage/font/DeliusSwashCaps-Regular.otf") format("otf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.fas-link {
+    @apply text-center w-9 h-9 leading-9 block border-none bg-transparent cursor-pointer rounded-full transform hover:scale-110 hover:bg-green-600 hover:shadow focus:outline-none hover:text-black;
+}
+
+.fas-header {
+    @apply bg-transparent text-white;
+}
+
+.list-item {
+    @apply relative p-1.5 z-10 hover:no-underline hover:border-b-2 hover:border-black;
+}
+
+.list-item__link {
+    @apply text-white no-underline h-6 leading-6 px-3.5 hover:text-black hover:cursor-pointer outline-none;
+}
+
+
+footer>div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    place-self: start center;
+}
