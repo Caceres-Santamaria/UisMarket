@@ -1,8 +1,8 @@
 <div class="w-full content__body grid grid-cols-cardsm gap-6 p-3.5 place-content-start place-items-stretch md:grid-cols-cardmd md:gap-x-6 md:gap-y-8 md:py-3 md:px-6 lg:grid-cols-cardlg lg:gap-6 lg:py-3 lg:px-6">
   {{-- @isset($productos)
       @forelse($productos as $producto) --}}
-      <div class="card-producto border-gray-200 border-2 rounded-md p-1 h-cardsm w-cardsm md:h-cardmd md:w-cardmd lg:h-cardlg lg:w-cardlg">
-          <a href="" class="card-producto__link block w-full  relative ">
+      <div class="card-producto border-gray-200 border-2 rounded-md p-1 ">
+        <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
               {{-- @if($producto->cantidad > 0 || $producto->descuento <= 0)
               <div class="complements">
                   @if($producto->cantidad<=0)
@@ -33,8 +33,8 @@
 
 
 
-      <div class="card-producto border-gray-200 border-2 rounded-md p-1 h-cardsm w-cardsm   md:h-cardmd md:w-cardmd lg:h-cardlg lg:w-cardlg">
-        <a href="" class="card-producto__link block w-full  relative ">
+      <div class="card-producto border-gray-200 border-2 rounded-md p-1 ">
+        <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
           
         <img class="card-producto__img w-full h-full object-cover object-center rounded-sm" src="{{ Storage::url('images/website/p4.jpg') }}" alt="">
 
@@ -45,8 +45,8 @@
       </div>
       
   </div>
-  <div class="card-producto border-gray-200 border-2 rounded-md p-1 h-cardsm w-cardsm  md:h-cardmd md:w-cardmd lg:h-cardlg lg:w-cardlg">
-    <a href="" class="card-producto__link block w-full  relative ">
+  <div class="card-producto border-gray-200 border-2 rounded-md p-1 ">
+    <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
         
       <img class="card-producto__img w-full h-full object-cover object-center " src="{{ Storage::url('images/website/p5.jpg') }}" alt="">
 
@@ -59,8 +59,8 @@
 </div>
 
 
-<div class="card-producto border-gray-200 border-2 rounded-md p-1 h-cardsm w-cardsm  md:h-cardmd md:w-cardmd lg:h-cardlg lg:w-cardlg">
-  <a href="" class="card-producto__link block w-full  relative ">
+<div class="card-producto border-gray-200 border-2 rounded-md p-1 ">
+  <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
       
     <img class="card-producto__img w-full h-full object-cover object-center " src="{{ Storage::url('images/website/p6.jpg') }}" alt="">
 

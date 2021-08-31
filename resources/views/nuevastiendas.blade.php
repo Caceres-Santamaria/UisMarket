@@ -20,8 +20,7 @@
               </div>
               @endif
               <img loading="lazy" class="card-producto__img" src="{{ Storage::url($producto->imagenProductos[0]->nombre_imagen) }}" alt="{{ $producto->imagenProductos[0]->descripcion }}"> --}}
-            <img class="card-producto__img w-full h-full object-cover object-center "
-                src="{{ Storage::url('images/website/p1.jpg') }}" alt="">
+            <img class="card-producto__img w-full h-full object-cover object-center rounded-sm" src="{{ Storage::url('images/website/p1.jpg') }}" alt="">
 
         </a>
         <div class="card-producto__body flex flex-col justify-center items-center">
@@ -35,7 +34,7 @@
     <div class="card-producto border-gray-200 border-2 rounded-md p-1">
         <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
 
-            <img class="card-producto__img w-full h-full object-cover object-center "
+            <img class="card-producto__img w-full h-full object-cover object-center rounded-sm"
                 src="{{ Storage::url('images/website/p2.jpg') }}" alt="">
 
         </a>
@@ -49,7 +48,7 @@
     <div class="card-producto border-gray-200 border-2 rounded-md p-1">
         <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
 
-            <img class="card-producto__img w-full h-full object-cover object-center "
+            <img class="card-producto__img w-full h-full object-cover object-center rounded-sm"
                 src="{{ Storage::url('images/website/p3.jpg') }}" alt="">
 
         </a>
@@ -68,7 +67,7 @@
     <div class="card-producto border-gray-200 border-2 rounded-md p-1">
         <a href="" class="card-producto__link block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
 
-            <img class="card-producto__img w-full h-full object-cover object-center "
+            <img class="card-producto__img w-full h-full object-cover object-center rounded-sm"
                 src="{{ Storage::url('images/website/p6.jpg') }}" alt="">
 
         </a>

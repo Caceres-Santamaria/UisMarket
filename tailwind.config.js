@@ -12,13 +12,13 @@ module.exports = {
             },
             height: {
                 'cardsm': 'calc(((100vw - 4.6rem)/2)+20px)',
-                'cardmd': 'calc((100vw - 9rem)/3)',
-                'cardlg': 'calc(((100vw - 10.8rem)/4)+20px)',
+                'cardmd': 'calc(((100vw - 10rem)/3)+20px)',
+                'cardlg': 'calc(((100vw - 16rem - 4.5rem)/4)+20px)',
             },
             width: {
               'cardsm': 'calc((100vw - 4.6rem)/2)',
               'cardmd': 'calc((100vw - 9rem)/3)',
-              'cardlg': 'calc((100vw - 10.8rem)/4)',
+              'cardlg': 'calc((100vw - 16rem - 4.5rem)/4)',
           },
             textColor: {
                 'inherit': 'inherit',
