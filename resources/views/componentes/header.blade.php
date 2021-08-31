@@ -7,7 +7,7 @@
         </div>
         <div class="">
             <a href="" class="flex items-center no-underline focus:outline-none">
-                <img class="w-12 sm:w-20 lg:w-16" src="{{asset('storage/images/website/logoB.png')}}" alt="logo uis market">
+                <img class="w-12 sm:w-12 lg:w-16" src="{{asset('storage/images/website/logoB.png')}}" alt="logo uis market">
                 <h1 class="font-Delius ml-1 font-black text-white text-2xl h-14 leading-extra-loose lg:leading-extra-lg lg:text-3xl">Market</h1>
             </a>
         </div>
@@ -74,20 +74,21 @@
             </div>
         </div>
     </div>
-    <nav class=" hidden lg:flex lg:align-center lg:content-center lg:justify-center lg:flex-col lg:w-10/12 lg:bg-primario-dark lg:rounded-3xl lg:place-self-center lg:px-2 lg:border-box  ">
+    <nav class=" hidden lg:flex lg:align-center lg:content-center lg:justify-center lg:flex-col lg:w-10/12 lg:bg-primario-dark  lg:rounded-3xl lg:place-self-center lg:px-2 lg:border-box lg:font-normal ">
         <ul class=" lg:flex lg:justify-center lg:flex-row lg:list-none lg:self-center lg:relative lg:text-lg ">
-            <li class="list-item "><a class="list-item__link" href=""><i class="fas fas-header fa-home lg:text-inherit lg:pr-1.5 lg:relative lg:bg-transparent lg:text-2xl"></i><span>HOME</span></a></li>
-            <li class="list-item "><a class="list-item__link" href=""><span>Categorías</span></a>
-              <ul class="menu-desktop__list menu-desktop__secondlevel">
-                    <li class="lg:hidden list-item list-item-sub cateoria"><a class="list-item__link" href=""><span>Ropa</span></a></li>
-                    <li class="lg:hidden list-item list-item-sub cateoria"><a class="list-item__link" href="#"><span>Accesorios</span></a></li>
+            <li class="list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal" href=""><i class="fas fas-header fa-home lg:text-inherit lg:pr-1.5 lg:relative lg:bg-transparent lg:text-2xl"></i><span>HOME</span></a></li>
+            <li class="list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal" href=""><span>Categorías <i class="fas fa-angle-down"></i></span></a>
+              <ul class="menu-desktop__list lg:justify-center lg:flex-row lg:list-none active:no-underline active:border-b active:border-white menu-desktop__secondlevel lg:hidden lg:absolute lg:w-full lg:top-calc lg:bg-primario-dark lg:p-0 lg:m-0 lg:right-0 lg:left-auto">
+                    <li class=" list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:z-1 last:right-0 last:left-auto list-item-sub lg:w-full lg:h-10 lg:leading-10 lg:m-0 lg:border-b-2 lg:border-white lg:hover:bg-primario-ligth"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal lg:flex lg:w-full lg:content-center " href=""><span>Alimentos</span></a></li>
+                    <li class=" list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:z-1 last:right-0 last:left-auto list-item-sub lg:w-full lg:h-10 lg:leading-10 lg:m-0 lg:border-b-2 lg:border-white lg:hover:bg-primario-ligth"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal lg:flex lg:w-full lg:content-center " href=""><span>Accesorios</span></a></li>
+                    <li class=" list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:z-1 last:right-0 last:left-auto list-item-sub lg:w-full lg:h-10 lg:leading-10 lg:m-0 lg:border-b-2 lg:border-white lg:hover:bg-primario-ligth"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal lg:flex lg:w-full lg:content-center " href=""><span>Belleza</span></a></li>
+                    <li class=" list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:z-1 last:right-0 last:left-auto list-item-sub lg:w-full lg:h-10 lg:leading-10 lg:m-0 lg:border-b-2 lg:border-white lg:hover:bg-primario-ligth"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal lg:flex lg:w-full lg:content-center " href=""><span>Ropa</span></a></li>
+
               </ul>
-                    {{-- <li class="list-item list-item-sub cateoria"><a class="list-item__link" href=""><span></span></a></li> --}}
-                    {{-- <li class="list-item list-item-sub cateoria"><a class="list-item__link" href="#"><span>No hay categorias</span></a></li> --}}
             </li>
-            <li class="list-item "><a class="list-item__link" href=""><span>Tiendas</span></a> </li>
-            <li class="list-item "><a class="list-item__link" href=""><span>Promociones</span></a> </li>
-            <li class="list-item "><a class="list-item__link" href="{{route('about')}}"><span>¿Quiénes somos?</span></a> </li>
+            <li class="list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal" href="{{route('detalle')}}"><span>Tiendas</span></a> </li>
+            <li class="list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal" href="{{route('promociones')}}"><span>Promociones</span></a> </li>
+            <li class="list-item hover:no-underline hover:border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto"><a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal" href="{{route('about')}}"><span>¿Quiénes somos?</span></a> </li>
         </ul>
     </nav>
 </header>

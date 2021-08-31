@@ -8,9 +8,9 @@
 
 @endsection
 @section('contenido')
-<main class="grid-in-contenido my-14 mx-28 text-base text-justify">
+<main class="grid-in-contenido my-6 mx-8 text-justify text-sm lg:text-base lg:my-14 lg:mx-28 ">
 
-  <h1 class="flex justify-center font-semibold text-3xl mb-4"><i class="fas fa-exclamation-triangle text-yellow-400"></i>Términos y Condiciones</h1>
+  <h1 class="flex justify-center font-semibold text-xl lg:text-3xl mb-4"><i class="fas fa-exclamation-triangle text-yellow-400"></i>Términos y Condiciones</h1>
 
   <p class="mb-3"> UIS MARKET es una iniciativa de estudiantes UIS con el objetivo de impulsar la compra local de diferentes sectores 
     y ofrecer una plataforma para que los emprendedores locales UIS, puedan exhibir su marca y darse a conocer.
@@ -25,8 +25,8 @@
     <li class="underline">UIS market no es responsable del envío o de los productos ni del estado de entrega</li>
   </ul>
   <ol class="list-decimal ml-4">
-    <li class="font-bold text-lg my-3"><h3>Inscripción </h3>
-    <p class="font-thin text-base">Es obligatorio completar el formulario de inscripción en todos sus campos con datos válidos y verídicos para poder
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Inscripción </h3>
+    <p class="font-light">Es obligatorio completar el formulario de inscripción en todos sus campos con datos válidos y verídicos para poder
     utilizar los servicios que brinda UIS Market. El futuro Usuario deberá completarlo con su información personal de 
     manera exacta, precisa y verdadera y asume el compromiso de actualizar sus datos personales de ser necesario. UIS 
     Market NO se responsabiliza por la certeza de los datos personales provistos por sus usuarios. 
@@ -46,8 +46,8 @@ definitivamente a aquellos emprendedores cuyos datos no hayan podido ser confirm
 se dará de baja todos los artículos publicados, así como las ofertas realizadas, sin que ello genere algún derecho de 
 compensación.</p>
 </li>
-    <li class="font-bold text-lg my-3"><h3>Publicación de bienes y/o servicios</h3>
-    <p class="font-thin text-base">El Usuario deberá ofrecer a la venta, los bienes y/o servicios en las categorías y subcategorías apropiadas.
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Publicación de bienes y/o servicios</h3>
+    <p class="font-light">El Usuario deberá ofrecer a la venta, los bienes y/o servicios en las categorías y subcategorías apropiadas.
     Las publicaciones podrán incluir textos descriptivos, gráficos, fotografías y otros contenidos pertinentes para 
     la venta del bien o la contratación del servicio, siempre que no violen ninguna regla o política de UIS Market. 
     El producto ofrecido por el emprendedor debe ser exactamente descrito en cuanto a sus condiciones y características 
@@ -56,8 +56,8 @@ compensación.</p>
       su entrega inmediata o para el plazo especificado en la publicación. </p>
       </li>
 
-    <li class="font-bold text-lg my-3"><h3>Artículos Prohibidos</h3>
-    <p class="font-thin text-base">A continuación, se encuentra el listado de productos y servicios cuyo ofrecimiento, publicación, compra o venta están
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Artículos Prohibidos</h3>
+    <p class="font-light">A continuación, se encuentra el listado de productos y servicios cuyo ofrecimiento, publicación, compra o venta están
     prohibidos por UIS Market por políticas internas y/o para garantizar el cumplimiento de alguna ley vigente según sea 
     el caso. Los vendedores son exclusivos responsables de la ley y la legalidad y legitimidad de los artículos que ofrecen.
     UIS Market no se hace responsable por la existencia de productos que infrinjan las políticas o cualquier ley o
@@ -65,7 +65,7 @@ compensación.</p>
   UIS Market podrá finalizar las publicaciones que no cumplan con las políticas anteriormente mencionadas por eso se 
   recomienda revisar este listado antes de publicar un artículo.</p>
 
-  <ul class="list-disc ml-4 font-thin text-base">
+  <ul class="list-disc ml-4 font-light">
     <li>Armas municiones y material explosivo</li>
     <li>Estupefacientes y sustancias prohibidas</li>
     <li>Fauna</li>
@@ -91,15 +91,15 @@ compensación.</p>
     <li>Equipamiento médico y productos relacionados</li>
   </ul>
 </li>
-    <li class="font-bold text-lg my-3"><h3>Privacidad de la Información</h3>
-    <p class="font-thin text-base">Para utilizar los Servicios ofrecidos por UIS Market, los usuarios deben facilitar determinados datos de carácter personal.
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Privacidad de la Información</h3>
+    <p class="font-light">Para utilizar los Servicios ofrecidos por UIS Market, los usuarios deben facilitar determinados datos de carácter personal.
     Dicha información personal se procesa y almacena en servidores con altos estándares de seguridad y protección física y 
     tecnológica. Para más información sobre la privacidad de los datos personales y casos en los que será revelada la información 
     personal, se pueden consultar nuestras <a class="underline" href="{{route('politicas')}}">Políticas de Privacidad</a>.</p>
   </li>
 
-  <li class="font-bold text-lg my-3"><h3>Fallas en el sistema</h3>
-    <p class="font-thin text-base">
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Fallas en el sistema</h3>
+    <p class="font-light">
       Uis Market no se responsabiliza por cualquier daño, perjuicio o pérdida al usuario causados por fallas en el 
       sistema, en el servidor o en Internet. Uis Market tampoco será responsable por cualquier virus que pudiera
       infectar el equipo del usuario como consecuencia del acceso o uso de su sitio web o a raíz de cualquier
@@ -112,8 +112,8 @@ compensación.</p>
   </li>
 
 
-  <li class="font-bold text-lg my-3"><h3>Alcance de los servicios de UIS Market</h3>
-    <p class="font-thin text-base">
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Alcance de los servicios de UIS Market</h3>
+    <p class="font-light">
       El usuario reconoce y acepta que UIS Market no es parte en ninguna operación, ni tiene control alguno sobre la 
       calidad, seguridad o legalidad de los artículos anunciados, la veracidad o exactitud de los anuncios, la capacidad
       de los usuarios para vender o comprar artículos. UIS Market no puede asegurar que un usuario completará una compra
@@ -124,8 +124,8 @@ compensación.</p>
   </li>
 
 
-  <li class="font-bold text-lg my-3"><h3>Domicilios o envíos</h3>
-    <p class="font-thin text-base">
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Domicilios o envíos</h3>
+    <p class="font-light">
       Los domicilios y envíos serán realizados únicamente en el área metropolitana de Bucaramanga, 
       el medio por el cual estos envíos van a ser realizados queda a disposición del emprendedor que publica su tienda.
 
@@ -133,8 +133,8 @@ compensación.</p>
   </li>
 
 
-  <li class="font-bold text-lg my-3"><h3>Responsabilidad</h3>
-    <p class="font-thin text-base">
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Responsabilidad</h3>
+    <p class="font-light">
       UIS Market sólo pone a disposición de los usuarios un espacio virtual que les permite ponerse en comunicación 
       mediante Internet para encontrar una forma de vender o comprar servicios o bienes.
 UIS Market no es el propietario de los artículos ofrecido ni los ofrece en venta.
@@ -155,8 +155,8 @@ El único que puede eliminar comentarios de las tiendas es el usuario que realiz
   </li>
 
 
-  <li class="font-bold text-lg my-3"><h3>Sanciones, suspensión de operaciones</h3>
-    <p class="font-thin text-base">UIS Market podrá advertir, suspender en forma temporal o inhabilitar definitivamente
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Sanciones, suspensión de operaciones</h3>
+    <p class="font-light">UIS Market podrá advertir, suspender en forma temporal o inhabilitar definitivamente
       la cuenta de un usuario, una tienda o una publicación, si (a) se quebrantara alguna ley, o cualquiera de las 
       estipulaciones de los Términos y Condiciones Generales y demás políticas de UIS Market; (b) si incumpliera sus 
       compromisos como Usuario; (c) si se incurriera a criterio de Mercado Libre en conductas o actos fraudulentos; 
@@ -168,8 +168,8 @@ El único que puede eliminar comentarios de las tiendas es el usuario que realiz
       </li>
 
 
-  <li class="font-bold text-lg my-3"><h3>Prohibiciones</h3>
-    <p class="font-thin text-base">Los Usuarios no podrán: (a) manipular los precios de los artículos; (b) 
+  <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Prohibiciones</h3>
+    <p class="font-light">Los Usuarios no podrán: (a) manipular los precios de los artículos; (b) 
       dar a conocer sus datos personales o de otros; (c) publicar o vender artículos prohibidos por los Términos 
       y Condiciones Generales, demás políticas de UIS Market o leyes vigentes; (d) insultar o agredir a otros Usuarios; 
       (e) publicar artículos idénticos en más de una publicación.
@@ -178,8 +178,8 @@ El único que puede eliminar comentarios de las tiendas es el usuario que realiz
       </p>
       </li>
 
-    <li class="font-bold text-lg my-3"><h3>Obligaciones del Comprador</h3>
-      <p class="font-thin text-base">Al comprar un artículo el usuario acepta la obligación dada por las condiciones de venta incluidas en la descripción del
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Obligaciones del Comprador</h3>
+      <p class="font-light">Al comprar un artículo el usuario acepta la obligación dada por las condiciones de venta incluidas en la descripción del
     artículo en la medida en que las mismas no infrinjan las leyes o los Términos y Condiciones Generales y demás políticas 
     de UIS Market. La compra es irrevocable excepto en circunstancias extraordinarias, tales como que el vendedor cambie 
     sustancialmente la descripción del artículo después de realizada alguna compra, que exista un claro error tipográfico, 
@@ -187,8 +187,8 @@ El único que puede eliminar comentarios de las tiendas es el usuario que realiz
     Las compras sólo serán consideradas válidas, una vez hayan sido procesadas por el sistema informático de UIS Market.</p>
 </li>
 
-    <li class="font-bold text-lg my-3"><h3>Obligaciones del Vendedor</h3>
-    <p class="font-thin text-base">El Usuario Vendedor debe tener capacidad para vender el bien objeto de su oferta. De igual manera, debe cumplir con todas las
+    <li class="font-bold  my-3"><h3 class="text-base lg:text-lg">Obligaciones del Vendedor</h3>
+    <p class="font-light">El Usuario Vendedor debe tener capacidad para vender el bien objeto de su oferta. De igual manera, debe cumplir con todas las
     obligaciones regulatorias pertinentes y contar con los permisos y/o autorizaciones exigidas por la normativa aplicable para 
     la venta de los bienes y servicios ofrecidos. El usuario emprendedor deberá cumplir con la normatividad vigente en materia de 
     protección al consumidor, tales como, entregar información veraz, clara y suficiente, indicar el precio por unidad de medida

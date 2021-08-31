@@ -9,6 +9,11 @@
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+  font-family: "ModernSans";
+  src: url("/storage/font/modern_sans/ModernSans-Light.woff") format("woff"), url("/storage/font/modern_sans/ModernSans-Light.otf") format("otf"), url("/storage/font/modern_sans/ModernSans-Light.woff2") format("woff2");
+  font-style: normal;
+}
 
 .fas-link {
     @apply text-center w-9 h-9 leading-9 block border-none bg-transparent cursor-pointer rounded-full transform hover:scale-110 hover:bg-green-600 hover:shadow focus:outline-none hover:text-black;
@@ -19,13 +24,26 @@
 }
 
 .list-item {
-    @apply relative p-1.5 z-10 hover:no-underline hover:border-b-2 hover:border-black;
+    @apply relative p-1.5 z-10 hover:no-underline hover:border-b-2 hover:border-primario-dark2;
 }
 
 .list-item__link {
-    @apply text-white no-underline h-6 leading-6 px-3.5 hover:text-black hover:cursor-pointer outline-none;
+    @apply text-white no-underline h-6 leading-6 px-3.5  hover:cursor-pointer outline-none;
 }
 
+.card-producto__img {
+    @apply hover:opacity-90 hover:cursor-pointer outline-none;
+}
+
+ .list-item:hover>.menu-desktop__secondlevel {
+    display: block;
+  
+}
+/*
+.menu-desktop__firstlevel>.active a {
+    color: #fff;
+    font-weight: 700;
+} */
 
 footer>div {
     display: flex;
