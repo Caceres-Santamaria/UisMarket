@@ -15,7 +15,12 @@ class CreateTallaProductosTable extends Migration
     {
         Schema::create('talla_productos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('producto_id');
+            $table->unsignedBigInteger('talla_id');
             $table->timestamps();
+            $table->unique(['producto_id','talla_id']);
+            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('talla_id')->references('id')->on('tallas');
         });
     }
 
