@@ -5,21 +5,26 @@ module.exports = {
         extend: {
             inset: {
                 'calc': 'calc(100% + 3px)',
+                'calc1': 'calc(100% + .5rem)',
             },
             zIndex: {
                 '1': '1',
                 '8': '8',
+                '5': '5',
             },
             height: {
                 'cardsm': 'calc(((100vw - 4.6rem)/2)+20px)',
                 'cardmd': 'calc(((100vw - 10rem)/3)+20px)',
                 'cardlg': 'calc(((100vw - 16rem - 4.5rem)/4)+20px)',
+                'cardsmt': 'calc((100vw - 4.6rem)/2)',
+                'cardmdt': 'calc((100vw - 9rem)/3)',
+                'cardlgt': 'calc((100vw - 16rem - 4.5rem)/4)',
             },
             width: {
-              'cardsm': 'calc((100vw - 4.6rem)/2)',
-              'cardmd': 'calc((100vw - 9rem)/3)',
-              'cardlg': 'calc((100vw - 16rem - 4.5rem)/4)',
-          },
+                'cardsm': 'calc((100vw - 4.6rem)/2)',
+                'cardmd': 'calc((100vw - 9rem)/3)',
+                'cardlg': 'calc((100vw - 16rem - 4.5rem)/4)',
+            },
             textColor: {
                 'inherit': 'inherit',
             },
@@ -36,7 +41,10 @@ module.exports = {
             gridTemplateRows: {
                 '3m': 'auto 1fr auto',
                 'lg': '80px 40px',
-                'detalle':'repeat(2, auto)',
+                'detalle': 'repeat(2, auto)',
+                '5auto': 'repeat(5, auto)',
+                'auto': 'auto',
+                'catalogo': '130px 40px auto',
             },
             gridTemplateColumns: {
                 'mm': 'minmax(min-content, 1fr)',
@@ -45,6 +53,7 @@ module.exports = {
                 'cardmd': 'repeat(auto-fit, minmax(136px, calc((100% - 5rem)/3)))',
                 'cardlg': 'repeat(auto-fit, minmax(136px, calc((100% - 7rem)/4)))',
                 'full': '100%',
+                '5050': '50% 50%',
             },
             gridTemplateAreas: {
                 'layout': [
@@ -57,10 +66,17 @@ module.exports = {
                     'nosotros',
                     'derechos',
                 ],
+                'detalle': [
+                    'titulo',
+                    'precio',
+                    'descripcion',
+                    'guia',
+                    'tallas',
+                ],
             },
             fontFamily: {
                 'Delius': ['Delius', 'sans-serif'],
-                'ModernSans' : ['ModernSans', 'sans-serif'],
+                'ModernSans': ['ModernSans', 'sans-serif'],
 
             },
             lineHeight: {
@@ -73,15 +89,15 @@ module.exports = {
     },
     variants: {
         extend: {
-            transform: ['hover', 'focus','active','last'],
-            outline: ['hover', 'focus','active','last'],
-            cursor: ['hover', 'focus','active','last'],
-            borderWidth: ['hover', 'focus','active','last'],
-            borderStyle: ['hover', 'focus','active','last'],
-            borderColor: ['hover', 'focus','active','last'],
-            backgroundColor:['hover', 'focus','active','last'],
-            inset:['hover', 'focus','active','last'],
-            visibility:['hover', 'focus','active','last'],
+            transform: ['hover', 'focus', 'active', 'last'],
+            outline: ['hover', 'focus', 'active', 'last'],
+            cursor: ['hover', 'focus', 'active', 'last'],
+            borderWidth: ['hover', 'focus', 'active', 'last'],
+            borderStyle: ['hover', 'focus', 'active', 'last'],
+            borderColor: ['hover', 'focus', 'active', 'last'],
+            backgroundColor: ['hover', 'focus', 'active', 'last'],
+            inset: ['hover', 'focus', 'active', 'last'],
+            visibility: ['hover', 'focus', 'active', 'last'],
         },
     },
     plugins: [

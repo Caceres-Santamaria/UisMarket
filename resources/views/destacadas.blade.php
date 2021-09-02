@@ -21,10 +21,21 @@
               <img loading="lazy" class="card-producto__img" src="{{ Storage::url($producto->imagenProductos[0]->nombre_imagen) }}" alt="{{ $producto->imagenProductos[0]->descripcion }}"> --}}
             <img class="card-producto__img w-full h-full object-cover object-center rounded-sm" src="{{ Storage::url('images/website/p1.jpg') }}" alt="">
 
-          </a> 
+          </a>
 
           <div class="card-producto__body flex flex-col justify-center items-center">
-              <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">Tenda</h5>
+              <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">Brunette
+
+                <div class="star-rating">
+                  <a class="text-yellow-500" href="#">★</a>
+                  <a class="text-yellow-500" href="#">★</a>
+                  <a class="text-yellow-500" href="#">★</a>
+                  <a class="text-yellow-500" href="#">★</a>
+                  <a class="text-yellow-500" href="#">★</a>
+              <div>
+
+
+              </h5>
               
           </div>
           
@@ -40,7 +51,15 @@
 
       </a> 
       <div class="card-producto__body flex flex-col justify-center items-center">
-          <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">producto</h5>
+          <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">tienda
+            <div class="star-rating">
+              <a class="text-yellow-500" href="#">★</a>
+              <a class="text-yellow-500" href="#">★</a>
+              <a class="text-yellow-500" href="#">★</a>
+              <a class="text-yellow-500" href="#">★</a>
+              <a class="text-yellow-500" href="#">★</a>
+          <div>
+          </h5>
           
       </div>
       
@@ -52,7 +71,15 @@
 
     </a> 
     <div class="card-producto__body flex flex-col justify-center items-center">
-        <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">producto</h5>
+        <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">TIENDA
+          <div class="star-rating">
+            <a class="text-yellow-500" href="#">★</a>
+            <a class="text-yellow-500" href="#">★</a>
+            <a class="text-yellow-500" href="#">★</a>
+            <a class="text-yellow-500" href="#">★</a>
+            <a class="text-yellow-500" href="#">★</a>
+        <div>
+        </h5>
         
     </div>
     
@@ -66,7 +93,15 @@
 
   </a> 
   <div class="card-producto__body flex flex-col justify-center items-center">
-      <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">producto</h5>
+      <h5 class="card-producto__title pt-1.5 text-sm text-center uppercase">TIENDA
+        <div class="star-rating">
+          <a class="text-yellow-500" href="#">★</a>
+          <a class="text-yellow-500" href="#">★</a>
+          <a class="text-yellow-500" href="#">★</a>
+          <a class="text-yellow-500" href="#">★</a>
+          <a class="text-yellow-500" href="#">★</a>
+      <div>
+      </h5>
       
   </div>
   

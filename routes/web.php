@@ -6,6 +6,9 @@ use App\Http\Controllers\aboutController;
 use App\Http\Controllers\TTController;
 use App\Http\Controllers\promoController;
 use App\Http\Controllers\detalleProdController;
+use App\Http\Controllers\productosController;
+use App\Http\Controllers\tiendasController;
+use App\Http\Controllers\detalleTiendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +33,11 @@ Route::get('TT', [TTController::class,'index'])->name('TyT');
 
 Route::get('promociones', [promoController::class,'index'])->name('promociones');
 
-Route::get('detalleProducto', [detalleProdController::class,'index'])->name('detalle');
+Route::get('detalleProducto', [detalleProdController::class,'index'])->name('detalleProd');
+
+Route::get('productos', [productosController::class,'index'])->name('productos');
+
+Route::get('tiendas', [tiendasController::class,'index'])->name('tiendas');
+
+
+Route::get('detalleTienda', [detalleTiendaController::class,'index'])->name('detalleTien');
