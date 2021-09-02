@@ -15,7 +15,10 @@ class CreateTallasTable extends Migration
     {
         Schema::create('tallas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre',20);
+            $table->unsignedTinyInteger('subcategoria_id');
             $table->timestamps();
+            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
         });
     }
 

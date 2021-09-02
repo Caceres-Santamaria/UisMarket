@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCiudadesTable extends Migration
+class CreateCalificacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateCiudadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ciudades', function (Blueprint $table) {
+        Schema::create('calificaciones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedTinyInteger('calificacion');
+            $table->unsignedBigInteger('pedido_id');
             $table->timestamps();
+            $table->foreign('pedido_id')->references('id')->on('pedidos');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateCiudadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ciudades');
+        Schema::dropIfExists('calificaciones');
     }
 }

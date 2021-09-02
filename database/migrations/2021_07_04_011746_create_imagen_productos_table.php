@@ -15,7 +15,12 @@ class CreateImagenProductosTable extends Migration
     {
         Schema::create('imagen_productos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('descripcion',100);
+            $table->unsignedTinyInteger('prioridad');
+            $table->unsignedBigInteger('talla-color-producto_id');
             $table->timestamps();
+            $table->foreign('talla-color-producto_id')->references('id')->on('talla-color-productos');
         });
     }
 
