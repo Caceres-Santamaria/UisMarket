@@ -11,11 +11,25 @@ class Comentario extends Model
     protected $table = 'comentarios';
 
     /**
+     * Los atributos que se pueden asignar masivamente
+     *
+     * @var array
+     */
+    protected $fillable = ['contenido','pedido_id','usuario_id'];
+
+    /**
      * Relaciones
      */
-    public function tienda()
-    {
-        return $this->belongsTo(Pedido::class,'pedido_id','id');
-    }
 
+    /**
+     * Obtiene el pedido al que pertenece un comentario
+     */
+    public function pedido()
+    {
+        return $this->belongsTo(
+            Pedido::class, // Modelo que queremos traer
+            'pedido_id', // Foreign key en la tabla comentarios
+            'id' // owner_key en la tabla pedidos
+        );
+    }
 }

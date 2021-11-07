@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTallasTable extends Migration
+class CreateDepartamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTallasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tallas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre',100);
-            $table->unsignedBigInteger('producto_id');
+        Schema::create('departamentos', function (Blueprint $table) {
+            $table->tinyIncrements('id');
+            $table->string('nombre',30);
+            $table->string('slug');
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
-            $table->foreign('producto_id')->references('id')->on('productos');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateTallasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tallas');
+        Schema::dropIfExists('departamentos');
     }
 }

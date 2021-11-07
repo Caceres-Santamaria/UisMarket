@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTallaColorProductosTable extends Migration
+class CreateEnviosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateTallaColorProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('talla_color_productos', function (Blueprint $table) {
+        Schema::create('envios', function (Blueprint $table) {
             $table->id();
-            $table->string('color',50);
-            $table->unsignedBigInteger('talla_producto_id');
-            $table->decimal('descuento', 3, 2)->default(0);
+            $table->decimal('costo', 10, 0);
+            $table->unsignedTinyInteger('ciudad_id');
             $table->unsignedBigInteger('tienda_id');
             $table->timestamps();
+            $table->unique(['tienda_id','ciudad_id']);
+            $table->foreign('ciudad_id')->references('id')->on('ciudades');
             $table->foreign('tienda_id')->references('id')->on('tiendas');
-            $table->foreign('talla_producto_id')->references('id')->on('talla_productos');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateTallaColorProductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('talla_color_productos');
+        Schema::dropIfExists('envios');
     }
 }

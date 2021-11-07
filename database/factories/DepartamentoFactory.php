@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Ciudad_tienda;
+use App\Models\Departamento;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class CiudadTiendaFactory extends Factory
+class DepartamentoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Ciudad_tienda::class;
+    protected $model = Departamento::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +22,10 @@ class CiudadTiendaFactory extends Factory
      */
     public function definition()
     {
+        $nombre = $this->faker->word();
         return [
-            //
+            'nombre' => $nombre,
+            'slug' => Str::slug($nombre)
         ];
     }
 }

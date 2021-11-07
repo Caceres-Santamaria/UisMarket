@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Ciudad;
 use App\Models\Direccion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,8 +22,15 @@ class DireccionFactory extends Factory
      */
     public function definition()
     {
+        $ciudad = Ciudad::all()->random();
         return [
-            //
+            'contacto' => $this->faker->name(),
+            'telefono' => $this->faker->e164PhoneNumber(),
+            'direccion' => $this->faker->address(),
+            'especificacion' => $this->faker->secondaryAddress(),
+            'ciudad_id' => $ciudad->id,
+            'predeterminado' => 1
+
         ];
     }
 }

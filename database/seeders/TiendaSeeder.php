@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tienda;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class TiendaSeeder extends Seeder
@@ -13,6 +15,13 @@ class TiendaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = User::all()->random(20);
+
+        foreach ($users as $user) {
+            Tienda::factory(1)->create([
+                'user_id' => $user->id,
+                'ciudad_id' => $user->ciudad->id
+            ]);
+        }
     }
 }

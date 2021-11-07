@@ -14,9 +14,13 @@ class CreateCiudadesTable extends Migration
     public function up()
     {
         Schema::create('ciudades', function (Blueprint $table) {
-            $table->id();
+            $table->tinyIncrements('id');
             $table->string('nombre',30);
+            $table->string('slug');
+            $table->unsignedTinyInteger('departamento_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
         });
     }
 

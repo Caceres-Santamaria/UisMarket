@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Ciudad_tienda extends Pivot
+class Envio extends Pivot
 {
     use HasFactory;
-    protected $table = 'ciudad_tiendas';
+    protected $table = 'envios';
     protected $primaryKey = 'id';
     public $incrementing = true;
+
     /**
-     * Relaciones
+     * Los atributos que se pueden asignar masivamente
+     *
+     * @var array
      */
+    protected $fillable = ['costo','ciudad_id','tienda_id'];
 }
