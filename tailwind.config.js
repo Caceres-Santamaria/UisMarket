@@ -6,11 +6,17 @@ module.exports = {
             inset: {
                 'calc': 'calc(100% + 3px)',
                 'calc1': 'calc(100% + .5rem)',
+                '-logosm': 'calc(-1px - 3rem)',
+                '-logomd': 'calc(-1px - 5rem)',
             },
             zIndex: {
                 '1': '1',
                 '8': '8',
                 '5': '5',
+                '100': '100',
+            },
+            boxShadow: {
+              redes: '0 0 .5rem rgba(0, 0, 0, 0.42);',
             },
             height: {
                 'cardsm': 'calc(((100vw - 4.6rem)/2)+20px)',
@@ -24,6 +30,8 @@ module.exports = {
                 'cardsm': 'calc((100vw - 4.6rem)/2)',
                 'cardmd': 'calc((100vw - 9rem)/3)',
                 'cardlg': 'calc((100vw - 16rem - 4.5rem)/4)',
+                'sliderprodsm': '17.5rem',
+                'sliderprodlg': '75rem',
             },
             textColor: {
                 'inherit': 'inherit',
@@ -36,12 +44,17 @@ module.exports = {
                     dark2: '#469b18',
                     ligth2: '#79e741',
                 },
+                redes: {
+                  fb: '#2E406E',
+                  ws: '#4BCA5A',
+                  ig: '#D82571',
+              },
 
             },
             gridTemplateRows: {
                 '3m': 'auto 1fr auto',
                 'lg': '80px 40px',
-                'detalle': 'repeat(2, auto)',
+                'detalle': 'repeat(3, auto)',
                 '5auto': 'repeat(5, auto)',
                 'auto': 'auto',
                 'catalogo': '130px 40px auto',
@@ -98,9 +111,12 @@ module.exports = {
             backgroundColor: ['hover', 'focus', 'active', 'last'],
             inset: ['hover', 'focus', 'active', 'last'],
             visibility: ['hover', 'focus', 'active', 'last'],
+            rounded: ['hover', 'focus', 'active', 'last'],
+            padding: ['hover', 'focus', 'active', 'last'],
         },
     },
     plugins: [
-        require('@savvywombat/tailwindcss-grid-areas')
+        require('@savvywombat/tailwindcss-grid-areas'),
+        require('@tailwindcss/line-clamp'),
     ],
 }

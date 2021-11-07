@@ -18,7 +18,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('scriptHeader')
 </head>
-<body class="font-light font-ModernSans text-black">
+<body class="font-light font-ModernSans text-black box-border w-full">
     <div class="contenedor  grid grid-cols-1 grid-rows-3m grid-areas-layout min-h-screen">
         {{-- @include('components/menuResponsive') --}}
         {{-- @include('components/carritoDesplegable') --}}
@@ -35,5 +35,6 @@
         @include('componentes/footer')
     </div>
     @yield('scriptFooter')
+    @stack('scripts')
 </body>
 </html>
