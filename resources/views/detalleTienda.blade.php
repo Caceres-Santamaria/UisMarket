@@ -122,7 +122,7 @@
         </div>
 
         <div id="content-products" class="collection-products w-full">
-            @include('calificaciones')
+            @include('tiendaInfo')
         </div>
 
         {{-- redes --}}

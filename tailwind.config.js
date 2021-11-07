@@ -54,7 +54,7 @@ module.exports = {
             gridTemplateRows: {
                 '3m': 'auto 1fr auto',
                 'lg': '80px 40px',
-                'detalle': 'repeat(2, auto)',
+                'detalle': 'repeat(3, auto)',
                 '5auto': 'repeat(5, auto)',
                 'auto': 'auto',
                 'catalogo': '130px 40px auto',
