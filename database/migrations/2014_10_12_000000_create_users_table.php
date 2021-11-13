@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->enum('rol', [User::ADMINISTRADOR, User::EMPRENDEDOR, User::COMPRADOR])->default(User::COMPRADOR);
             $table->rememberToken();
             $table->softDeletes('deleted_at', 0);
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
             $table->foreign('ciudad_id')->references('id')->on('ciudades');
         });

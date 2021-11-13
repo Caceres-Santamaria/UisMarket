@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/sliderDetalle.js', 'public/js')
     .copy('node_modules/@splidejs/splide/dist/js/splide.min.js', 'public/js')
-    .sass('resources/sass/fuentes.scss', 'public/css')
+    .sass('resources/sass/fontawesome.scss', 'public/css')
     .copy('node_modules/@splidejs/splide/dist/css/splide.min.css', 'public/css')
     .postCss('resources/css/general.css', 'public/css', [
         //
@@ -22,5 +22,9 @@ mix.js('resources/js/app.js', 'public/js')
         require("tailwindcss"),
         require("autoprefixer"),
     ]);
+
+if (mix.inProduction()) {
+    mix.version();
+}
 
 mix.browserSync('http://uismarket.com');

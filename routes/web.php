@@ -41,3 +41,7 @@ Route::get('tiendas', [tiendasController::class,'index'])->name('tiendas');
 
 
 Route::get('detalleTienda', [detalleTiendaController::class,'index'])->name('detalleTien');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
