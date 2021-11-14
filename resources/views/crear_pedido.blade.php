@@ -12,13 +12,13 @@
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="mb-4">
                     <label value="Nombre de contácto">Nombre de contácto
-                    <input type="text" placeholder="Ingrese el nombre de la persona que recibirá el producto"
+                    <x-jet-input type="text" placeholder="Ingrese el nombre de la persona que recibirá el producto"
                         class="w-full" />
                 </div>
 
                 <div>
                     <label value="Teléfono de contacto" >Teléfono de contacto
-                    <input type="text" placeholder="Ingrese un número de telefono de contácto" class="w-full" />
+                    <x-jet-input type="text" placeholder="Ingrese un número de telefono de contácto" class="w-full" />
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
 
                             </select>
 
-                            {{-- <x-jet-input-error for="department_id" /> --}}
+                            {{-- <x-jet-x-jet-input-error for="department_id" /> --}}
                         </div>
 
                         {{-- Ciudades --}}
@@ -72,7 +72,7 @@
 
                             </select>
 
-                            {{-- <x-jet-input-error for="city_id" /> --}}
+                            {{-- <x-jet-x-jet-input-error for="city_id" /> --}}
                         </div>
 
 
@@ -80,14 +80,14 @@
 
                         <div class="col-span-2">
                             <label value="Dirección">Dirección
-                            <input class="w-full" type="text" />
-                            {{-- <x-jet-input-error for="address" /> --}}
+                            <x-jet-input class="w-full" type="text" />
+                            {{-- <x-jet-x-jet-input-error for="address" /> --}}
                         </div>
 
                         <div class="col-span-2">
                             <label value="Referencia">Referencia
-                            <input class="w-full" type="text" />
-                            {{-- <x-jet-input-error for="references" /> --}}
+                            <x-jet-input class="w-full" type="text" />
+                            {{-- <x-jet-x-jet-input-error for="references" /> --}}
                         </div>
 
                     </div>
@@ -97,7 +97,7 @@
 
             <div>
                 <x-boton class="w-full">
-                    Continuar con la compra
+                    Realizar pedido
                 </x-boton>
 
                 <hr>

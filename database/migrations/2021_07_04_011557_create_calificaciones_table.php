@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCalificacionsTable extends Migration
+class CreateCalificacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,6 +21,9 @@ class CreateCalificacionsTable extends Migration
             $table->timestamps();
             $table->foreign('pedido_id')->references('id')->on('pedidos');
         });
+
+        // Add the constraint
+        DB::statement('ALTER TABLE calificaciones ADD CHECK (calificacion > 1 AND calificacion <= 5);');
     }
 
     /**

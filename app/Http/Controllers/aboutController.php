@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class aboutController extends Controller
 {
   public function index(){
-    return view('about');
+    return view('crear_comentario');
 }
 }

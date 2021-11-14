@@ -44,7 +44,10 @@ Route::get('tiendas', [tiendasController::class,'index'])->name('tiendas');
 
 Route::get('detalleTienda', [detalleTiendaController::class,'index'])->name('detalleTien');
 
-
 Route::get('carrito', [carritoController::class,'index'])->name('carrito');
 
 Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

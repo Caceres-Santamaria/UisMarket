@@ -1,6 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-    purge: [],
+    mode: 'jit',
+    purge: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/laravel/jetstream/**/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
     darkMode: false, // or 'media' or 'class'
+
     theme: {
         extend: {
             inset: {
@@ -16,7 +25,7 @@ module.exports = {
                 '100': '100',
             },
             boxShadow: {
-              redes: '0 0 .5rem rgba(0, 0, 0, 0.42);',
+                redes: '0 0 .5rem rgba(0, 0, 0, 0.42);',
             },
             height: {
                 'cardsm': 'calc(((100vw - 4.6rem)/2)+20px)',
@@ -45,10 +54,10 @@ module.exports = {
                     ligth2: '#79e741',
                 },
                 redes: {
-                  fb: '#2E406E',
-                  ws: '#4BCA5A',
-                  ig: '#D82571',
-              },
+                    fb: '#2E406E',
+                    ws: '#4BCA5A',
+                    ig: '#D82571',
+                },
 
             },
             gridTemplateRows: {
@@ -91,7 +100,7 @@ module.exports = {
             fontFamily: {
                 'Delius': ['Delius', 'sans-serif'],
                 'ModernSans': ['ModernSans', 'sans-serif'],
-
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             lineHeight: {
                 'extra-loose': '3',
@@ -119,5 +128,7 @@ module.exports = {
     plugins: [
         require('@savvywombat/tailwindcss-grid-areas'),
         require('@tailwindcss/line-clamp'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography')
     ],
-}
+};

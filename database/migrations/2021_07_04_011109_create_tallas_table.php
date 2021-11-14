@@ -15,10 +15,11 @@ class CreateTallasTable extends Migration
     {
         Schema::create('tallas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',20);
-            $table->unsignedTinyInteger('subcategoria_id');
+            $table->string('nombre',100);
+            $table->unsignedBigInteger('producto_id');
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
-            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
+            $table->foreign('producto_id')->references('id')->on('productos');
         });
     }
 

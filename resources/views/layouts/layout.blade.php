@@ -22,17 +22,18 @@
     <div class="contenedor  grid grid-cols-1 grid-rows-3m grid-areas-layout min-h-screen">
         {{-- @include('components/menuResponsive') --}}
         {{-- @include('components/carritoDesplegable') --}}
-        {{-- <div id="busqueda" class="busqueda">
+        <div id="busqueda" class="busqueda">
             <livewire:buscar />
-        </div> --}}
-        {{-- <div class="ir-arriba" id="ir-arriba">
+        </div>
+        <div class="ir-arriba" id="ir-arriba">
             <i class="fas fa-angle-up"></i>
-        </div> --}}
-        @include('componentes/header')
+        </div>
+
+        <x-header />
 
         @yield('contenido')
 
-        @include('componentes/footer')
+        <x-footer />
     </div>
     @yield('scriptFooter')
     @stack('scripts')
