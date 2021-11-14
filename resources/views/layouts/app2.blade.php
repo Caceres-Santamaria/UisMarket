@@ -35,10 +35,11 @@
 
     <div class="min-h-screen bg-gray-100 grid grid-cols-1 grid-rows-3m grid-areas-layout">
 
-        {{-- <div id="busqueda"
-        class="fixed top-0 left-0 h-screen w-screen z-100 duration-500 transition-all ease-ease">
+        <div id="busqueda"
+            class="fixed top-0 left-0 h-screen w-screen z-100 duration-500 transition-all
+        ease-ease translate-x-100">
             <livewire:buscar />
-        </div> --}}
+        </div>
 
         <x-angle-up />
 

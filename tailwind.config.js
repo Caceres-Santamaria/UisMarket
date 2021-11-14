@@ -53,6 +53,9 @@ module.exports = {
                 'sliderprodsm': '17.5rem',
                 'sliderprodlg': '75rem',
                 'full-7': 'calc(100% - 7rem)',
+                'full-8': 'calc(100% - 8rem)',
+                '95%': '95%',
+                '5%': '5%',
             },
             textColor: {
                 'inherit': 'inherit',
