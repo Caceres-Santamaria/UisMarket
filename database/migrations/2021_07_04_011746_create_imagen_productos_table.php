@@ -18,7 +18,7 @@ class CreateImagenProductosTable extends Migration
             $table->string('url');
             $table->unsignedTinyInteger('prioridad');
             $table->unsignedBigInteger('imagen_tabla_id');
-            $table->string('imagen_tabla_tipo');
+            $table->string('imagen_tabla_type');
             $table->timestamps();
             // $table->foreign('producto_id')->references('id')->on('productos');
         });

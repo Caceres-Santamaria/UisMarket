@@ -24,7 +24,7 @@ class ImagenProducto extends Model
     /**
       * Obtiene el modelo imageable de los padres (Producto)
       */
-    public function imageable()
+    public function imagen_tabla()
     {
         return $this->morphTo();
     }
