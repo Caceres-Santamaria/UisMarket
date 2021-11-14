@@ -1,9 +1,4 @@
-@extends('layouts/layout')
-@section('title', 'Carrito')
-@section('css')
-    {{-- <link rel="stylesheet" href="{{ asset('css/carrito.css') }}"> --}}
-@endsection
-@section('contenido')
+<x-app2-layout title="Crear pedido">
 
     <main class="grid-in-contenido py-8 grid lg:grid-cols-6040 gap-6 bg-gray-100 justify-items-center">
 
@@ -12,13 +7,14 @@
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="mb-4">
                     <label value="Nombre de contácto">Nombre de contácto
-                    <x-jet-input type="text" placeholder="Ingrese el nombre de la persona que recibirá el producto"
-                        class="w-full" />
+                        <x-jet-input type="text" placeholder="Ingrese el nombre de la persona que recibirá el producto"
+                            class="w-full" />
                 </div>
 
                 <div>
-                    <label value="Teléfono de contacto" >Teléfono de contacto
-                    <x-jet-input type="text" placeholder="Ingrese un número de telefono de contácto" class="w-full" />
+                    <label value="Teléfono de contacto">Teléfono de contacto
+                        <x-jet-input type="text" placeholder="Ingrese un número de telefono de contácto"
+                            class="w-full" />
                 </div>
             </div>
 
@@ -80,14 +76,14 @@
 
                         <div class="col-span-2">
                             <label value="Dirección">Dirección
-                            <x-jet-input class="w-full" type="text" />
-                            {{-- <x-jet-x-jet-input-error for="address" /> --}}
+                                <x-jet-input class="w-full" type="text" />
+                                {{-- <x-jet-x-jet-input-error for="address" /> --}}
                         </div>
 
                         <div class="col-span-2">
                             <label value="Referencia">Referencia
-                            <x-jet-input class="w-full" type="text" />
-                            {{-- <x-jet-x-jet-input-error for="references" /> --}}
+                                <x-jet-input class="w-full" type="text" />
+                                {{-- <x-jet-x-jet-input-error for="references" /> --}}
                         </div>
 
                     </div>
@@ -102,7 +98,8 @@
 
                 <hr>
 
-                <p class="text-sm text-gray-700 mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam atque
+                <p class="text-sm text-gray-700 mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
+                    atque
                     quo, labore facere placeat illo consequatur hic ut sapiente exercitationem, architecto iure,
                     consequuntur impedit ex iusto ipsa voluptas laudantium iste <a href=""
                         class="font-semibold text-orange-500">Políticas y privacidad</a></p>
@@ -110,7 +107,7 @@
 
         </div>
 
-        <div class="order-1 w-11/12 lg:order-2 lg:col-span-1" >
+        <div class="order-1 w-11/12 lg:order-2 lg:col-span-1">
             <div class="bg-white rounded-lg shadow p-6">
                 <ul>
                     <li class="flex p-2 border-b border-gray-200">
@@ -165,4 +162,4 @@
             </div>
         </div>
     </main>
-@endsection
+</x-app2-layout>

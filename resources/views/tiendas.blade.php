@@ -1,13 +1,5 @@
-@extends('layouts/layout')
+<x-app2-layout title="Tiendas">
 
-@section('title', 'Tiendas')
-@section('css')
-
-@endsection
-@section('scriptHeader')
-
-@endsection
-@section('contenido')
     <main class="">
         <div
             class="content grid-in-contenido grid grid-cols-full grid-rows-catalogo place-items-center place-content-center px-0 py-4">
@@ -50,4 +42,5 @@
             @include('tiendasData')
         </div>
     </main>
-@endsection
+  </x-app2-layout>
+
