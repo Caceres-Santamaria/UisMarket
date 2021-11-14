@@ -36,7 +36,7 @@
     @apply hover:opacity-90 hover:cursor-pointer outline-none;
 }
 .redes-sociales {
-  @apply lg:hover:pr-16 hover:shadow-redes text-white no-underline p-3 flex transition-all w-9 md:w-12 lg:w-12;
+    @apply lg:hover:pr-16 hover:shadow-redes text-white no-underline p-3 flex transition-all w-9 md:w-12 lg:w-12;
 }
 
 .splide__list li:hover {
@@ -48,7 +48,7 @@
 }
 
 .item:hover>.menu-desktop__secondlevel {
-  display: block;
+    display: block;
 }
 
 
@@ -60,4 +60,12 @@ footer>div {
     flex-direction: column;
     text-align: center;
     place-self: start center;
+}
+
+.clip-path-50 {
+    clip-path: circle(50% at 50% 50%);
+}
+
+.border-ridge {
+    border-style: ridge;
 }

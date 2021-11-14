@@ -1,40 +1,56 @@
 <div class="w-full h-full">
-    <div>
-        <div>
-            <label for="buscador" class="fas fa-search"></label>
-            <input id="buscador" type="search" placeholder="Buscar productos" wire:model="busqueda">
+    <div class="w-full h-16 bg-primario-n flex justify-evenly items-center">
+        <div
+            class="w-4/5 h-10 border border-solid border-green-200 px-2 py-1 flex flex-nowrap justify-between items-center rounded-md bg-green-50">
+            <label for="buscador" class="fas fa-search w-1/12 cursor-pointer m-0 p-0"></label>
+            <input
+                class="w-11/12 h-7 rounded-md px-2 border-none outline-none text-xs tracking-normal py-0 cursor-text bg-green-50"
+                id="buscador" type="search" placeholder="Buscar productos" + wire:model="busqueda">
         </div>
-        <div>
-            <i class="fas fa-times"></i>
+        <div class="text-center cursor-pointer w-9 h-9 leading-9 clip-path-50 duration-500 transition-all ease-ease
+        hover:bg-green-200 hover:rotate-360"
+            id="busqueda__close">
+            <i class="fas fa-times text-xl"></i>
         </div>
     </div>
-    <div>
-        <ul>
+    <div class="w-full bg-black2-87 h-full-16 overflow-y-auto">
+        <ul class="min-h-0 h-auto bg-white w-full p-0 m-0">
             @if ($productos != '')
                 @forelse ($productos as $producto)
-                    <li class="busqueda__item">
-                        <a href="{{-- route('productos.show',$producto) --}}">
-                            <div class="busqueda__item__img">
-                                <img loading="lazy"
-                                    src="{{ Storage::url($producto->imagenProductos[0]->nombre_imagen) }}"
-                                    alt="{{ $producto->imagenProductos[0]->descripcion }}">
+                    <li class="w-full list-none">
+                        <a href="{{-- route('productos.show',$producto) --}}"
+                            class="text-black w-full h-full border-b-2 border-primario-n p-2 flex justify-center items-center no-underline hover:bg-gray-200">
+                            <div class="w-28 h-28">
+                                <img class="max-w-full w-28 h-28 object-cover object-center border-2 border-ridge border-primario-n"
+                                    loading="lazy" src="{{ Storage::url($producto->imagenes[0]->url) }}"
+                                    alt="imagen de {{ $producto->nombre }}">
                             </div>
-                            <div class="busqueda__item__detalle">
-                                <span class="nombre-producto">{{ $producto->nombre }}</span>
+                            <div
+                                class="box-border py-1 px-4 w-full-7 flex content-start items-start justify-start flex-col min-h-90px flex-nowrap text-sm">
+                                <span class="nombre-producto mb-2 text-sm">{{ $producto->nombre }}</span>
                                 @if ($producto->descuento > 0)
-                                    <span style="color:#ff0000">SALE</span>
-                                    <span style="opacity: .5;text-decoration:line-through;"
-                                        class="precio-producto">${{ number_format($producto->costo) }}</span>
-                                    <span
-                                        class="precio-producto">${{ number_format($producto->costo - $producto->costo * $producto->descuento) }}</span>
+                                    <span class="mb-2 text-sm text-red-600">SALE</span>
+                                    <span class="precio-producto opacity-50 line-through mb-2  text-sm">
+                                        ${{ number_format($producto->precio) }}
+                                    </span>
+                                    <span class="precio-producto mb-2  text-sm">
+                                        ${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}
+                                    </span>
                                 @else
-                                    <span class="precio-producto">${{ number_format($producto->costo) }}</span>
+                                    <span class="precio-producto mb-2  text-sm">
+                                        ${{ number_format($producto->precio) }}
+                                    </span>
                                 @endif
                             </div>
                         </a>
                     </li>
+                    @if ($loop->last)
+                    <li class="busqueda__item sin-resultados w-full list-none  leading-extra-lg h-20 text-center">
+                        <a class="underline cursor-pointer">Ver todos los {{ $cantidad }} artículos</a>
+                    </li>
+                    @endif
                 @empty
-                    <li class="busqueda__item sin-resultados">
+                    <li class="busqueda__item sin-resultados w-full list-none  leading-extra-lg h-20 text-center">
                         <span>¡No se encontraron resultados!</span>
                     </li>
                 @endforelse

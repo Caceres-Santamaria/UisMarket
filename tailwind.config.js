@@ -11,6 +11,16 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
 
     theme: {
+        screens: {
+            'sm': '576px',
+            // => @media (min-width: 576px) { ... }
+            'md': '768px',
+            // => @media (min-width: 768px) { ... }
+            'lg': '992px',
+            // => @media (min-width: 992px) { ... }
+            'xl': '1200px',
+            // => @media (min-width: 1200px) { ... }
+            },
         extend: {
             inset: {
                 'calc': 'calc(100% + 3px)',
@@ -34,6 +44,7 @@ module.exports = {
                 'cardsmt': 'calc((100vw - 4.6rem)/2)',
                 'cardmdt': 'calc((100vw - 9rem)/3)',
                 'cardlgt': 'calc((100vw - 16rem - 4.5rem)/4)',
+                'full-16': 'calc(100vh - 4rem)',
             },
             width: {
                 'cardsm': 'calc((100vw - 4.6rem)/2)',
@@ -41,6 +52,7 @@ module.exports = {
                 'cardlg': 'calc((100vw - 16rem - 4.5rem)/4)',
                 'sliderprodsm': '17.5rem',
                 'sliderprodlg': '75rem',
+                'full-7': 'calc(100% - 7rem)',
             },
             textColor: {
                 'inherit': 'inherit',
@@ -58,6 +70,9 @@ module.exports = {
                     ws: '#4BCA5A',
                     ig: '#D82571',
                 },
+                'black2': {
+                    '87': 'rgba(0, 0, 0, 0.87)',
+                }
 
             },
             gridTemplateRows: {
@@ -104,6 +119,16 @@ module.exports = {
             lineHeight: {
                 'extra-loose': '3',
                 'extra-lg': '5rem',
+                '12': '3rem',
+            },
+            transitionTimingFunction: {
+                'ease': 'ease',
+            },
+            rotate: {
+                '360': '360deg',
+            },
+            minHeight: {
+                '90px': '90px',
             }
         },
 
@@ -122,6 +147,7 @@ module.exports = {
             visibility: ['hover', 'focus', 'active', 'last'],
             rounded: ['hover', 'focus', 'active', 'last'],
             padding: ['hover', 'focus', 'active', 'last'],
+            rotate: ['active', 'group-hover'],
         },
     },
     plugins: [

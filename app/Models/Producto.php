@@ -91,7 +91,7 @@ class Producto extends Model
     public function imagenes(){
         return $this->morphMany(
             ImagenProducto::class,
-            'imageable'
+            'imagen_tabla'
         );
     }
 
