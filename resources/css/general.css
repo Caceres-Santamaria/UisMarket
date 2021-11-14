@@ -51,6 +51,29 @@
     display: block;
 }
 
+textarea {
+  resize: none;
+}
+
+
+input[type="radio"] {
+  display: none;
+}
+
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.estrella:hover,
+.estrella:hover ~ .estrella {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ .estrella {
+  color: orange;
+}
 
 footer>div {
     display: flex;
@@ -68,4 +91,12 @@ footer>div {
 
 .border-ridge {
     border-style: ridge;
+}
+
+.menu-responsive{
+  transform: translateX(-100%);
+  transition: transform .4s ease;
+}
+.carrito-fijo{
+  transform: translateX(100%)
 }

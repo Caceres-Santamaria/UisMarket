@@ -91,6 +91,7 @@ module.exports = {
                 'cardlg': 'repeat(auto-fit, minmax(136px, calc((100% - 7rem)/4)))',
                 'full': '100%',
                 '5050': '50% 50%',
+                '6040': 'calc(60% - .75rem) calc(40% - .75rem)',
             },
             gridTemplateAreas: {
                 'layout': [
