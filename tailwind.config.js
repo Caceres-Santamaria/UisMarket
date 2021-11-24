@@ -27,6 +27,7 @@ module.exports = {
                 'calc1': 'calc(100% + .5rem)',
                 '-logosm': 'calc(-1px - 3rem)',
                 '-logomd': 'calc(-1px - 5rem)',
+                'c-des':'calc(100% - 320px)',
             },
             zIndex: {
                 '1': '1',
@@ -45,6 +46,7 @@ module.exports = {
                 'cardmdt': 'calc((100vw - 9rem)/3)',
                 'cardlgt': 'calc((100vw - 16rem - 4.5rem)/4)',
                 'full-16': 'calc(100vh - 4rem)',
+                'cont-car':'calc(100vh - 48px)',
             },
             width: {
                 'cardsm': 'calc((100vw - 4.6rem)/2)',

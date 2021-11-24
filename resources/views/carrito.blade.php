@@ -10,67 +10,82 @@
                     Productos en el carrito:<span>(0)</span>
                     {{-- @endif --}}
                 </h4>
-                <div class=" border border-gray-300 rounded-2xl w-4/5 pt-2 mt-2 lg:w-9/12">
-                    <div class="lg:p-4 ">
-                        <div class="hidden lg:flex lg:uppercase lg:font-semibold lg:mb-4 ">
-                            <div class="lg:w-2/5 lg:text-center">
+                <div class="bg-white border border-gray-300 rounded-2xl w-11/12 md:w-4/5 pt-2 mt-2 lg:w-9/12">
+                    <div class="p-4 ">
+                        <div class="flex uppercase font-semibold mb-4 ">
+                            <div class="w-3/5 lg:w-2/5 text-center">
                                 <h3>Producto</h3>
                             </div>
-                            <div class=" lg:w-1/5 lg:text-center">
+                            <div class="w-2/5 lg:w-1/5 text-center">
                                 <h3>Precio</h3>
                             </div>
-                            <div class="lg:w-1/5 lg:text-center">
+                            <div class="hidden lg:block lg:w-1/5 lg:text-center">
                                 <h3>Cantidad</h3>
                             </div>
-                            <div class="lg:w-1/5 lg:text-center">
+                            <div class="hidden lg:block lg:w-1/5 lg:text-center">
                                 <h3>Subtotal</h3>
                             </div>
                         </div>
-                        <hr class="lg:mb-6 hidden lg:block">
+                        <hr class="mb-6 ">
                         <ul class="">
                             {{-- @php 
                         $subtotal = 0;
                         @endphp
                         @if (session()->has('carrito'))
                         @forelse (session('carrito') as $car) --}}
-                            <li class=" lg:flex lg:flex-row lg:justify-between lg:items-center">
-                                <div class="lg:w-2/5 lg:flex lg:justify-between lg:items-center">
-                                    <div class=" flex justify-center">
+                            <li class=" flex flex-row justify-between items-center">
+                                <div class="w-3/5 lg:w-2/5 flex justify-between items-center">
+                                    <div class=" w-2/5 flex justify-center">
                                         <a title="" href="">
-                                            <img class="mx-5 items-center w-28 h-28" loading="lazy" alt="" title=""
+                                            <img class="lg:mx-5 items-center w-14 h-14 md:w-20 md:h-20 lg:w-28 lg:h-28" loading="lazy" alt="" title=""
                                                 width="100" src="{{ asset('storage/images/website/p1.jpg') }}">
                                         </a>
                                     </div>
-                                    <div class=" pt-4 lg:w-48 lg:ml-6">
+                                    <div class="w-3/5 ">
                                         <a href="">
-                                            <span class="uppercase">nombre del producto</span>
+                                            <span class="text-sm uppercase line-clamp-2 lg:text-base ">nombre del producto dgdfgd ebr ergerger rgeg</span>
                                         </a>
-                                        <span class="">Talla: estandar</span>
-                                        <div class="">
-                                            {{-- <form action="{{ route('carrito.delete',($loop->index)) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE') --}}
-                                            <button type="submit" class="">
-                                                <i class="icon-bin text-red-600 invisible"><i
-                                                        class="far fa-trash-alt"></i>Eliminar</i>
-                                            </button>
-                                            {{-- </form> --}}
+                                        <span class="text-sm  lg:text-base block line-clamp-1">Talla: estandar</span>
+                                       
+                                        <div class="lg:hidden">
+                                          {{-- <form action="{{ route('carrito.delete',($loop->index)) }}" method="POST">
+                                          @csrf
+                                          @method('DELETE') --}}
+                                          <button type="submit" class="cel_item__interactions__button ">
+                                              <i class="icon-bin text-red-600 text-sm cursor-pointer"><i
+                                                      class="far fa-trash-alt"></i>Eliminar</i>
+                                          </button>
+                                          {{-- </form> --}}
+                                      </div>
 
-                                        </div>
+
                                     </div>
                                 </div>
 
-                                <div class=" lg:w-1/5 hidden lg:block">
-                                    <span class=" lg:block lg:text-center">
+                                <div class=" w-2/5 lg:w-1/5 lg:block">
+                                    <span class=" block text-center">
                                         $150.000
                                         {{-- {{ number_format($car['producto']->costo*$car['cantidad']) }}
                                         @php
                                             $subtotal += $car['producto']->costo*$car['cantidad']
                                         @endphp --}}
                                     </span>
+
+
+                                    <div class="lg:hidden block text-center ">
+                                      <div class="flex justify-center items-center">
+                                          <label for="quantity0" class="text-xs ">
+                                              Cantidad:
+                                          </label>
+                                          {{-- {{ $car['cantidad'] }} --}}
+                                          <input type="number" id="quantity0" class="w-10 h-6 border m-0 px-2">
+                                      </div>
+                                  </div>
+
+                                    
                                 </div>
 
-                                <div class="lg:w-1/5">
+                                <div class="hidden lg:block lg:w-1/5">
                                     <div class="lg:w-full lg:flex lg:justify-center">
                                         <label for="quantity0">
                                             Cantidad:
@@ -90,21 +105,11 @@
                                     </div>
                                 </div>
 
-                                <div class="lg:hidden">
-                                    <div class="">
-                                        <span class="">
-                                            Subtotal: $150.000
-                                            {{-- {{ number_format($car['producto']->costo*$car['cantidad']) }}
-                                      @php
-                                          $subtotal += $car['producto']->costo*$car['cantidad']
-                                      @endphp --}}
-                                        </span>
-                                    </div>
-                                </div>
+                                
 
-                                <div class="lg:w-1/5">
+                                <div class="hidden lg:block lg:w-1/5">
                                     <span class="lg:w-full lg:text-center lg:block">
-                                        $150.000
+                                        $250.000
                                         {{-- {{ number_format($car['producto']->costo*$car['cantidad']) }}
                                     @php
                                         $subtotal += $car['producto']->costo*$car['cantidad']
@@ -123,7 +128,7 @@
                         </ul>
                     </div>
                     <div class="row p-4">
-                        <div class="col-xs-12 hidden-md hidden-lg">
+                        <div class="">
                             <div class="text-right font-bold text-lg">
                                 <div class="">
                                     Total
@@ -135,7 +140,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <div class="block w-full lg:flex lg:justify-center">
+                            <div class="block w-full md:flex md:justify-center lg:flex lg:justify-center">
                                 {{-- <div class=" buscar-btn "> --}}
                                 <x-boton>
                                     Continuar comprando

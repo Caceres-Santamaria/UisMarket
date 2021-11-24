@@ -244,7 +244,7 @@
                     (e) publicar artículos idénticos en más de una publicación.
                     Este tipo de actividades será investigado por UIS Market y el infractor podrá ser sancionado con la
                     suspensión o
-                    cancelación de la oferta e incluso de su registración como Usuario de UIS Market.
+                    cancelación de la oferta e incluso de su registro como Usuario de UIS Market.
                 </p>
             </li>
 
