@@ -15,7 +15,7 @@ class TiendaSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::all()->random(20);
+        $users = User::all()->random(30);
 
         foreach ($users as $user) {
             Tienda::factory(1)->create([

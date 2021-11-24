@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
     font-family: "Delius";
     src: url("/storage/font/DeliusSwashCaps-Regular.woff") format("woff"), url("/storage/font/DeliusSwashCaps-Regular.ttf") format("ttf"), url("/storage/font/DeliusSwashCaps-Regular.otf") format("otf");
@@ -35,8 +36,17 @@
 .card-producto__img {
     @apply hover:opacity-90 hover:cursor-pointer outline-none;
 }
+
 .redes-sociales {
     @apply lg:hover:pr-16 hover:shadow-redes text-white no-underline p-3 flex transition-all w-9 md:w-12 lg:w-12;
+}
+
+.complements {
+    @apply absolute top-1 -left-1 w-auto flex justify-start items-start content-start flex-col z-5;
+}
+
+.complements__span {
+    @apply w-16 text-xs text-center h-5 leading-5 mb-1 text-white rounded-sm;
 }
 
 .splide__list li:hover {
@@ -67,11 +77,11 @@ input[type="radio"] {
 }
 
 .estrella:hover,
-.estrella:hover ~ .estrella {
+.estrella:hover~.estrella {
     color: orange;
 }
 
-input[type="radio"]:checked ~ .estrella {
+input[type="radio"]:checked~.estrella {
     color: orange;
 }
 
@@ -97,9 +107,11 @@ footer>div {
     transform: translateX(-100%);
     transition: transform .4s ease;
 }
+
 .translate-x-100 {
     transform: translateX(100%)
 }
+
 .translate-x-200 {
     transform: translateX(200%);
 }
@@ -107,5 +119,84 @@ footer>div {
 .open-menu {
     transform: translateX(0) !important;
     visibility: visible !important;
+    display: block;
+}
+
+.p-splide--secundary ul .is-active {
+    opacity: 1
+}
+
+.splide__arrow.splide__arrow--next,
+.splide__arrow.splide__arrow--prev {
+    background-color: #fff;
+    opacity: .7;
+    color: #000;
+    border: 1px solid #000;
+    transition: all .5s ease;
+}
+
+.splide__arrow.splide__arrow--next:active,
+.splide__arrow.splide__arrow--prev:active,
+.splide__arrow.splide__arrow--next:hover,
+.splide__arrow.splide__arrow--prev:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 5px 2px #fff;
+    opacity: 1;
+}
+
+.splide__arrow.splide__arrow--next svg,
+.splide__arrow.splide__arrow--prev svg {
+    color: inherit;
+}
+
+/* .splide--nav > .splide__track > .splide__list > .splide__slide.is-active{
+    border: 1px solid #000;
+} */
+
+.Precio-stock-producto__stock.con-stock {
+    color: #2A9F0B;
+}
+.Precio-stock-producto__stock.con-stock::after {
+    content: "Con Stock";
+    color: inherit;
+}
+.Precio-stock-producto__stock.sin-stock {
+    color: #E71009;
+}
+.Precio-stock-producto__stock.sin-stock::after {
+    content: "Sin Stock";
+    color: inherit;
+}
+
+.cantidad-producto::before {
+    content: "cantidad:";
+    color: #000;
+    display: block;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.appearance-textfield {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.appearance-textfield::-webkit-inner-spin-button,
+.appearance-textfield::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.open-menu-categoria {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    display: block;
+}
+
+.menu-activo {
+    transform: translateX(0) !important;
     display: block;
 }
