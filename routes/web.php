@@ -6,12 +6,18 @@ use App\Http\Controllers\aboutController;
 use App\Http\Controllers\TTController;
 use App\Http\Controllers\promoController;
 use App\Http\Controllers\detalleProdController;
-use App\Http\Controllers\productosController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\tiendasController;
 use App\Http\Controllers\detalleTiendaController;
 use App\Http\Controllers\carritoController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\crear_pedidoController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\DB;
 
+// DB::listen(function($query){
+//     echo "<pre>{$query->sql}</pre>";
+// });
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +28,9 @@ use App\Http\Controllers\crear_pedidoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [HomeController::class,'index'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
 
 Route::get('politicapriv', [politicaController::class,'index'])->name('politicas');
 
@@ -37,12 +42,15 @@ Route::get('promociones', [promoController::class,'index'])->name('promociones')
 
 Route::get('detalleProducto', [detalleProdController::class,'index'])->name('detalleProd');
 
-Route::get('productos', [productosController::class,'index'])->name('productos');
+Route::get('productos', [ProductoController::class,'index'])->name('productos.index');
+Route::get('productos/{producto}', [ProductoController::class,'show'])->name('productos.show');
 
 Route::get('tiendas', [tiendasController::class,'index'])->name('tiendas');
+Route::get('tiendas/{tienda}', [tiendasController::class,'show'])->name('tiendas.show');
 
-
-Route::get('detalleTienda', [detalleTiendaController::class,'index'])->name('detalleTien');
+Route::get('products', function(){
+    return view('productos');
+});
 
 Route::get('carrito', [carritoController::class,'index'])->name('carrito');
 

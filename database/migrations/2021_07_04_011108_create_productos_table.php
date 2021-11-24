@@ -20,7 +20,7 @@ class CreateProductosTable extends Migration
             $table->string('slug');
             $table->text('descripcion');
             $table->decimal('precio', 10, 0);
-            // $table->string('guia_img')->nullable();
+            $table->decimal('descuento', 3, 2)->default(0);
             $table->unsignedTinyInteger('categoria_id');
             $table->unsignedBigInteger('tienda_id');
             $table->enum('estado', ['nuevo', 'usado']);

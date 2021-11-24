@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Buscar extends Component
 {
-    public $busqueda = 'g';
+    public $busqueda = "";
 
     public function render()
     {
