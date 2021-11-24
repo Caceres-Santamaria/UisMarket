@@ -67,7 +67,7 @@
                     <a class=" relative fas-link" href="{{ route('login') }}"><i class="fas fas-header fa-user-circle text-white lg:text-2xl cursor-pointer"></i></a>
                 </div>
             @endguest
-            <div class="icono__car px-1">
+            <div class="icono__car px-1" @click="carrito = true">
                 <a id="link-carrito" class=" relative fas-link" href="javascript:void(0)"
                     title="Ver su carrito de compras">
                     <i class="lg:text-2xl fas fas-header fa-shopping-cart"></i>
@@ -84,7 +84,7 @@
     </div>
     <x-nav />
 
-    {{-- <x-carrito-desplegable /> --}}
+    <x-carrito-desplegable />
 
     <x-menu-responsive />
 
