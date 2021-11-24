@@ -1,9 +1,4 @@
-@extends('layouts/layout')
-@section('title', 'Carrito')
-@section('css')
-    {{-- <link rel="stylesheet" href="{{ asset('css/carrito.css') }}"> --}}
-@endsection
-@section('contenido')
+<x-app2-layout title="Carrito">
     <main class="grid-in-contenido p-4 cart-content content m-px.5 text-left">
         <h1 class="mb-6 title-inform text-center text-2xl font-black">CARRITO DE COMPRAS</h1>
         <div class=" ">
@@ -157,4 +152,4 @@
             </div>
         </div>
     </main>
-@endsection
+</x-app2-layout>

@@ -15,6 +15,8 @@ class Producto extends Model
     const BORRADOR = 1;
     const PUBLICADO = 2;
 
+    protected $with = ['imagenes'];
+
     /**
      * Los valores predeterminados del modelo para los atributos.
      *

@@ -1,35 +1,29 @@
-@extends('layouts/layout')
-@section('title', 'Carrito')
-@section('css')
-
-@endsection
-@section('contenido')
+<x-app2-layout title="Calificar pedido">
     <main class="grid-in-contenido py-8 grid lg:grid-cols-6040 gap-6 bg-gray-100 justify-items-center">
 
-      
         <div class="order-2 w-11/12 lg:order-1 lg:col-span-1  ">
-          <h1 class="text-2xl font-bold p-6 text-center">Calificar pedido #67</h1>
+            <h1 class="text-2xl font-bold p-6 text-center">Calificar pedido #67</h1>
 
             <div class="bg-white rounded-lg shadow p-6">
 
 
                 <div class="mb-4">
-                  <label>Calificación
+                    <label>Calificación
 
-                  <form class=" m-0 w-full h-10">
-                    <p class="clasificacion text-left">
-                      <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                      --><label class="estrella text-2xl text-gray-400"  for="radio1">★</label><!--
-                      --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio2">★</label><!--
-                      --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio3">★</label><!--
-                      --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio4">★</label><!--
-                      --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio5">★</label>
-                    </p>
-                  </form>
+                        <form class=" m-0 w-full h-10">
+                            <p class="clasificacion text-left">
+                                <input id="radio1" type="radio" name="estrellas" value="5">
+                                <label class="estrella text-2xl text-gray-400" for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label class="estrella text-2xl text-gray-400" for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label class="estrella text-2xl text-gray-400" for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label class="estrella text-2xl text-gray-400" for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas" value="1">
+                                <label class="estrella text-2xl text-gray-400" for="radio5">★</label>
+                            </p>
+                        </form>
 
 
                         {{-- <div class="star-rating">
@@ -43,7 +37,7 @@
 
                 <div>
                     <label value="">Comentario
-                        <textarea placeholder="Ingrese su comentario (máximo 190 caracteres)" maxlength="191" 
+                        <textarea placeholder="Ingrese su comentario (máximo 190 caracteres)" maxlength="191"
                             class=" w-full h-32 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></textarea>
                 </div>
             </div>
@@ -109,6 +103,4 @@
             </div>
         </div>
     </main>
-
-
-@endsection
+</x-app2-layout>

@@ -55,7 +55,7 @@
                     </li>
                     @if ($loop->last)
                     <li class="busqueda__item sin-resultados w-full list-none  leading-extra-lg h-20 text-center">
-                        <a class="underline cursor-pointer">Ver todos los {{ $cantidad }} artículos</a>
+                        <a class="underline cursor-pointer" href="{{ route('productos.index') }}?nombre={{ $busqueda }}">Ver todos los {{ $cantidad }} artículos</a>
                     </li>
                     @endif
                 @empty

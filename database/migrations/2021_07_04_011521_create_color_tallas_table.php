@@ -18,6 +18,7 @@ class CreateColorTallasTable extends Migration
             $table->unsignedBigInteger('talla_id');
             $table->unsignedSmallInteger('color_id');
             $table->unsignedSmallInteger('cantidad')->nullable();
+            $table->string('guia_img')->nullable();
             $table->timestamps();
             $table->unique(['talla_id','color_id']);
             $table->foreign('talla_id')->references('id')->on('tallas')->onDelete('cascade');

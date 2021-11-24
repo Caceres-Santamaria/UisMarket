@@ -24,6 +24,7 @@ module.exports = {
         extend: {
             inset: {
                 'calc': 'calc(100% + 3px)',
+                '100-5': 'calc(100% + .5rem)',
                 'calc1': 'calc(100% + .5rem)',
                 '-logosm': 'calc(-1px - 3rem)',
                 '-logomd': 'calc(-1px - 5rem)',
@@ -45,6 +46,9 @@ module.exports = {
                 'cardmdt': 'calc((100vw - 9rem)/3)',
                 'cardlgt': 'calc((100vw - 16rem - 4.5rem)/4)',
                 'full-16': 'calc(100vh - 4rem)',
+                'full-3': 'calc(100vh - 3rem)',
+                '18': '4.4rem',
+                '27': '6.4rem',
             },
             width: {
                 'cardsm': 'calc((100vw - 4.6rem)/2)',
@@ -56,6 +60,8 @@ module.exports = {
                 'full-8': 'calc(100% - 8rem)',
                 '95%': '95%',
                 '5%': '5%',
+                '18': '4.4rem',
+                '27': '6.4rem',
             },
             textColor: {
                 'inherit': 'inherit',
@@ -75,14 +81,20 @@ module.exports = {
                 },
                 'black2': {
                     '87': 'rgba(0, 0, 0, 0.87)',
+                    '50': 'rgba(0, 0, 0, 0.5)',
+                    '30': 'rgba(0, 0, 0, 0.3)',
+                },
+                'producto': {
+                    'agotado': '#3E3E3E',
+                    'descuento': '#FF0000'
                 }
-
             },
             gridTemplateRows: {
                 '3m': 'auto 1fr auto',
                 'lg': '80px 40px',
                 'detalle': 'repeat(3, auto)',
                 '5auto': 'repeat(5, auto)',
+                '4auto': 'repeat(4, auto)',
                 'auto': 'auto',
                 'catalogo': '130px 40px auto',
             },
@@ -111,7 +123,6 @@ module.exports = {
                     'titulo',
                     'precio',
                     'descripcion',
-                    'guia',
                     'tallas',
                 ],
             },
@@ -146,7 +157,8 @@ module.exports = {
             borderWidth: ['hover', 'focus', 'active', 'last'],
             borderStyle: ['hover', 'focus', 'active', 'last'],
             borderColor: ['hover', 'focus', 'active', 'last'],
-            backgroundColor: ['hover', 'focus', 'active', 'last'],
+            backgroundColor: ['hover', 'focus', 'active', 'last','group-focus'],
+            divideColor: ['group-hover'],
             inset: ['hover', 'focus', 'active', 'last'],
             visibility: ['hover', 'focus', 'active', 'last'],
             rounded: ['hover', 'focus', 'active', 'last'],
@@ -158,6 +170,7 @@ module.exports = {
         require('@savvywombat/tailwindcss-grid-areas'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/forms'),
-        require('@tailwindcss/typography')
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/aspect-ratio')
     ],
 };
