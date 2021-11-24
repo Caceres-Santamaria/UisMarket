@@ -5440,6 +5440,69 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+/*Busqueda*/
+
+var cerarBusqueda = document.getElementById('busqueda__close');
+var busqueda = document.getElementById('busqueda');
+var buscar = document.getElementById('link-buscar');
+buscar.addEventListener('click', function (e) {
+  e.preventDefault();
+  busqueda.classList.add('open-menu');
+});
+cerarBusqueda.addEventListener('click', function () {
+  busqueda.classList.remove('open-menu');
+});
+/* Ir arriba */
+
+var arriba = document.getElementById('ir-arriba');
+
+var obtener_pixeles_inicio = function obtener_pixeles_inicio() {
+  return document.documentElement.scrollTop || document.body.scrollTop;
+};
+
+var ir_arriba = function ir_arriba() {
+  if (obtener_pixeles_inicio() > 0) {
+    requestAnimationFrame(ir_arriba);
+    scrollTo(0, obtener_pixeles_inicio() - obtener_pixeles_inicio() / 10);
+    indicarScroll();
+  }
+};
+
+var indicarScroll = function indicarScroll() {
+  if (obtener_pixeles_inicio() > 100) {
+    arriba.classList.add('open-menu');
+  } else {
+    arriba.classList.remove('open-menu');
+  }
+};
+
+arriba.addEventListener('click', ir_arriba);
+window.addEventListener('scroll', indicarScroll); // /* menu */
+// let iconoMenu = document.querySelector('.menu-movil');
+// let menuResponsive = document.getElementById('contenedor-menu-main');
+// let productos = document.getElementById('item-producto');
+// let coleccion = document.getElementById('item-coleccion')
+// let menuCat = document.getElementById('menu-categoria');
+// let menuCol = document.getElementById('menu-coleccion');
+// let iconoCerrarMenu = document.getElementById('close-menu-main');
+// iconoMenu.addEventListener('click', () => {
+//     menuResponsive.classList.add('menu-activo');
+// })
+// iconoCerrarMenu.addEventListener('click', () => {
+//     menuResponsive.classList.remove('menu-activo');
+// })
+// productos.addEventListener('click', () => {
+//     menuCat.classList.add('open-menu-categoria');
+// })
+// document.querySelector('.menu-categoria__volver').addEventListener('click', () => {
+//     menuCat.classList.remove('open-menu-categoria');
+// })
+// coleccion.addEventListener('click', () => {
+//     menuCol.classList.add('open-menu-categoria');
+// })
+// document.querySelector('.menu-col__volver').addEventListener('click', () => {
+//     menuCol.classList.remove('open-menu-categoria');
+// })
 
 /***/ }),
 

@@ -49,18 +49,6 @@ class Pedido extends Model
     }
 
     /**
-     * Obtiene el comentario de un pedido
-     */
-    public function comentario()
-    {
-      return $this->hasOne(
-        Comentario::class,
-        'pedido_id',
-        'id'
-      );
-    }
-
-    /**
      * Obtiene la ciudad a la que se envió el pedido
      */
     public function ciudad()

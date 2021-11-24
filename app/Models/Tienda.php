@@ -12,39 +12,31 @@ class Tienda extends Model
     protected $table = 'tiendas';
 
     /**
+     * Los descriptores de acceso que se agregarán a la forma de matriz del modelo.
+     *
+     * @var array
+     */
+    // protected $appends = ['calificacion'];
+
+    /**
      * Los valores predeterminados del modelo para los atributos.
      *
      * @var array
      */
     protected $attributes = [
-      'recoger_tienda' => 0,
+        'recoger_tienda' => 0,
     ];
 
     /**
      * Los atributos que no se pueden asignar masivamente.
-      *
-      * @var array
-      */
-      protected $guarded = ['id','created_at','updated_at'];
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
      * Relaciones
      */
-
-    /**
-     * Obtiene todos los comentarios de la tienda
-     */
-    public function comentarios()
-    {
-        return $this->hasManyThrough(
-          Comentario::class,
-          Pedido::class,
-          'tienda_id',
-          'pedido_id',
-          'id',
-          'id'
-        );
-    }
 
     /**
      * Obtiene todas las calificaciones de la tienda
@@ -52,13 +44,37 @@ class Tienda extends Model
     public function calificaciones()
     {
         return $this->hasManyThrough(
-          Calificacion::class,
-          Pedido::class,
-          'tienda_id',
-          'pedido_id',
-          'id',
-          'id'
+            Calificacion::class,
+            Pedido::class,
+            'tienda_id',
+            'pedido_id',
+            'id',
+            'id'
         );
+    }
+
+    // public function getCantidadAttribute()
+    // {
+    //     return $this->calificaciones->count();
+    // }
+
+    /**
+     * Retorna un array de dos posiciones en la primera la calificación y en la segunda
+     * el número de calificaciones que se le han hecho a la tienda
+     */
+    public function getCalificacionAttribute()
+    {
+        $calificaciones = $this->calificaciones;
+        $cantidad = count($calificaciones);
+        if ($cantidad > 0) {
+            $suma = 0;
+            foreach ($calificaciones as $calificacion) {
+                $suma += $calificacion->calificacion;
+            }
+            return [$suma / $cantidad,$cantidad];
+        } else {
+            return [0,0];
+        }
     }
 
     /**
@@ -66,11 +82,11 @@ class Tienda extends Model
      */
     public function pedidos()
     {
-      return $this->hasMany(
-        Pedido::class,
-        'tienda_id',
-        'id'
-      );
+        return $this->hasMany(
+            Pedido::class,
+            'tienda_id',
+            'id'
+        );
     }
 
     /**
@@ -78,11 +94,11 @@ class Tienda extends Model
      */
     public function ciudad()
     {
-      return $this->belongsTo(
-        Ciudad::class,
-        'ciudad_id',
-        'id'
-      );
+        return $this->belongsTo(
+            Ciudad::class,
+            'ciudad_id',
+            'id'
+        );
     }
 
     /**
@@ -90,16 +106,16 @@ class Tienda extends Model
      */
     public function envios()
     {
-      return $this->belongsToMany(
-        Ciudad::class,
-        'envios',
-        'tienda_id',
-        'ciudad_id'
+        return $this->belongsToMany(
+            Ciudad::class,
+            'envios',
+            'tienda_id',
+            'ciudad_id'
         )
-                  ->using(Envio::class)
-                  ->as('envios')
-                  ->withPivot('costo')
-                  ->withTimestamps();
+            ->using(Envio::class)
+            ->as('envios')
+            ->withPivot('costo')
+            ->withTimestamps();
     }
 
     /**
@@ -119,11 +135,11 @@ class Tienda extends Model
      */
     public function usuario()
     {
-      return $this->belongsTo(
-        User::class,
-        'user_id',
-        'id'
-      );
+        return $this->belongsTo(
+            User::class,
+            'user_id',
+            'id'
+        );
     }
 
     /**
@@ -134,4 +150,3 @@ class Tienda extends Model
         return 'slug';
     }
 }
-

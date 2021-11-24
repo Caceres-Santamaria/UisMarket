@@ -4,6 +4,7 @@ var __webpack_exports__ = {};
   !*** ./resources/js/sliderDetalle.js ***!
   \***************************************/
 document.addEventListener('DOMContentLoaded', function () {
+  var arrow = document.getElementById('primary-slider');
   var secondarySlider = new Splide('#secondary-slider', {
     rewind: true,
     width: '100%',
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     type: 'fade',
     // heightRatio: 1,
     pagination: false,
-    arrows: false,
+    arrows: arrow.getAttribute('data-arrows') == "true",
     cover: true,
     lazyLoad: 'sequential',
     rewind: true,

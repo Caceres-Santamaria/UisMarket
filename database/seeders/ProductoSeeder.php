@@ -19,7 +19,7 @@ class ProductoSeeder extends Seeder
             ImagenProducto::factory(4)->create([
                 'prioridad' => 1,
                 'imagen_tabla_id' => $producto->id,
-                'imagen_tabla_tipo' => Producto::class
+                'imagen_tabla_type' => Producto::class
             ]);
         });
     }

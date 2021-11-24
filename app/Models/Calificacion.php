@@ -15,21 +15,21 @@ class Calificacion extends Model
      *
      * @var array
      */
-protected $fillable = ['calificacion','pedido_id'];
+    protected $fillable = ['calificacion','contenido','pedido_id','usuario_id'];
 
     /**
      * Relaciones
      */
 
     /**
-     * Obtiene el pedido propietaria de una calificación
+     * Obtiene el pedido al que pertenece un comentario
      */
     public function pedido()
     {
         return $this->belongsTo(
-            Pedido::class,
-            'pedido_id',
-            'id'
+            Pedido::class, // Modelo que queremos traer
+            'pedido_id', // Foreign key en la tabla comentarios
+            'id' // owner_key en la tabla pedidos
         );
     }
 }

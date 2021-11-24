@@ -71,21 +71,6 @@ class User extends Authenticatable
      */
 
     /**
-     * Obtiene todos los comentarios hechos por el usuario
-     */
-    public function comentarios()
-    {
-        return $this->hasManyThrough(
-            Comentario::class,
-            Pedido::class,
-            'usuario_id',
-            'pedido_id',
-            'id',
-            'id'
-        );
-    }
-
-    /**
      * Obtiene todas las calificaciones hechas por el usuario
      */
     public function calificaciones()

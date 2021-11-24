@@ -13,24 +13,15 @@
                         <form class=" m-0 w-full h-10">
                             <p class="clasificacion text-left">
                                 <input id="radio1" type="radio" name="estrellas" value="5">
-                                <!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio1">★</label>
-                                <!--
-                      --><input id="radio2" type="radio" name="estrellas" value="4">
-                                <!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio2">★</label>
-                                <!--
-                      --><input id="radio3" type="radio" name="estrellas" value="3">
-                                <!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio3">★</label>
-                                <!--
-                      --><input id="radio4" type="radio" name="estrellas" value="2">
-                                <!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio4">★</label>
-                                <!--
-                      --><input id="radio5" type="radio" name="estrellas" value="1">
-                                <!--
-                      --><label class="estrella text-2xl text-gray-400" for="radio5">★</label>
+                                <label class="estrella text-2xl text-gray-400" for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label class="estrella text-2xl text-gray-400" for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label class="estrella text-2xl text-gray-400" for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label class="estrella text-2xl text-gray-400" for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas" value="1">
+                                <label class="estrella text-2xl text-gray-400" for="radio5">★</label>
                             </p>
                         </form>
 
