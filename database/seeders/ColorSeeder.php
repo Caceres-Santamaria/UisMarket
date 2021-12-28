@@ -15,12 +15,19 @@ class ColorSeeder extends Seeder
      */
     public function run()
     {
-        $colores = ['blanco', 'azul', 'rojo', 'negro', 'gris'];
+        $colores = [
+            'blanco' => 'bg-white',
+            'azul'=> 'bg-blue-600',
+            'rojo' => 'bg-red-600',
+            'negro' => 'bg-black',
+            'gris' => 'bg-gray-600'
+        ];
 
-        foreach ($colores as $color) {
+        foreach ($colores as $clave => $valor) {
             Color::create([
-                'nombre' => $color,
-                'slug' => Str::slug($color)
+                'nombre' => $clave,
+                'slug' => Str::slug($clave),
+                'codigo' => $valor
             ]);
         }
     }

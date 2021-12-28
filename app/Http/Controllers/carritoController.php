@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class carritoController extends Controller
 {
-  public function index(){
-    return view('carrito');
-  }
+    public function index()
+    {
+        return view('carrito');
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Producto extends Model
 {
@@ -15,7 +16,7 @@ class Producto extends Model
     const BORRADOR = 1;
     const PUBLICADO = 2;
 
-    protected $with = ['imagenes'];
+    // protected $with = ['imagenes'];
 
     /**
      * Los valores predeterminados del modelo para los atributos.
@@ -42,6 +43,20 @@ class Producto extends Model
         'publicacion',
         'cantidad'
     ];
+
+    public function getStockAttribute(){
+        if ($this->talla) {
+            return  ColorTalla::whereHas('talla.producto', function(Builder $query){
+                        $query->where('id', $this->id);
+                    })->sum('cantidad');
+        } elseif($this->color) {
+            return  ColorProducto::whereHas('producto', function(Builder $query){
+                        $query->where('id', $this->id);
+                    })->sum('cantidad');
+        }else{
+            return $this->cantidad;
+        }
+    }
 
     /**
      * Relaciones
@@ -105,6 +120,21 @@ class Producto extends Model
         return $this->belongsTo(
             Tienda::class,
             'tienda_id',
+            'id'
+        );
+    }
+
+    /**
+     * Obtiene todas los colores tallas del producto
+     */
+    public function colorTallas()
+    {
+        return $this->hasManyThrough(
+            ColorTalla::class,
+            Talla::class,
+            'producto_id',
+            'talla_id',
+            'id',
             'id'
         );
     }

@@ -22,7 +22,8 @@ class ColorTallaSeeder extends Seeder
                 1 => ['cantidad' => 15],
                 2 => ['cantidad' => 15],
                 3 => ['cantidad' => 15],
-                4 => ['cantidad' => 15]
+                4 => ['cantidad' => 15],
+                5 => ['cantidad' => 15]
             ]);
         }
     }

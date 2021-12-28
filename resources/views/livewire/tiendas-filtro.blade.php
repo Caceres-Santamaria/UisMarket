@@ -3,14 +3,8 @@
         <div class="px-6 py-2 flex justify-between items-center flex-wrap">
             <h1 class="order-1 font-semibold text-gray-700 uppercase">Tiendas</h1>
             <div class="order-2 flex justify-center items-center">
-                <x-filtro-desplegable filtros="tiendas" :sort="$sort_by" />
-                <div
-                    class="hidden md:block lg:grid grid-cols-2 border border-gray-200 divide-x divide-gray-200 text-gray-500 ml-2">
-                    <i class="fas fa-border-all p-3 cursor-pointer {{ $view == 'grid' ? 'text-orange-500' : '' }}"
-                        wire:click="$set('view', 'grid')"></i>
-                    <i class="fas fa-th-list p-3 cursor-pointer {{ $view == 'list' ? 'text-orange-500' : '' }}"
-                        wire:click="$set('view', 'list')"></i>
-                </div>
+                <x-filtro-desplegable filtros="tiendas" :sort="$sort_by" class="w-52"/>
+                <x-tipo-vista :view="$view" />
             </div>
             <div
                 class="order-3 self-end mt-3 w-full h-8 border border-solid border-gray-300 px-2 py-1 flex flex-nowrap justify-between items-center rounded-md

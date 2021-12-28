@@ -59,7 +59,7 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-12 w-12">
+                                            <div class="shrink-0 h-12 w-12">
                                                 {{-- @if ($product->images->count()) --}}
                                                 <img class="h-12 w-12 rounded-full object-cover"
                                                     src="{{ Storage::url('images/website/p1.jpg') }}" alt="">

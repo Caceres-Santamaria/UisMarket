@@ -67,25 +67,13 @@
                     <a class=" relative fas-link" href="{{ route('login') }}"><i class="fas fas-header fa-user-circle text-white lg:text-2xl cursor-pointer"></i></a>
                 </div>
             @endguest
-            <div class="icono__car px-1">
-                <a id="link-carrito" class=" relative fas-link" href="javascript:void(0)"
-                    title="Ver su carrito de compras">
-                    <i class="lg:text-2xl fas fas-header fa-shopping-cart"></i>
-                    {{-- @if (session()->has('carrito'))
-                    <span class="">{{count(session('carrito'))}}</span>
-                    @else
-                    <span class="">0</span>
-                    @endif --}}
-                    <span
-                        class="w-5 h-5 absolute -top-1 text-xs -right-2 text-black bg-white rounded-full leading-5">0</span>
-                </a>
-            </div>
+            @livewire('carrito')
         </div>
     </div>
     <x-nav />
-
-    {{-- <x-carrito-desplegable /> --}}
-
+    <div x-show="carrito" x-transition class="fixed top-0 bg-black2-50 w-full h-full z-100 carrito-fijo">
+        @livewire('carrito-desplegable')
+    </div>
     <x-menu-responsive />
 
     <div id="busqueda"

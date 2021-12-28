@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class calificacionesController extends Controller
 {
-  public function index(){
-    return view('calificaciones');
-  }
+    public function index()
+    {
+        return view('calificaciones');
+    }
 }

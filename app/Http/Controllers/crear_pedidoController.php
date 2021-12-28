@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class crear_pedidoController extends Controller
 {
-  public function index(){
-    return view('historial_pedidos');
-  }
-  
+    public function index()
+    {
+        return view('historial_pedidos');
+    }
 }

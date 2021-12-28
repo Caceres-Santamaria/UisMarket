@@ -18,71 +18,51 @@ class CategoriaSeeder extends Seeder
         $categorias = [
             [
                 'nombre' => 'Ropa',
-                'slug' => Str::slug('Ropa'),
-                'color' => true,
-                'talla' => true
+                'slug' => Str::slug('Ropa')
             ],
             [
                 'nombre' => 'Calzado',
-                'slug' => Str::slug('Calzado'),
-                'color' => true,
-                'talla' => true
+                'slug' => Str::slug('Calzado')
             ],
 
             [
                 'nombre' => 'Alimentos',
-                'slug' => Str::slug('Alimentos'),
-                'color' => false,
-                'talla' => false
+                'slug' => Str::slug('Alimentos')
             ],
 
             [
                 'nombre' => 'Joyas y accesocios',
-                'slug' => Str::slug('Joyas y accesocios'),
-                'color' => true,
-                'talla' => false
+                'slug' => Str::slug('Joyas y accesocios')
             ],
 
             [
                 'nombre' => 'Salud y belleza',
-                'slug' => Str::slug('Salud y belleza'),
-                'color' => false,
-                'talla' => false
+                'slug' => Str::slug('Salud y belleza')
             ],
 
             [
                 'nombre' => 'Mascotas',
-                'slug' => Str::slug('Mascotas'),
-                'color' => true,
-                'talla' => true
+                'slug' => Str::slug('Mascotas')
             ],
 
             [
                 'nombre' => 'Hogar y decoración',
-                'slug' => Str::slug('Hogar y decoración'),
-                'color' => true,
-                'talla' => false
+                'slug' => Str::slug('Hogar y decoración')
             ],
 
             [
                 'nombre' => 'Arte y cultura',
-                'slug' => Str::slug('Arte y cultura'),
-                'color' => true,
-                'talla' => false
+                'slug' => Str::slug('Arte y cultura')
             ],
 
             [
                 'nombre' => 'Papelería',
-                'slug' => Str::slug('Papelería'),
-                'color' => true,
-                'talla' => true
+                'slug' => Str::slug('Papelería')
             ],
 
             [
                 'nombre' => 'Accesorios electrónicos',
-                'slug' => Str::slug('Accesorios electrónicos'),
-                'color' => true,
-                'talla' => false
+                'slug' => Str::slug('Accesorios electrónicos')
             ],
         ];
 

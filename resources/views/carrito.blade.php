@@ -140,15 +140,15 @@
                             </div>
                         </div>
                         <div class="">
-                            <div class="block w-full md:flex md:justify-center lg:flex lg:justify-center">
+                            <div class="mt-3 w-full flex flex-col md:flex-row justify-center items-center content-center">
                                 {{-- <div class=" buscar-btn "> --}}
-                                <x-boton>
+                                <x-boton class="mb-3 lg:m-6 w-4/5 h-8 md:w-48 lg:h-9">
                                     Continuar comprando
                                 </x-boton>
                                 {{-- <a class=" " href="{{ route('productos.index')}}" >Continuar comprando</a>
                             </div> --}}
-                                <x-boton>
-                                    Ir a pagar
+                                <x-boton class=" lg:m-6 w-4/5 h-8 md:w-48 lg:h-9">
+                                    Realizar pedido
                                 </x-boton>
                             </div>
                         </div>

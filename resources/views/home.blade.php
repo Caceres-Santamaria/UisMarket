@@ -40,6 +40,14 @@
             </div>
         </div>
     </main>
+    {{-- <script>
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        })
+    </script> --}}
     @push('css')
         <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">

@@ -68,6 +68,8 @@ class filtroDesplegable extends Component
             $this->filtros = [
                 'Alfabéticamente: A-Z' => 'nombre_asc',
                 'Alfabéticamente: Z-A' => 'nombre_desc',
+                'Precio: Menor a mayor' => 'precio_asc',
+                'Precio: Mayor a menor' => 'precio_desc',
                 'Más recientes' => 'mas_reciente',
                 'Más antiguos' => 'menos_recientes'
             ];

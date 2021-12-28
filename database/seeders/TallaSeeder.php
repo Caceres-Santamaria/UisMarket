@@ -15,13 +15,9 @@ class TallaSeeder extends Seeder
      */
     public function run()
     {
-        $productos = Producto::whereHas('categoria', function (Builder $query)
-        {
-            $query->where('color', true)
-                ->where('talla', true);
-        })->get();
+        $productos = Producto::where('talla', true)->get();
 
-        $tallas = ['Talla XS', 'Talla S', 'Talla M', 'Talla L', 'Talla XL'];
+        $tallas = ['XXS', 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
 
         foreach ($productos as $producto)
         {
