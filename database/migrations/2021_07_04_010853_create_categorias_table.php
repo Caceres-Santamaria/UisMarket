@@ -18,8 +18,6 @@ class CreateCategoriasTable extends Migration
             $table->string('nombre',50);
             $table->string('slug');
             $table->string('imagen');
-            $table->boolean('color')->default(false);
-            $table->boolean('talla')->default(false);
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });

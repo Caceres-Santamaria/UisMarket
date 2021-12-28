@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class detalleProdController extends Controller
 {
-  public function index(){
-    return view('detalleProducto');
-}
+    public function index()
+    {
+        return view('detalleProducto');
+    }
 }

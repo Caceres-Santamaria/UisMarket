@@ -47,7 +47,7 @@ class Talla extends Model
         )
                     ->using(ColorTalla::class)
                     ->as('pTalla')
-                    ->withPivot('cantidad')
+                    ->withPivot('cantidad','id')
                     ->withTimestamps();
     }
 }

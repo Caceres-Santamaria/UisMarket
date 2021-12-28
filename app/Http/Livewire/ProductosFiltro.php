@@ -26,89 +26,19 @@ class ProductosFiltro extends Component
         $this->nombre = $nombre;
     }
 
-    public function render()
+    public function busqueda()
     {
         if (!$this->categoria) {
-            switch ($this->sort_by) {
-                case '':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::orderBy('nombre', 'asc')->paginate(20);
-                    }
-                    break;
-                case 'nombre_asc':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::orderBy('nombre', 'asc')->paginate(20);
-                    }
-                    break;
-                case 'nombre_desc':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'desc')->paginate(20);
-                    } else {
-                        $productos = Producto::orderBy('nombre', 'desc')->paginate(20);
-                    }
-                    break;
-                case 'mas_reciente':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('created_at', 'desc')->paginate(20);
-                    } else {
-                        $productos = Producto::orderBy('created_at', 'desc')->paginate(20);
-                    }
-                    break;
-                case 'menos_recientes':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('created_at', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::orderBy('created_at', 'asc')->paginate(20);
-                    }
-                    break;
-                default:
-                    $productos = [];
-            }
+            $productos = productos($this->sort_by, $this->nombre, $this->view);
         } else {
-            switch ($this->sort_by) {
-                case '':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->orderBy('nombre', 'asc')->paginate(20);
-                    }
-                    break;
-                case 'nombre_asc':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->orderBy('nombre', 'asc')->paginate(20);
-                    }
-                    break;
-                case 'nombre_desc':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('nombre', 'desc')->paginate(20);
-                    } else {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->orderBy('nombre', 'desc')->paginate(20);
-                    }
-                    break;
-                case 'mas_reciente':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('created_at', 'desc')->paginate(20);
-                    } else {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->orderBy('created_at', 'desc')->paginate(20);
-                    }
-                    break;
-                case 'menos_recientes':
-                    if ($this->nombre != '') {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->where('nombre', 'LIKE', "%" . $this->nombre . "%")->orderBy('created_at', 'asc')->paginate(20);
-                    } else {
-                        $productos = Producto::where('categoria_id', $this->categoria->id)->orderBy('created_at', 'asc')->paginate(20);
-                    }
-                    break;
-                default:
-                    $productos = [];
-            }
+            $productos = categoriaProductos($this->sort_by, $this->nombre, $this->categoria, $this->view);
         }
+        return $productos;
+    }
+
+    public function render()
+    {
+        $productos = $this->busqueda();
 
         return view('livewire.productos-filtro', compact('productos'));
     }

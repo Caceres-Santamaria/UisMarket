@@ -26,6 +26,9 @@ class CreateProductosTable extends Migration
             $table->enum('estado', ['nuevo', 'usado']);
             $table->enum('publicacion', [Producto::BORRADOR, Producto::PUBLICADO])->default(Producto::BORRADOR);
             $table->unsignedSmallInteger('cantidad')->nullable();
+            $table->boolean('color')->default(false);
+            $table->boolean('talla')->default(false);
+            $table->string('guia_img')->nullable();
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');

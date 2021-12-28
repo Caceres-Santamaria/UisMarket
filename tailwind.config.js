@@ -1,14 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
-    mode: 'jit',
-    purge: [
+    // mode: 'jit',
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
+        './resources/views/**/*.blade.php'
     ],
-    darkMode: false, // or 'media' or 'class'
+    // darkMode: false, // or 'media' or 'class'
 
     theme: {
         screens: {
@@ -49,8 +50,10 @@ module.exports = {
                 'full-16': 'calc(100vh - 4rem)',
                 'full-3': 'calc(100vh - 3rem)',
                 '18': '4.4rem',
+                '25': '6.2rem',
                 '27': '6.4rem',
-                'cont-car':'calc(100vh - 48px)',
+                'cont-car':'calc(100% - 48px)',
+                'car-items':'calc(100% - 8.7rem)',
             },
             width: {
                 'cardsm': 'calc((100vw - 4.6rem)/2)',
@@ -63,12 +66,16 @@ module.exports = {
                 '95%': '95%',
                 '5%': '5%',
                 '18': '4.4rem',
+                '25': '6.2rem',
                 '27': '6.4rem',
             },
             textColor: {
                 'inherit': 'inherit',
             },
             colors: {
+                green: colors.emerald,
+                yellow: colors.amber,
+                purple: colors.violet,
                 primario: {
                     n: '#67B93E',
                     ligth: '#75d545',
@@ -124,8 +131,10 @@ module.exports = {
                 'detalle': [
                     'titulo',
                     'precio',
-                    'descripcion',
-                    'tallas',
+                    'tienda',
+                    'estado',
+                    'agregar',
+                    'descripcion'
                 ],
             },
             fontFamily: {
@@ -148,26 +157,24 @@ module.exports = {
                 '90px': '90px',
             }
         },
-
-
     },
-    variants: {
-        extend: {
-            transform: ['hover', 'focus', 'active', 'last'],
-            outline: ['hover', 'focus', 'active', 'last'],
-            cursor: ['hover', 'focus', 'active', 'last'],
-            borderWidth: ['hover', 'focus', 'active', 'last'],
-            borderStyle: ['hover', 'focus', 'active', 'last'],
-            borderColor: ['hover', 'focus', 'active', 'last'],
-            backgroundColor: ['hover', 'focus', 'active', 'last','group-focus'],
-            divideColor: ['group-hover'],
-            inset: ['hover', 'focus', 'active', 'last'],
-            visibility: ['hover', 'focus', 'active', 'last'],
-            rounded: ['hover', 'focus', 'active', 'last'],
-            padding: ['hover', 'focus', 'active', 'last'],
-            rotate: ['active', 'group-hover'],
-        },
-    },
+    // variants: {
+    //     extend: {
+    //         transform: ['hover', 'focus', 'active', 'last'],
+    //         outline: ['hover', 'focus', 'active', 'last'],
+    //         cursor: ['hover', 'focus', 'active', 'last'],
+    //         borderWidth: ['hover', 'focus', 'active', 'last'],
+    //         borderStyle: ['hover', 'focus', 'active', 'last'],
+    //         borderColor: ['hover', 'focus', 'active', 'last'],
+    //         backgroundColor: ['hover', 'focus', 'active', 'last','group-focus'],
+    //         divideColor: ['group-hover'],
+    //         inset: ['hover', 'focus', 'active', 'last'],
+    //         visibility: ['hover', 'focus', 'active', 'last'],
+    //         rounded: ['hover', 'focus', 'active', 'last'],
+    //         padding: ['hover', 'focus', 'active', 'last'],
+    //         rotate: ['active', 'group-hover'],
+    //     },
+    // },
     plugins: [
         require('@savvywombat/tailwindcss-grid-areas'),
         require('@tailwindcss/line-clamp'),

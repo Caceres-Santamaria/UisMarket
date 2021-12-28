@@ -13,7 +13,15 @@ class ProductoController extends Controller
         return view('productos.index',compact(['sort_by','nombre']));
     }
 
-    public function show(Producto $producto){
+    public function show($producto){
+        $producto = Producto::with(['colores','tallas'])->where('slug',$producto)->firstOrFail();
+        // return $producto->tallas[0]->colores;
         return view('productos.show',compact('producto'));
+    }
+
+    public function promociones(){
+        $sort_by = request()->sort_by;
+        $nombre = request()->nombre;
+        return view('productos.promociones',compact(['sort_by','nombre']));
     }
 }

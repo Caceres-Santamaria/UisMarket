@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/general.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/sweetalert2.min.css') }}">
     @stack('css')
 
     <!-- Fontawesome -->

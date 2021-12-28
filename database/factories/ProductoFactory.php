@@ -30,10 +30,20 @@ class ProductoFactory extends Factory
 
         $tienda = Tienda::all()->random();
 
-        if($categoria->color){
+        if(rand(0,1)){
+            $color = true;
+            $talla = false;
             $cantidad = null;
         }else{
-            $cantidad = 15;
+            if(rand(0,1)){
+                $color = false;
+                $talla = true;
+                $cantidad = null;
+            }else{
+                $color = false;
+                $talla = false;
+                $cantidad = 15;
+            }
         }
 
         return [
@@ -45,7 +55,10 @@ class ProductoFactory extends Factory
             'tienda_id' => $tienda->id,
             'estado'=> $this->faker->randomElement($array = array ('nuevo','usado')),
             'publicacion' => 2,
-            'cantidad' => $cantidad
+            'cantidad' => $cantidad,
+            'color' => $color,
+            'talla' => $talla,
+            'descuento' => $this->faker->randomFloat(2, 0, 1)
         ];
     }
 }

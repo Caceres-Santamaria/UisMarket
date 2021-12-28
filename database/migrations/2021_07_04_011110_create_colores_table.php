@@ -17,6 +17,7 @@ class CreateColoresTable extends Migration
             $table->smallIncrements('id');
             $table->string('nombre',50);
             $table->string('slug');
+            $table->string('codigo');
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });

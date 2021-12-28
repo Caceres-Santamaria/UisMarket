@@ -39,6 +39,13 @@ class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
                         </a>
                     </li>
                 @endif
+                <li class="list-none text-black hover:bg-gray-300">
+                    <a class="py-3 px-6 text-inherit no-underline text-sm block w-full h-full"
+                        href="{{ route('promociones') }}"
+                        class="menu-main__link flex justify-between items-center">
+                        <span>Promociones</span>
+                    </a>
+                </li>
                 @auth
                     {{-- <li class=""><a href="{{ route('rotacion') }}" class="menu-main__link flex justify-between items-center"><span>Informe de
                                 Rotación</span></a></li>

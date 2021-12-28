@@ -23,42 +23,41 @@ class TiendasFiltro extends Component
         $this->sort_by = $sort_by;
     }
 
-    public function render()
-    {
+    public function busqueda(){
         switch ($this->sort_by) {
             case '':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'asc')->paginate(20);
                 }
                 break;
             case 'nombre_asc':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'asc')->paginate(20);
                 }
                 break;
             case 'nombre_desc':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'desc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::orderBy('nombre', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'desc')->paginate(20);
                 }
                 break;
             case 'mas_reciente':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'desc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::orderBy('created_at', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->orderBy('created_at', 'desc')->paginate(20);
                 }
                 break;
             case 'menos_recientes':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::orderBy('created_at', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->orderBy('created_at', 'asc')->paginate(20);
                 }
                 break;
             case 'mejor_valoradas':
@@ -116,6 +115,13 @@ class TiendasFiltro extends Component
             default:
                 $tiendas = [];
         }
+        return $tiendas;
+    }
+
+    public function render()
+    {
+        $tiendas = $this->busqueda();
+
         return view('livewire.tiendas-filtro', compact('tiendas'));
     }
 }

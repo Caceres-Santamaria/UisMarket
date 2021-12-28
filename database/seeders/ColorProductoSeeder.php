@@ -15,11 +15,7 @@ class ColorProductoSeeder extends Seeder
      */
     public function run()
     {
-        $productos = Producto::whereHas('categoria', function(Builder $query)
-        {
-            $query->where('color', true)
-                    ->where('talla', false);
-        })->get();
+        $productos = Producto::where('color', true)->get();
 
         foreach ($productos as $producto)
         {
@@ -34,6 +30,9 @@ class ColorProductoSeeder extends Seeder
                     'cantidad' => 15
                 ],
                 4 => [
+                    'cantidad' => 15
+                ],
+                5 => [
                     'cantidad' => 15
                 ]
             ]);

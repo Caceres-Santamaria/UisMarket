@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class promoController extends Controller
 {
-  public function index(){
-    return view('promociones');
-}
+    public function index()
+    {
+        return view('promociones');
+    }
 }

@@ -1,16 +1,11 @@
+{{-- {{ dd($productos) }} --}}
 <div class="w-full">
     <div class="bg-white rounded-lg shadow-lg mb-6">
         <div class="px-6 py-2 flex justify-between items-center">
             <h1 class="font-semibold text-gray-700 uppercase">{{ $categoria ? $categoria->nombre : 'Productos' }}</h1>
             <div class="flex justify-center items-center">
-                <x-filtro-desplegable />
-                <div
-                    class="hidden md:block lg:grid grid-cols-2 border border-gray-200 divide-x divide-gray-200 text-gray-500 ml-2">
-                    <i class="fas fa-border-all p-3 cursor-pointer {{ $view == 'grid' ? 'text-orange-500' : '' }}"
-                        wire:click="$set('view', 'grid')"></i>
-                    <i class="fas fa-th-list p-3 cursor-pointer {{ $view == 'list' ? 'text-orange-500' : '' }}"
-                        wire:click="$set('view', 'list')"></i>
-                </div>
+                <x-filtro-desplegable class="w-52" />
+                <x-tipo-vista :view="$view" />
             </div>
         </div>
     </div>
@@ -22,19 +17,23 @@
                 <article class="border border-gray-300 rounded-md p-1">
                     <a href="{{ route('productos.show', $producto) }}"
                         class="block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
-                        @if ($producto->cantidad > 0 || $producto->descuento <= 0)
+                        @if ($producto->stock > 0 || $producto->descuento <= 0)
                             <div class="complements">
-                                @if ($producto->cantidad <= 0)
+                                @if ($producto->stock <= 0)
                                     <span class="bg-producto-agotado complements__span">AGOTADO</span>
                                 @endif
                                 @if ($producto->descuento > 0)
-                                    <span class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }} % OFF</span>
+                                    <span
+                                        class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
+                                        % OFF</span>
                                 @endif
                             </div>
                         @else
                             <div class="complements">
                                 <span class="bg-producto-agotado complements__span">AGOTADO</span>
-                                <span class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }} % OFF</span>
+                                <span
+                                    class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
+                                    % OFF</span>
                             </div>
                         @endif
                         <img loading="lazy" class="card-producto__img w-full h-full object-cover object-center"
@@ -42,7 +41,8 @@
                             alt="imagen del producto {{ $producto->nombre }}">
                     </a>
                     <div class=" flex flex-col justify-center items-center">
-                        <h5 class=" text-center uppercase text-sm pt-1 lg:text-base line-clamp-2">{{ $producto->nombre }}</h5>
+                        <h5 class=" text-center uppercase text-sm pt-1 lg:text-base line-clamp-2">
+                            {{ $producto->nombre }}</h5>
                         <p class=" text-center">
                             @if ($producto->descuento > 0)
                                 <span class="opacity-50 line-through">${{ number_format($producto->precio) }}</span>

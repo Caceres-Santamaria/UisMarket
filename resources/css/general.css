@@ -46,7 +46,7 @@
 }
 
 .complements__span {
-    @apply w-16 text-xs text-center h-5 leading-5 mb-1 text-white rounded-sm;
+    @apply w-16 text-xs text-center h-5 leading-5 mb-1 text-white rounded-sm lg:w-20 lg:pb-6 lg:text-base;
 }
 
 .splide__list li:hover {
@@ -132,7 +132,7 @@ footer>div {
     opacity: .7;
     color: #000;
     border: 1px solid #000;
-    transition: all .5s ease;
+    transition: all .6s ease;
 }
 
 .splide__arrow.splide__arrow--next:active,
@@ -142,6 +142,12 @@ footer>div {
     transform: scale(1.07);
     box-shadow: 0 0 5px 2px #fff;
     opacity: 1;
+    transform: translateY(-50%);
+}
+
+.splide__arrow.splide__arrow--next:active,
+.splide__arrow.splide__arrow--prev:active {
+    transform: scale(1.1);
 }
 
 .splide__arrow.splide__arrow--next svg,
@@ -199,4 +205,14 @@ footer>div {
 .menu-activo {
     transform: translateX(0) !important;
     display: block;
+}
+
+.addCarrito {
+    background-image: url('/storage/images/website/carrito.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: block;
+    width: 50%;
+    height: 60px;
 }
