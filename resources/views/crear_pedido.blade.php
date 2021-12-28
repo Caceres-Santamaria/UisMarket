@@ -92,17 +92,14 @@
             </div>
 
             <div>
-                <x-boton class="w-full">
+                <x-boton class="w-full h-10">
                     Realizar pedido
                 </x-boton>
 
                 <hr>
 
-                <p class="text-sm text-gray-700 mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
-                    atque
-                    quo, labore facere placeat illo consequatur hic ut sapiente exercitationem, architecto iure,
-                    consequuntur impedit ex iusto ipsa voluptas laudantium iste <a href=""
-                        class="font-semibold text-orange-500">Políticas y privacidad</a></p>
+                <p class="text-sm text-gray-700 mt-2">Todos los datos son usados y protegidos conforme es establecido en las  
+                  <a href="{{route('politicas')}}" class="font-semibold text-orange-500">Políticas y privacidad</a></p>
             </div>
 
         </div>

@@ -86,7 +86,7 @@
                     <tr>
                         <td>
                             <div class="flex">
-                                <img class="h-15 w-20 object-cover mr-4" src="
+                                <img class="h-12 w-17 md:h-15 md:w-20 object-cover mr-4" src="
                                         {{ asset('storage/images/website/p1.jpg') }}" alt="">
                                 <article>
                                     <h1 class="font-bold">nombre producto</h1>
