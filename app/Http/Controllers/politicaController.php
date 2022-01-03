@@ -8,6 +8,7 @@ class politicaController extends Controller
 {
     public function index()
     {
+        comprobarCategoria();
         return view('politicapriv');
     }
 }

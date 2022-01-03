@@ -77,7 +77,7 @@
                         <span class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio) }}</span>
                     @endif
                 </div>
-                <span class="Precio-stock-producto__stock text-lg {{ stock($producto->cantidad) }}"
+                <span class="Precio-stock-producto__stock text-lg {{ stock($producto->stock) }}"
                     id="producto-stock"></span>
             </div>
             <div class="grid-in-tienda mt-2 px-3">
@@ -102,6 +102,7 @@
             <div class="grid-in-descripcion text-base xl:text-lg py-2.5 font-medium px-3">
                 <h2 class="font-bold text-lg">Descripción</h2>
                 <p class=" leading-6 m-0">
+                    {{-- {{ $producto->id }} --}}
                     {!! $producto->descripcion !!}
                 </p>
             </div>

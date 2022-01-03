@@ -50,4 +50,8 @@ class Talla extends Model
                     ->withPivot('cantidad','id')
                     ->withTimestamps();
     }
+
+    public function getStockAttribute(){
+        return $this->colores()->sum('cantidad');
+    }
 }
