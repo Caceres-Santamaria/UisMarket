@@ -66,11 +66,6 @@ textarea {
 }
 
 
-input[type="radio"] {
-    display: none;
-}
-
-
 .clasificacion {
     direction: rtl;
     unicode-bidi: bidi-override;

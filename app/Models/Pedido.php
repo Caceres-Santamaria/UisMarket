@@ -11,10 +11,10 @@ class Pedido extends Model
   use HasFactory, SoftDeletes;
     protected $table = 'pedidos';
     const PENDIENTE = 1;
-    const RECIBIDO = 2;
+    const PREPARANDO = 2;
     const ENVIADO = 3;
     const ENTREGADO = 4;
-    const ANULADO = 5;
+    const CANCELADO = 5;
 
     /**
      * Los valores predeterminados del modelo para los atributos.

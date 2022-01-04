@@ -6,13 +6,13 @@
                     Lista de productos
                 </h2>
 
-                <x-boton class="ml-auto bg-red-600 justify-end" href="">
+                <x-boton class="ml-auto h-10 w-52 justify-end" href="">
                     Agregar producto
                 </x-boton>
             </div>
 
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col mt-4">
             <div class="-my-2 overflow-x-scroll sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -22,7 +22,7 @@
                         <div class="px-6 py-4">
 
                             <x-jet-input type="text" wire:model="search" class="w-full"
-                                placeholder="Ingrese el nombre del procucto que quiere buscar" />
+                                placeholder="Ingrese el nombre del producto que desea buscar" />
 
                         </div>
 

@@ -46,7 +46,7 @@
 
                         {{-- Departamentos --}}
                         <div>
-                            <label value="Departamento" />
+                            <label value="Departamento" >
 
                             <select class="form-control w-full">
 

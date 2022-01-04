@@ -8,6 +8,6 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return view('mostrar_pedido');
+        return view('historial_pedidos');
     }
 }
