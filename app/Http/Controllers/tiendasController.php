@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class TiendasController extends Controller
 {
+
     public function index(){
+        comprobarCategoria();
         $sort_by = request()->sort_by;
         return view('tiendas.index',compact('sort_by'));
     }
 
     public function show(Tienda $tienda){
+        comprobarCategoria();
         // $categorias = Categoria::whereIn('id',[DB::table('productos')->distinct()->where('tienda_id',$tienda->id)->pluck('categoria_id')])->orderBy('nombre','desc')->get();
         return view('tiendas.show',compact('tienda'));
     }
