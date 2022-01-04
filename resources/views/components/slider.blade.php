@@ -10,24 +10,27 @@
                                     <div class=" card-producto border-gray-200 border-2 rounded-md p-1">
                                         <a href="{{ route('productos.show', $producto) }}"
                                             class=" block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
-                                            @if ($producto->cantidad > 0 || $producto->descuento <= 0)
+                                            @if ($producto->stock > 0 || $producto->descuento <= 0)
                                                 <div class="complements">
-                                                    @if ($producto->cantidad <= 0)
-                                                        <span class="bg-producto-agotado complements__span">AGOTADO</span>
+                                                    @if ($producto->stock <= 0)
+                                                        <span class="bg-producto-agotado complements__span">
+                                                            AGOTADO
+                                                        </span>
                                                     @endif
                                                     @if ($producto->descuento > 0)
-                                                        <span
-                                                            class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
-                                                            % OFF</span>
+                                                        <span class="bg-producto-descuento complements__span">
+                                                            {{ intval($producto->descuento * 100) }} % OFF
+                                                        </span>
                                                     @endif
                                                 </div>
                                             @else
                                                 <div class="complements">
-                                                    <span class="bg-producto-agotado complements__span">AGOTADO</span>
-                                                    <span
-                                                        class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
-                                                        %
-                                                        OFF</span>
+                                                    <span class="bg-producto-agotado complements__span">
+                                                        AGOTADO
+                                                    </span>
+                                                    <span class="bg-producto-descuento complements__span">
+                                                        {{ intval($producto->descuento * 100) }} % OFF
+                                                    </span>
                                                 </div>
                                             @endif
                                             <img class="card-producto__img w-full h-full object-cover object-center"

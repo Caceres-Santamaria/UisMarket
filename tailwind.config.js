@@ -142,6 +142,9 @@ module.exports = {
                 'ModernSans': ['ModernSans', 'sans-serif'],
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                'xxs': '.45rem',
+            },
             lineHeight: {
                 'extra-loose': '3',
                 'extra-lg': '5rem',

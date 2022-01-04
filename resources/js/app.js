@@ -8,11 +8,21 @@ Alpine.start();
 
 // const Swal = window.Swal = require('sweetalert2');
 import Swal from "sweetalert2";
-window.successAlert = function (){
+window.successProductAlert = function (){
     Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'success',
-        title: 'Your post has been saved',
+        title: 'Producto agregado exitosamente',
+        showConfirmButton: false,
+        timer: 1900
+    })
+}
+
+window.errorProductAlert = function (){
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'La cantidad excede el Stock disponible',
         showConfirmButton: false,
         timer: 1900
     })

@@ -23,7 +23,7 @@
             @if ($busqueda != "")
                 @forelse ($productos as $producto)
                     <li class="w-full list-none">
-                        <a href="{{-- route('productos.show',$producto) --}}"
+                        <a href="{{ route('productos.show',$producto) }}"
                             class="text-black w-full h-full border-b-2 border-primario-n
                             p-2 flex justify-center items-center no-underline
                             hover:bg-gray-200 lg:px-4">
