@@ -28,6 +28,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/home.js') }}" defer></script>
 
     @stack('scriptHeader')
 </head>

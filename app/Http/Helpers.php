@@ -59,6 +59,11 @@ function setActive($route)
     return request()->routeIs($route) ? 'border-white' : '';
 }
 
+function setActiveAdmin($route)
+{
+    return request()->routeIs($route) ? 'text-primario-n hover:text-primario-dark2' : '';
+}
+
 function cantidad($producto_id, $color_id = null, $talla_id = null)
 {
     $producto = Producto::find($producto_id);
