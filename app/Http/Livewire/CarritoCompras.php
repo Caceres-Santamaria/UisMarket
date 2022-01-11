@@ -25,6 +25,11 @@ class CarritoCompras extends Component
     {
         // Cart::destroy();
         return view('livewire.carrito-compras')
-                ->layout('layouts.app2',['title'=>'Carrito de compras']);
+                ->layoutData(['title'=>'Carrito de compras']);
+    }
+
+    public function clearFlash()
+    {
+        session()->forget('message');
     }
 }

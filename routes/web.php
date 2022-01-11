@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\crear_pedidoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\CarritoCompras;
+use App\Http\Livewire\CrearPedido;
 use Illuminate\Support\Facades\DB;
 
 // DB::listen(function($query){
@@ -50,7 +51,9 @@ Route::get('tiendas/{tienda}', [TiendasController::class,'show'])->name('tiendas
 // Route::get('carrito', [carritoController::class,'index'])->name('carrito');
 Route::get('carrito', CarritoCompras::class)->name('carrito');
 
-Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('pedidos/crear', CrearPedido::class)->name('pedidos.create')->middleware('car.is.empty');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
