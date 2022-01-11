@@ -12,7 +12,10 @@ use App\Http\Controllers\detalleTiendaController;
 use App\Http\Controllers\carritoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\crear_pedidoController;
+use App\Http\Controllers\pedidoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\CrearProducto;
+use App\Http\Livewire\EditarProducto;
 use App\Http\Livewire\CarritoCompras;
 use App\Http\Livewire\CrearPedido;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +46,10 @@ Route::get('terminos&condiciones', [TTController::class,'index'])->name('TyT');
 
 Route::get('productos', [ProductoController::class,'index'])->name('productos.index');
 Route::get('productos/promociones', [ProductoController::class,'promociones'])->name('promociones');
+Route::get('productos/crear', CrearProducto::class)->name('productos.create');
+
+Route::get('productos/editar', EditarProducto::class)->name('productos.edit');
+
 Route::get('productos/{producto}', [ProductoController::class,'show'])->name('productos.show');
 
 Route::get('tiendas', [TiendasController::class,'index'])->name('tiendas');
@@ -55,6 +62,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('pedidos/crear', CrearPedido::class)->name('pedidos.create')->middleware('car.is.empty');
 });
 
+// Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
+Route::get('pedidos', [pedidoController::class, 'index'])->name('pedidos.index');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+

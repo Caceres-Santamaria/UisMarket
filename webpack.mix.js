@@ -13,6 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/sliderDetalle.js', 'public/js')
+    .copy('resources/js/popper.js', 'public/js')
+    .js('resources/js/home.js', 'public/js')
     // .copy('node_modules/sweetalert2/dist/sweetalert2.all.min.js', 'public/js')
     .copy('node_modules/@splidejs/splide/dist/js/splide.min.js', 'public/js')
     .sass('resources/sass/fontawesome.scss', 'public/css')
