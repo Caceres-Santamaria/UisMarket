@@ -193,10 +193,10 @@
     </div>
     <script>
         window.addEventListener('successAlert', event => {
-            successProductAlert();
+            simpleAlert('center','success','Producto agregado exitosamente','',false,1900);
         });
         window.addEventListener('errorAlert', event => {
-            errorProductAlert();
+            simpleAlert('center','error','La cantidad excede el Stock disponible','',false,1900);
         })
     </script>
 </div>

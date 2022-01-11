@@ -87,15 +87,17 @@
                             </li>
                             <hr class="my-2">
                         @empty
-                            <li class="flex justify-center items-center">
+                            <li class="flex flex-col justify-center items-center content-center">
                                 <x-shopping-cart-svg />
+                                <p class="text-base lg:text-lg text-gray-700 mt-4">TU CARRO DE COMPRAS ESTÁ VACÍO</p>
                             </li>
                         @endforelse
                     </ul>
                 </div>
                 @if (Cart::count() > 0)
                     <div class="px-6">
-                        <a class="text-sm cursor-pointer hover:underline mt-3 inline-block lg:text-base" wire:click="destroy">
+                        <a class="text-sm cursor-pointer hover:underline mt-3 inline-block lg:text-base"
+                            wire:click="destroy">
                             <i class="fas fa-trash"></i>
                             Borrar carrito de compras
                         </a>
@@ -111,11 +113,23 @@
                             <a href="{{ route('productos.index') }}">Continuar comprando</a>
                         </x-boton>
                         <x-boton class="w-4/5 h-8 md:w-48 lg:h-9">
-                            <a href="{{ route('productos.index') }}">Realizar pedido</a>
+                            <a href="{{ route('pedidos.create') }}">Realizar pedido</a>
                         </x-boton>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @if (session()->has('message'))
+        <script>
+            window.addEventListener('DOMContentLoaded', e => {
+                simpleAlert(
+                'center',
+                'warning',
+                '{{ session("message") }}',
+                'Agrega un producto al carrito de compras para realizar tu pedido',
+                true);
+            });
+        </script>
+    @endif
 </main>

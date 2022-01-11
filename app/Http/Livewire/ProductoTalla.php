@@ -24,6 +24,9 @@ class ProductoTalla extends Component
         $this->tallas = $this->producto->tallas;
         $this->options['image'] = Storage::url($this->producto->imagenes->first()->url);
         $this->options['slug'] = $this->producto->slug;
+        $this->options['tienda_id'] = $this->producto->tienda->id;
+        $this->options['tienda_slug'] = $this->producto->tienda->slug;
+        $this->options['tienda_nombre'] = $this->producto->tienda->nombre;
     }
 
     public function updatedTallaId($value)
@@ -68,7 +71,7 @@ class ProductoTalla extends Component
                 'price' => $this->producto->precio - round($this->producto->precio*$this->producto->descuento),
                 'weight' => 550,
                 'options' => $this->options
-            ]);
+            ])->associate('Producto');
             $this->quantity = $disponible;
             $this->reset('qty');
             $this->colores = [];

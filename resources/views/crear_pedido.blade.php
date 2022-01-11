@@ -98,8 +98,10 @@
 
                 <hr>
 
-                <p class="text-sm text-gray-700 mt-2">Todos los datos son usados y protegidos conforme es establecido en las  
-                  <a href="{{route('politicas')}}" class="font-semibold text-orange-500">Políticas y privacidad</a></p>
+                <p class="text-sm text-gray-700 mt-2">Todos los datos son usados y protegidos conforme es establecido en
+                    las
+                    <a href="{{ route('politicas') }}" class="font-semibold text-orange-500">Políticas y privacidad</a>
+                </p>
             </div>
 
         </div>
