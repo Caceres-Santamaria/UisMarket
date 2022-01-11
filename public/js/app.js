@@ -5568,45 +5568,46 @@ window.errorProductAlert = function () {
     timer: 1900
   });
 };
-/*Busqueda*/
 
-
-var cerarBusqueda = document.getElementById('busqueda__close');
-var busqueda = document.getElementById('busqueda');
-var buscar = document.getElementById('link-buscar');
-buscar.addEventListener('click', function (e) {
-  e.preventDefault();
-  busqueda.classList.add('open-menu');
-});
-cerarBusqueda.addEventListener('click', function () {
-  busqueda.classList.remove('open-menu');
-});
-/* Ir arriba */
-
-var arriba = document.getElementById('ir-arriba');
-
-var obtener_pixeles_inicio = function obtener_pixeles_inicio() {
-  return document.documentElement.scrollTop || document.body.scrollTop;
+window.confirmacionUserAlert = function (id, type, message) {
+  var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: true
+  });
+  swalWithBootstrapButtons.fire({
+    title: '¿Estás seguro?',
+    text: message,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: type == 'inhabilitar' ? 'Sí, inhabilitar!' : 'Sí, habilitar!',
+    cancelButtonText: 'No, cancelar!',
+    reverseButtons: false
+  }).then(function (result) {
+    if (result.isConfirmed) {
+      if (type == 'inhabilitar') {
+        Livewire.emit('eliminar', id);
+      } else {
+        Livewire.emit('activar', id);
+      }
+    } else if (result.dismiss === (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().DismissReason.cancel)) {
+      swalWithBootstrapButtons.fire('Cancelado', 'No se ha realizado la acción', 'error');
+    }
+  });
 };
 
-var ir_arriba = function ir_arriba() {
-  if (obtener_pixeles_inicio() > 0) {
-    requestAnimationFrame(ir_arriba);
-    scrollTo(0, obtener_pixeles_inicio() - obtener_pixeles_inicio() / 10);
-    indicarScroll();
-  }
-};
+window.successUserAlert = function (type) {
+  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+    position: 'center',
+    icon: 'success',
+    title: type == 'habilitar' ? 'Habilitado!' : 'Inhabilitado!',
+    text: 'La acción se ha realizado exitosamente' // showConfirmButton: false,
+    // timer: 1900
 
-var indicarScroll = function indicarScroll() {
-  if (obtener_pixeles_inicio() > 100) {
-    arriba.classList.add('open-menu');
-  } else {
-    arriba.classList.remove('open-menu');
-  }
+  });
 };
-
-arriba.addEventListener('click', ir_arriba);
-window.addEventListener('scroll', indicarScroll);
 
 /***/ }),
 
