@@ -1,0 +1,1 @@
+{{$producto->descuento *100}}%

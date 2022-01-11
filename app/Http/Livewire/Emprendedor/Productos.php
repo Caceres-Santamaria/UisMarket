@@ -27,10 +27,16 @@ class Productos extends DataTableComponent
         ->searchable(),
       Column::make('Precio', 'precio')
       ->sortable()
-      ->searchable(),
+      ->searchable()
+      ->format(function ($value, $column, $row) {
+        return view('emprendedor.precio')->withProducto($row);
+      }),
       Column::make('Descuento', 'descuento')
       ->sortable()
-      ->searchable(),
+      ->searchable()
+      ->format(function ($value, $column, $row) {
+        return view('emprendedor.descuento')->withProducto($row);
+      }),
       Column::make('Acciones','deleted_at')
         ->sortable()
         ->format(function ($value, $column, $row) {

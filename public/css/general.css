@@ -1788,6 +1788,10 @@ select {
   width: 58.333333%;
 }
 
+.w-2\/12 {
+  width: 16.666667%;
+}
+
 .w-6\/12 {
   width: 50%;
 }
@@ -2683,11 +2687,6 @@ select {
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
-.bg-green-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 250 229 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -3302,11 +3301,6 @@ select {
 
 .text-inherit {
   color: inherit;
-}
-
-.text-green-800 {
-  --tw-text-opacity: 1;
-  color: rgb(6 95 70 / var(--tw-text-opacity));
 }
 
 .underline {

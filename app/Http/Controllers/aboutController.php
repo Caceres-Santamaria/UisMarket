@@ -9,6 +9,6 @@ class AboutController extends Controller
     public function index()
     {
         comprobarCategoria();
-        return view('about');
+        return view('emprendedor/crear_tienda');
     }
 }
