@@ -14,7 +14,7 @@
                 <label>Nombre*</label>
                 <x-jet-input type="text" class="w-11/12" wire:model="nombre"
                     placeholder="Ingrese el nombre de la tienda" />
-                    @error('nombre')
+                @error('nombre')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                 @enderror
             </div>
@@ -22,7 +22,7 @@
                 <label>Número de contacto</label>
                 <x-jet-input type="text" class="w-11/12" wire:model="numero"
                     placeholder="Ingrese el número de contacto" />
-                    @error('numero')
+                @error('numero')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                 @enderror
             </div>
@@ -30,7 +30,7 @@
                 <label>Dirección</label>
                 <x-jet-input type="text" class="w-11/12" wire:model="direccion"
                     placeholder="Ingrese la dirección de la tienda" />
-                    @error('direccion')
+                @error('direccion')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                 @enderror
             </div>
@@ -72,21 +72,46 @@
              <x-jet-input-error for="description">
         </div> --}}
 
-            <div class="mb-4">
+
+        </div>
+
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
+            <p class="text-xl font-semibold mb-4 col-span-2">Envíos</p>
+
+            <div class="mb-8">
                 <label>¿Sus productos se pueden recoger en la tienda física?*</label>
                 <div class="block">
                     <input class="mx-2" type="radio" name="recoger" value="si">Sí
                     <input class="mx-2" type="radio" name="recoger" value="no">No
                 </div>
             </div>
-            <div class="mb-4 ">
-              <label>Costo de envío*</label>
-              <x-jet-input type="number" class="w-11/12" wire:model="costo"
-                  placeholder="Ingrese el costo de envío de sus productos" />
-              {{-- <x-jet-input-error for="name" /> --}}
-          </div>
+            <div class="mb-4">
+                <label>Costo de envío*</label>
+                <div class=" my-3">
+                    <label for="">Bucaramanga</label>
+                    <x-jet-input type="number" class="w-6/12" wire:model="costo"
+                        placeholder="Ingrese el costo de envío de sus productos" />
+                    {{-- <x-jet-input-error for="name" /> --}}
+                </div>
+                <div class="my-3">
+                  <label for="">Floridablanca</label>
+                  <x-jet-input type="number" class="w-6/12" wire:model="costo"
+                      placeholder="Ingrese el costo de envío de sus productos" />
+                  {{-- <x-jet-input-error for="name" /> --}}
+              </div>
+              <div class=" my-3">
+                <label for="">Girón</label>
+                <x-jet-input type="number" class="w-6/12" wire:model="costo"
+                    placeholder="Ingrese el costo de envío de sus productos" />
+                {{-- <x-jet-input-error for="name" /> --}}
+            </div>
 
+            </div>
         </div>
+
+
+
         <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2">
             <p class="text-xl font-semibold mb-4 col-span-2">Redes sociales</p>
 
