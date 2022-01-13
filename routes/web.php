@@ -4,20 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\politicaController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TTController;
-use App\Http\Controllers\promoController;
-use App\Http\Controllers\detalleProdController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\TiendasController;
-use App\Http\Controllers\detalleTiendaController;
-use App\Http\Controllers\carritoController;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\crear_pedidoController;
 use App\Http\Controllers\pedidoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\CrearProducto;
 use App\Http\Livewire\EditarProducto;
 use App\Http\Livewire\CarritoCompras;
 use App\Http\Livewire\CrearPedido;
+use App\Http\Livewire\PedidosUsuario;
 use Illuminate\Support\Facades\DB;
 
 // DB::listen(function($query){
@@ -60,10 +56,13 @@ Route::get('carrito', CarritoCompras::class)->name('carrito');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('pedidos/crear', CrearPedido::class)->name('pedidos.create')->middleware('car.is.empty');
+
+    Route::get('user/mis-pedidos', [pedidoController::class,'index'])->name('pedidos.index');
+    Route::get('user/mis-pedidos/{pedido}', [pedidoController::class,'show'])->name('pedidos.show');
 });
 
 // Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
-Route::get('pedidos', [pedidoController::class, 'index'])->name('pedidos.index');
+// Route::get('pedidos', [pedidoController::class, 'index'])->name('pedidos.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
