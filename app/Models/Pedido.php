@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pedido extends Model
 {
-  use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $table = 'pedidos';
     const PENDIENTE = 1;
     const PREPARANDO = 2;
@@ -22,15 +22,15 @@ class Pedido extends Model
      * @var array
      */
     protected $attributes = [
-      'estado' => 1,
+        'estado' => 1,
     ];
 
     /**
      * Los atributos que no se pueden asignar masivamente.
-      *
-      * @var array
-      */
-    protected $guarded = ['id','created_at','updated_at'];
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
      * Relaciones
@@ -41,11 +41,11 @@ class Pedido extends Model
      */
     public function calificacion()
     {
-      return $this->hasOne(
-        Calificacion::class,
-        'pedido_id',
-        'id'
-      );
+        return $this->hasOne(
+            Calificacion::class,
+            'pedido_id',
+            'id'
+        );
     }
 
     /**
@@ -53,11 +53,11 @@ class Pedido extends Model
      */
     public function ciudad()
     {
-      return $this->belongsTo(
-        Ciudad::class,
-        'ciudad_id',
-        'id'
-      );
+        return $this->belongsTo(
+            Ciudad::class,
+            'ciudad_id',
+            'id'
+        );
     }
 
     /**
@@ -65,11 +65,11 @@ class Pedido extends Model
      */
     public function usuario()
     {
-      return $this->belongsTo(
-        User::class,
-        'usuario_id',
-        'id'
-      );
+        return $this->belongsTo(
+            User::class,
+            'usuario_id',
+            'id'
+        );
     }
 
     /**
@@ -77,10 +77,10 @@ class Pedido extends Model
      */
     public function tienda()
     {
-      return $this->belongsTo(
-        Tienda::class,
-        'tienda_id',
-        'id'
-      );
+        return $this->belongsTo(
+            Tienda::class,
+            'tienda_id',
+            'id'
+        );
     }
 }

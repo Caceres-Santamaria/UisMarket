@@ -20,7 +20,7 @@ class CreateTiendasTable extends Migration
             $table->text('descripcion');
             $table->string('logo')->nullable();
             $table->string('fondo_img')->nullable();
-            $table->string('direccion',100);
+            $table->string('direccion',100)->nullable();
             $table->string('telefono',20);
             $table->boolean('recoger_tienda')->default(0);
             $table->string('email');

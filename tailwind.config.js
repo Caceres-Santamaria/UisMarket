@@ -7,9 +7,10 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php'
+        './resources/views/**/*.blade.php',
+        './vendor/rappasoft/laravel-livewire-tables/resources/views/tailwind/**/*.blade.php',
     ],
-    // darkMode: false, // or 'media' or 'class'
+    darkMode: 'class', // or 'media' or 'class'
 
     theme: {
         screens: {
