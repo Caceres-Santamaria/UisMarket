@@ -5549,23 +5549,15 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // const Swal = window
 
 
 
-window.successProductAlert = function () {
+window.simpleAlert = function (position, icon, title, text, boton) {
+  var timer = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Producto agregado exitosamente',
-    showConfirmButton: false,
-    timer: 1900
-  });
-};
-
-window.errorProductAlert = function () {
-  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
-    position: 'center',
-    icon: 'error',
-    title: 'La cantidad excede el Stock disponible',
-    showConfirmButton: false,
-    timer: 1900
+    position: position == 'na' ? 'center' : position,
+    icon: icon,
+    title: title,
+    'text': text,
+    showConfirmButton: boton,
+    timer: timer
   });
 };
 

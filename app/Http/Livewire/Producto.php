@@ -12,7 +12,7 @@ class Producto extends Component
     public $qty = 1;
     public $options = [
         'color_id' => null,
-        'talla_id' => null
+        'talla_id' => null,
     ];
 
     public function mount()
@@ -20,6 +20,9 @@ class Producto extends Component
         $this->quantity = cantidad_disponible($this->producto->id);
         $this->options['image'] = Storage::url($this->producto->imagenes->first()->url);
         $this->options['slug'] = $this->producto->slug;
+        $this->options['tienda_id'] = $this->producto->tienda->id;
+        $this->options['tienda_slug'] = $this->producto->tienda->slug;
+        $this->options['tienda_nombre'] = $this->producto->tienda->nombre;
     }
 
     public function decrement()
@@ -44,7 +47,7 @@ class Producto extends Component
                 'price' => $this->producto->precio - round($this->producto->precio*$this->producto->descuento),
                 'weight' => 550,
                 'options' => $this->options
-            ]);
+            ])->associate('Producto');
             $this->reset('qty');
             $this->emitTo('carrito', 'render');
             $this->emitTo('carrito-desplegable', 'render');

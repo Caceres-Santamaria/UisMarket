@@ -49,6 +49,10 @@
     @apply w-16 text-xs text-center h-5 leading-5 mb-1 text-white rounded-sm lg:w-20 lg:pb-6 lg:text-base;
 }
 
+.form-control{
+    @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm;
+}
+
 .splide__list li:hover {
     cursor: pointer;
 }

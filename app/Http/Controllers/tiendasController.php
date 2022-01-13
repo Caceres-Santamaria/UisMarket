@@ -21,4 +21,6 @@ class TiendasController extends Controller
         // $categorias = Categoria::whereIn('id',[DB::table('productos')->distinct()->where('tienda_id',$tienda->id)->pluck('categoria_id')])->orderBy('nombre','desc')->get();
         return view('tiendas.show',compact('tienda'));
     }
+
+    
 }
