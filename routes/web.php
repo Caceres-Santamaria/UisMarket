@@ -17,8 +17,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\CrearProducto;
 use App\Http\Livewire\EditarProducto;
 use App\Http\Livewire\CarritoCompras;
+use App\Http\Livewire\CrearPedido;
+use App\Http\Livewire\CrearTienda;
 use Illuminate\Support\Facades\DB;
-
 // DB::listen(function($query){
 //     echo "<pre>{$query->sql}</pre>";
 // });
@@ -54,12 +55,18 @@ Route::get('productos/{producto}', [ProductoController::class,'show'])->name('pr
 Route::get('tiendas', [TiendasController::class,'index'])->name('tiendas');
 Route::get('tiendas/{tienda}', [TiendasController::class,'show'])->name('tiendas.show');
 
+Route::get('crear_tienda',CrearTienda::class)->name('crear_tienda');
+
+
 // Route::get('carrito', [carritoController::class,'index'])->name('carrito');
 Route::get('carrito', CarritoCompras::class)->name('carrito');
 
-Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
-Route::get('pedidos', [pedidoController::class, 'index'])->name('pedidos.index');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('pedidos/crear', CrearPedido::class)->name('pedidos.create')->middleware('car.is.empty');
+});
 
+// Route::get('crear_pedido', [crear_pedidoController::class,'index'])->name('crear_pedido');
+Route::get('pedidos', [pedidoController::class, 'index'])->name('pedidos.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

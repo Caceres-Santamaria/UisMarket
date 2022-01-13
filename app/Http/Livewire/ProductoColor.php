@@ -22,6 +22,9 @@ class ProductoColor extends Component
         $this->colores = $this->producto->colores;
         $this->options['image'] = Storage::url($this->producto->imagenes->first()->url);
         $this->options['slug'] = $this->producto->slug;
+        $this->options['tienda_id'] = $this->producto->tienda->id;
+        $this->options['tienda_slug'] = $this->producto->tienda->slug;
+        $this->options['tienda_nombre'] = $this->producto->tienda->nombre;
     }
 
     public function updatedColorId($value)
@@ -54,7 +57,7 @@ class ProductoColor extends Component
                 'price' => $this->producto->precio - round($this->producto->precio*$this->producto->descuento),
                 'weight' => 550,
                 'options' => $this->options
-            ]);
+            ])->associate('Producto');
             $this->reset('quantity');
             $this->reset('color_id');
             $this->reset('qty');

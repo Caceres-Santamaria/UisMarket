@@ -20,13 +20,13 @@ class CreateTiendasTable extends Migration
             $table->text('descripcion');
             $table->string('logo')->nullable();
             $table->string('fondo_img')->nullable();
-            $table->string('direccion',100);
-            $table->string('telefono',20);
+            $table->string('direccion',100)->nullable();
+            $table->string('telefono',10);
             $table->boolean('recoger_tienda')->default(0);
             $table->string('email');
-            $table->string('facebook');
-            $table->string('whatsapp');
-            $table->string('instagram');
+            $table->string('facebook')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('instagram')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedTinyInteger('ciudad_id');
             $table->softDeletes('deleted_at', 0);

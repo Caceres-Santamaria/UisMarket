@@ -72,7 +72,9 @@
                     <x-boton class=" w-2/4 h-9 mb-2">
                         <a href="{{ route('carrito') }}" class="w-full h-full">Ver mi carrito</a>
                     </x-boton>
-                    <x-boton class=" w-2/4 h-9 mb-2">Realizar pedido</x-boton>
+                    <x-boton class=" w-2/4 h-9 mb-2">
+                        <a href="{{ route('pedidos.create') }}" class="w-full h-full">Realizar pedido</a>
+                    </x-boton>
                 </div>
             </div>
         @endif
