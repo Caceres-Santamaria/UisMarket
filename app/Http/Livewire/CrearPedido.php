@@ -115,7 +115,7 @@ class CrearPedido extends Component
             }
             Cart::destroy();
             // session()->flash('status', __('Article saved.'));
-            $this->redirectRoute('carrito');
+            $this->redirectRoute('pedidos.index');
         }
         else{
             $tienda = Tienda::where('id', $tienda_id)->first()->nombre;

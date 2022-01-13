@@ -43,19 +43,19 @@
             <hr class="my-4 md:min-w-full" />
 
             <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-            DASHBOARD
+                DASHBOARD
             </h6>
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li class="items-center">
-                  <a href="{{route('admin.dashboard')}}"
-                      class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.dashboard')}}">
-                      <i class="fas fa-home text-blueGray-300 mr-2 text-base"></i>
-                      INICIO
-                  </a>
-              </li>
+                <li class="items-center">
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.dashboard') }}">
+                        <i class="fas fa-home text-blueGray-300 mr-2 text-base"></i>
+                        INICIO
+                    </a>
+                </li>
 
 
-          </ul>
+            </ul>
             <!-- Heading -->
             <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 USUARIOS
@@ -64,24 +64,23 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
-                    <a href="{{route('admin.clientes')}}"
-                        class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.clientes')}}">
+                    <a href="{{ route('admin.clientes') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.clientes') }}">
                         <i class="fas fa-user mr-2 text-base opacity-75"></i>
                         Clientes
                     </a>
                 </li>
 
                 <li class="items-center">
-                    <a href="{{route('admin.tiendas')}}"
-                        class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.tiendas')}}" >
+                    <a href="{{ route('admin.tiendas') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.tiendas') }}">
                         <i class="fas fa-store mr-2 text-base text-blueGray-300"></i>
                         TIENDAS
                     </a>
                 </li>
 
                 <li class="items-center">
-                    <a href="./tables.html"
-                        class="text-xs uppercase py-3 font-bold block" >
+                    <a href="./tables.html" class="text-xs uppercase py-3 font-bold block">
                         <i class="fas fa-bell mr-2 text-base text-blueGray-300"></i>
                         Solicitudes (3)
                     </a>
@@ -98,8 +97,8 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
-                    <a href="{{route('admin.productos')}}"
-                        class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.productos')}}">
+                    <a href="{{ route('admin.productos') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.productos') }}">
                         <i class="fas fa-tshirt text-blueGray-300 mr-2 text-base"></i>
                         gestionar productos
                     </a>
@@ -118,8 +117,7 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
-                    <a href="../auth/login.html"
-                        class="text-xs uppercase py-3 font-bold block">
+                    <a href="../auth/login.html" class="text-xs uppercase py-3 font-bold block">
                         <i class="fas fa-comment-alt text-blueGray-300 mr-2 text-base"></i>
                         gestionar comentarios
                     </a>
@@ -136,8 +134,8 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
-                    <a href="{{route('admin.categorias')}}"
-                        class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.categorias')}}">
+                    <a href="{{ route('admin.categorias') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.categorias') }}">
                         <i class="fas fa-th-large text-blueGray-300 mr-2 text-base"></i>
                         gestionar categorias
                     </a>
@@ -153,8 +151,8 @@
             <!-- Navigation -->
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="inline-flex">
-                    <a href="{{route('admin.administradores')}}"
-                        class="text-xs uppercase py-3 font-bold block {{setActiveAdmin('admin.administradores')}}">
+                    <a href="{{ route('admin.administradores') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.administradores') }}">
                         <i class="fas fa-users-cog mr-2 text-blueGray-300 text-base"></i>
                         gestionar cuentas
                     </a>
