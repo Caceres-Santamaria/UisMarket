@@ -1,6 +1,5 @@
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8">Complete esta información para crear una tienda</h1>
-    {{-- {{ dd($ciudades) }}   --}}
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2">
         <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
         <div class="mb-4 ">

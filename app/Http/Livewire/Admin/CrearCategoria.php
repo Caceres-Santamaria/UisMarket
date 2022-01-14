@@ -28,9 +28,9 @@ class CrearCategoria extends Component
       ],
     ];
   }
+  
   public function mount(Categoria $categoria)
   {
-    // $this->categoria= new Categoria();
     $this->categoria = $categoria;
   }
 

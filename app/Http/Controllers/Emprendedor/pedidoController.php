@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Emprendedor;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
@@ -29,6 +30,10 @@ class pedidoController extends Controller
   }
   public function show(Pedido $pedido)
   {
-    return view('emprendedor.ver_pedidos', compact('pedido'));
+    $this->authorize('view', $pedido);
+
+    $detalle = json_decode($pedido->detalle);
+    $envio = json_decode($pedido->envio);
+    return view('emprendedor.ver_pedidos', compact('pedido', 'detalle', 'envio'));
   }
 }
