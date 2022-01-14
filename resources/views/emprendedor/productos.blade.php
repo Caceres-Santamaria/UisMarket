@@ -6,7 +6,7 @@
                     Lista de productos
                 </h2>
 
-                <x-boton class="ml-auto h-10 w-52 justify-end" href="">
+                <x-boton class="ml-auto h-10 w-52 justify-end">
                     Agregar producto
                 </x-boton>
             </div>

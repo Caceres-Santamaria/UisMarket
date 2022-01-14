@@ -1,7 +1,7 @@
 <div class="w-full">
     <div class="bg-white rounded-lg shadow-lg mb-6">
         <div class="px-6 py-2 flex flex-col md:flex-row md:justify-between items-center">
-            <x-filtro-categoria class="w-4/5 mb-2 md:mb-0 md:w-52"/>
+            <x-filtro-categoria class="w-4/5 mb-2 md:mb-0 md:w-52" />
             <div class="flex justify-center items-center w-full md:w-auto">
                 <x-filtro-desplegable class="w-4/5 md:w-52" />
                 <x-tipo-vista :view="$view" />
@@ -16,9 +16,9 @@
                 <article class="border border-gray-300 rounded-md p-1">
                     <a href="{{ route('productos.show', $producto) }}"
                         class="block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
-                        @if ($producto->cantidad > 0 || $producto->descuento <= 0)
+                        @if ($producto->stock > 0 || $producto->descuento <= 0)
                             <div class="complements">
-                                @if ($producto->cantidad <= 0)
+                                @if ($producto->stock <= 0)
                                     <span class="bg-producto-agotado complements__span">AGOTADO</span>
                                 @endif
                                 @if ($producto->descuento > 0)
@@ -84,4 +84,3 @@
     </div>
 @endempty
 </div>
-

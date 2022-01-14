@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
             'slug' => Str::slug('Alexis Cáceres'),
             'email' => 'alexis@gmail.com',
             'password' => bcrypt('12345'),
-            'ciudad_id' => 1
         ]);
 
         Direccion::factory(1)->create([

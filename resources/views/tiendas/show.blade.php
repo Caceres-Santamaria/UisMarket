@@ -28,7 +28,7 @@
                 <x-estrellas sizeestrella="text-xl" estrellas="{{ round($tienda->calificacion[0]) }}"
                     calificaciones="{{ $tienda->calificacion[1] }}" />
                 <p class=" w-full line-clamp-5 text-sm text-center md:text-base lg:text-base lg:line-clamp-3 lg:px-20">
-                    {{ $tienda->descripcion }}
+                    {!! $tienda->descripcion !!}
                 </p>
             </div>
         </div>

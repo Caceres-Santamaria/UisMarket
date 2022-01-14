@@ -21,14 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedTinyInteger('ciudad_id');
             $table->enum('rol', [User::ADMINISTRADOR, User::EMPRENDEDOR, User::COMPRADOR])->default(User::COMPRADOR);
             $table->rememberToken();
             $table->softDeletes('deleted_at', 0);
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
-            $table->foreign('ciudad_id')->references('id')->on('ciudades');
         });
     }
 

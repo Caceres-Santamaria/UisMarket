@@ -10,7 +10,7 @@
     "Administrator users can perform any action.": "Los administradores pueden realizar cualquier acción.",
     "All of the people that are part of this team.": "Todas las personas que forman parte de este equipo.",
     "All rights reserved.": "Todos los derechos reservados.",
-    "Already registered?": "Ya se registró?",
+    "Already registered?": "¿Ya estás registrado?",
     "API Token": "Token API",
     "API Token Permissions": "Permisos para el token API",
     "API Tokens": "Tokens API",
@@ -186,5 +186,6 @@
     "Identification": "Identificación",
     "Department": "Departamento",
     "City": "Ciudad",
-    "Not registered yet?": "¿Aún no estás registrado?"
+    "Not registered yet?": "¿Aún no estás registrado?",
+    "Log in": "Iniciar sesión"
 }

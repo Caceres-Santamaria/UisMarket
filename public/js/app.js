@@ -5590,6 +5590,31 @@ window.confirmacionUserAlert = function (id, type, message) {
   });
 };
 
+window.confirmacionAlert = function (event, confirButton, text, textError) {
+  var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: true
+  });
+  swalWithBootstrapButtons.fire({
+    title: '¿Estás seguro?',
+    text: text,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: confirButton,
+    cancelButtonText: 'No, cancelar!',
+    reverseButtons: false
+  }).then(function (result) {
+    if (result.isConfirmed) {
+      event.target.parentElement.submit();
+    } else if (result.dismiss === (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().DismissReason.cancel)) {
+      swalWithBootstrapButtons.fire('Cancelado', textError, 'error');
+    }
+  });
+};
+
 window.successUserAlert = function (type) {
   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
     position: 'center',
