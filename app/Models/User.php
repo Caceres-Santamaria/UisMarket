@@ -98,18 +98,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Obtiene la ciudad a la que pertenece el usuario
-     */
-    public function ciudad()
-    {
-        return $this->belongsTo(
-            Ciudad::class,
-            'ciudad_id',
-            'id'
-        );
-    }
-
-    /**
       * Obtiene las direcciones de un usuario
       */
     public function direcciones()
@@ -124,7 +112,7 @@ class User extends Authenticatable
     /**
      * Obtiene la tienda de un usuario
      */
-    public function usuario()
+    public function tienda()
     {
         return $this->hasOne(
             Tienda::class,

@@ -9,18 +9,21 @@
         <div class="">
             <x-authentication-card-logo />
         </div>
-        <div class="flex justify-self-center self-center items-center mr-4">
-            <div class="px-1">
-                <a id="link-buscar" class=" relative fas-link" href="#"><i
-                        class="fas lg:text-2xl fas-header fa-search"></i></a>
+        <div class="flex items-center mr-4 justify-self-center self-center">
+            <!-- Settings Dropdown -->
+            <div class="">
+                <a id="link-buscar" class="relative fas-link" href="#">
+                    <i class="fas lg:text-2xl fas-header fa-search"></i>
+                </a>
             </div>
             @auth
-                <x-dropdown-user class="hidden" />
+                <x-dropdown-user />
             @endauth
             @guest
-                <div class="icono__user iniciar-sesion ml-3 px-1 hidden lg:block">
-                    <a class=" relative fas-link" href="{{ route('login') }}"><i
-                            class="fas fas-header fa-user-circle text-white lg:text-2xl cursor-pointer"></i></a>
+                <div class="sm:ml-3 hidden sm:block">
+                    <a class="relative fas-link" href="{{ route('login') }}">
+                        <i class="fas fas-header fa-user-circle text-white lg:text-2xl"></i>
+                    </a>
                 </div>
             @endguest
             @livewire('carrito')

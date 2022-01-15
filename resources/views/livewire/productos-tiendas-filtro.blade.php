@@ -61,7 +61,7 @@
                 <div class="bg-white rounded-lg shadow-lg mb-6">
                     <div class="px-6 py-2 flex justify-between items-center">
                         <h1 class="font-semibold text-gray-700 uppercase">
-                            {{ $categoria == '' ? 'Productos':slugToName($categoria) }}
+                            {{ $categoria == '' ? 'Productos' : slugToName($categoria) }}
                         </h1>
                         <div class="flex justify-center items-center">
                             <x-filtro-desplegable class="w-52" />
@@ -76,25 +76,25 @@
                             <article class="border border-gray-300 rounded-md p-1">
                                 <a href="{{ route('productos.show', $producto) }}"
                                     class="block w-full h-cardsm relative md:h-cardmd lg:h-cardlg">
-                                    <div class="complements">
-                                        @if ($producto->cantidad > 0 || $producto->descuento <= 0)
-                                            @if ($producto->cantidad <= 0)
-                                                <span class="bg-producto-agotado complements__span">
-                                                    AGOTADO
-                                                </span>
+                                    @if ($producto->stock > 0 || $producto->descuento <= 0)
+                                        <div class="complements">
+                                            @if ($producto->stock <= 0)
+                                                <span class="bg-producto-agotado complements__span">AGOTADO</span>
                                             @endif
                                             @if ($producto->descuento > 0)
-                                                <span class="bg-producto-descuento complements__span">
-                                                    {{ intval($producto->descuento * 100) }}% OFF
-                                                </span>
+                                                <span
+                                                    class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
+                                                    % OFF</span>
                                             @endif
-                                        @else
+                                        </div>
+                                    @else
+                                        <div class="complements">
                                             <span class="bg-producto-agotado complements__span">AGOTADO</span>
-                                            <span class="bg-producto-descuento complements__span">
-                                                {{ intval($producto->descuento * 100) }}% OFF
-                                            </span>
-                                        @endif
-                                    </div>
+                                            <span
+                                                class="bg-producto-descuento complements__span">{{ intval($producto->descuento * 100) }}
+                                                % OFF</span>
+                                        </div>
+                                    @endif
                                     <img loading="lazy"
                                         class="card-producto__img w-full h-full object-cover object-center"
                                         src="{{ Storage::url($producto->imagenes[0]->url) }}"
@@ -142,7 +142,7 @@
                         @endforelse
                     </section>
                 @endif
-                @if(!empty($productos) and count($productos) == 20)
+                @if (!empty($productos) and count($productos) == 20)
                     <div class="m-4">
                         {{ $productos->links() }}
                     </div>

@@ -1,6 +1,6 @@
 @php($id = $attributes->wire('model')->value)
 
-<div x-data="{ focused: false }" class="relative w-60">
+<div x-data="{ focused: false }" class="relative w-full md:w-60">
 	@if($image instanceof Livewire\TemporaryUploadedFile)
 		<x-jet-danger-button wire:click="$set('{{$id}}')" class="absolute bottom-2 right-2">
 			{{ __('Cambiar Imagen') }}
