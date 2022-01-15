@@ -10,9 +10,9 @@
                     comentario="hidden" />
             </div>
             @if ($calificacion->contenido)
-                <p class="mx-3 mb-3 text-sm lg:text-base">
-                    {{ $calificacion->contenido }}
-                </p>
+                <div class="mx-3 mb-3 text-sm lg:text-base">
+                    {!! $calificacion->contenido !!}
+                </div>
             @endif
         </div>
     @empty

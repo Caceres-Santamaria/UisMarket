@@ -109,12 +109,12 @@
                     </p>
                     <div
                         class="mt-3 w-full flex flex-col justify-center items-center content-center md:flex-row md:gap-x-1 lg:gap-x-2">
-                        <x-boton class="mb-3 md:mb-0 w-4/5 h-8 md:w-48 lg:h-9">
-                            <a href="{{ route('productos.index') }}">Continuar comprando</a>
-                        </x-boton>
-                        <x-boton class="w-4/5 h-8 md:w-48 lg:h-9">
-                            <a href="{{ route('pedidos.create') }}">Realizar pedido</a>
-                        </x-boton>
+                        <x-boton-enlace href="{{ route('productos.index') }}" class="mb-3 md:mb-0 w-4/5 h-8 md:w-48 lg:h-9">
+                            Continuar comprando
+                        </x-boton-enlace>
+                        <x-boton-enlace href="{{ route('pedidos.create') }}" class="w-4/5 h-8 md:w-48 lg:h-9">
+                            Realizar pedido
+                        </x-boton-enlace>
                     </div>
                 </div>
             </div>

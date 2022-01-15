@@ -69,12 +69,12 @@
                     <span class="subtotal-valor">${{ Cart::subtotal() }}</span>
                 </p>
                 <div class="flex w-full justify-center items-center content-center flex-col">
-                    <x-boton class=" w-2/4 h-9 mb-2">
-                        <a href="{{ route('carrito') }}" class="w-full h-full">Ver mi carrito</a>
-                    </x-boton>
-                    <x-boton class=" w-2/4 h-9 mb-2">
-                        <a href="{{ route('pedidos.create') }}" class="w-full h-full">Realizar pedido</a>
-                    </x-boton>
+                    <x-boton-enlace href="{{ route('carrito') }}" class=" w-2/4 h-9 mb-2">
+                        Ver mi carrito
+                    </x-boton-enlace>
+                    <x-boton-enlace href="{{ route('pedidos.create') }}" class=" w-2/4 h-9 mb-2">
+                        Realizar pedido
+                    </x-boton-enlace>
                 </div>
             </div>
         @endif

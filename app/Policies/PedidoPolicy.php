@@ -30,7 +30,7 @@ class PedidoPolicy
      */
     public function view(User $user, Pedido $pedido)
     {
-        return $user->id == $pedido->usuario_id;
+        return $user->id == $pedido->usuario_id or $user->tienda->id == $pedido->tienda_id;
     }
 
     /**

@@ -1,34 +1,45 @@
 <x-app2-layout title="Detalle pedido">
-    {{-- {{ dd($detalle) }} --}}
+    @push('scriptHeader')
+        <script src="{{ asset('js/ckeditor.js') }}"></script>
+    @endpush
     <main class=" grid-in-contenido max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
-
             <div class="relative">
-                {{-- <div class="{{ ($order->status >= 2 && $order->status != 5) ? 'bg-blue-400' : 'bg-gray-400' }}  rounded-full h-12 w-12 flex items-center justify-center"> --}}
-                <div class=" bg-blue-400 rounded-full h-12 w-12 flex items-center justify-center">
-                    <i class="fas fa-check text-white"></i>
-                </div>
-
-                <div class="absolute -left-1.5 mt-0.5">
-                    <p>Recibido</p>
-                </div>
+                @if ($pedido->estado == 5)
+                    <div class=" bg-red-400 rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                    <div class="absolute -left-1.5 mt-0.5">
+                        <p>Cancelado</p>
+                    </div>
+                @else
+                    <div
+                        class="{{ $pedido->estado >= 2 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-check text-white"></i>
+                    </div>
+                    <div class="absolute -left-1.5 mt-0.5">
+                        <p>Preparando</p>
+                    </div>
+                @endif
             </div>
-            {{-- <div class="{{ ($order->status >= 3 && $order->status != 5) ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1 mx-2"></div> --}}
-            <div class="bg-gray-400 h-1 flex-1 mx-2"></div>
+            <div
+                class="{{ $pedido->estado >= 3 && $pedido->estado != 5 ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1 mx-2">
+            </div>
             <div class="relative">
-                {{-- <div class="{{ ($order->status >= 3 && $order->status != 5) ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center"> --}}
-                <div class="bg-gray-400 rounded-full h-12 w-12 flex items-center justify-center">
+                <div
+                    class="{{ $pedido->estado >= 3 && $pedido->estado != 5 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center">
                     <i class="fas fa-truck text-white"></i>
                 </div>
                 <div class="absolute -left-1 mt-0.5">
                     <p>Enviado</p>
                 </div>
             </div>
-            {{-- <div class="{{ ($order->status >= 4 && $order->status != 5) ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1 mx-2"></div> --}}
-            <div class="bg-gray-400 h-1 flex-1 mx-2"></div>
+            <div
+                class="{{ $pedido->estado >= 4 && $pedido->estado != 5 ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1 mx-2">
+            </div>
             <div class="relative">
-                {{-- <div class="{{ ($order->status >= 4 && $order->status != 5) ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center"> --}}
-                <div class="bg-gray-400 rounded-full h-12 w-12 flex items-center justify-center">
+                <div
+                    class="{{ $pedido->estado >= 4 && $pedido->estado != 5 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center">
                     <i class="fas fa-check text-white"></i>
                 </div>
                 <div class="absolute -left-2 mt-0.5">
@@ -41,15 +52,36 @@
                 Pedido-N°{{ $pedido->id }}
             </p>
             @if ($pedido->estado == 4)
-                @if ($pedido->calificacion)
-                    <x-boton class="ml-auto bg-yellow-400 p-1 md:p-2">
-                        Ver Calificación
-                    </x-boton>
+                @if ($pedido->calificacion != null)
+                    @livewire('calificacion-pedido',['calificacion' => $pedido->calificacion,'id' =>
+                    $pedido->id],key(1))
                 @else
-                    <x-boton class="ml-auto bg-yellow-400 p-1 md:p-2">
-                        Calificar pedido
-                    </x-boton>
+                    @livewire('calificacion-pedido',['id' => $pedido->id],key(2))
                 @endif
+            @elseif($pedido->estado == 3)
+                <form action="{{ route('pedidos.update', $pedido->id) }}" class="ml-auto" method="post" x-data
+                    x-on:click.prevent="confirmacionAlert(event,'Sí, confirmar!','Se confirmará la recepción del pedido','No se ha confirmado la recepción del pedido')">
+                    @csrf
+                    @method('patch')
+                    <x-boton type="submit"
+                        class="bg-blue-400 hover:bg-blue-300 active:bg-blue-500 focus:border-blue-500 p-1 md:p-2">
+                        Confirmar recepción
+                    </x-boton>
+                </form>
+            @elseif($pedido->estado == 1)
+                <form action="{{ route('pedidos.delete', $pedido->id) }}" class="ml-auto" method="post" x-data
+                    x-on:click.prevent="confirmacionAlert(event,'Sí, cancelar!','Se cancelará el pedido','No se ha cancelado el pedido')">
+                    @csrf
+                    @method('delete')
+                    <x-boton type="submit"
+                        class="bg-red-400 hover:bg-red-300 active:bg-red-500 focus:border-red-500 p-1 md:p-2">
+                        Cancelar pedido
+                    </x-boton>
+                </form>
+            @elseif($pedido->estado == 5)
+                <p class="text-gray-700 uppercase ml-auto"><span class="font-semibold">Cancelado por:</span>
+                    {{ $pedido->cancelado_autor == 1 ? 'Cliente' : 'Tienda' }}
+                </p>
             @endif
         </div>
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
