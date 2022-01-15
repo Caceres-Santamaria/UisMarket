@@ -1,5 +1,5 @@
-<div class="ml-1 sm:ml-3" @click="carrito = true">
-    <a id="link-carrito" class=" relative fas-link" href="javascript:void(0)"
+<div class="h-8 w-8 sm:ml-3" @click="carrito = true">
+    <button id="link-carrito" class="w-full h-full relative fas-link"
         title="Ver su carrito de compras">
         <i class="lg:text-2xl fas fas-header fa-shopping-cart"></i>
         @if (Cart::count())
@@ -7,9 +7,9 @@
             class="w-5 h-5 absolute -top-1 text-xs -right-2 text-black bg-white rounded-full leading-5">
             {{ Cart::count() }}
         </span>
-        @else
+        {{-- @else
         <span
-            class="w-5 h-5 absolute -top-1 text-xs -right-2 text-black bg-white rounded-full leading-5"></span>
+            class="w-5 h-5 absolute -top-1 text-xs -right-2 text-black bg-white rounded-full leading-5"></span> --}}
         @endif
-    </a>
+    </button>
 </div>

@@ -12,10 +12,9 @@
                 placeholder="Buscar productos"
                 wire:model="busqueda">
         </div>
-        <div class="text-center cursor-pointer w-9 h-9 leading-9 clip-path-50 duration-300 transition-all ease-ease
-        hover:bg-green-200 hover:rotate-360"
+        <div class="m-0 p-0 w-9 h-9 text-center leading-9 clip-path-50 cursor-pointer hover:bg-green-400 hover:rotate-360 transition-all duration-500 ease-ease"
         id="busqueda__close">
-            <i class="fas fa-times text-xl sm:text-2xl"></i>
+            <i class="fas fa-times"></i>
         </div>
     </div>
     <div class="w-full bg-black2-87 h-full-16 overflow-y-auto">

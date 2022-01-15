@@ -8,7 +8,7 @@ use App\Http\Controllers\emprendedor\TiendasController;
 use App\Http\Livewire\CrearTienda;
 
 
-Route::get('tienda/editar/{tienda}', CrearTienda::class)->name('tienda.editar')->middleware('tienda.creada');
+Route::get('tienda/editar/{tienda}', CrearTienda::class)->name('tienda.edit')->middleware('tienda.creada');
 
 Route::get('productos', [ProductosController::class, 'index'])->name('emprendedor.productos');
 
