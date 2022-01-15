@@ -1,3 +1,6 @@
+@push('scriptHeader')
+    <script src="{{ asset('js/ckeditor.js') }}"></script>
+@endpush
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8">Complete esta información para crear una tienda</h1>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2">
@@ -36,23 +39,45 @@
             <x-select-image wire:model="portada" :image="$portada" :existing="$tienda->fondo_img" />
             <x-jet-input-error for="portada" class="mt-2" />
         </div>
-        {{-- <div class="mb-4">
-      <div>
-          <label for="">Descripción</label>
-          <textarea class="w-full form-control" rows="4" wire:model="description" x-data
-          x-init="ClassicEditor.create($refs.miEditor)
-          .then(function(editor){
-              editor.model.document.on('change:data', () => {
-                  @this.set('description', editor.getData())
-              })
-          })
-          .catch( error => {
-              console.error( error );
-          } );" x-ref="miEditor">
-      </textarea>
-      </div>
-       <x-jet-input-error for="description">
-  </div> --}}
+        <div class="mb-4">
+            <div wire:ignore>
+                <label for="">Descripción de la tienda</label>
+                <textarea class="w-full form-control" rows="4" wire:model="tienda.descripcion" x-ref="editor" x-data
+                    x-init="ClassicEditor
+                .create($refs.editor, {
+                    toolbar: {
+                        items: [
+                            'heading', '|',
+                            'bold', 'italic', '|',
+                            'outdent', 'indent', '|',
+                            'bulletedList', 'numberedList', '|',
+                            'insertTable', '|',
+                            'blockQuote', '|',
+                            'undo', 'redo'
+                        ],
+                        shouldNotGroupWhenFull: false
+                    },
+                    heading: {
+                        options: [
+                            { model: 'paragraph', title: 'Párrafo', class: 'ck-heading_paragraph' },
+                            { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
+                            { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
+                            { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
+                        ]
+                    },
+                })
+                .then( editor => {
+                    editor.model.document.on('change:data', () => {
+                        @this.set('tienda.descripcion', editor.getData())
+                    })
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );">
+                </textarea>
+            </div>
+            <x-jet-input-error for="tienda.descripcion" />
+        </div>
     </div>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
         <h2 class="text-xl font-semibold mb-4 col-span-2">Envíos</h2>
@@ -72,9 +97,10 @@
             @foreach ($ciudades as $clave => $valor)
                 <div class=" my-3">
                     <label for="">{{ $valor }}</label>
-                    <x-jet-input type="number" min=0 class="w-6/12" wire:change="modificarCosto({{$clave}},$event.target.value)"
+                    <x-jet-input type="number" min=0 class="w-6/12"
+                        wire:change="modificarCosto({{ $clave }},$event.target.value)"
                         placeholder="Ingrese el costo de envío de sus productos" />
-                    <x-jet-input-error for="costo.{{$clave}}" class="mt-2" />
+                    <x-jet-input-error for="costo.{{ $clave }}" class="mt-2" />
                 </div>
             @endforeach
         </div>
@@ -106,3 +132,8 @@
         </x-boton>
     </div>
 </div>
+@push('scripts')
+    <script>
+
+    </script>
+@endpush

@@ -24,30 +24,22 @@
             <div id="content-products" class="w-full">
                 <x-slider id="destacadas" tipo="destacadas"/>
                 <div class="flex justify-center w-full mt-2">
-                    <x-boton class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
-                        <a href="{{ route('tiendas') }}?sort_by=mejor_valoradas" class="w-full h-full">Ver más tiendas</a>
-                    </x-boton>
+                    <x-boton-enlace  href="{{ route('tiendas') }}?sort_by=mejor_valoradas" class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                        Ver más tiendas
+                    </x-boton-enlace>
                 </div>
             </div>
             <h2 class=" font-normal text-lg lg:text-2xl my-2 text-gray-600"> Nuevas tiendas </h2>
             <div id="content-products" class="w-full">
                 <x-slider id="nuevas_tiendas" tipo="nuevas"/>
                 <div class="flex justify-center w-full mt-2">
-                    <x-boton class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
-                        <a href="{{ route('tiendas') }}?sort_by=mas_reciente" class="w-full h-full">Ver más tiendas</a>
-                    </x-boton>
+                    <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mas_reciente" class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                        Ver más tiendas
+                    </x-boton-enlace>
                 </div>
             </div>
         </div>
     </main>
-    {{-- <script>
-        Swal.fire({
-            title: 'Error!',
-            text: 'Do you want to continue',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-        })
-    </script> --}}
     @push('css')
         <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">

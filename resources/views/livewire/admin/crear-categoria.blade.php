@@ -14,7 +14,7 @@
         <x-jet-input-error for="categoria.nombre" class="mt-2" />
     </div>
     <div class="flex justify-center content-center mb-3 mt-8">
-        <x-boton wire:click="save" class="h-10 w-36">Agregar</x-boton>
+        <x-boton  x-on:click.prevent="confirmacionAlert(event,'Sí, agregar!','Se agregará la nueva categoría','No se ha agregado la categoría','save')" class="h-10 w-36">Agregar</x-boton>
     </div>
 
 </div>
@@ -29,3 +29,15 @@
 
     });
 </script>
+@if (session()->has('message'))
+        <script>
+            window.addEventListener('DOMContentLoaded', e => {
+                simpleAlert(
+                'center',
+                'success',
+                '{{ session("message") }}',
+                '',
+                true);
+            });
+        </script>
+    @endif
