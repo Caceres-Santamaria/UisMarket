@@ -5,7 +5,7 @@ class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
             class="flex justify-between content-center items-center bg-primario-ligth border-b border-primario-dark2 h-12 px-3">
             <h3 id="close-menu-main" @click="menu = false"
                 class="m-0 p-0 w-9 h-9 text-center leading-9 clip-path-50 cursor-pointer hover:bg-green-400 hover:rotate-360 transition-all duration-500 ease-ease">
-                <span class="fas fa-times text-lg"></span>
+                <span class="fas fa-times"></span>
             </h3>
             <h3 class="m-0 p-0 text-base">Menú</h3>
         </div>

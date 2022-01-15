@@ -16,13 +16,13 @@
 
     <title>{{ config('app.name', 'Uis Market') }} | {{ $title }}</title>
 
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/general.css') }}">
     <link rel="stylesheet" href="{{ mix('css/sweetalert2.min.css') }}">
     @stack('css')
-
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
 
     @livewireStyles
 

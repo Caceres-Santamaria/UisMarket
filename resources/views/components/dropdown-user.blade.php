@@ -28,11 +28,6 @@
                 class="line-clamp-1 block px-4 py-2 text-sm leading-5 text-gray-70 focus:outline-none">
                 {{ Auth::user()->name }}
             </div>
-
-            <!-- Account Management -->
-            <div class="block px-4 py-2 text-xs text-gray-400">
-                {{ __('Manage Account') }}
-            </div>
             <x-dropdown-link :href="route('profile.show')">
                 {{ __('Información personal') }}
             </x-dropdown-link>
@@ -43,16 +38,11 @@
 
             <div class="border-t border-gray-100"></div>
 
-            <!-- Account Management -->
-            <div class="block px-4 py-2 text-xs text-gray-400">
-                {{ __('Manage Shop') }}
-            </div>
-
-            @if (auth()->user()->tienda)
-            <x-dropdown-link :href="route('pedidos.index')">
+            @if (auth()->user()->tienda == null)
+            {{-- <x-dropdown-link :href="route('pedidos.index')">
                 {{ __('Ver mi tienda') }}
             </x-dropdown-link>
-            @else
+            @else --}}
             <x-dropdown-link :href="route('tienda.create')">
                 {{ __('Crear mi tienda') }}
             </x-dropdown-link>

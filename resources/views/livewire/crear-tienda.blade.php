@@ -2,7 +2,7 @@
     <script src="{{ asset('js/ckeditor.js') }}"></script>
 @endpush
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-    <h1 class="text-3xl text-center font-semibold mb-8">{{ $tienda->id == null ? 'Complete esta información para crear una tienda' : 'Complete esta información para modificar una tienda' }}</h1>
+    <h1 class="text-3xl text-center font-semibold mb-8">{{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Complete esta información para modificar tu tienda' }}</h1>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
         <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
         <div class="w-full mb-5 md:mb-0">
