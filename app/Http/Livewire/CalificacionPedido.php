@@ -16,7 +16,7 @@ class CalificacionPedido extends Component
     {
         return [
             'calificacion.calificacion' => 'required | numeric | min:1 | max:5',
-            'calificacion.contenido' => 'string | max:190',
+            'calificacion.contenido' => 'max:190',
             'calificacion.pedido_id' => 'required',
         ];
     }
@@ -32,7 +32,10 @@ class CalificacionPedido extends Component
     }
 
     public function guardar(){
+      // dd($this->calificacion->contenido);
+        $this->calificacion->contenido = $this->calificacion->contenido == "" ? null : $this->calificacion->contenido;
         $this->calificacion->pedido_id = $this->pedido_id;
+        // dd($this->calificacion->contenido);
         $this->validate();
         $this->modal = false;
         $this->calificacion->save();

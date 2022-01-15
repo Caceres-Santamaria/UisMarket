@@ -23,7 +23,7 @@ class Usuarios extends DataTableComponent
         ->sortable()
         ->searchable(),
 
-      Column::make('Acciones','deleted_at')
+      Column::make('Acciones', 'deleted_at')
         ->sortable()
         ->format(function ($value, $column, $row) {
           return view('admin.acciones')->withUser($row);
@@ -33,17 +33,20 @@ class Usuarios extends DataTableComponent
 
   public function query(): Builder
   {
-    return User::query()->withTrashed()->where('rol','3');
+    return User::query()->withTrashed()->where('rol', '3');
   }
 
-  public function eliminar($id){
-    $user = User::where('id',$id)->first();
+
+  public function eliminar($id)
+  {
+    $user = User::where('id', $id)->first();
     $user->delete();
     $this->dispatchBrowserEvent('successUserAlert', 'inhabilitar');
   }
 
-  public function activar($id){
-    $user = User::where('id',$id)->restore();
+  public function activar($id)
+  {
+    $user = User::where('id', $id)->restore();
     $this->dispatchBrowserEvent('successUserAlert', 'habilitar');
   }
 }

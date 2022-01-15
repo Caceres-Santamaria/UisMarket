@@ -55,7 +55,7 @@ window.confirmacionUserAlert = function (id, type, message) {
     })
 }
 
-window.confirmacionAlert = function (event,confirButton,text,textError) {
+window.confirmacionAlert = function (event,confirButton,text,textError,livewireEvent = null) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -74,7 +74,13 @@ window.confirmacionAlert = function (event,confirButton,text,textError) {
         reverseButtons: false
     }).then((result) => {
         if (result.isConfirmed) {
+          if(livewireEvent){
+            console.log(livewireEvent);
+            Livewire.emit(livewireEvent);
+          }
+          else{
             event.target.parentElement.submit();
+          }
         } else if (
             result.dismiss === Swal.DismissReason.cancel
         ) {
