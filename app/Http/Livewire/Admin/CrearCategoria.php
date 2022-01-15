@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 
 class CrearCategoria extends Component
 {
+  protected $listeners = ['save'];
     use WithFileUploads;
     public $image;
     public Categoria $categoria;
@@ -55,6 +56,7 @@ class CrearCategoria extends Component
             $this->categoria->imagen = $this->uploadImagen();
         }
         $this->categoria->save();
+        return redirect()->route('admin.categorias')->with('message', 'La categoría se ha creado exitosamente');
     }
 
     public function render()
