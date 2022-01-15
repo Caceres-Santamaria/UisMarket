@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ciudad extends Model
 {
-  use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $table = 'ciudades';
 
     /**
@@ -16,7 +16,7 @@ class Ciudad extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','id_departamento', 'slug'];
+    protected $fillable = ['nombre', 'id_departamento', 'slug'];
 
     /**
      * Relaciones
@@ -27,11 +27,11 @@ class Ciudad extends Model
      */
     public function tiendas()
     {
-      return $this->hasMany(
-        Tienda::class, // Modelo que queremos traer
-        'ciudad_id', // Foreign key en la tabla tiendas
-        'id' // owner_key en la tabla ciudades
-      );
+        return $this->hasMany(
+            Tienda::class, // Modelo que queremos traer
+            'ciudad_id', // Foreign key en la tabla tiendas
+            'id' // owner_key en la tabla ciudades
+        );
     }
 
     /**
@@ -39,23 +39,11 @@ class Ciudad extends Model
      */
     public function direcciones()
     {
-      return $this->hasMany(
-        Direccion::class, // Modelo que queremos traer
-        'ciudad_id', // Foreign key en la tabla direcciones
-        'id' // owner_key en la tabla ciudades
-      );
-    }
-
-    /**
-     * Obtiene todos los usuarios de una ciudad
-     */
-    public function usuarios()
-    {
-      return $this->hasMany(
-        User::class,
-        'ciudad_id',
-        'id'
-      );
+        return $this->hasMany(
+            Direccion::class, // Modelo que queremos traer
+            'ciudad_id', // Foreign key en la tabla direcciones
+            'id' // owner_key en la tabla ciudades
+        );
     }
 
     /**
@@ -63,11 +51,11 @@ class Ciudad extends Model
      */
     public function pedidos()
     {
-      return $this->hasMany(
-        Pedido::class,
-        'ciudad_id',
-        'id'
-      );
+        return $this->hasMany(
+            Pedido::class,
+            'ciudad_id',
+            'id'
+        );
     }
 
     /**
@@ -75,11 +63,11 @@ class Ciudad extends Model
      */
     public function departamento()
     {
-      return $this->belongsTo(
-        Departamento::class,
-        'departamento_id',
-        'id'
-      );
+        return $this->belongsTo(
+            Departamento::class,
+            'departamento_id',
+            'id'
+        );
     }
 
     /**
@@ -87,16 +75,16 @@ class Ciudad extends Model
      */
     public function envios()
     {
-      return $this->belongsToMany(
-        Tienda::class,
-        'envios',
-        'ciudad_id',
-        'tienda_id'
+        return $this->belongsToMany(
+            Tienda::class,
+            'envios',
+            'ciudad_id',
+            'tienda_id'
         )
-                  ->using(Envio::class)
-                  ->as('envios')
-                  ->withPivot('costo')
-                  ->withTimestamps();
+            ->using(Envio::class)
+            ->as('envio')
+            ->withPivot('costo')
+            ->withTimestamps();
     }
 
     /**

@@ -22,5 +22,7 @@ class TiendasController extends Controller
         return view('tiendas.show',compact('tienda'));
     }
 
-    
+    public function create(){
+        return "crear tienda";
+    }
 }

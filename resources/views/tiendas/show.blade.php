@@ -42,11 +42,11 @@
                         target="_blank"><i class="fab fa-facebook-f"></i></a>
                 @endif
                 @if ($tienda->whatsapp)
-                    <a class="mb-1 redes-sociales bg-redes-ws" href="{{ $tienda->whatsapp }}" target="_blank"><i
+                    <a class="mb-1 redes-sociales bg-redes-ws" href="https://api.whatsapp.com/send/?phone=57{{ $tienda->whatsapp }}" target="_blank"><i
                             class="fab fa-whatsapp"></i></a>
                 @endif
                 @if ($tienda->instagram)
-                    <a class="redes-sociales rounded-bl-2xl bg-redes-ig" href="{{ $tienda->instagram }}"
+                    <a class="redes-sociales rounded-bl-2xl bg-redes-ig" href="https://www.instagram.com/{{ $tienda->instagram }}"
                         target="_blank"><i class="fab fa-instagram"></i></a>
                 @endif
             </div>

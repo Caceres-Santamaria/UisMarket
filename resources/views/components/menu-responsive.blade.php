@@ -63,7 +63,7 @@ class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
                     </li>
                 @endauth
                 @guest
-                    <li class=" iniciar-sesion list-none text-black hover:bg-gray-300">
+                    <li class="list-none text-black hover:bg-gray-300">
                         <a class="py-3 px-6 text-inherit no-underline text-sm block w-full h-full"
                             href="{{ route('login') }}"><span>Iniciar Sesión /
                                 Registro</span>

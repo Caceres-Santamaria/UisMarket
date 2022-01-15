@@ -72,6 +72,7 @@
     "Logout": "Finalizar Sesión",
     "Logout Other Browser Sessions": "Cerrar las demás sesiones",
     "Manage Account": "Administrar cuenta",
+    "Manage Shop": "Administrar tienda",
     "Manage and logout your active sessions on other browsers and devices.": "Administre y cierre sus sesiones activas en otros navegadores y dispositivos.",
     "Manage API Tokens": "Administrar Tokens API",
     "Manage Role": "Administrar rol",
@@ -187,5 +188,6 @@
     "Department": "Departamento",
     "City": "Ciudad",
     "Not registered yet?": "¿Aún no estás registrado?",
-    "Log in": "Iniciar sesión"
+    "Log in": "Iniciar sesión",
+    "Log Out": "Finalizar sesión"
 }

@@ -113,7 +113,7 @@ class Tienda extends Model
             'ciudad_id'
         )
             ->using(Envio::class)
-            ->as('envios')
+            ->as('envio')
             ->withPivot('costo')
             ->withTimestamps();
     }
