@@ -3,14 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\emprendedor\pedidoController;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\emprendedor\ProductosController;
-use App\Http\Controllers\emprendedor\TiendasController;
-use App\Http\Livewire\CrearTienda;
+use App\Http\Controllers\emprendedor\ProductoController;
+use App\Http\Controllers\emprendedor\TiendaController;
+use App\Http\Livewire\Emprendedor\CrearProducto;
+use App\Http\Livewire\Emprendedor\Tienda;
+use App\Http\Livewire\Emprendedor\EditarProducto;
 
+Route::get('tienda/editar/{tienda}', Tienda::class)->name('tienda.edit')->middleware('tienda.creada');
+Route::get('tienda/', [TiendaController::class, 'show'])->name('tienda.show');
 
-Route::get('tienda/editar/{tienda}', CrearTienda::class)->name('tienda.edit')->middleware('tienda.creada');
-
-Route::get('productos', [ProductosController::class, 'index'])->name('emprendedor.productos');
+Route::get('tienda/productos', [ProductoController::class, 'index'])->name('tienda.productos');
+Route::get('tienda/productos/crear', CrearProducto::class)->name('tienda.productos.crear');
+Route::get('tienda/productos/editar/{producto}', EditarProducto::class)->name('tienda.productos.editar');
+Route::post('tienda/productos/imagenes/{producto}', [ProductoController::class, 'store'])->name('tienda.productos.imagenes');
 
 Route::get('pedidos', [pedidoController::class, 'index'])->name('emprendedor.pedidos');
 Route::get('pedidos/{pedido}', [pedidoController::class, 'show'])->name('emprendedor.ver_pedidos');

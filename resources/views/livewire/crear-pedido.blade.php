@@ -74,7 +74,7 @@
                     @endif
                     @if ($ciudad_id != '')
                         @php
-                            $costo_ciudad = $tiendas[$tienda]->envios->find($ciudad_id)->envios->costo;
+                            $costo_ciudad = $tiendas[$tienda]->envios->find($ciudad_id)->envio->costo;
                         @endphp
                         <label class="rounded-lg shadow px-6 py-4 flex items-center mb-4 cursor-pointer">
                             <input id="envio" type="radio" value="2" name="envio_type_{{ $tiendas[$tienda]->id }}"

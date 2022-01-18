@@ -8,5 +8,6 @@
     "/js/ckeditor.js": "/js/ckeditor.js",
     "/js/splide.min.js": "/js/splide.min.js",
     "/css/splide.min.css": "/css/splide.min.css",
-    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css"
+    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css",
+    "/css/dropzone.css": "/css/dropzone.css"
 }

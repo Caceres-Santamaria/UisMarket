@@ -41,7 +41,7 @@ class TiendaPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->rol != 1 and $user->rol != 2;
     }
 
     /**
@@ -53,7 +53,7 @@ class TiendaPolicy
      */
     public function update(User $user, Tienda $tienda)
     {
-        //
+        return $user->tienda->id == $tienda->id;
     }
 
     /**

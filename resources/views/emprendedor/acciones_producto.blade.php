@@ -1,10 +1,7 @@
 
 @if(!$producto->trashed())
-<x-boton class=" h-10 w-28 bg-red-500" onclick="confirmacionUserAlert({{$producto->id}}, 'inhabilitar', 'El producto quedará inhabilitado')">Inhabilitar</x-boton>
-<x-boton class="h-9 w-24 bg-blue-500 mx-3" >Editar</x-boton>
-
+<x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true" onclick="confirmacionUserAlert({{$producto->id}}, 'inhabilitar', 'El producto quedará inhabilitado')">Inhabilitar</x-boton>
 @else
-<x-boton class=" h-10 w-28" onclick="confirmacionUserAlert({{$producto->id}}, 'habilitar', 'El producto quedará habilitado')">Habilitar</x-boton>
-<x-boton class="h-9 w-24 bg-blue-500 mx-3" >Editar</x-boton>
-
+<x-boton onclick="confirmacionUserAlert({{$producto->id}}, 'habilitar', 'El producto quedará habilitado')">Habilitar</x-boton>
 @endif
+<x-boton-enlace class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600 mx-3" :active="true" :href="route('tienda.productos.editar',$producto)">Editar</x-boton>

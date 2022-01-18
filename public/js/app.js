@@ -5592,6 +5592,8 @@ window.confirmacionUserAlert = function (id, type, message) {
 
 window.confirmacionAlert = function (event, confirButton, text, textError) {
   var livewireEvent = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+  var livewireEventTo = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+  var pivot = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : null;
   var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
     customClass: {
       confirmButton: 'btn btn-success',
@@ -5610,8 +5612,9 @@ window.confirmacionAlert = function (event, confirButton, text, textError) {
   }).then(function (result) {
     if (result.isConfirmed) {
       if (livewireEvent) {
-        console.log(livewireEvent);
         Livewire.emit(livewireEvent);
+      } else if (livewireEventTo) {
+        Livewire.emitTo(livewireEventTo, 'delete', pivot);
       } else {
         event.target.parentElement.submit();
       }

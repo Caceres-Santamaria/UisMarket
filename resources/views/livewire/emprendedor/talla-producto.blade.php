@@ -1,0 +1,63 @@
+<div>
+    <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
+        <h2 class="text-xl text-center font-semibold mb-2">Agregar color</h2>
+        <div class="mb-4">
+            <x-jet-label value="Talla" class="mb-2" />
+            <x-jet-input wire:model="talla" type="text" placeholder="Ingrese una talla" class="w-full" />
+            <x-jet-input-error for="talla" />
+        </div>
+        <div class="flex justify-end items-center mt-4">
+            <x-jet-action-message class="mr-3" on="saved">
+                Agregada
+            </x-jet-action-message>
+            <x-boton wire:loading.attr="disabled" wire:target="save" wire:click="save">
+                Agregar Talla
+            </x-boton>
+        </div>
+    </section>
+    @if (!empty($producto->tallas->all()))
+        <section>
+            <ul class="mt-12 space-y-4">
+                @foreach ($producto->tallas as $talla)
+                <li class="bg-gray-100 shadow-xl rounded-lg p-6 mb-4 border border-gray-50" wire:key="talla-{{ $talla->id }}">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xl font-medium">Talla {{ $talla->nombre }}</h3>
+                        <div>
+                            <x-boton wire:click="" wire:loading.attr="disabled" wire:target="">
+                                <i class="fas fa-edit"></i>
+                            </x-boton>
+                            <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
+                            :active="true" wire:click="">
+                                <i class="fas fa-trash"></i>
+                            </x-boton>
+                        </div>
+                    </div>
+                    {{-- @livewire('emprendedor.color-producto', ['size' => $size], key('color-size-' . $size->id)) --}}
+                    @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-size-' . $producto->id))
+                </li>
+                @endforeach
+            </ul>
+            {{-- <x-jet-dialog-modal wire:model="open">
+                <x-slot name="title">
+                    Editar talla
+                </x-slot>
+                <x-slot name="content">
+                    <x-jet-label>
+                        Talla
+                    </x-jet-label>
+                    <x-jet-input wire:model="name_edit" type="text" class="w-full" />
+                    <x-jet-input-error for="name_edit" />
+                </x-slot>
+                <x-slot name="footer">
+                    <x-jet-secondary-button wire:click="$set('open', false)">
+                        Cancelar
+                    </x-jet-secondary-button>
+                    <x-jet-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+                        Actualizar
+                    </x-jet-button>
+                </x-slot>
+            </x-jet-dialog-modal> --}}
+        </section>
+    @endif
+
+</div>

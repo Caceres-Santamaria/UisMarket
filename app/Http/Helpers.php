@@ -70,9 +70,9 @@ function cantidad($producto_id, $color_id = null, $talla_id = null)
 
     if ($talla_id) {
         $talla = Talla::find($talla_id);
-        $cantidad = $talla->colores->find($color_id)->pTalla->cantidad;
+        $cantidad = $talla->colores->find($color_id)->pivot->cantidad;
     } elseif ($color_id) {
-        $cantidad = $producto->colores->find($color_id)->pColor->cantidad;
+        $cantidad = $producto->colores->find($color_id)->pivot->cantidad;
     } else {
         $cantidad = $producto->cantidad;
     }

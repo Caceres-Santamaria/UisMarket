@@ -40,8 +40,7 @@
             <div class="bg-white rounded-lg shadow p-6">
                 <div wire:ignore>
                     <x-jet-label value="Comentario" />
-                    <textarea wire:model='calificacion.contenido'
-                        maxlength="191"
+                    <textarea wire:model='calificacion.contenido' maxlength="191"
                         class=" w-full h-32 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         x-data x-init="ClassicEditor
                 .create($refs.editor, {

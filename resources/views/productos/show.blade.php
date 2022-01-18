@@ -82,7 +82,10 @@
             </div>
             <div class="grid-in-tienda mt-2 px-3">
                 <h3 class="text-sm xl:text-base text-gray-900 font-medium">
-                    <i class="fas fa-store text-xs md:text-base lg:text-lg"></i> Tienda: {{ $producto->tienda->nombre }}
+                    <a href="{{ route('tiendas.show',$producto->tienda->slug) }}" class="cursor-pointer"><i class="fas fa-store text-xs md:text-base lg:text-lg"></i> Tienda: {{ $producto->tienda->nombre }}</a>
+                </h3>
+                <h3 class="text-sm xl:text-base text-gray-900 font-medium mt-5">
+                    <i class="fas fa-cubes text-sm md:text-lg lg:text-xl"></i> Categoría: {{ $producto->categoria->nombre }}
                 </h3>
             </div>
             <div class="grid-in-estado mt-2 px-3">

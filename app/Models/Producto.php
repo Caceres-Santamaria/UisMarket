@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -58,6 +57,11 @@ class Producto extends Model
         }
     }
 
+    public function getPrioridadAttribute(){
+        return $this->imagenes->pluck('prioridad')->max();
+
+    }
+
     /**
      * Relaciones
      */
@@ -85,8 +89,8 @@ class Producto extends Model
             'color_id'
         )
                     ->using(ColorProducto::class)
-                    ->as('pColor')
                     ->withPivot('cantidad')
+                    ->withPivot('id')
                     ->withTimestamps();
     }
 

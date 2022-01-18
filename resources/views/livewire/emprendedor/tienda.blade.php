@@ -2,7 +2,9 @@
     <script src="{{ asset('js/ckeditor.js') }}"></script>
 @endpush
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-    <h1 class="text-3xl text-center font-semibold mb-8">{{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Complete esta información para modificar tu tienda' }}</h1>
+    <h1 class="text-3xl text-center font-semibold mb-8">
+        {{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Complete esta información para modificar tu tienda' }}
+    </h1>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
         <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
         <div class="w-full mb-5 md:mb-0">
@@ -12,27 +14,31 @@
             <x-jet-input-error for="tienda.nombre" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
-            <x-jet-label value="Número de contacto" />
+            <x-jet-label value="Número de contacto*" />
             <x-jet-input type="number" class="w-full" wire:model="tienda.telefono"
                 placeholder="Ingrese el número de contacto" />
             <x-jet-input-error for="tienda.telefono" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
-            <x-jet-label value="Departamento" />
+            <x-jet-label value="Departamento*" />
             <select class="form-control w-full" wire:model="departamento_id">
-                <option value="" disabled {{ $departamento_id == "" ? 'selected' : '' }}>Seleccione un Departamento</option>
+                <option value="" disabled selected >Seleccione un Departamento {{-- $departamento_id==''?'selected':'' --}}
+                </option>
                 @foreach ($departamentos as $departamento)
-                    <option value="{{ $departamento->id }}" {{ $departamento_id == $departamento->id ? 'selected' : '' }}>{{ $departamento->nombre }}</option>
+                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }} {{-- $departamento_id==$departamento->id?'selected':'' --}}
+                    </option>
                 @endforeach
             </select>
             <x-jet-input-error for="departamento_id" />
         </div>
         <div class="w-full mb-5 md:mb-0">
-            <x-jet-label value="Ciudad" />
+            <x-jet-label value="Ciudad*" />
             <select class="form-control w-full" wire:model="tienda.ciudad_id">
-                <option value="" disabled {{ $tienda->ciudad_id == "" ? 'selected' : '' }}>Seleccione una ciudad</option>
+                <option value="" disabled selected >Seleccione una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
+                </option>
                 @foreach ($ciudade as $ciudad)
-                    <option value="{{ $ciudad->id }}" {{ $tienda->ciudad_id == $ciudad->id ? 'selected' : '' }}>{{ $ciudad->nombre }}</option>
+                    <option value="{{ $ciudad->id }}" > {{-- $tienda->ciudad_id==$ciudad->id?'selected':'' --}}
+                        {{ $ciudad->nombre }}</option>
                 @endforeach
             </select>
             <x-jet-input-error for="tienda.ciudad_id" />
@@ -44,7 +50,7 @@
             <x-jet-input-error for="tienda.direccion" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
-            <x-jet-label value="Correo electrónico" />
+            <x-jet-label value="Correo electrónico*" />
             <x-jet-input type="text" class="w-full" wire:model="tienda.email"
                 placeholder="Ingrese el correo electrónico de contacto" />
             <x-jet-input-error for="tienda.email" class="mt-2" />
@@ -61,7 +67,7 @@
         </div>
         <div class="w-full md:col-span-2 mb-5 md:mb-0">
             <div wire:ignore class=" h-48">
-                <x-jet-label value="Descripción de la tienda" />
+                <x-jet-label value="Descripción de la tienda*" />
                 <textarea class="w-full form-control " wire:model.defer="tienda.descripcion" x-ref="editor" x-data
                     x-init="ClassicEditor
                 .create($refs.editor, {
@@ -121,9 +127,10 @@
             <div class="md:grid md:grid-cols-2  md:gap-x-12 md:gap-y-5" x-data>
                 @foreach ($ciudades as $clave => $valor)
                     <div class="w-full mb-5 md:mb-0">
-                        <x-jet-label value="{{ $valor }}" />
-                        <x-jet-input type="number" min=0 class="w-full" x-ref="costo{{ $clave }}"
-                        x-on:keyup="$wire.modificarCosto({{ $clave }},$refs.costo{{ $clave }}.value,'{{ $valor }}')"
+                        <x-jet-label value="{{ $valor }}*" />
+                        <x-jet-input id="costo" type="number" min=0 class="w-full"
+                            x-ref="costo{{ $clave }}"
+                            x-on:keyup="$wire.modificarCosto({{ $clave }},$refs.costo{{ $clave }}.value,'{{ $valor }}')"
                             placeholder="Ingrese el costo de envío de sus productos" :value="$costos[$clave]" />
                         <x-jet-input-error for="costo-{{ $clave }}" class="mt-2" />
                     </div>
@@ -157,6 +164,14 @@
             {{ $tienda->id == null ? 'Crear tienda' : 'Actualizar tienda' }}
         </x-boton>
     </div>
+    @if ($tienda->id == null)
+        <script>
+            window.addEventListener('DOMContentLoaded', e => {
+                const inputs = document.querySelectorAll('#costo');
+                inputs.forEach(elemento => {
+                    elemento.value = "";
+                })
+            });
+        </script>
+    @endif
 </div>
-@push('scripts')
-@endpush

@@ -16,11 +16,13 @@ mix.js('resources/js/app.js', 'public/js')
     .copy('resources/js/popper.js', 'public/js')
     .js('resources/js/home.js', 'public/js')
     .copy('node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js', 'public/js')
+    // .copy('node_modules/dropzone/dist/dropzone-min.js', 'public/js')
     // .copy('node_modules/sweetalert2/dist/sweetalert2.all.min.js', 'public/js')
     .copy('node_modules/@splidejs/splide/dist/js/splide.min.js', 'public/js')
     .sass('resources/sass/fontawesome.scss', 'public/css')
     .copy('node_modules/@splidejs/splide/dist/css/splide.min.css', 'public/css')
     .copy('node_modules/sweetalert2/dist/sweetalert2.min.css', 'public/css')
+    .copy('node_modules/dropzone/dist/dropzone.css', 'public/css')
     .postCss('resources/css/general.css', 'public/css', [
         //
         require("postcss-import"),

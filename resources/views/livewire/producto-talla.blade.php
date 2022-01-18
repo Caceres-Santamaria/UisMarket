@@ -90,7 +90,7 @@
             </span>
             <div class="flex items-center space-x-3 px-2 xl:px-5">
                 @foreach ($colores as $color)
-                    {{-- @if ($color->pTalla->cantidad > 0) --}}
+                    {{-- @if ($color->pivot->cantidad > 0) --}}
                     <label
                         class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
                         :class="{ 'ring-2 ring-indigo-500': (color === '{{ $color->id }}'), 'ring-0 ring-gray-400': !(color === '{{ $color->id }}') }">
