@@ -220,3 +220,7 @@ footer>div {
 .ck.ck-content {
     height: 8rem;
 }
+
+.comentario > p {
+  white-space: normal;
+}

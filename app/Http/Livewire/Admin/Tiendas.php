@@ -2,54 +2,42 @@
 
 namespace App\Http\Livewire\Admin;
 
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Calificacion;
 use App\Models\Tienda;
 use Livewire\Component;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
+use Livewire\WithPagination;
 
-class Tiendas extends DataTableComponent
+class Tiendas extends Component
 {
+    use WithPagination;
+    protected $listeners = ['abrir'];
+    public $modal = false;
+    public $tienda = null;
 
-  protected $listeners = ['eliminar', 'activar'];
+    public function mount(Tienda $tienda){
+      $this->tienda = $tienda;
+    }
 
-  public function columns(): array
-  {
-    return [
-      Column::make('Logo', 'logo')
-        ->format(function ($value, $column, $row) {
-          return view('admin.logo_tienda')->withTienda($row);
-        }),
-      Column::make('Nombre', 'nombre')
-        ->sortable()
-        ->searchable(),
-        Column::make('Email', 'email')
-        ->sortable()
-        ->searchable(),
-      Column::make('Ciudad', 'ciudad.nombre')
-        ->searchable(),
-
-      Column::make('Acciones','deleted_at')
-        ->sortable()
-        ->format(function ($value, $column, $row) {
-          return view('admin.acciones_tienda')->withTienda($row);
-        }),
-    ];
+    public function cancelar(){
+      $this->modal = false;
   }
 
-  public function query(): Builder
-  {
-    return Tienda::query()->withTrashed();
+  public function abrir($id){
+    $this->tienda = Tienda::findOrFail($id);
+    // $this->tienda->calificaciones()->where('contenido','<>', null)->paginate(15);
+    // dd($this->calificaciones->all());
+    $this->modal = true;
+    // dd($this->tienda->calificaciones);
   }
 
-  public function eliminar($id){
-    $tienda = Tienda::where('id',$id)->first();
-    $tienda->delete();
-    $this->dispatchBrowserEvent('successTiendaAlert', 'inhabilitar');
+  public function eliminar($calificacion){
+    $this->tienda->calificaciones->where('id',$calificacion)->first()->update(['contenido' => null]);
   }
 
-  public function activar($id){
-    $tienda = Tienda::where('id',$id)->restore();
-    $this->dispatchBrowserEvent('successTiendaAlert', 'habilitar');
-  }
+    public function render()
+    {
+        return view('livewire.admin.tiendas')
+        ->layout('layouts.admin')
+        ->layoutData(['title' => 'Tiendas']);
+    }
 }
