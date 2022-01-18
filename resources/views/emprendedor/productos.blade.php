@@ -5,12 +5,10 @@
                 <h2 class="font-semibold text-xl text-gray-600 leading-tight">
                     Lista de productos
                 </h2>
-
-                <x-boton class="ml-auto h-10 w-52 justify-end">
+                <x-boton-enlace class="ml-auto justify-end" :href="route('tienda.productos.crear')">
                     Agregar producto
-                </x-boton>
+                </x-boton-enlace>
             </div>
-
         </div>
 
         @livewire('emprendedor.productos')
@@ -18,7 +16,6 @@
     <script>
         window.addEventListener('successProductoAlert', (e) => {
             successUserAlert(e.detail);
-
         });
     </script>
 </x-app2-layout>

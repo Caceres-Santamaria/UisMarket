@@ -5,7 +5,7 @@
             <span class="sr-only">
                 Escoge un color
             </span>
-            <div class="flex items-center space-x-3 px-2 xl:px-5">
+            <div class="flex items-center gap-4 justify-start px-2 xl:px-5 flex-wrap">
                 @foreach ($colores as $color)
                     <label
                         class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"

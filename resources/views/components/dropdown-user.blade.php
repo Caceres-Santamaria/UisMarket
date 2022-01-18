@@ -25,8 +25,8 @@
         </x-slot>
         <x-slot name="content">
             <div
-                class="line-clamp-1 block px-4 py-2 text-sm leading-5 text-gray-70 focus:outline-none">
-                {{ Auth::user()->name }}
+                class="block px-4 py-2 text-sm leading-5 text-gray-70 focus:outline-none uppercase font-bold">
+                <span class="line-clamp-1">{{ Auth::user()->name }}</span>
             </div>
             <x-dropdown-link :href="route('profile.show')">
                 {{ __('Información personal') }}

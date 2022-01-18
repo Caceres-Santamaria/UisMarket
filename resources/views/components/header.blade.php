@@ -22,8 +22,8 @@
                 @endif
             @endauth
             @guest
-                <div class="sm:ml-3 hidden sm:block">
-                    <a class="relative fas-link" href="{{ route('login') }}">
+                <div class="sm:ml-3 hidden sm:block h-8 w-8">
+                    <a class="w-full h-full relative fas-link" href="{{ route('login') }}">
                         <i class="fas fas-header fa-user-circle text-white lg:text-2xl"></i>
                     </a>
                 </div>
@@ -68,7 +68,6 @@
                                     :active="request()->routeIs('pedidos.index')">
                                     Mis pedidos
                                 </x-jet-responsive-nav-link>
-
                                 @if (auth()->user()->tienda == null)
                                     <x-jet-responsive-nav-link href="{{ route('tienda.create') }}"
                                         :active="request()->routeIs('tienda.create')">
@@ -81,14 +80,19 @@
                                         {{ __('Manage Shop') }}
                                     </div>
 
-                                    <x-jet-responsive-nav-link href="{{ route('tienda.create') }}"
-                                        :active="request()->routeIs('tienda.create')">
+                                    <x-jet-responsive-nav-link href="{{ route('tienda.show') }}"
+                                        :active="request()->routeIs('tienda.show')">
                                         Ver mi tienda
                                     </x-jet-responsive-nav-link>
 
                                     <x-jet-responsive-nav-link href="{{ route('tienda.edit',Auth::user()->tienda) }}"
                                         :active="request()->routeIs('tienda.edit')">
                                         Actualizar tienda
+                                    </x-jet-responsive-nav-link>
+
+                                    <x-jet-responsive-nav-link href="{{ route('tienda.productos') }}"
+                                        :active="request()->routeIs('tienda.productos')">
+                                        Gestionar productos
                                     </x-jet-responsive-nav-link>
                                 @endif
 

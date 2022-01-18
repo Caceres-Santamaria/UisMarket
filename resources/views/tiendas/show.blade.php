@@ -1,6 +1,20 @@
 <x-app2-layout title="Informacion tienda">
     <main x-data="{productos: true, calificaciones: false, informacion: false}"
-        class="grid-in-contenido grid grid-cols-full grid-rows-detalle px-3 py-6 place-items-start place-content-start md:grid-rows-auto md:grid-cols-1 md:p-2 md:py-10 lg:grid-rows-auto lg:grid-cols-1 lg:px-10 lg:py-16">
+        class="grid-in-contenido grid grid-cols-full grid-rows-detalle px-3 py-6 pt-3 place-items-start place-content-start md:grid-rows-auto md:grid-cols-1 md:px-2 md:py-10 md:pt-5 lg:grid-rows-auto lg:grid-cols-1 lg:px-10 lg:py-16 lg:pt-8">
+        @php($emprendedor = request()->routeIs('tienda.show'))
+        @if ($emprendedor)
+            <div class="w-full flex justify-evenly items-center mb-3 md:mb-5 lg:mb-8">
+                <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true">
+                    Desactivar tienda
+                </x-boton>
+                <x-boton class="bg-green-500 hover:bg-green-400 active:bg-green-600 focus:border-green-600" :active="true">
+                    Activar tienda
+                </x-boton>
+                <x-boton class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600" :active="true">
+                    Modificar tienda
+                </x-boton>
+            </div>
+        @endif
         <div style="{{ fondo($tienda->fondo_img) }}"
             class=" object-cover bg-center bg-cover bg-no-repeat flex justify-center items-center card-producto__link w-full h-20 md:h-32 lg:h-52  ">
         </div>
@@ -42,12 +56,14 @@
                         target="_blank"><i class="fab fa-facebook-f"></i></a>
                 @endif
                 @if ($tienda->whatsapp)
-                    <a class="mb-1 redes-sociales bg-redes-ws" href="https://api.whatsapp.com/send/?phone=57{{ $tienda->whatsapp }}" target="_blank"><i
+                    <a class="mb-1 redes-sociales bg-redes-ws"
+                        href="https://api.whatsapp.com/send/?phone=57{{ $tienda->whatsapp }}" target="_blank"><i
                             class="fab fa-whatsapp"></i></a>
                 @endif
                 @if ($tienda->instagram)
-                    <a class="redes-sociales rounded-bl-2xl bg-redes-ig" href="https://www.instagram.com/{{ $tienda->instagram }}"
-                        target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="redes-sociales rounded-bl-2xl bg-redes-ig"
+                        href="https://www.instagram.com/{{ $tienda->instagram }}" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
                 @endif
             </div>
         @endif

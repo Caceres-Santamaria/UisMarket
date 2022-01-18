@@ -34,7 +34,6 @@ class Color extends Model
             'producto_id'
         )
                     ->using(ColorProducto::class)
-                    ->as('pColor')
                     ->withPivot('cantidad')
                     ->withTimestamps();
     }
@@ -50,7 +49,6 @@ class Color extends Model
             'talla_id'
         )
                     ->using(ColorTalla::class)
-                    ->as('pTalla')
                     ->withPivot('cantidad')
                     ->withTimestamps();
     }

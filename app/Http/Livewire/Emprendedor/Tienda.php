@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Emprendedor;
 
 use App\Models\Ciudad;
 use App\Models\Departamento;
 use App\Models\Envio;
-use App\Models\Tienda;
+use App\Models\Tienda as ModelsTienda;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class CrearTienda extends Component
+class Tienda extends Component
 {
+    use AuthorizesRequests;
     use WithFileUploads;
     public $logo;
     public $portada;
-    public Tienda $tienda;
+    public ModelsTienda $tienda;
     public $costos = [];
     public $ciudades = [];
     public $departamentos, $ciudade = [];
@@ -47,8 +50,14 @@ class CrearTienda extends Component
         ];
     }
 
-    public function mount(Tienda $tienda)
+    public function mount(ModelsTienda $tienda)
     {
+        if($tienda->id == null){
+            $this->authorize('create', ModelsTienda::class);
+        }
+        else{
+            $this->authorize('update', $tienda);
+        }
         $this->tienda = $tienda;
         $this->tienda->user_id = $this->tienda->user_id == null ? auth()->user()->id : $this->tienda->user_id;
 
@@ -60,7 +69,7 @@ class CrearTienda extends Component
             $this->tienda->ciudad_id = "";
         }
 
-        if($this->tienda->envios == null){
+        if(empty($this->tienda->envios->all())){
             foreach (Ciudad::all() as $ciudad) {
                 $this->costos[$ciudad->id] = null;
                 $this->ciudades[$ciudad->id] = $ciudad->nombre;
@@ -160,6 +169,9 @@ class CrearTienda extends Component
                     ]);
                 }
             }
+            if(auth()->user()->rol == 1){
+                User::where('id', auth()->user()->id)->update(['rol' => 2]);
+            }
             return redirect()->route('home');
         }else{
             $this->addError('costos', 'Error, Verifica el costo de las ciudades');
@@ -168,7 +180,7 @@ class CrearTienda extends Component
 
     public function render()
     {
-        return view('livewire.crear-tienda')
+        return view('livewire.emprendedor.tienda')
             ->layoutData(['title' => 'Crear Tienda']);
     }
 }
