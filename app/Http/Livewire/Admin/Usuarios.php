@@ -33,7 +33,7 @@ class Usuarios extends DataTableComponent
 
   public function query(): Builder
   {
-    return User::query()->withTrashed()->where('rol', '3');
+    return User::query()->withTrashed()->where('rol', '3' )->orWhere('rol', '2');
   }
 
 

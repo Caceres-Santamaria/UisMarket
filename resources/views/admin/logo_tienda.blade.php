@@ -1,1 +1,1 @@
-<img class="h-8 w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 object-cover rounded-full" src="{{ Storage::url($tienda->logo) }}" alt="">
+<img class="h-8 w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-cover rounded-full" src="{{ Storage::url($tienda->logo) }}" alt="">

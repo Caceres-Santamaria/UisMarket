@@ -8,14 +8,18 @@ use App\Http\Controllers\admin\ProductosController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ComentariosController;
 use App\Http\Livewire\Admin\CrearCategoria;
 use App\Http\Livewire\Admin\CrearAdministrador;
+use App\Http\Livewire\Admin\Tiendas;
 
 Route::get('/',[HomeController::class,'index'])->name('admin.dashboard');
 
 Route::get('clientes',[ClientesController::class,'index'])->name('admin.clientes');
 
-Route::get('tiendas',[TiendasController::class,'index'])->name('admin.tiendas');
+Route::get('comentarios/{tienda}',[ComentariosController::class,'index'])->name('admin.comentarios');
+
+Route::get('tiendas',Tiendas::class)->name('admin.tiendas');
 
 Route::get('categorias',CrearCategoria::class)->name('admin.categorias');
 

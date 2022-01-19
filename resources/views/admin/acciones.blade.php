@@ -1,5 +1,5 @@
 @if (!$user->trashed())
-    <x-boton class=" h-10 w-28 bg-red-500"
+    <x-boton class="focus:border-red-600 hover:bg-red-400 active:bg-red-600 h-10 w-28 bg-red-500"
         onclick="confirmacionUserAlert({{ $user->id }}, 'inhabilitar', 'El usuario quedará inhabilitado')">
         Inhabilitar</x-boton>
 @else
