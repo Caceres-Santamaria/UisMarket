@@ -7,6 +7,7 @@ use App\Models\ColorProducto as ModelsColorProducto;
 use App\Models\ColorTalla;
 use App\Models\Producto;
 use App\Models\Talla;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,7 +34,6 @@ class ColorProducto extends Component
     {
         $this->producto = $producto;
         $this->colores = Color::all();
-        // dd($talla);
         if($talla == null){
             $this->talla = new Talla();
         }
@@ -68,6 +68,7 @@ class ColorProducto extends Component
         }
         $this->reset(['color_id', 'cantidad']);
         $this->emit('saved');
+        $this->talla = $this->talla->id == null ? $this->talla : $this->talla->fresh();
         $this->producto = $this->producto->fresh();
     }
 
@@ -88,13 +89,20 @@ class ColorProducto extends Component
         $this->colorProducto->cantidad = $this->colorProducto_cantidad;
         $this->colorProducto->save();
         $this->producto = $this->producto->fresh();
-        $this->modal = false;
         $this->talla = $this->talla->id == null ? $this->talla : $this->talla->fresh();
+        $this->modal = false;
     }
 
-    public function delete(ModelsColorProducto $color_producto){
+    public function delete($id){
+        $this->colorProducto = null;
+        $color_producto = $this->talla->id == null ? ModelsColorProducto::findOrFail($id) : ColorTalla::findOrFail($id);
         $color = $color_producto->color->nombre;
         $color_producto->delete();
+        if($this->talla->id != null){
+            $this->emit('eliminado',$color);
+            return redirect()->route('tienda.productos.editar',$this->producto);
+        }
+        $this->talla = $this->talla->id == null ? $this->talla : $this->talla->fresh();
         $this->producto = $this->producto->fresh();
         $this->emit('eliminado',$color);
     }

@@ -16,7 +16,7 @@ class EditarProducto extends Component
     public Producto $producto;
     public $categorias, $cantidad, $slug;
 
-    protected $listeners = ['refrescarProducto', 'delete'];
+    protected $listeners = ['refrescarProducto', 'delete','render'];
 
     protected function rules()
     {
