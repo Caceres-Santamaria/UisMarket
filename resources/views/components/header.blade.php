@@ -90,8 +90,13 @@
                                         Actualizar tienda
                                     </x-jet-responsive-nav-link>
 
+                                    <x-jet-responsive-nav-link href="{{ route('emprendedor.pedidos') }}"
+                                        :active="request()->routeIs('emprendedor.pedidos')">
+                                        Ver pedidos
+                                    </x-jet-responsive-nav-link>
+
                                     <x-jet-responsive-nav-link href="{{ route('tienda.productos') }}"
-                                        :active="request()->routeIs('tienda.productos')">
+                                        :active="request()->routeIs('tienda.productos*')">
                                         Gestionar productos
                                     </x-jet-responsive-nav-link>
                                 @endif

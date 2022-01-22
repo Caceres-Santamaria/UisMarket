@@ -38,11 +38,7 @@
 
             <div class="border-t border-gray-100"></div>
 
-            @if (auth()->user()->tienda == null)
-            {{-- <x-dropdown-link :href="route('pedidos.index')">
-                {{ __('Ver mi tienda') }}
-            </x-dropdown-link>
-            @else --}}
+            @if (auth()->user()->tienda == null and auth()->user()->rol == 3)
             <x-dropdown-link :href="route('tienda.create')">
                 {{ __('Crear mi tienda') }}
             </x-dropdown-link>

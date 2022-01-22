@@ -4,12 +4,12 @@
         {{-- Color --}}
         <div class="mb-4">
             <x-jet-label value="Color" class="mb-2" />
-            <div class="flex items-center gap-4 justify-start px-2 xl:px-5 flex-wrap" x-data="{ color: ''}">
+            <div class="flex items-center gap-4 justify-start px-2 xl:px-5 flex-wrap" x-data="{ color: @entangle('color_id')}">
                 @foreach ($colores as $color)
                     <label
                         class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
                         :class="{ 'ring-2 ring-indigo-500': (color === '{{ $color->id }}'), 'ring-0 ring-gray-400': !(color === '{{ $color->id }}') }">
-                        <input type="radio" value="{{ $color->id }}" wire:model.defer="color_id"
+                        <input type="radio" value="{{ $color->id }}"
                             class="sr-only" x-model='color' name="color">
                         @if ($color->codigo == 'bg-black')
                             <span aria-hidden="true"
@@ -61,20 +61,19 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-auto">
-                                        Cantidad</th>
+                                        Stock</th>
                                     <th scope="col"
                                         class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-auto">
                                         Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                {{-- {{ dd($talla) }} --}}
                                 @php
                                     $producto_colores = $talla->id == null ? $producto->colores : $talla->colores;
                                 @endphp
                                 @foreach ($producto_colores as $producto_color)
                                     <tr class="hover:bg-gray-200"
-                                        wire:key="producto_color-{{ $producto_color->pivot->id }}">
+                                        wire:key="producto-color-{{ $producto_color->pivot->id }}">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <label
                                                 class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none">
@@ -93,7 +92,7 @@
                                             {{ $producto_color->pivot->color->nombre }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                                            {{ $producto_color->pivot->cantidad }} Unidades
+                                            {{ $producto_color->pivot->cantidad }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center">
                                             <x-boton

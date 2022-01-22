@@ -3,12 +3,10 @@
 @endpush
 @push('scriptHeader')
     <script src="{{ asset('js/ckeditor.js') }}"></script>
-    {{-- <script src="{{ asset('js/producto.js') }}"></script> --}}
     <script src="{{ asset('js/dropzone-min.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 @endpush
 <main class="grid-in-contenido">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
+    <div class="w-full md:w-3/4 md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
         <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">
             Complete esta información para actualizar el producto
         </h1>
@@ -79,7 +77,7 @@
                 </div>
                 <x-jet-input-error for="producto.descripcion" />
             </div>
-            <div class="grid grid-cols-2 gap-6 mb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
                 <div>
                     <x-jet-label value="Categoría" />
                     <select wire:model="producto.categoria_id"
@@ -120,7 +118,8 @@
                     class="dropzone w-full border-1 border-gray-100 rounded-md" id="my-dropzone"></form>
             </div>
             <x-jet-input-error for="file" />
-            <span class="text-xs text-yellow-600 font-semibold"><i class="fas fa-exclamation-triangle"></i> Sólo puedes adjuntar máximo 10 imágenes de este producto</span>
+            <span class="text-xs text-yellow-600 font-semibold"><i class="fas fa-exclamation-triangle"></i> Sólo puedes
+                adjuntar máximo 10 imágenes de este producto</span>
         </section>
         @if ($producto->imagenes->count() > 0)
             <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
@@ -130,9 +129,8 @@
                         <li class="relative" wire:key="image-{{ $imagen->id }}">
                             <img class="w-32 h-32 object-cover object-top" src="{{ Storage::url($imagen->url) }}"
                                 alt="">
-                            <x-boton
+                            <x-boton :active="true" wire:click="deleteImagen({{ $imagen->id }})"
                                 class="absolute right-2 top-2 bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600 rounded-full"
-                                :active="true" wire:click="deleteImagen({{ $imagen->id }})"
                                 wire:loading.attr="disabled" wire:target="deleteImagen({{ $imagen->id }})">
                                 <i class="fas fa-times"></i>
                             </x-boton>
@@ -144,79 +142,37 @@
         @if ($producto->talla)
             @livewire('emprendedor.talla-producto', ['producto' => $producto], key('talla-' . $producto->id))
         @elseif($producto->color)
-            @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => null], key('color-' . $producto->id))
+            @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => null], key('color-' .
+            $producto->id))
         @endif
     </div>
-    @push('scripts')
-        <script>
-            Dropzone.options.myDropzone = {
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                },
-                dictDefaultMessage: "Arrastre una imagen al recuadro",
-                acceptedFiles: 'image/*',
-                paramName: "file", // The name that will be used to transfer the file
-                maxFilesize: 2, // MB
-                maxFiles: 10,
-                complete: function(file) {
-                    this.removeFile(file);
-                },
-                queuecomplete: function() {
-                    Livewire.emit('refrescarProducto');
-                }
-            };
-
-            // Livewire.on('deleteSize', sizeId => {
-
-            //     Swal.fire({
-            //         title: 'Are you sure?',
-            //         text: "You won't be able to revert this!",
-            //         icon: 'warning',
-            //         showCancelButton: true,
-            //         confirmButtonColor: '#3085d6',
-            //         cancelButtonColor: '#d33',
-            //         confirmButtonText: 'Yes, delete it!'
-            //     }).then((result) => {
-            //         if (result.isConfirmed) {
-
-            //             Livewire.emitTo('admin.size-product', 'delete', sizeId);
-
-            //             Swal.fire(
-            //                 'Deleted!',
-            //                 'Your file has been deleted.',
-            //                 'success'
-            //             )
-            //         }
-            //     })
-
-            // })
-
-            Livewire.on('deletePivot', pivot => {
-                confirmacionAlert(event, '¡Sí, eliminar!','Esta acción no se podrá revertir','No se ha eliminado el color',null,'emprendedor.color-producto',pivot);
-            })
-
-            // Livewire.on('deleteColorSize', pivot => {
-            //     Swal.fire({
-            //         title: 'Are you sure?',
-            //         text: "You won't be able to revert this!",
-            //         icon: 'warning',
-            //         showCancelButton: true,
-            //         confirmButtonColor: '#3085d6',
-            //         cancelButtonColor: '#d33',
-            //         confirmButtonText: 'Yes, delete it!'
-            //     }).then((result) => {
-            //         if (result.isConfirmed) {
-
-            //             Livewire.emitTo('admin.color-size', 'delete', pivot);
-
-            //             Swal.fire(
-            //                 'Deleted!',
-            //                 'Your file has been deleted.',
-            //                 'success'
-            //             )
-            //         }
-            //     })
-            // })
-        </script>
-    @endpush
 </main>
+@push('scripts')
+    <script>
+        Dropzone.options.myDropzone = {
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            dictDefaultMessage: "Arrastre una imagen al recuadro",
+            acceptedFiles: 'image/*',
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            maxFiles: 10,
+            complete: function(file) {
+                this.removeFile(file);
+            },
+            queuecomplete: function() {
+                Livewire.emit('refrescarProducto');
+            }
+        };
+        Livewire.on('deletePivot', pivot => {
+            confirmacionAlert(event, '¡Sí, eliminar!', 'Esta acción no se podrá revertir',
+                'No se ha eliminado el color', null, 'emprendedor.color-producto', pivot);
+        });
+
+        Livewire.on('deleteTalla', pivot => {
+            confirmacionAlert(event, '¡Sí, eliminar!', 'Esta acción no se podrá revertir',
+                'No se ha eliminado la talla', null, 'emprendedor.talla-producto', pivot);
+        });
+    </script>
+@endpush

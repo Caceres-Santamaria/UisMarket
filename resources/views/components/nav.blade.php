@@ -2,14 +2,14 @@
     class=" hidden lg:flex lg:align-center lg:content-center lg:justify-center lg:flex-col lg:w-10/12 lg:bg-primario-dark  lg:rounded-3xl lg:place-self-center lg:px-2 lg:border-box lg:font-normal ">
     <ul class=" lg:flex lg:justify-center lg:flex-row lg:list-none lg:self-center lg:relative lg:text-lg ">
         <li
-            class="{{ setActive('home') }} list-item hover:no-underline border-b border-primario-dark hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('home') }} list-item hover:no-underline border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('home') }}">
                 <i class="fas fas-header fa-home lg:text-inherit lg:pr-1.5 lg:relative lg:bg-transparent lg:text-xl"></i><span>HOME</span>
             </a>
         </li>
         <li
-            class="{{ setActive('productos*') }} {{ setActive('categorias.show') }} list-item hover:no-underline border-b border-primario-dark hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActiveProductos() }} list-item hover:no-underline border-b hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('productos.index') }}">
                 <span>Categorías <i class="fas fa-angle-down"></i></span>
@@ -34,17 +34,17 @@
             @endif
         </li>
         <li
-            class="{{ setActive('tiendas*') }} list-item hover:no-underline border-b-2 border-primario-dark hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('tiendas*') }} list-item hover:no-underline border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('tiendas') }}"><span>Tiendas</span></a>
         </li>
         <li
-            class="{{ setActive('promociones') }} list-item hover:no-underline border-b-2 border-primario-dark hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('promociones') }} list-item hover:no-underline border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('promociones') }}"><span>Promociones</span></a>
         </li>
         <li
-            class="{{ setActive('about') }} list-item hover:no-underline border-b-2 border-primario-dark hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('about') }} list-item hover:no-underline border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('about') }}"><span>¿Quiénes somos?</span></a>
         </li>
