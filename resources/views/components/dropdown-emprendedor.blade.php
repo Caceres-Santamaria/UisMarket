@@ -19,6 +19,10 @@
                 {{ __('Actualizar tienda') }}
             </x-dropdown-link>
 
+            <x-dropdown-link :href="route('emprendedor.pedidos')">
+                {{ __('Ver pedidos') }}
+            </x-dropdown-link>
+
             <x-dropdown-link :href="route('tienda.productos')">
                 {{ __('Gestionar productos') }}
             </x-dropdown-link>

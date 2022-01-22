@@ -6,12 +6,14 @@ use App\Models\Producto;
 use App\Models\Talla;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class TallaProducto extends Component
 {
-    public $modal = false;
+    public $open = false;
     public Producto $producto;
-    public $talla;
+    public $talla = "";
+    public $modelTalla, $editTalla;
     protected $listeners = ['delete'];
 
     protected function rules(){
@@ -44,6 +46,31 @@ class TallaProducto extends Component
             $this->reset('talla');
             $this->producto = $this->producto->fresh();
         }
+    }
+
+    public function edit(Talla $talla){
+        $this->open = true;
+        $this->modelTalla = $talla;
+        $this->editTalla = $talla->nombre;
+    }
+
+    public function update(){
+
+        Validator::make(
+            ['editTalla' => $this->editTalla],
+            ['editTalla' => ['required','string','max:90']],[],
+            ['editTalla' => 'talla']
+        )->validate();
+        $this->modelTalla->nombre = $this->editTalla;
+        $this->modelTalla->save();
+        $this->producto = $this->producto->fresh();
+        $this->open = false;
+    }
+
+    public function delete(Talla $talla){
+        // $talla->delete();
+        $talla->forceDelete();
+        $this->producto = $this->producto->fresh();
     }
 
     public function render()

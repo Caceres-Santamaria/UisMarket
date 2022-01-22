@@ -1,6 +1,6 @@
 <div>
     <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
-        <h2 class="text-xl text-center font-semibold mb-2">Agregar color</h2>
+        <h2 class="text-xl text-center font-semibold mb-2">Agregar talla</h2>
         <div class="mb-4">
             <x-jet-label value="Talla" class="mb-2" />
             <x-jet-input wire:model="talla" type="text" placeholder="Ingrese una talla" class="w-full" />
@@ -19,44 +19,42 @@
         <section>
             <ul class="mt-12 space-y-4">
                 @foreach ($producto->tallas as $talla)
-                <li class="bg-gray-100 shadow-xl rounded-lg p-6 mb-4 border border-gray-50" wire:key="talla-{{ $talla->id }}">
+                <li class="bg-gray-100 shadow-xl rounded-lg p-6 mb-4 border border-gray-50" wire:key="talla-producto-{{ $talla->id }}">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-xl font-medium">Talla {{ $talla->nombre }}</h3>
                         <div>
-                            <x-boton wire:click="" wire:loading.attr="disabled" wire:target="">
+                            <x-boton active="true" class="bg-orange-500 hover:bg-orange-400 active:bg-orange-600 focus:border-orange-600" wire:click="edit({{ $talla->id }})" wire:loading.attr="disabled" wire:target="edit({{ $talla->id }})">
                                 <i class="fas fa-edit"></i>
                             </x-boton>
                             <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
-                            :active="true" wire:click="">
+                            :active="true" wire:click="$emit('deleteTalla', {{ $talla->id }})">
                                 <i class="fas fa-trash"></i>
                             </x-boton>
                         </div>
                     </div>
                     {{-- @livewire('emprendedor.color-producto', ['size' => $size], key('color-size-' . $size->id)) --}}
-                    @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-size-' . $producto->id))
+                    @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-talla-' . $talla->id))
                 </li>
                 @endforeach
             </ul>
-            {{-- <x-jet-dialog-modal wire:model="open">
+            <x-jet-dialog-modal wire:model="open">
                 <x-slot name="title">
                     Editar talla
                 </x-slot>
                 <x-slot name="content">
-                    <x-jet-label>
-                        Talla
-                    </x-jet-label>
-                    <x-jet-input wire:model="name_edit" type="text" class="w-full" />
-                    <x-jet-input-error for="name_edit" />
+                    <x-jet-label value="Talla" />
+                    <x-jet-input wire:model="editTalla" type="text" class="w-full" />
+                    <x-jet-input-error for="editTalla" />
                 </x-slot>
                 <x-slot name="footer">
-                    <x-jet-secondary-button wire:click="$set('open', false)">
-                        Cancelar
-                    </x-jet-secondary-button>
-                    <x-jet-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+                    <x-boton wire:click="update" wire:loading.attr="disabled" wire:target="update">
                         Actualizar
+                    </x-boton>
+                    <x-jet-button wire:loading.attr="disabled" wire:click="$set('open', false)">
+                        Cancelar
                     </x-jet-button>
                 </x-slot>
-            </x-jet-dialog-modal> --}}
+            </x-jet-dialog-modal>
         </section>
     @endif
 

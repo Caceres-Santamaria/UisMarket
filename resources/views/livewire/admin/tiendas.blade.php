@@ -22,7 +22,7 @@
                         </div>
                         <div class="p-2">
                             <x-boton wire:click="eliminar({{ $calificacion->id }})"
-                                class="focus:border-red-600 hover:bg-red-400 active:bg-red-600  h-9 w-9 bg-red-500">
+                                class="focus:border-red-600 hover:bg-red-400 active:bg-red-600  h-9 w-9 bg-red-500" active="true">
                                 <i class="fas fa-trash-alt text-white text-lg"></i>
                             </x-boton>
                         </div>
@@ -30,7 +30,7 @@
                 @empty
                     <article class="w-full flex flex-col justify-center items-center px-0 py-4">
                         <figure>
-                            <x-vacio-svg />
+                            <x-svg.vacio />
                         </figure>
                         <span class="block sm:inline text-base lg:text-lg">Esta tienda no tiene comentarios</span>
                     </article>

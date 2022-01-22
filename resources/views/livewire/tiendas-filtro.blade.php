@@ -57,7 +57,7 @@
             @empty
                 <article class="w-full flex flex-col justify-center items-center px-0 py-4">
                     <figure>
-                        <x-face-sad />
+                        <x-svg.face-sad />
                     </figure>
                     <span class="block sm:inline lg:text-xl">No existen tiendas aún</span>
                 </article>
@@ -70,7 +70,7 @@
             @empty
                 <article class="w-full flex flex-col justify-center items-center px-0 py-4">
                     <figure>
-                        <x-face-sad />
+                        <x-svg.face-sad />
                     </figure>
                     <span class="block sm:inline lg:text-xl">No existen tiendas aún</span>
                 </article>
