@@ -18,7 +18,7 @@
     @empty
     <article class="w-full flex flex-col justify-center items-center px-0 py-4">
         <figure>
-            <x-vacio-svg />
+            <x-svg.vacio />
         </figure>
         <span class="block sm:inline text-base lg:text-lg">No hay calificaciones y comentarios aún</span>
     </article>

@@ -77,7 +77,7 @@ window.confirmacionAlert = function (event, confirButton, text, textError, livew
             if (livewireEvent) {
                 Livewire.emit(livewireEvent);
             }else if(livewireEventTo){
-                Livewire.emitTo(livewireEventTo, 'delete', pivot);
+                Livewire.emitTo(livewireEventTo, 'delete', pivot)
             } else {
                 event.target.parentElement.submit();
             }

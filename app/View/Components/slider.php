@@ -19,32 +19,22 @@ class slider extends Component
      *
      * @return void
      */
-    public function __construct($id, $tienda = null, $tipo = "productos")
+    public function __construct($id, $tipo = "productos", $data = null)
     {
         $this->id = $id;
         $this->tipo = $tipo;
         switch ($tipo) {
             case 'productos':
-                $this->productos = Producto::where('tienda_id', $tienda)->take(10)->get();
+                $this->productos = $data;
                 break;
             case 'destacadas':
-                $this->destacadas = Tienda::from('tiendas as tiendas')
-                    ->join('pedidos as p', function ($join) {
-                        $join->on('tiendas.id', '=', 'p.tienda_id');
-                    })->join('calificaciones as c', function ($join) {
-                        $join->on('p.id', '=', 'c.pedido_id');
-                    })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
-                    ->where('p.estado', '4')
-                    ->groupBy('id')
-                    ->orderBy('calificaciones', 'desc')
-                    ->take(10)
-                    ->get();
+                $this->destacadas = $data;
                 break;
             case 'nuevas':
-                $this->nuevas = Tienda::orderBy('created_at', 'desc')->take(10)->get();
+                $this->nuevas = $data;
                 break;
             default:
-                $this->productos = Producto::where('tienda_id', $tienda)->take(10)->get();
+                $this->productos = $data;
                 break;
         }
     }

@@ -88,7 +88,7 @@
                             <hr class="my-2">
                         @empty
                             <li class="flex flex-col justify-center items-center content-center">
-                                <x-shopping-cart-svg />
+                                <x-svg.shopping-cart />
                                 <p class="text-base lg:text-lg text-gray-700 mt-4">TU CARRO DE COMPRAS ESTÁ VACÍO</p>
                             </li>
                         @endforelse
@@ -109,10 +109,10 @@
                     </p>
                     <div
                         class="mt-3 w-full flex flex-col justify-center items-center content-center md:flex-row md:gap-x-1 lg:gap-x-2">
-                        <x-boton-enlace href="{{ route('productos.index') }}" class="mb-3 md:mb-0 w-4/5 h-8 md:w-48 lg:h-9">
+                        <x-boton-enlace href="{{ route('productos.index') }}" class="mb-3 md:mb-0 w-4/5 h-8 md:w-52 lg:h-9">
                             Continuar comprando
                         </x-boton-enlace>
-                        <x-boton-enlace href="{{ route('pedidos.create') }}" class="w-4/5 h-8 md:w-48 lg:h-9">
+                        <x-boton-enlace href="{{ route('pedidos.create') }}" class="w-4/5 h-8 md:w-52 lg:h-9">
                             Realizar pedido
                         </x-boton-enlace>
                     </div>

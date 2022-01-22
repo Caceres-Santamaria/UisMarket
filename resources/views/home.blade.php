@@ -1,5 +1,6 @@
 <x-app2-layout title="Home">
     <main class="grid-in-contenido">
+        {{-- {{ dd($nuevas->count()) }} --}}
         <div class="m-4 lg:mx-32 md:mx-20 sm:mx-20">
             <div class="splide" id="splide_prin">
                 <div class="splide__track">
@@ -22,23 +23,41 @@
                 marcas y emprendimientos UIS con el fin de activar la economía local.</h1>
             <h2 class=" font-normal text-lg lg:text-2xl my-2 text-gray-600"> Tiendas destacadas </h2>
             <div id="content-products" class="w-full">
-                <x-slider id="destacadas" tipo="destacadas" />
-                <div class="flex justify-center w-full mt-2">
-                    <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mejor_valoradas"
-                        class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
-                        Ver más tiendas
-                    </x-boton-enlace>
-                </div>
+                @if ($destacadas->count() > 0)
+                    <x-slider id="destacadas" tipo="destacadas" :data="$destacadas" />
+                    <div class="flex justify-center w-full mt-2">
+                        <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mejor_valoradas"
+                            class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                            Ver más tiendas
+                        </x-boton-enlace>
+                    </div>
+                @else
+                    <div class="w-full flex flex-col justify-start items-center">
+                        <x-svg.shopping />
+                        <h5 class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm text-gray-600">
+                            Aún no hay tiendas destacadas
+                        </h5>
+                    </div>
+                @endif
             </div>
             <h2 class=" font-normal text-lg lg:text-2xl my-2 text-gray-600"> Nuevas tiendas </h2>
             <div id="content-products" class="w-full">
-                <x-slider id="nuevas_tiendas" tipo="nuevas" />
-                <div class="flex justify-center w-full mt-2">
-                    <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mas_reciente"
-                        class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
-                        Ver más tiendas
-                    </x-boton-enlace>
-                </div>
+                @if($nuevas->count() > 0)
+                    <x-slider id="nuevas_tiendas" tipo="nuevas" :data="$nuevas" />
+                    <div class="flex justify-center w-full mt-2">
+                        <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mas_reciente"
+                            class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                            Ver más tiendas
+                        </x-boton-enlace>
+                    </div>
+                @else
+                    <div class="w-full flex flex-col justify-start items-center">
+                        <x-svg.new-shopping />
+                        <h5 class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm text-gray-600">
+                            Aún no hay tiendas nuevas aún
+                        </h5>
+                    </div>
+                @endif
             </div>
         </div>
         @if (session()->has('message'))
@@ -119,8 +138,12 @@
                 }
             }
             new Splide('#splide_prin', lista).mount();
-            new Splide('#destacadas', lista2).mount();
-            new Splide('#nuevas_tiendas', lista2).mount();
+            @if ($destacadas->count() > 0)
+                new Splide('#destacadas', lista2).mount();
+            @endif
+            @if ($nuevas->count() > 0)
+                new Splide('#nuevas_tiendas', lista2).mount();
+            @endif
         </script>
     @endpush
 </x-app2-layout>

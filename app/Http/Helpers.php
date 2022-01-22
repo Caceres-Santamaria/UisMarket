@@ -56,7 +56,11 @@ function sortByActive($sort_by)
 
 function setActive($route)
 {
-    return request()->routeIs($route) ? 'border-white' : '';
+    return request()->routeIs($route) ? 'border-white' : 'border-primario-dark';
+}
+
+function setActiveProductos(){
+    return (request()->routeIs('productos.*') or request()->routeIs('categorias.show')) ? 'border-white' : 'border-primario-dark';
 }
 
 function setActiveAdmin($route)

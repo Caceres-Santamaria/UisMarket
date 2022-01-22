@@ -70,9 +70,11 @@
                 <div>
                     {{-- <p class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</p> --}}
                     @if ($producto->descuento > 0)
-                        <span class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</span>
+                        <span
+                            class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</span>
                         -
-                        <span class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}</span>
+                        <span
+                            class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}</span>
                     @else
                         <span class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio) }}</span>
                     @endif
@@ -82,10 +84,13 @@
             </div>
             <div class="grid-in-tienda mt-2 px-3">
                 <h3 class="text-sm xl:text-base text-gray-900 font-medium">
-                    <a href="{{ route('tiendas.show',$producto->tienda->slug) }}" class="cursor-pointer"><i class="fas fa-store text-xs md:text-base lg:text-lg"></i> Tienda: {{ $producto->tienda->nombre }}</a>
+                    <a href="{{ route('tiendas.show', $producto->tienda->slug) }}" class="cursor-pointer"><i
+                            class="fas fa-store text-xs md:text-base lg:text-lg"></i> Tienda:
+                        {{ $producto->tienda->nombre }}</a>
                 </h3>
                 <h3 class="text-sm xl:text-base text-gray-900 font-medium mt-5">
-                    <i class="fas fa-cubes text-sm md:text-lg lg:text-xl"></i> Categoría: {{ $producto->categoria->nombre }}
+                    <i class="fas fa-cubes text-sm md:text-lg lg:text-xl"></i> Categoría:
+                    {{ $producto->categoria->nombre }}
                 </h3>
             </div>
             <div class="grid-in-estado mt-2 px-3">
@@ -110,44 +115,47 @@
                 </p>
             </div>
         </section>
-        <section class="md:col-span-2 lg:col-span-2 w-full">
-            <hr class="my-10 text-black w-full px-6">
-            <h3 class="text-bold my-2 px-6">Otros productos de esta tienda</h3>
-            <x-slider id="mas_productos" tienda="{{ $producto->tienda->id }}"/>
-        </section>
-        @push('scripts')
-            <script>
-                let lista = {
-                    rewind: true,
-                    width: '100%',
-                    direction: 'ltr',
-                    isNavigation: true,
-                    pagination: false,
-                    gap: '1rem',
-                    cover: true,
-                    perMove: 1,
-                    perPage: 4,
-                    breakpoints: {
-                        '2400': {
-                            perPage: 4,
-                        },
-                        '1199': {
-                            perPage: 4,
-                        },
-                        '991': {
-                            perPage: 3,
-                        },
-                        '767': {
-                            perPage: 3,
-                        },
-                        '575': {
-                            perPage: 2,
-                            width: '100vw',
-                        },
+        @php($otros = $producto->tienda->productos->except([$producto->id]))
+        @if ($otros->count() > 0)
+            <section class="md:col-span-2 lg:col-span-2 w-full">
+                <hr class="my-10 text-black w-full px-6">
+                <h3 class="text-bold my-2 px-6">Otros productos de esta tienda</h3>
+                <x-slider id="mas_productos" :data="$otros->toQuery()->take(10)->get()" />
+            </section>
+            @push('scripts')
+                <script>
+                    let lista = {
+                        rewind: true,
+                        width: '100%',
+                        direction: 'ltr',
+                        isNavigation: true,
+                        pagination: false,
+                        gap: '1rem',
+                        cover: true,
+                        perMove: 1,
+                        perPage: 4,
+                        breakpoints: {
+                            '2400': {
+                                perPage: 4,
+                            },
+                            '1199': {
+                                perPage: 4,
+                            },
+                            '991': {
+                                perPage: 3,
+                            },
+                            '767': {
+                                perPage: 3,
+                            },
+                            '575': {
+                                perPage: 2,
+                                width: '100vw',
+                            },
+                        }
                     }
-                }
-                new Splide('#mas_productos', lista).mount();
-            </script>
-        @endpush
+                    new Splide('#mas_productos', lista).mount();
+                </script>
+            @endpush
+        @endif
     </main>
 </x-app2-layout>
