@@ -37,6 +37,11 @@ class Productos extends DataTableComponent
                 ->format(function ($value, $column, $row) {
                     return view('emprendedor.descuento')->withProducto($row);
                 }),
+                Column::make('Estado', 'estado')
+                ->sortable()
+                ->format(function ($value, $column, $row) {
+                    return view('emprendedor.estado_pub_producto')->withProducto($row);
+                }),
             Column::make('Acciones', 'deleted_at')
                 ->sortable()
                 ->format(function ($value, $column, $row) {
