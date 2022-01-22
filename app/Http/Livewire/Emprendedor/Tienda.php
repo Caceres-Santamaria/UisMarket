@@ -169,10 +169,10 @@ class Tienda extends Component
                     ]);
                 }
             }
-            if(auth()->user()->rol == 1){
+            if(auth()->user()->rol == 3){
                 User::where('id', auth()->user()->id)->update(['rol' => 2]);
             }
-            return redirect()->route('home');
+            return redirect()->route('tienda.show');
         }else{
             $this->addError('costos', 'Error, Verifica el costo de las ciudades');
         }
