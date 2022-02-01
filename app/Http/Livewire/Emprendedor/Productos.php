@@ -37,7 +37,7 @@ class Productos extends DataTableComponent
                 ->format(function ($value, $column, $row) {
                     return ($value *100)."%";
                 }),
-                Column::make('Estado', 'estado')
+                Column::make('Estado', 'publicacion')
                 ->sortable()
                 ->format(function ($value, $column, $row) {
                     return view('emprendedor.estado-pub-producto')->withProducto($row);

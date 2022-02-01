@@ -79,7 +79,7 @@
         </ul>
     @else
         <span class="font-bold text-lg">
-            No existe registros de pedidos
+            No existen registros de pedidos
         </span>
     @endif
 </section>

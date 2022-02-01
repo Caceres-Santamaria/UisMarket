@@ -1,6 +1,5 @@
 <x-app2-layout title="Home">
     <main class="grid-in-contenido">
-        {{-- {{ dd($nuevas->count()) }} --}}
         <div class="m-4 lg:mx-32 md:mx-20 sm:mx-20">
             <div class="splide" id="splide_prin">
                 <div class="splide__track">

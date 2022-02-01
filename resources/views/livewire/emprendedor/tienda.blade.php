@@ -3,26 +3,26 @@
 @endpush
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8">
-        {{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Complete esta información para modificar tu tienda' }}
+        {{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Completa esta información para modificar tu tienda' }}
     </h1>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
         <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Nombre*" />
             <x-jet-input type="text" class="w-full" wire:model="tienda.nombre"
-                placeholder="Ingrese el nombre de la tienda" />
+                placeholder="Ingresa el nombre de la tienda" />
             <x-jet-input-error for="tienda.nombre" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Número de contacto*" />
             <x-jet-input type="number" class="w-full" wire:model="tienda.telefono"
-                placeholder="Ingrese el número de contacto" />
+                placeholder="Ingresa el número de contacto" />
             <x-jet-input-error for="tienda.telefono" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Departamento*" />
             <select class="form-control w-full" wire:model="departamento_id">
-                <option value="" disabled selected >Seleccione un Departamento {{-- $departamento_id==''?'selected':'' --}}
+                <option value="" disabled selected >Selecciona un Departamento {{-- $departamento_id==''?'selected':'' --}}
                 </option>
                 @foreach ($departamentos as $departamento)
                     <option value="{{ $departamento->id }}">{{ $departamento->nombre }} {{-- $departamento_id==$departamento->id?'selected':'' --}}
@@ -34,7 +34,7 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Ciudad*" />
             <select class="form-control w-full" wire:model="tienda.ciudad_id">
-                <option value="" disabled selected >Seleccione una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
+                <option value="" disabled selected >Selecciona una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
                 </option>
                 @foreach ($ciudade as $ciudad)
                     <option value="{{ $ciudad->id }}" > {{-- $tienda->ciudad_id==$ciudad->id?'selected':'' --}}
@@ -46,13 +46,13 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Dirección" />
             <x-jet-input type="text" class="w-full" wire:model="tienda.direccion"
-                placeholder="Ingrese la dirección de la tienda" />
+                placeholder="Ingresa la dirección de la tienda" />
             <x-jet-input-error for="tienda.direccion" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Correo electrónico*" />
             <x-jet-input type="text" class="w-full" wire:model="tienda.email"
-                placeholder="Ingrese el correo electrónico de contacto" />
+                placeholder="Ingresa el correo electrónico de contacto" />
             <x-jet-input-error for="tienda.email" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
@@ -108,7 +108,7 @@
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
         <h2 class="text-xl font-semibold mb-4 col-span-2">Envíos</h2>
         <div class="mb-8">
-            <x-jet-label value="¿Sus productos se pueden recoger en la tienda física?*" />
+            <x-jet-label value="¿Tus productos se pueden recoger en la tienda física?*" />
             <div class="flex gap-2">
                 <x-jet-label>
                     <input class="mx-2" type="radio" name="recoger_tienda" wire:model="tienda.recoger_tienda"
@@ -131,7 +131,7 @@
                         <x-jet-input id="costo" type="number" min=0 class="w-full"
                             x-ref="costo{{ $clave }}"
                             x-on:keyup="$wire.modificarCosto({{ $clave }},$refs.costo{{ $clave }}.value,'{{ $valor }}')"
-                            placeholder="Ingrese el costo de envío de sus productos" :value="$costos[$clave]" />
+                            placeholder="Ingresa el costo de envío de sus productos" :value="$costos[$clave]" />
                         <x-jet-input-error for="costo-{{ $clave }}" class="mt-2" />
                     </div>
                 @endforeach
@@ -143,19 +143,19 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Link de Facebook" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.facebook"
-                placeholder="Ingrese el link de facebook" />
+                placeholder="Ingresa el link de facebook" />
             <x-jet-input-error for="tienda.facebook" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Número de Whatsapp" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.whatsapp"
-                placeholder="Ingrese el número de contacto" />
+                placeholder="Ingresa el número de contacto" />
             <x-jet-input-error for="tienda.whatsapp" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Usuario de Instagram" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.instagram"
-                placeholder="Ingrese el usuario @ejemplo" />
+                placeholder="Ingresa el usuario sin arroba (@)" />
             <x-jet-input-error for="tienda.instagram" class="mt-2" />
         </div>
     </div>

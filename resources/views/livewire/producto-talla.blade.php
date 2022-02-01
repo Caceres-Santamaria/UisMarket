@@ -11,7 +11,6 @@
                     <div class="flex min-h-screen text-center md:block md:px-2 lg:px-4" style="font-size: 0;">
                         <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity md:block"
                             aria-hidden="true"></div>
-                        <!-- Este elemento es engañar al navegador para que centre los contenidos modales. -->
                         <span class="hidden md:inline-block md:align-middle md:h-screen"
                             aria-hidden="true">&#8203;</span>
                         <div @click.outside="open = false"

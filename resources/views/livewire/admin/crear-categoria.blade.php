@@ -10,7 +10,7 @@
     <div class="mb-4 ">
         <label>Nombre*</label>
         <x-jet-input type="text" class="w-11/12" wire:model="categoria.nombre"
-            placeholder="Ingrese el nombre de la tienda" />
+            placeholder="Ingresa el nombre de la tienda" />
         <x-jet-input-error for="categoria.nombre" class="mt-2" />
     </div>
     <div class="flex justify-center content-center mb-3 mt-8">

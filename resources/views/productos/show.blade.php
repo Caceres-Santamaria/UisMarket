@@ -68,7 +68,6 @@
             <h1 class=" grid-in-titulo text-2xl font-bold m-0 lg:m-0">{{ $producto->nombre }}</h1>
             <div class="grid-in-precio px-3 flex justify-between items-center border-b border-primario-light">
                 <div>
-                    {{-- <p class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</p> --}}
                     @if ($producto->descuento > 0)
                         <span
                             class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</span>
@@ -110,7 +109,6 @@
             <div class="grid-in-descripcion text-base xl:text-lg py-2.5 font-medium px-3">
                 <h2 class="font-bold text-lg">Descripción</h2>
                 <p class=" leading-6 m-0">
-                    {{-- {{ $producto->id }} --}}
                     {!! $producto->descripcion !!}
                 </p>
             </div>
