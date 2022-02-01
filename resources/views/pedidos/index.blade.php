@@ -1,4 +1,4 @@
-<x-app2-layout title="pedidos">
+<x-app2-layout title="Pedidos">
     <main class=" grid-in-contenido px-4 py-4 md:py-12 md:px-20">
         <section x-data
             class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-6 text-white justify-center">

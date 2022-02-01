@@ -30,7 +30,7 @@
         </div>
         <div class="mb-4">
             <x-jet-label value="Cantidad" />
-            <x-jet-input type="number" wire:model.defer="cantidad" placeholder="Ingrese la cantidad"
+            <x-jet-input type="number" wire:model.defer="cantidad" placeholder="Ingresa la cantidad"
                 class="w-full" />
             <x-jet-input-error for="cantidad" />
         </div>
@@ -149,7 +149,7 @@
                     <div class="w-3/4">
                         <x-jet-label value="cantidad" />
                         <x-jet-input class="w-full" wire:model="colorProducto_cantidad" type="number"
-                            placeholder="Ingrese una cantidad" />
+                            placeholder="Ingresa una cantidad" />
                         <x-jet-input-error for="colorProducto_cantidad" />
                     </div>
                 </div>

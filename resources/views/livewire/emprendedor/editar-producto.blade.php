@@ -8,20 +8,20 @@
 <main class="grid-in-contenido">
     <div class="w-full md:w-3/4 md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
         <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">
-            Complete esta información para actualizar el producto
+            Completa esta información para actualizar el producto
         </h1>
         @livewire('emprendedor.estado-producto',['producto' => $producto], key('estado-producto-' . $producto->id))
         <section class="bg-white rounded-lg shadow p-6 mb-4">
             <div class="mb-4">
                 <x-jet-label value="Nombre" />
                 <x-jet-input type="text" class="w-full" wire:model="producto.nombre"
-                    placeholder="Ingrese el nombre del producto" />
+                    placeholder="Ingresa el nombre del producto" />
                 <x-jet-input-error for="producto.nombre" />
             </div>
             <div class="mb-4">
                 <x-jet-label value="Slug" />
                 <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
-                    placeholder="Ingrese el slug del producto" />
+                    placeholder="Ingresa el slug del producto" />
                 <x-jet-input-error for="slug" />
             </div>
             <div class="mb-4">
@@ -82,7 +82,7 @@
                     <x-jet-label value="Categoría" />
                     <select wire:model="producto.categoria_id"
                         class="w-full form-control border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="" selected disabled>Seleccione una categoría</option>
+                        <option value="" selected disabled>Selecciona una categoría</option>
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                         @endforeach

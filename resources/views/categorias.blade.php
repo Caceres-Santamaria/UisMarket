@@ -5,7 +5,7 @@
 </x-slot>
 
 <x-slot name="description">
-    Complete la información necesaria para poder crear una nueva categoría
+    Completa la información necesaria para poder crear una nueva categoría
 </x-slot>
 
 <x-slot name="form">
@@ -50,7 +50,7 @@
     </x-slot>
 
     <x-slot name="description">
-        Aquí encontrará todas las categorías agregadas
+        Aquí encontrarás todas las categorías agregadas
     </x-slot>
 
     <x-slot name="content">

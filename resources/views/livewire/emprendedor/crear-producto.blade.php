@@ -3,20 +3,20 @@
 @endpush
 <main class="grid-in-contenido w-full md:w-3/4 md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
 
-    <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">Complete esta información para crear un
+    <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">Completa esta información para crear un
         producto</h1>
 
     <div class="bg-white rounded-lg shadow p-6 w-full">
         <div class="mb-4">
             <x-jet-label value="Nombre" />
             <x-jet-input type="text" class="w-full" wire:model="nombre"
-                placeholder="Ingrese el nombre del producto" />
+                placeholder="Ingresa el nombre del producto" />
             <x-jet-input-error for="nombre" />
         </div>
         <div class="mb-4">
             <x-jet-label value="Slug" />
             <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
-                placeholder="Ingrese el slug del producto" />
+                placeholder="Ingresa el slug del producto" />
             <x-jet-input-error for="slug" />
         </div>
         <div class="mb-4">
@@ -77,7 +77,7 @@
                 <x-jet-label value="Categoría" />
                 <select wire:model="categoria_id"
                     class="w-full form-control border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="" selected disabled>Seleccione una categoría</option>
+                    <option value="" selected disabled>Selecciona una categoría</option>
                     @foreach ($categorias as $categoria)
                         <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                     @endforeach
@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <x-jet-label value="¿Su producto tiene color?" />
+            <x-jet-label value="¿Tu producto tiene color?" />
             <div class="flex gap-2">
                 <x-jet-label>
                     <input class="mx-2" type="radio" name="color" value="1" wire:model="color">Sí
@@ -103,7 +103,7 @@
             <x-jet-input-error for="color" />
         </div>
         <div class="mb-4">
-            <x-jet-label value="¿Su producto tiene talla?" />
+            <x-jet-label value="¿Tu producto tiene talla?" />
             <div class="flex gap-2">
                 <x-jet-label>
                     <input class="mx-2" type="radio" name="talla" value="1" wire:model="talla">Sí
@@ -119,7 +119,6 @@
                 <x-jet-label value="Cantidad" />
                 <x-jet-input wire:model="cantidad" type="number" class="w-full" />
                 <x-jet-input-error for="cantidad" />
-                {{-- <pre>{{ dump($errors->first('cantidad')) }}</pre> --}}
             </div>
         @endif
 
