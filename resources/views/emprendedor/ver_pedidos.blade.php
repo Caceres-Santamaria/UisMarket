@@ -213,20 +213,34 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
-                <h1 class="font-bold text-lg ">Valoración del pedido</h1>
-                <div class=" m-3 ">
-                    <x-jet-label value="Calificación" />
-                    <x-estrellas sizeestrella="text-xl" comentario="hidden"
-                        estrellas="{{ $pedido->calificacion->calificacion }}"
-                        calificaciones="{{ $pedido->calificacion[1] }}" />
+            @if ($pedido->calificacion)
+                <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
+                    <h1 class="font-bold text-lg ">Valoración del pedido</h1>
+                    <div class=" m-3 ">
+                        <x-jet-label value="Calificación" />
+                        <x-estrellas sizeestrella="text-xl" comentario="hidden"
+                            estrellas="{{ $pedido->calificacion->calificacion }}"
+                            calificaciones="{{ $pedido->calificacion[1] }}" />
+                    </div>
+                    <div class="w-full m-3">
+                        <x-jet-label value="Comentario" />
+                        <span>{!! $pedido->calificacion->contenido !!}</span>
+                    </div>
                 </div>
-                <div class="w-full m-3">
-                    <x-jet-label value="Comentario" />
-                    <span>{!! $pedido->calificacion->contenido !!}</span>
-                </div>
-            </div>
+            @endif
         </div>
+        @if (session()->has('message'))
+            <script>
+                window.addEventListener('DOMContentLoaded', e => {
+                    simpleAlert(
+                        'center',
+                        'error',
+                        '{{ session('message') }}',
+                        '',
+                        true);
+                });
+            </script>
+        @endif
     </main>
 
 </x-app2-layout>

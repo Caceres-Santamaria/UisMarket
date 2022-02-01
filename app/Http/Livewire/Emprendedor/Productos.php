@@ -18,7 +18,7 @@ class Productos extends DataTableComponent
         return [
             Column::make('Imagen', 'imagen')
                 ->format(function ($value, $column, $row) {
-                    return view('admin.imagen_producto')->withProducto($row);
+                    return view('admin.imagen-producto')->withProducto($row);
                 }),
             Column::make('Nombre', 'nombre')
                 ->sortable()
@@ -29,30 +29,29 @@ class Productos extends DataTableComponent
                 ->sortable()
                 ->searchable()
                 ->format(function ($value, $column, $row) {
-                    return view('emprendedor.precio')->withProducto($row);
+                    return "$".number_format($value);
                 }),
             Column::make('Descuento', 'descuento')
                 ->sortable()
                 ->searchable()
                 ->format(function ($value, $column, $row) {
-                    return view('emprendedor.descuento')->withProducto($row);
+                    return ($value *100)."%";
                 }),
                 Column::make('Estado', 'estado')
                 ->sortable()
                 ->format(function ($value, $column, $row) {
-                    return view('emprendedor.estado_pub_producto')->withProducto($row);
+                    return view('emprendedor.estado-pub-producto')->withProducto($row);
                 }),
-            Column::make('Acciones', 'deleted_at')
-                ->sortable()
+            Column::make('Acciones')
                 ->format(function ($value, $column, $row) {
-                    return view('emprendedor.acciones_producto')->withProducto($row);
+                    return view('emprendedor.acciones-producto')->withProducto($row);
                 }),
         ];
     }
 
     public function query(): Builder
     {
-        return Producto::query()->where('tienda_id',auth()->user()->tienda->id)->withTrashed();
+        return Producto::query()->where('tienda_id',auth()->user()->tienda->id);
     }
 
     public function eliminar($id)

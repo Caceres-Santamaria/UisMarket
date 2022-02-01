@@ -27,7 +27,7 @@
                                 <i class="fas fa-edit"></i>
                             </x-boton>
                             <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
-                            :active="true" wire:click="$emit('deleteTalla', {{ $talla->id }})">
+                            :active="true" wire:click="$emit('eliminarTalla', {{ $talla->id }})">
                                 <i class="fas fa-trash"></i>
                             </x-boton>
                         </div>

@@ -12,7 +12,8 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        return view('emprendedor.productos');
+        $eliminados = Producto::onlyTrashed()->where('tienda_id',auth()->user()->tienda->id)->get()->count();
+        return view('emprendedor.productos',compact('eliminados'));
     }
 
     public function store(Producto $producto, Request $request)

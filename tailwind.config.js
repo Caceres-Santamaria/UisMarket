@@ -60,6 +60,8 @@ module.exports = {
                 'cardsm': 'calc((100vw - 4.6rem) / 2)',
                 'cardmd': 'calc((100vw - 9rem) / 3)',
                 'cardlg': 'calc((100vw - 16rem - 4.5rem) / 4)',
+                'reviews': 'calc(100% - 3rem)',
+                'reviewsmd': 'calc(100% - 4.5rem)',
                 'sliderprodsm': '17.5rem',
                 'sliderprodlg': '75rem',
                 'full-7': 'calc(100% - 7rem)',

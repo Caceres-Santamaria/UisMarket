@@ -6,10 +6,24 @@
     <script src="{{ asset('js/dropzone-min.js') }}"></script>
 @endpush
 <main class="grid-in-contenido">
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Actualizar producto
+                </h1>
+
+                <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true"
+                    wire:click="$emit('eliminarProducto')">
+                    <i class="fas fa-trash mr-1"></i> Eliminar
+                </x-boton>
+            </div>
+        </div>
+    </header>
     <div class="w-full md:w-3/4 md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-        <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">
+        {{-- <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">
             Complete esta información para actualizar el producto
-        </h1>
+        </h1> --}}
         @livewire('emprendedor.estado-producto',['producto' => $producto], key('estado-producto-' . $producto->id))
         <section class="bg-white rounded-lg shadow p-6 mb-4">
             <div class="mb-4">
@@ -165,14 +179,52 @@
                 Livewire.emit('refrescarProducto');
             }
         };
-        Livewire.on('deletePivot', pivot => {
+        Livewire.on('eliminarPivot', pivot => {
             confirmacionAlert(event, '¡Sí, eliminar!', 'Esta acción no se podrá revertir',
                 'No se ha eliminado el color', null, 'emprendedor.color-producto', pivot);
         });
 
-        Livewire.on('deleteTalla', pivot => {
+        Livewire.on('eliminarTalla', pivot => {
             confirmacionAlert(event, '¡Sí, eliminar!', 'Esta acción no se podrá revertir',
                 'No se ha eliminado la talla', null, 'emprendedor.talla-producto', pivot);
+        });
+
+        Livewire.on('eliminarProducto', () => {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: '¿Estás seguro?',
+                text: 'El producto quedará eliminado temporalmente hasta que lo elimine definitivamente o lo restaure',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Sí, eliminar!',
+                cancelButtonText: 'No, cancelar!',
+                reverseButtons: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emit('delete');
+                    simpleAlert(
+                        'center',
+                        'success',
+                        'Producto eliminado exitosamente',
+                        '',
+                        false, 1900);
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelado',
+                        'No se ha eliminado el producto',
+                        'error'
+                    )
+                }
+            })
         });
     </script>
 @endpush

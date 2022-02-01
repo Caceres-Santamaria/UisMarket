@@ -33,20 +33,12 @@ class EditarProducto extends Component
             'producto.publicacion' => 'required|in:1,2',
         ];
     }
-    // Rule::unique('users')->ignore($user->id)
-    // Rule::unique('tiendas', 'slug')->ignore($this->tienda)
-    // protected $messages = [
-    //     'precio.min' => "El precio debe ser mayor a cero",
-    //     'cantidad.min' => "La cantidad debe ser mayor a cero"
-    // ];
 
     public function mount(Producto $producto){
         $this->producto = $producto;
         $this->categorias = Categoria::all();
         $this->cantidad = $this->producto->cantidad;
         $this->slug = $this->producto->slug;
-
-        // dd(empty($this->producto->imagenes->all()));
     }
 
     public function updated($propertyName)
@@ -72,6 +64,11 @@ class EditarProducto extends Component
         $this->producto->slug = $this->slug;
         $this->producto->save();
         $this->emit('saved');
+    }
+
+    public function delete(){
+        $this->producto->delete();
+        return redirect()->route('tienda.productos');
     }
 
     public function deleteImagen(ImagenProducto $imagen){

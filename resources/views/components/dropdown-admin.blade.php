@@ -26,7 +26,6 @@
             <x-dropdown-link :href="route('profile.show')">
                 {{ __('Información personal') }}
             </x-dropdown-link>
-            
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

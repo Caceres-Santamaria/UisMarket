@@ -105,7 +105,7 @@
                                             <x-boton
                                                 class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
                                                 :active="true"
-                                                wire:click="$emit('deletePivot', {{ $producto_color->pivot->id }})">
+                                                wire:click="$emit('eliminarPivot', {{ $producto_color->pivot->id }})">
                                                 Eliminar
                                             </x-boton>
                                         </td>

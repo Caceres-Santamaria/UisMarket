@@ -59,7 +59,6 @@
             </div>
         </div>
     </div>
-    {{-- <script src="{{ mix('js/popper.js') }}"></script> --}}
     <script type="text/javascript">
         function toggleNavbar(collapseID) {
             document.getElementById(collapseID).classList.toggle("hidden");

@@ -4,13 +4,14 @@
         @php($emprendedor = request()->routeIs('tienda.show'))
         @if ($emprendedor)
             <div class="w-full flex justify-evenly items-center mb-3 md:mb-5 lg:mb-8">
-                <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true">
-                    Desactivar tienda
-                </x-boton>
-                <x-boton class="bg-green-500 hover:bg-green-400 active:bg-green-600 focus:border-green-600" :active="true">
-                    Activar tienda
-                </x-boton>
-                <x-boton class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600" :active="true">
+                <form method="POST" action="{{ route('tienda.desactivar') }}">
+                    @csrf
+                    @method('DELETE')
+                    <x-boton type="submit" class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true">
+                        Desactivar tienda
+                    </x-boton>
+                </form>
+                <x-boton-enlace href="{{ route('tienda.edit',auth()->user()->tienda) }}" class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600" :active="true">
                     Modificar tienda
                 </x-boton>
             </div>
@@ -34,16 +35,16 @@
                     </svg>
                 </div>
             @endif
-            <div class="w-full flex flex-col items-center px-4 ">
+            <div class="w-full flex flex-col items-center px-4 pb-4 overflow-y-hidden">
                 <h1
                     class="w-full uppercase font-black text-base text-center tracking-wide whitespace-nowrap text-ellipsis truncate md:text-lg lg:text-xl">
                     {{ $tienda->nombre }}
                 </h1>
                 <x-estrellas sizeestrella="text-xl" estrellas="{{ round($tienda->calificacion[0]) }}"
                     calificaciones="{{ $tienda->calificacion[1] }}" />
-                <p class=" w-full line-clamp-5 text-sm text-center md:text-base lg:text-base lg:line-clamp-3 lg:px-20">
+                <div class=" w-full line-clamp-5 text-sm text-center md:text-base lg:text-base lg:line-clamp-3 lg:px-20">
                     {!! $tienda->descripcion !!}
-                </p>
+                </div>
             </div>
         </div>
         @livewire('productos-tiendas-filtro',['tienda' => $tienda])

@@ -22,22 +22,22 @@
                 @endif
             @endauth
             @guest
-                <div class="sm:ml-3 hidden sm:block h-8 w-8">
+                <div class="sm:ml-3 h-8 w-8">
                     <a class="w-full h-full relative fas-link" href="{{ route('login') }}">
                         <i class="fas fas-header fa-user-circle text-white lg:text-2xl"></i>
                     </a>
                 </div>
             @endguest
             @livewire('carrito')
-            <div class="-mr-2 flex items-center sm:hidden h-8 w-8" @click="open = ! open">
-                <button class="w-full h-full relative fas-link">
-                    <i :class="{'hidden': open, 'inline-flex': ! open }"
-                        class="fas fas-header fa-bars lg:text-2xl inline-flex"></i>
-                    <i :class="{'hidden': ! open, 'inline-flex': open }"
-                        class="fas fas-header fa-times lg:text-2xl hidden"></i>
-                </button>
-                <!-- Responsive Navigation Menu -->
-                @auth
+            @auth
+                <div class="-mr-2 flex items-center sm:hidden h-8 w-8" @click="open = ! open">
+                    <button class="w-full h-full relative fas-link">
+                        <i :class="{'hidden': open, 'inline-flex': ! open }"
+                            class="fas fas-header fa-bars lg:text-2xl inline-flex"></i>
+                        <i :class="{'hidden': ! open, 'inline-flex': open }"
+                            class="fas fas-header fa-times lg:text-2xl hidden"></i>
+                    </button>
+                    <!-- Responsive Navigation Menu -->
                     <div :class="{'fixed top-14 left-0 right-0': open, 'hidden': ! open}"
                         class="hidden sm:hidden bg-white border-x border-gray-400 shadow-sm transition">
                         <!-- Responsive Settings Options -->
@@ -68,7 +68,7 @@
                                     :active="request()->routeIs('pedidos.index')">
                                     Mis pedidos
                                 </x-jet-responsive-nav-link>
-                                @if (auth()->user()->tienda == null)
+                                @if (auth()->user()->tienda == null and auth()->user()->rol == 3)
                                     <x-jet-responsive-nav-link href="{{ route('tienda.create') }}"
                                         :active="request()->routeIs('tienda.create')">
                                         Crear mi tienda
@@ -79,45 +79,63 @@
                                     <div class="mt-3 text-xs text-gray-400 block pl-3 pr-4 py-2 border-t border-gray-200">
                                         {{ __('Manage Shop') }}
                                     </div>
+                                    @if (Auth::user()->tienda)
+                                        <x-jet-responsive-nav-link href="{{ route('tienda.show') }}"
+                                            :active="request()->routeIs('tienda.show')">
+                                            Ver mi tienda
+                                        </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link
+                                            href="{{ route('tienda.edit', Auth::user()->tienda) }}"
+                                            :active="request()->routeIs('tienda.edit')">
+                                            Actualizar tienda
+                                        </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link href="{{ route('emprendedor.pedidos') }}"
+                                            :active="request()->routeIs('emprendedor.pedidos')">
+                                            Ver pedidos
+                                        </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link href="{{ route('tienda.productos') }}"
+                                            :active="request()->routeIs('tienda.productos*')">
+                                            Gestionar productos
+                                        </x-jet-responsive-nav-link>
 
-                                    <x-jet-responsive-nav-link href="{{ route('tienda.show') }}"
-                                        :active="request()->routeIs('tienda.show')">
-                                        Ver mi tienda
-                                    </x-jet-responsive-nav-link>
-
-                                    <x-jet-responsive-nav-link href="{{ route('tienda.edit',Auth::user()->tienda) }}"
-                                        :active="request()->routeIs('tienda.edit')">
-                                        Actualizar tienda
-                                    </x-jet-responsive-nav-link>
-
-                                    <x-jet-responsive-nav-link href="{{ route('emprendedor.pedidos') }}"
-                                        :active="request()->routeIs('emprendedor.pedidos')">
-                                        Ver pedidos
-                                    </x-jet-responsive-nav-link>
-
-                                    <x-jet-responsive-nav-link href="{{ route('tienda.productos') }}"
-                                        :active="request()->routeIs('tienda.productos*')">
-                                        Gestionar productos
-                                    </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link href="{{ route('informes.rotacion') }}"
+                                            :active="request()->routeIs('informes.rotacion')">
+                                            Informe de rotación
+                                        </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link href="{{ route('informes.ingresos') }}"
+                                            :active="request()->routeIs('informes.ingresos')">
+                                            Informe de ingresos
+                                        </x-jet-responsive-nav-link>
+                                    @else
+                                        <form method="POST" action="{{ route('tienda.activar') }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit"
+                                                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">
+                                                Activar tienda
+                                            </button>
+                                        </form>
+                                    @endif
                                 @endif
 
                                 <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}">
+                                <form method="POST" action="{{ route('logout') }}" class="mt-3 border-t border-gray-200">
                                     @csrf
                                     <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
+                                                                                this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-responsive-nav-link>
                                 </form>
                             </div>
                         </div>
                     </div>
-                @endauth
-            </div>
+                </div>
+            @endauth
+
         </div>
     </div>
     <x-nav />
-    <div x-show="carrito" x-transition class="fixed top-0 bg-black2-50 w-full h-full z-100 carrito-fijo">
+    <div x-show="carrito" x-transition class="fixed top-0 bg-black2-50 w-full h-full z-100 carrito-fijo" style="display: none;">
         @livewire('carrito-desplegable')
     </div>
     <x-menu-responsive />

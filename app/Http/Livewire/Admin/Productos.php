@@ -18,7 +18,7 @@ class Productos extends DataTableComponent
     return [
       Column::make('Imagen', 'imagen')
         ->format(function ($value, $column, $row) {
-          return view('admin.imagen_producto')->withProducto($row);
+          return view('admin.imagen-producto')->withProducto($row);
         }),
       Column::make('Nombre', 'nombre')
         ->sortable()
