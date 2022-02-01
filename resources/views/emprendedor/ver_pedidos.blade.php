@@ -213,6 +213,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
                 <h1 class="font-bold text-lg ">Valoración del pedido</h1>
                 <div class=" m-3 ">
@@ -226,6 +227,8 @@
                     <span>{!! $pedido->calificacion->contenido !!}</span>
                 </div>
             </div>
+
+            
         </div>
     </main>
 

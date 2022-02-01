@@ -32,7 +32,6 @@
                             </x-boton>
                         </div>
                     </div>
-                    {{-- @livewire('emprendedor.color-producto', ['size' => $size], key('color-size-' . $size->id)) --}}
                     @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-talla-' . $talla->id))
                 </li>
                 @endforeach

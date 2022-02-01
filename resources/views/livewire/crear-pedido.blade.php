@@ -5,41 +5,38 @@
             <div class="bg-white rounded-lg shadow p-6 ">
                 <div class="mb-4">
                     <x-jet-label value="Nombre de contácto" />
-                    <x-jet-input type="text" placeholder="Ingrese el nombre de la persona que recibirá el producto"
+                    <x-jet-input type="text" placeholder="Ingresa el nombre de la persona que recibirá el producto"
                         class="w-full" wire:model="contacto" />
                     <x-jet-input-error for="contacto" />
                 </div>
                 <div>
                     <x-jet-label value="Teléfono de contacto" />
-                    <x-jet-input type="text" placeholder="Ingrese un número de telefono de contácto"
+                    <x-jet-input type="text" placeholder="Ingresa un número de telefono de contácto"
                         class="w-full" wire:model="telefono" />
                     <x-jet-input-error for="telefono" />
                 </div>
             </div>
             <div class="mt-6 grid grid-cols-2 gap-6 bg-white rounded-lg shadow p-6">
-                {{-- Departamentos --}}
                 <div>
                     <x-jet-label value="Departamento" />
                     <select class="form-control w-full" wire:model="departamento_id">
-                        <option value="" disabled selected>Seleccione un Departamento</option>
+                        <option value="" disabled selected>Selecciona un Departamento</option>
                         @foreach ($departamentos as $departamento)
                             <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
                         @endforeach
                     </select>
                     <x-jet-input-error for="departamento_id" />
                 </div>
-                {{-- Ciudades --}}
                 <div>
                     <x-jet-label value="Ciudad" />
                     <select class="form-control w-full" wire:model="ciudad_id">
-                        <option value="" disabled selected>Seleccione una ciudad</option>
+                        <option value="" disabled selected>Selecciona una ciudad</option>
                         @foreach ($ciudades as $ciudad)
                             <option value="{{ $ciudad->id }}">{{ $ciudad->nombre }}</option>
                         @endforeach
                     </select>
                     <x-jet-input-error for="ciudad_id" />
                 </div>
-                {{-- Dirección --}}
                 <div class="col-span-2">
                     <x-jet-label value="Dirección" />
                     <x-jet-input class="w-full" type="text" wire:model="direccion" />
@@ -96,7 +93,7 @@
                                 Envío a domicilio
                             </span>
                             <span class="font-semibold text-red-600 ml-auto">
-                                Debe seleccionar una ciudad
+                                Debes seleccionar una ciudad
                             </span>
                         </label>
                     @endif

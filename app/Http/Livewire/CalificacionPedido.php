@@ -16,7 +16,7 @@ class CalificacionPedido extends Component
     {
         return [
             'calificacion.calificacion' => 'required | numeric | min:1 | max:5',
-            'calificacion.contenido' => 'max:190',
+            'calificacion.contenido' => 'max:255',
             'calificacion.pedido_id' => 'required',
         ];
     }

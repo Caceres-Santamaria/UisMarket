@@ -1,5 +1,4 @@
 <div class="ml-auto">
-    {{-- {{ dd($calificacion->id) }} --}}
     <x-boton class="bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 focus:border-yellow-500 p-1 md:p-2"
         wire:loading.attr="disabled" wire:click="$set('modal',true)">
         @if ($calificacion->id)
@@ -36,7 +35,6 @@
                 </form>
                 <x-jet-input-error for="calificacion.calificacion" />
             </div>
-            {{-- <pre>{{ $calificacion->contenido }}</pre> --}}
             <div class="bg-white rounded-lg shadow p-6">
                 <div wire:ignore>
                     <x-jet-label value="Comentario" />

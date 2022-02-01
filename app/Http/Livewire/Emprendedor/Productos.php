@@ -37,7 +37,7 @@ class Productos extends DataTableComponent
                 ->format(function ($value, $column, $row) {
                     return view('emprendedor.descuento')->withProducto($row);
                 }),
-                Column::make('Estado', 'estado')
+                Column::make('Estado', 'publicacion')
                 ->sortable()
                 ->format(function ($value, $column, $row) {
                     return view('emprendedor.estado_pub_producto')->withProducto($row);
@@ -52,7 +52,7 @@ class Productos extends DataTableComponent
 
     public function query(): Builder
     {
-        return Producto::query()->where('tienda_id',auth()->user()->tienda->id)->withTrashed();
+        return Producto::query()->where('tienda_id',auth()->user()->tienda->id);
     }
 
     public function eliminar($id)

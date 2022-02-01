@@ -28,4 +28,5 @@ class ProductoController extends Controller
         $nombre = request()->nombre;
         return view('productos.promociones',compact(['sort_by','nombre']));
     }
+    
 }

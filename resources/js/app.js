@@ -19,7 +19,7 @@ window.simpleAlert = function (position, icon, title, text, boton, timer = undef
     })
 }
 
-window.confirmacionUserAlert = function (id, type, message) {
+window.confirmacionUserAlert = function (id, type, message,funcion = 'eliminar') {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -39,7 +39,7 @@ window.confirmacionUserAlert = function (id, type, message) {
     }).then((result) => {
         if (result.isConfirmed) {
             if (type == 'inhabilitar') {
-                Livewire.emit('eliminar', id);
+                Livewire.emit(funcion, id);
             } else {
                 Livewire.emit('activar', id);
             }
