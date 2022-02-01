@@ -17,6 +17,9 @@ Route::patch('tienda/', [TiendaController::class, 'activar'])->name('tienda.acti
 Route::delete('tienda/', [TiendaController::class, 'desactivar'])->name('tienda.desactivar');
 
 Route::get('tienda/productos', [ProductoController::class, 'index'])->name('tienda.productos');
+
+Route::view('tienda/productos/eliminados', 'emprendedor.prod-eliminados')->name('tienda.productos-eliminados');
+
 Route::get('tienda/productos/crear', CrearProducto::class)->name('tienda.productos.crear');
 Route::get('tienda/productos/editar/{producto}', EditarProducto::class)->name('tienda.productos.editar');
 Route::post('tienda/productos/imagenes/{producto}', [ProductoController::class, 'store'])->name('tienda.productos.imagenes');

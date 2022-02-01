@@ -1,4 +1,3 @@
-{{-- {{ dd($productos) }} --}}
 <div class="w-full">
     <div class="bg-white rounded-lg shadow-lg mb-6">
         <div class="px-6 py-2 flex justify-between items-center">

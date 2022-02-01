@@ -29,13 +29,13 @@
             <div class="mb-4">
                 <x-jet-label value="Nombre" />
                 <x-jet-input type="text" class="w-full" wire:model="producto.nombre"
-                    placeholder="Ingrese el nombre del producto" />
+                    placeholder="Ingresa el nombre del producto" />
                 <x-jet-input-error for="producto.nombre" />
             </div>
             <div class="mb-4">
                 <x-jet-label value="Slug" />
                 <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
-                    placeholder="Ingrese el slug del producto" />
+                    placeholder="Ingresa el slug del producto" />
                 <x-jet-input-error for="slug" />
             </div>
             <div class="mb-4">
@@ -96,7 +96,7 @@
                     <x-jet-label value="Categoría" />
                     <select wire:model="producto.categoria_id"
                         class="w-full form-control border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="" selected disabled>Seleccione una categoría</option>
+                        <option value="" selected disabled>Selecciona una categoría</option>
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                         @endforeach

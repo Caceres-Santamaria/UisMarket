@@ -8,7 +8,6 @@
         </x-slot>
         <x-slot name="content">
             <div class="bg-white rounded-lg shadow p-6">
-              {{-- @php($calificaciones = $tienda->calificaciones()->where('contenido','<>', null)->paginate(1)) --}}
                 @forelse ($tienda->calificaciones()->where('contenido','<>', null)->paginate(1) as $calificacion)
                     <div class="w-full border border-gray-300 mb-8 p-3 flex justify-between items-center">
                         <div class="border-r border-gray-200">

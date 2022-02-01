@@ -90,7 +90,7 @@
 
                 @if ($pedido->tipo_envio == 1)
                     <p class="text-sm">Los productos deben ser recogidos en tienda</p>
-                    <p class="text-sm">direccioón de la tienda</p>
+                    <p class="text-sm">dirección de la tienda</p>
                 @else
                     <p class="text-sm">Los productos serán enviados a:</p>
                     <p class="text-sm">{{ $envio->direccion }} - {{ $envio->especificacion }}</p>

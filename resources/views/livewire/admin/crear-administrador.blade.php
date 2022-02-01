@@ -4,25 +4,25 @@
     <div class="mb-4 ">
         <label>Nombre*</label>
         <x-jet-input type="text" class="w-11/12" wire:model="user.name"
-            placeholder="Ingrese el nombre del nuevo administrador" />
+            placeholder="Ingresa el nombre del nuevo administrador" />
         <x-jet-input-error for="user.name" class="mt-2" />
     </div>
     <div class="mb-4 ">
         <label>Correo electrónico*</label>
         <x-jet-input type="text" class="w-11/12" wire:model="user.email"
-            placeholder="Ingrese el correo electrónico" />
+            placeholder="Ingresa el correo electrónico" />
         <x-jet-input-error for="user.email" class="mt-2" />
     </div>
     <div class="mb-4 ">
         <label>Contraseña*</label>
         <x-jet-input type="password" class="w-11/12" wire:model="user.password"
-            placeholder="Ingrese la contraseña" />
+            placeholder="Ingresa la contraseña" />
         <x-jet-input-error for="user.password" class="mt-2" />
     </div>
     <div class="mb-4 ">
         <label>Confirmar contraseña*</label>
         <x-jet-input type="password" class="w-11/12" wire:model="password_confirmation"
-            placeholder="Ingrese la contraseña" />
+            placeholder="Ingresa la contraseña" />
     </div>
 
     <div class="flex justify-center content-center mb-3 mt-8">
