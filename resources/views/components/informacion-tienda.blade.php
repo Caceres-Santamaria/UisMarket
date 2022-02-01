@@ -5,12 +5,6 @@
     <h2 class="font-bold text-2xl pb-4">Información</h2>
     <div class="text-base m-3">
         <div class="mb-4 w-full flex justify-start items-center">
-            <i class="pr-3 fas fa-book-open"></i>
-            <p class="mb-4">
-                {!! $tienda->descripcion !!}
-            </p>
-        </div>
-        <div class="mb-4 w-full flex justify-start items-center">
             <i class="pr-3 fas fa-phone-alt"></i>{{ $tienda->telefono }}
         </div>
         @if ($tienda->direccion)
@@ -20,6 +14,12 @@
         @endif
         <div class="mb-4 w-full flex justify-start items-center">
             <i class="pr-3 fas fa-envelope"></i>{{ $tienda->email }}
+        </div>
+        <div class="mb-4 w-full flex justify-start items-start">
+            <i class="pr-3 fas fa-book-open"></i>
+            <p class="mb-4">
+                {!! $tienda->descripcion !!}
+            </p>
         </div>
     </div>
 </div>

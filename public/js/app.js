@@ -5548,6 +5548,7 @@ window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // const Swal = window.Swal = require('sweetalert2');
 
 
+window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default());
 
 window.simpleAlert = function (position, icon, title, text, boton) {
   var timer = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;

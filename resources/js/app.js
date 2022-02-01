@@ -8,6 +8,7 @@ Alpine.start();
 
 // const Swal = window.Swal = require('sweetalert2');
 import Swal from "sweetalert2";
+window.Swal = Swal;
 window.simpleAlert = function (position, icon, title, text, boton, timer = undefined) {
     Swal.fire({
         position: position == 'na' ? 'center' : position,

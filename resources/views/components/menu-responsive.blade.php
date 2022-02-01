@@ -1,4 +1,4 @@
-<div x-show="menu" x-transition x-data="{ categoria : false}"
+<div x-show="menu" x-transition x-data="{ categoria : false}" style="display: none;"
 class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
     <div @click.outside="menu = false; categoria = false" class="left-0 relative top-0 bottom-0 text-black bg-white w-80 h-full m-0">
         <div
