@@ -6,8 +6,8 @@
             </h2>
             <div class="flex justify-center flex-col gap-4 md:flex-row">
                 @if ($eliminados > 0)
-                    <x-boton-enlace class="text-center w-32 sm:w-auto bg-zinc-500 hover:bg-zinc-400 active:bg-zinc-600 focus:border-zinc-600" :active="true" :href="route('tienda.productos.crear')">
-                        Restaurar Producto
+                    <x-boton-enlace class="text-center w-32 sm:w-auto bg-zinc-500 hover:bg-zinc-400 active:bg-zinc-600 focus:border-zinc-600" :active="true" :href="route('tienda.productos.eliminados')">
+                        Restaurar Productos
                     </x-boton-enlace>
                 @endif
                 <x-boton-enlace class="text-center w-32 sm:w-auto" :href="route('tienda.productos.crear')">
@@ -18,9 +18,4 @@
 
         @livewire('emprendedor.productos')
     </div>
-    <script>
-        window.addEventListener('successProductoAlert', (e) => {
-            successUserAlert(e.detail);
-        });
-    </script>
 </x-app2-layout>

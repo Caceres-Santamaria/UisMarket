@@ -19,21 +19,21 @@
         <section>
             <ul class="mt-12 space-y-4">
                 @foreach ($producto->tallas as $talla)
-                <li class="bg-gray-100 shadow-xl rounded-lg p-6 mb-4 border border-gray-50" wire:key="talla-producto-{{ $talla->id }}">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-xl font-medium">Talla {{ $talla->nombre }}</h3>
-                        <div>
-                            <x-boton active="true" class="bg-orange-500 hover:bg-orange-400 active:bg-orange-600 focus:border-orange-600" wire:click="edit({{ $talla->id }})" wire:loading.attr="disabled" wire:target="edit({{ $talla->id }})">
-                                <i class="fas fa-edit"></i>
-                            </x-boton>
-                            <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
-                            :active="true" wire:click="$emit('eliminarTalla', {{ $talla->id }})">
-                                <i class="fas fa-trash"></i>
-                            </x-boton>
+                    <li class="bg-gray-100 shadow-xl rounded-lg p-6 mb-4 border border-gray-50" wire:key="talla-producto-{{ $talla->id }}">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-medium">Talla {{ $talla->nombre }}</h3>
+                            <div>
+                                <x-boton active="true" class="bg-orange-500 hover:bg-orange-400 active:bg-orange-600 focus:border-orange-600" wire:click="edit({{ $talla->id }})" wire:loading.attr="disabled" wire:target="edit({{ $talla->id }})">
+                                    <i class="fas fa-edit"></i>
+                                </x-boton>
+                                <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
+                                :active="true" wire:click="$emit('eliminarTalla', {{ $talla->id }})">
+                                    <i class="fas fa-trash"></i>
+                                </x-boton>
+                            </div>
                         </div>
-                    </div>
-                    @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-talla-' . $talla->id))
-                </li>
+                        @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => $talla], key('color-talla-' . $talla->id))
+                    </li>
                 @endforeach
             </ul>
             <x-jet-dialog-modal wire:model="open">
@@ -56,5 +56,4 @@
             </x-jet-dialog-modal>
         </section>
     @endif
-
 </div>

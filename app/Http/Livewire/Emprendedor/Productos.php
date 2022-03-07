@@ -4,14 +4,12 @@ namespace App\Http\Livewire\Emprendedor;
 
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Producto;
-use App\Models\ImagenProducto;
 use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class Productos extends DataTableComponent
 {
-    protected $listeners = ['eliminar', 'activar'];
 
     public function columns(): array
     {
@@ -52,18 +50,5 @@ class Productos extends DataTableComponent
     public function query(): Builder
     {
         return Producto::query()->where('tienda_id',auth()->user()->tienda->id);
-    }
-
-    public function eliminar($id)
-    {
-        $producto = Producto::where('id', $id)->first();
-        $producto->delete();
-        $this->dispatchBrowserEvent('successProductoAlert', 'inhabilitar');
-    }
-
-    public function activar($id)
-    {
-        $producto = Producto::where('id', $id)->restore();
-        $this->dispatchBrowserEvent('successProductoAlert', 'habilitar');
     }
 }

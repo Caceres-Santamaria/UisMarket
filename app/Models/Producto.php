@@ -6,14 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Searchable;
 
 class Producto extends Model
 {
+    use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'productos';
 
     const BORRADOR = 1;
     const PUBLICADO = 2;
+    const SUSPENDIDO = 3;
 
     // protected $with = ['imagenes'];
 
@@ -149,5 +152,15 @@ class Producto extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+        /**
+     * Get the name of the index associated with the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'productos';
     }
 }

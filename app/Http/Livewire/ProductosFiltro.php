@@ -39,7 +39,6 @@ class ProductosFiltro extends Component
     public function render()
     {
         $productos = $this->busqueda();
-
         return view('livewire.productos-filtro', compact('productos'));
     }
 }

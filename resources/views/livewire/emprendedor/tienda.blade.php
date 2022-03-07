@@ -3,7 +3,7 @@
 @endpush
 <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8">
-        {{ $tienda->id == null ? 'Completa esta información para crear tu tienda' : 'Completa esta información para modificar tu tienda' }}
+        {{ $tienda->id == null? 'Completa esta información para crear tu tienda': 'Completa esta información para modificar tu tienda' }}
     </h1>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
         <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
@@ -22,7 +22,7 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Departamento*" />
             <select class="form-control w-full" wire:model="departamento_id">
-                <option value="" disabled selected >Selecciona un Departamento {{-- $departamento_id==''?'selected':'' --}}
+                <option value="" disabled selected>Selecciona un Departamento {{-- $departamento_id==''?'selected':'' --}}
                 </option>
                 @foreach ($departamentos as $departamento)
                     <option value="{{ $departamento->id }}">{{ $departamento->nombre }} {{-- $departamento_id==$departamento->id?'selected':'' --}}
@@ -34,10 +34,10 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Ciudad*" />
             <select class="form-control w-full" wire:model="tienda.ciudad_id">
-                <option value="" disabled selected >Selecciona una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
+                <option value="" disabled selected>Selecciona una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
                 </option>
                 @foreach ($ciudade as $ciudad)
-                    <option value="{{ $ciudad->id }}" > {{-- $tienda->ciudad_id==$ciudad->id?'selected':'' --}}
+                    <option value="{{ $ciudad->id }}"> {{-- $tienda->ciudad_id==$ciudad->id?'selected':'' --}}
                         {{ $ciudad->nombre }}</option>
                 @endforeach
             </select>
@@ -143,19 +143,26 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Link de Facebook" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.facebook"
-                placeholder="Ingresa el link de facebook" />
+            title="Ingresa el link de facebook"
+            placeholder="Ingresa el link de facebook" />
+            <x-jet-input-error for="tienda.facebook" class="mt-2" />
+        </div>
+        <div class="w-full mb-5 md:mb-0">
+            <x-jet-label value="Link de Messenger" />
+            <x-jet-input type="text" class="w-11/12" wire:model="tienda.messenger"
+                title="m.me/NombreUsuario ó messenger.com/t/NombreUsuario" placeholder="m.me/NombreUsuario" />
             <x-jet-input-error for="tienda.facebook" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Número de Whatsapp" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.whatsapp"
-                placeholder="Ingresa el número de contacto" />
+                title="Número de whatsapp" placeholder="Ingresa el número de contacto" />
             <x-jet-input-error for="tienda.whatsapp" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Usuario de Instagram" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.instagram"
-                placeholder="Ingresa el usuario sin arroba (@)" />
+                title="Usuario de Instagram sin (@)" placeholder="Ingresa el usuario sin arroba (@)" />
             <x-jet-input-error for="tienda.instagram" class="mt-2" />
         </div>
     </div>

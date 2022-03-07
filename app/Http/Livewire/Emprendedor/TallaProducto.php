@@ -27,9 +27,14 @@ class TallaProducto extends Component
         ];
     }
 
-    public function mount(Producto $producto)
+    public function mount(Producto $producto = null)
     {
-        $this->producto = $producto;
+        if($producto == null){
+            $this->producto = new Producto();
+        }
+        else{
+            $this->producto = $producto;
+        }
     }
 
     public function save()

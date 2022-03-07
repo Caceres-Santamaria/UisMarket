@@ -6,16 +6,16 @@ use Illuminate\View\Component;
 
 class filtroDesplegable extends Component
 {
-    public $filtros;
+    public array $filtros = [];
     public $sort;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($filtros = 'productos', $sort = 'Alfabéticamente: A-Z')
+    public function __construct($filtro = 'productos', $sort = 'Alfabéticamente: A-Z')
     {
-        if ($filtros == 'tiendas') {
+        if ($filtro == 'tiendas') {
             switch ($sort) {
                 case 'nombre_asc':
                     $this->sort = 'Alfabéticamente: A-Z';
@@ -47,7 +47,7 @@ class filtroDesplegable extends Component
                 'Mejor valoradas' => 'mejor_valoradas',
                 'Menor valoradas' => 'menor_valoradas'
             ];
-        } elseif ($filtros == 'productos') {
+        } elseif ($filtro == 'productos') {
             switch ($sort) {
                 case 'nombre_asc':
                     $this->sort = 'Alfabéticamente: A-Z';

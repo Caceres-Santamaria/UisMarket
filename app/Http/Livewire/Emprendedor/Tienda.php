@@ -40,6 +40,7 @@ class Tienda extends Component
             'tienda.facebook' => 'max:191',
             'tienda.whatsapp' => 'max:191',
             'tienda.instagram' => 'max:191',
+            'tienda.messenger' => 'max:191',
             'tienda.slug' => [
                 'required', 'alpha_dash',
                 Rule::unique('tiendas', 'slug')->ignore($this->tienda)
@@ -169,8 +170,8 @@ class Tienda extends Component
                     ]);
                 }
             }
-            if(auth()->user()->rol == 3){
-                User::where('id', auth()->user()->id)->update(['rol' => 2]);
+            if(auth()->user()->rol == '3'){
+                User::where('id', auth()->user()->id)->update(['rol' => '2']);
             }
             return redirect()->route('tienda.show');
         }else{

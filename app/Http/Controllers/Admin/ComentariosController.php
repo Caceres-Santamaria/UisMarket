@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class ComentariosController extends Controller
 {
-  public function index(Tienda $tienda){
-
-    return view('admin.comentarios', compact('tienda'));
-  }
+    public function index(Tienda $tienda)
+    {
+        return view('admin.comentarios', compact('tienda'));
+    }
 }

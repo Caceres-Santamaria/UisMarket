@@ -75,6 +75,13 @@
                                     </x-jet-responsive-nav-link>
                                 @endif
 
+                                @if (auth()->user()->rol == 0 or auth()->user()->rol == 1)
+                                    <x-jet-responsive-nav-link href="{{ route('admin.dashboard') }}"
+                                        :active="request()->routeIs('admin*')">
+                                        Administrar
+                                    </x-jet-responsive-nav-link>
+                                @endif
+
                                 @if (auth()->user()->rol == 2)
                                     <div class="mt-3 text-xs text-gray-400 block pl-3 pr-4 py-2 border-t border-gray-200">
                                         {{ __('Manage Shop') }}
@@ -122,7 +129,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="mt-3 border-t border-gray-200">
                                     @csrf
                                     <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                                this.closest('form').submit();">
+                                                                                    this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-responsive-nav-link>
                                 </form>
@@ -135,7 +142,8 @@
         </div>
     </div>
     <x-nav />
-    <div x-show="carrito" x-transition class="fixed top-0 bg-black2-50 w-full h-full z-100 carrito-fijo" style="display: none;">
+    <div x-show="carrito" x-transition class="fixed top-0 bg-black2-50 w-full h-full z-100 carrito-fijo"
+        style="display: none;">
         @livewire('carrito-desplegable')
     </div>
     <x-menu-responsive />

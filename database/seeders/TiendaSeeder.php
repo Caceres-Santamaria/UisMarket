@@ -15,13 +15,16 @@ class TiendaSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::all()->random(30);
+        $users = User::where('rol','<>',1)->where('rol','<>',0)->get()->random(20);
 
         foreach ($users as $user) {
             Tienda::factory(1)->create([
                 'user_id' => $user->id,
-                'ciudad_id' => $user->ciudad->id
+                'ciudad_id' => 1,
+                'estado' => '1'
             ]);
+            $user->rol = '2';
+            $user->save();
         }
     }
 }

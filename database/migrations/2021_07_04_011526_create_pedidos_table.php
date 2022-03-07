@@ -25,7 +25,7 @@ class CreatePedidosTable extends Migration
             $table->decimal('descuento', 10, 0);
             $table->decimal('total', 10, 0);
             $table->enum('estado', [Pedido::PENDIENTE,Pedido::PREPARANDO, Pedido::ENVIADO, Pedido::ENTREGADO, Pedido::CANCELADO])->default(Pedido::PENDIENTE);
-            $table->enun('cancelado_autor',[1,2])->nullable();//1=cliente 2=tienda
+            $table->enum('cancelado_autor',[1,2])->nullable();//1=cliente 2=tienda
             $table->enum('tipo_envio', [1, 2]);//1=recoge en tienda 2=domicilio
             $table->json('detalle');
             $table->unsignedTinyInteger('ciudad_id');

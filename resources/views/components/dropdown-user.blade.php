@@ -29,18 +29,24 @@
                 <span class="line-clamp-1">{{ Auth::user()->name }}</span>
             </div>
             <x-dropdown-link :href="route('profile.show')">
-                {{ __('Información personal') }}
+                Información personal
             </x-dropdown-link>
 
             <x-dropdown-link :href="route('pedidos.index')">
-                {{ __('Mis pedidos') }}
+                Mis pedidos
             </x-dropdown-link>
 
             <div class="border-t border-gray-100"></div>
 
             @if (auth()->user()->tienda == null and auth()->user()->rol == 3)
             <x-dropdown-link :href="route('tienda.create')">
-                {{ __('Crear mi tienda') }}
+                Crear mi tienda
+            </x-dropdown-link>
+            @endif
+
+            @if (auth()->user()->rol == 0 or auth()->user()->rol == 1)
+            <x-dropdown-link :href="route('admin.dashboard')">
+                Administrar
             </x-dropdown-link>
             @endif
 
@@ -51,7 +57,7 @@
                 @csrf
                 <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                    {{ __('Log Out') }}
+                    Finalizar sesión
                 </x-jet-dropdown-link>
             </form>
         </x-slot>

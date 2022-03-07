@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Tienda extends Model
 {
+    use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'tiendas';
-
+    const PENDIENTE = 0;
+    const VALIDADA = 1;
+    const SUSPENDIDA = 2;
     /**
      * Los descriptores de acceso que se agregarán a la forma de matriz del modelo.
      *
@@ -78,7 +82,7 @@ class Tienda extends Model
     }
 
     /**
-     * Obtiene todos los pedidos despachados por un tienda
+     * Obtiene todos los pedidos despachados por la tienda
      */
     public function pedidos()
     {
@@ -90,7 +94,7 @@ class Tienda extends Model
     }
 
     /**
-     * Obtienela ciudad a la que pertenece la tienda
+     * Obtiene la ciudad a la que pertenece la tienda
      */
     public function ciudad()
     {
@@ -102,7 +106,7 @@ class Tienda extends Model
     }
 
     /**
-     * Obtiene los envios que pertenecen a una tienda
+     * Obtiene los envíos que pertenecen a una tienda
      */
     public function envios()
     {
@@ -148,5 +152,10 @@ class Tienda extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function searchableAs()
+    {
+        return 'tiendas';
     }
 }

@@ -30,9 +30,14 @@ class ColorProducto extends Component
         'color_id' => "color",
     ];
 
-    public function mount(Producto $producto, $talla = null)
+    public function mount(Producto $producto = null, $talla = null)
     {
-        $this->producto = $producto;
+        if($producto == null){
+            $this->producto = new Producto();
+        }
+        else{
+            $this->producto = $producto;
+        }
         $this->colores = Color::all();
         if($talla == null){
             $this->talla = new Talla();
