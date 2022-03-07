@@ -11,11 +11,13 @@ class EstadoProducto extends Component
     public $producto, $publicacion;
     protected $listeners = ['mount'];
 
-    public function mount(){
+    public function mount(): void
+    {
         $this->publicacion = $this->producto->publicacion;
     }
 
-    public function save(){
+    public function save(): void
+    {
         Validator::make(
             ['publicacion' => $this->publicacion],
             ['publicacion' => 'required|in:1,2']
@@ -29,6 +31,13 @@ class EstadoProducto extends Component
             $this->producto->save();
             $this->emit('saved');
         }
+    }
+
+    public function revision(): void
+    {
+        $this->producto->revision  = true;
+        $this->producto->save();
+        $this->emit('revisado');
     }
 
     public function render()

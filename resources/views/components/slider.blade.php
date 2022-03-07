@@ -1,5 +1,5 @@
 <div class="w-full md:px-10 lg:px-10">
-    <div class="splide__container  ">
+    <div class="splide__container ">
         <div class="splide" id="{{ $id }}">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -7,9 +7,9 @@
                         @case('productos')
                             @foreach ($productos as $producto)
                                 <li class="splide__slide">
-                                    <div class=" card-producto border-gray-200 border-2 rounded-md p-1">
+                                    <div class="p-1 border-2 border-gray-200 rounded-md card-producto">
                                         <a href="{{ route('productos.show', $producto) }}"
-                                            class=" block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
+                                            class="relative block w-full h-cardsm md:h-cardmd lg:h-cardlg">
                                             @if ($producto->stock > 0 || $producto->descuento <= 0)
                                                 <div class="complements">
                                                     @if ($producto->stock <= 0)
@@ -33,16 +33,16 @@
                                                     </span>
                                                 </div>
                                             @endif
-                                            <img class="card-producto__img w-full h-full object-cover object-center"
+                                            <img class="object-cover object-center w-full h-full card-producto__img"
                                                 src="{{ Storage::url($producto->imagenes[0]->url) }}"
                                                 data-splide-lazy="{{ Storage::url($producto->imagenes[0]->url) }}" alt="">
                                         </a>
-                                        <div class="flex flex-col justify-center items-center">
+                                        <div class="flex flex-col items-center justify-center">
                                             <h5
-                                                class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm">
+                                                class="pt-1 text-sm text-center uppercase line-clamp-1 lg:text-sm">
                                                 {{ $producto->nombre }}
                                             </h5>
-                                            <p class="card-producto__precio text-center">
+                                            <p class="text-center card-producto__precio">
                                                 <span>{{ $producto->precio }}</span>
                                             </p>
                                         </div>
@@ -53,17 +53,17 @@
                         @case('destacadas')
                             @foreach ($destacadas as $tienda)
                                 <li class="splide__slide">
-                                    <div class=" card-producto border-gray-200 border-2 rounded-md p-1">
+                                    <div class="p-1 border-2 border-gray-200 rounded-md card-producto">
                                         <a href="{{ route('tiendas.show', $tienda->slug) }}"
-                                            class=" block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
-                                            <img class="card-producto__img w-full h-full object-cover object-center"
+                                            class="relative block w-full h-cardsm md:h-cardmd lg:h-cardlg">
+                                            <img class="object-cover object-center w-full h-full card-producto__img"
                                                 src="{{ Storage::url($tienda->logo) }}"
                                                 data-splide-lazy="{{ Storage::url($tienda->logo) }}"
                                                 alt="logo tienda {{ $tienda->nombre }}">
                                         </a>
-                                        <div class="flex flex-col justify-center items-center">
+                                        <div class="flex flex-col items-center justify-center">
                                             <h5
-                                                class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm">
+                                                class="pt-1 text-sm text-center uppercase line-clamp-1 lg:text-sm">
                                                 {{ $tienda->nombre }}
                                             </h5>
                                             <x-estrellas sizeestrella="text-xl"
@@ -77,18 +77,18 @@
                     @case('nuevas')
                         @foreach ($nuevas as $tienda)
                             <li class="splide__slide">
-                                <div class=" card-producto border-gray-200 border-2 rounded-md p-1">
+                                <div class="p-1 border-2 border-gray-200 rounded-md card-producto">
                                     <a href="{{ route('tiendas.show', $tienda) }}"
-                                        class=" block w-full h-cardsm relative md:h-cardmd lg:h-cardlg ">
+                                        class="relative block w-full h-cardsm md:h-cardmd lg:h-cardlg">
                                         @if ($tienda->logo)
-                                            <img class="card-producto__img w-full h-full object-cover object-center"
+                                            <img class="object-cover object-center w-full h-full card-producto__img"
                                                 src="{{ Storage::url($tienda->logo) }}"
                                                 data-splide-lazy="{{ Storage::url($tienda->logo) }}"
                                                 alt="logo tienda {{ $tienda->nombre }}">
                                         @else
-                                            <div class="flex justify-center items-center w-full h-full"
+                                            <div class="flex items-center justify-center w-full h-full"
                                                 style="background-color:rgb(186, 189, 194)">
-                                                <svg class="h-20 w-20 bg-white rounded-full"
+                                                <svg class="w-20 h-20 bg-white rounded-full"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                     style="fill: rgb(97, 105, 116);transform: ;msFilter:;">
                                                     <path
@@ -98,9 +98,9 @@
                                             </div>
                                         @endif
                                     </a>
-                                    <div class="flex flex-col justify-center items-center">
+                                    <div class="flex flex-col items-center justify-center">
                                         <h5
-                                            class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm">
+                                            class="pt-1 text-sm text-center uppercase line-clamp-1 lg:text-sm">
                                             {{ $tienda->nombre }}
                                         </h5>
                                     </div>

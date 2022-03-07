@@ -17,7 +17,9 @@ class Buscar extends Component
         }
         else{
             $productos = Producto::where('nombre','LIKE',"%".$this->busqueda."%")
-                                    ->where('publicacion',2);
+                ->where('publicacion',2)
+                ->whereRelation('tienda','deleted_at',null)
+                ->whereRelation('tienda','estado','1');
             $cantidad = $productos->count();
             $productos = $productos->take(6)
                                     ->get();

@@ -17,8 +17,7 @@ class ProductoController extends Controller
 
     public function show($producto){
         comprobarCategoria();
-        $producto = Producto::with(['colores','tallas'])->where('slug',$producto)->firstOrFail();
-        // return $producto->tallas[0]->colores;
+        $producto = Producto::with(['colores','tallas'])->whereRelation('tienda','deleted_at',null)->where('slug',$producto)->firstOrFail();
         return view('productos.show',compact('producto'));
     }
 
@@ -28,5 +27,5 @@ class ProductoController extends Controller
         $nombre = request()->nombre;
         return view('productos.promociones',compact(['sort_by','nombre']));
     }
-    
+
 }

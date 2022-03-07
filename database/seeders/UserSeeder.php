@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'Alexis Cáceres',
-            'slug' => Str::slug('Alexis Cáceres'),
-            'email' => 'alexis@gmail.com',
+            'email' => 'nelsonalexiscacerzcarreo37@gmail.com',
+            'rol' => '0',
             'password' => bcrypt('12345'),
         ]);
 
@@ -27,7 +27,18 @@ class UserSeeder extends Seeder
             'usuario_id' => $user->id
         ]);
 
-        User::factory(100)->create()->each(function(User $usuario){
+        $user2 = User::create([
+            'name' => 'Jenny Santamaría',
+            'email' => 'jennysantamaria06@gmail.com',
+            'rol' => '1',
+            'password' => bcrypt('12345'),
+        ]);
+
+        Direccion::factory(1)->create([
+            'usuario_id' => $user2->id
+        ]);
+
+        User::factory(50)->create()->each(function(User $usuario){
             Direccion::factory(1)->create([
                 'usuario_id' => $usuario->id
             ]);

@@ -11,7 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -20,6 +20,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use TwoFactorAuthenticatable;
 
+    const SUPERADMINISTRADOR = 0;
     const ADMINISTRADOR = 1;
     const EMPRENDEDOR = 2;
     const COMPRADOR = 3;
@@ -34,7 +35,7 @@ class User extends Authenticatable
         'email',
         'password',
         'ciudad_id',
-        'slug'
+        'rol'
     ];
 
     /**
@@ -119,13 +120,5 @@ class User extends Authenticatable
             'user_id',
             'id'
         );
-    }
-
-    /**
-     * Se utiliza el Slug como URL amigable
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }

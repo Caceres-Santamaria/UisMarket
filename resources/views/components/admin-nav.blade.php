@@ -8,7 +8,7 @@
             <i class="fas fa-bars"></i>
         </button>
         <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            href="">
+            href="{{ route('admin.dashboard') }}">
             Uis Market
         </a>
         @auth
@@ -20,7 +20,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-6/12">
                         <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                            href="">
+                            href="{{ route('admin.dashboard') }}">
                             Uis Market
                         </a>
                     </div>
@@ -33,14 +33,14 @@
                     </div>
                 </div>
             </div>
-            <form class="mt-6 mb-4 md:hidden">
+            {{-- <form class="mt-6 mb-4 md:hidden">
                 <div class="mb-3 pt-0">
                     <input type="text" placeholder="Search"
                         class=" px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
                 </div>
-            </form>
+            </form> --}}
             <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
+            {{-- <hr class="my-4 md:min-w-full" /> --}}
 
             <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 DASHBOARD
@@ -100,11 +100,16 @@
                     <a href="{{ route('admin.productos') }}"
                         class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.productos') }}">
                         <i class="fas fa-tshirt text-blueGray-300 mr-2 text-base"></i>
-                        gestionar productos
+                        Gestionar
                     </a>
                 </li>
-
-
+                <li class="items-center">
+                    <a href="{{ route('admin.productos.suspendidos') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.productos.suspendidos') }}">
+                        <i class="fas fa-eye-slash text-blueGray-300 mr-2 text-base"></i>
+                        Suspendidos
+                    </a>
+                </li>
             </ul>
 
             {{-- <!-- Divider -->

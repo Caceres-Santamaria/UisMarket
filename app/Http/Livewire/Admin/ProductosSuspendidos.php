@@ -2,18 +2,16 @@
 
 namespace App\Http\Livewire\Admin;
 
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\Producto;
-use Livewire\Component;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class Productos extends DataTableComponent
+class ProductosSuspendidos extends DataTableComponent
 {
-    protected $listeners = ['suspender'];
-    public string $defaultSortColumn = 'created_at';
+    protected $listeners = ['aprobar'];
+    public string $defaultSortColumn = 'revision';
     public string $defaultSortDirection = 'desc';
-
     public function columns(): array
     {
         return [
@@ -24,18 +22,23 @@ class Productos extends DataTableComponent
             Column::make('Nombre', 'nombre')
                 ->sortable()
                 ->searchable(),
-            Column::make('Creación', 'created_at')
+            Column::make('Modificado', 'updated_at')
                 ->sortable()
                 ->format(function ($value, $column, $row) {
                     return $value->diffForHumans();
                 }),
-            // Column::make('Categoría', 'categoria.nombre')
-            //     ->sortable(function(Builder $query, $direction){
-            //         return $query->orderBy(Categoria::select('nombre')->whereColumn('categorias.id', 'categoria_id'),$direction);
-            //     })
-            //     ->searchable(),
             Column::make('Tienda', 'tienda.nombre')
                 ->searchable(),
+            Column::make('Revisión', 'revision')
+                ->sortable()
+                ->format(function ($value, $column, $row) {
+                    if($value){
+                        return 'Sí';
+                    }
+                    else{
+                        return 'No';
+                    }
+                }),
             Column::make('Acciones')
                 ->format(function ($value, $column, $row) {
                     return view('admin.acciones_producto')->withProducto($row);
@@ -45,13 +48,14 @@ class Productos extends DataTableComponent
 
     public function query(): Builder
     {
-        return Producto::query()->where('publicacion','2');
+        return Producto::query()->where('publicacion', '3');
     }
 
-    public function suspender($id)
+    public function aprobar($id): void
     {
         $producto = Producto::where('id', $id)->first();
-        $producto->publicacion = '3';
+        $producto->publicacion = '2';
+        $producto->revision = '0';
         $producto->save();
     }
 }

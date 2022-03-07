@@ -27,7 +27,7 @@ class DapartamentoSeeder extends Seeder
             'slug' => Str::slug('Santander'),
         ]);
 
-        $ciudades = ['Bucaramanga','Giron','Piedecuesta'];
+        $ciudades = ['Bucaramanga','Giron','Piedecuesta','Floridablanca'];
         for($i = 0;$i<count($ciudades);$i++){
             Ciudad::create([
                 'nombre' => $ciudades[$i],

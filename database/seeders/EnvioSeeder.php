@@ -32,6 +32,11 @@ class EnvioSeeder extends Seeder
                 'ciudad_id' => 3,
                 'tienda_id' => $tienda->id
             ]);
+            Envio::create([
+                'costo' => random_int(3000,10000),
+                'ciudad_id' => 4,
+                'tienda_id' => $tienda->id
+            ]);
         }
     }
 }

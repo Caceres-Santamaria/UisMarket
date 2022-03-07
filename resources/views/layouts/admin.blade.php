@@ -30,7 +30,7 @@
     @stack('scriptHeader')
 </head>
 
-<body class="text-blueGray-700 antialiased">
+<body class="font-ModernSans antialiased text-black box-border w-full">
     <div id="root" x-data>
         <x-admin-nav />
         <div class="relative md:ml-64 bg-blueGray-50">

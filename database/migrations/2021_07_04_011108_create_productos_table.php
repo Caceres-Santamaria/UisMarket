@@ -16,15 +16,16 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',100);
+            $table->string('nombre',100)->index();
             $table->string('slug');
             $table->text('descripcion');
             $table->decimal('precio', 10, 0);
             $table->decimal('descuento', 3, 2)->default(0);
             $table->unsignedTinyInteger('categoria_id');
             $table->unsignedBigInteger('tienda_id');
-            $table->enum('estado', ['nuevo', 'usado']);
-            $table->enum('publicacion', [Producto::BORRADOR, Producto::PUBLICADO])->default(Producto::BORRADOR);
+            $table->enum('estado', ['nuevo', 'usado'])->index();
+            $table->enum('publicacion', [Producto::BORRADOR, Producto::PUBLICADO,Producto::SUSPENDIDO])->default(Producto::BORRADOR);
+            $table->boolean('revision')->default(false);
             $table->unsignedSmallInteger('cantidad')->nullable();
             $table->boolean('color')->default(false);
             $table->boolean('talla')->default(false);

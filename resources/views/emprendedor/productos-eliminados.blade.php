@@ -1,10 +1,15 @@
-<x-admin-layout title="Productos">
-    <div
-        class="max-w-full mx-auto px-4 sm:px-2 lg:px-8 w-full  relative bg-white rounded-md p-4 border border-gray-400 shadow-md">
-        @livewire('admin.productos')
+<x-app2-layout title="Productos eliminados">
+    <div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
+        <div class="flex items-center mb-10 justify-between">
+            <h2 class="font-semibold text-xl text-gray-600 leading-tight text-center md:text-left">
+                Lista de productos eliminados temporalmente
+            </h2>
+        </div>
+
+        @livewire('emprendedor.productos-eliminados')
     </div>
     <script>
-        const suspender = function(id) {
+        const accion = (type,id) => {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -12,21 +17,26 @@
                 },
                 buttonsStyling: true
             })
+
             swalWithBootstrapButtons.fire({
                 title: '¿Estás seguro?',
-                text: 'La publicación quedará suspendida',
+                text: (type == 'restaurar') ? 'El producto se restaurará' : 'El producto será eliminado permanentemente',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Sí, Suspender!',
+                confirmButtonText: (type == 'restaurar') ? 'Sí, restaurar!' : 'Sí, eliminar!',
                 cancelButtonText: 'No, cancelar!',
                 reverseButtons: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.emitTo('admin.productos', 'suspender', id);
+                    if (type == 'restaurar') {
+                        Livewire.emitTo('emprendedor.productos-eliminados', 'restore', id);
+                    } else if(type == 'eliminar') {
+                        Livewire.emitTo('emprendedor.productos-eliminados', 'delete', id);
+                    }
                     simpleAlert(
                         'center',
                         'success',
-                        'Publicación suspendida exitosamente',
+                        (type == 'restaurar') ? 'Producto restaurado exitosamente':'Producto eliminado definitivamente',
                         '',
                         false, 1900);
                 } else if (
@@ -41,4 +51,4 @@
             })
         }
     </script>
-</x-admin-layout>
+</x-app2-layout>

@@ -7,13 +7,15 @@
                 <form method="POST" action="{{ route('tienda.desactivar') }}">
                     @csrf
                     @method('DELETE')
-                    <x-boton type="submit" class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true">
+                    <x-boton type="submit" class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
+                        :active="true">
                         Desactivar tienda
                     </x-boton>
                 </form>
-                <x-boton-enlace href="{{ route('tienda.edit',auth()->user()->tienda) }}" class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600" :active="true">
+                <x-boton-enlace href="{{ route('tienda.edit', auth()->user()->tienda) }}"
+                    class="bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:border-blue-600" :active="true">
                     Modificar tienda
-                </x-boton>
+                    </x-boton>
             </div>
         @endif
         <div style="{{ fondo($tienda->fondo_img) }}"
@@ -42,29 +44,39 @@
                 </h1>
                 <x-estrellas sizeestrella="text-xl" estrellas="{{ round($tienda->calificacion[0]) }}"
                     calificaciones="{{ $tienda->calificacion[1] }}" />
-                <div class=" w-full line-clamp-5 text-sm text-center md:text-base lg:text-base lg:line-clamp-3 lg:px-20">
+                <div
+                    class=" w-full line-clamp-5 text-sm text-center md:text-base lg:text-base lg:line-clamp-3 lg:px-20">
                     {!! $tienda->descripcion !!}
                 </div>
             </div>
         </div>
         @livewire('productos-tiendas-filtro',['tienda' => $tienda])
         <!-- redes -->
-        @if ($tienda->facebook or $tienda->whatsapp or $tienda->instagram)
+        @if ($tienda->facebook or $tienda->whatsapp or $tienda->instagram or $tienda->messenger)
             <div
                 class="fixed right-0 top-1/4 text-2xl flex flex-col items-end z-100  md:text-3xl lg:top-2/4 lg:text-3xl">
                 @if ($tienda->facebook)
                     <a class="mb-1 redes-sociales rounded-tl-2xl bg-redes-fb" href="{{ $tienda->facebook }}"
-                        target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 @endif
                 @if ($tienda->whatsapp)
                     <a class="mb-1 redes-sociales bg-redes-ws"
-                        href="https://api.whatsapp.com/send/?phone=57{{ $tienda->whatsapp }}" target="_blank"><i
-                            class="fab fa-whatsapp"></i></a>
+                        href="https://api.whatsapp.com/send/?phone=57{{ $tienda->whatsapp }}" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                @endif
+                @if ($tienda->messenger)
+                <a class="mb-1 redes-sociales bg-redes-ms"
+                        href="{{ $tienda->messenger }}" target="_blank">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
                 @endif
                 @if ($tienda->instagram)
                     <a class="redes-sociales rounded-bl-2xl bg-redes-ig"
-                        href="https://www.instagram.com/{{ $tienda->instagram }}" target="_blank"><i
-                            class="fab fa-instagram"></i></a>
+                        href="https://www.instagram.com/{{ $tienda->instagram }}" target="_blank">
+                        <i class="fab fa-instagram"></i></a>
                 @endif
             </div>
         @endif

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Tienda;
 
 class CreateTiendasTable extends Migration
 {
@@ -23,15 +24,17 @@ class CreateTiendasTable extends Migration
             $table->string('direccion',100)->nullable();
             $table->string('telefono',10);
             $table->boolean('recoger_tienda')->default(0);
+            $table->enum('estado',[Tienda::PENDIENTE,Tienda::VALIDADA,Tienda::SUSPENDIDA])->default(Tienda::PENDIENTE);
             $table->string('email');
             $table->string('facebook')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('messenger')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedTinyInteger('ciudad_id');
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ciudad_id')->references('id')->on('ciudades');
         });
     }

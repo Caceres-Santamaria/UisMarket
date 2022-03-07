@@ -15,44 +15,44 @@
                     </ul>
                 </div>
             </div>
-            <h1 class="text-primario-n font-semibold text-2xl  lg:text-4xl flex justify-center my-4 lg:my-8"> UIS Market
+            <h1 class="flex justify-center my-4 text-2xl font-semibold text-primario-n lg:text-4xl lg:my-8"> UIS Market
             </h1>
-            <h1 class=" font-medium text-xl lg:text-3xl flex justify-center text-center mb-10 text-gray-600">Apoyamos
+            <h1 class="flex justify-center mb-10 text-xl font-medium text-center text-gray-600 lg:text-3xl">Apoyamos
                 las
                 marcas y emprendimientos UIS con el fin de activar la economía local.</h1>
-            <h2 class=" font-normal text-lg lg:text-2xl my-2 text-gray-600"> Tiendas destacadas </h2>
+            <h2 class="my-2 text-lg font-normal text-gray-600 lg:text-2xl"> Tiendas destacadas </h2>
             <div id="content-products" class="w-full">
                 @if ($destacadas->count() > 0)
-                    <x-slider id="destacadas" tipo="destacadas" :data="$destacadas" />
+                    <x-Slider id="destacadas" tipo="destacadas" :data="$destacadas" />
                     <div class="flex justify-center w-full mt-2">
                         <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mejor_valoradas"
-                            class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                            class="w-4/5 h-8 m-6 md:w-48 lg:w-48 lg:h-9">
                             Ver más tiendas
                         </x-boton-enlace>
                     </div>
                 @else
-                    <div class="w-full flex flex-col justify-start items-center">
+                    <div class="flex flex-col items-center justify-start w-full">
                         <x-svg.shopping />
-                        <h5 class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm text-gray-600">
+                        <h5 class="pt-1 text-sm text-center text-gray-600 uppercase line-clamp-1 lg:text-sm">
                             Aún no hay tiendas destacadas
                         </h5>
                     </div>
                 @endif
             </div>
-            <h2 class=" font-normal text-lg lg:text-2xl my-2 text-gray-600"> Nuevas tiendas </h2>
+            <h2 class="my-2 text-lg font-normal text-gray-600 lg:text-2xl"> Nuevas tiendas </h2>
             <div id="content-products" class="w-full">
                 @if($nuevas->count() > 0)
-                    <x-slider id="nuevas_tiendas" tipo="nuevas" :data="$nuevas" />
+                    <x-Slider id="nuevas_tiendas" tipo="nuevas" :data="$nuevas" />
                     <div class="flex justify-center w-full mt-2">
                         <x-boton-enlace href="{{ route('tiendas') }}?sort_by=mas_reciente"
-                            class="m-6 w-4/5 h-8 md:w-48 lg:w-48 lg:h-9">
+                            class="w-4/5 h-8 m-6 md:w-48 lg:w-48 lg:h-9">
                             Ver más tiendas
                         </x-boton-enlace>
                     </div>
                 @else
-                    <div class="w-full flex flex-col justify-start items-center">
+                    <div class="flex flex-col items-center justify-start w-full">
                         <x-svg.new-shopping />
-                        <h5 class="line-clamp-1 text-center uppercase text-sm pt-1 lg:text-sm text-gray-600">
+                        <h5 class="pt-1 text-sm text-center text-gray-600 uppercase line-clamp-1 lg:text-sm">
                             Aún no hay tiendas nuevas aún
                         </h5>
                     </div>

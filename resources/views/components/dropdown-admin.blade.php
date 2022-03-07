@@ -23,15 +23,15 @@
                 class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out border-b border-gray-400">
                 <div>{{ Auth::user()->name }}</div>
             </span>
-            <x-dropdown-link :href="route('profile.show')">
-                {{ __('Información personal') }}
+            <x-dropdown-link :href="route('admin.profile')">
+                Información personal
             </x-dropdown-link>
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                    {{ __('Logout') }}
+                    Finalizar Sesión
                 </x-dropdown-link>
             </form>
         </x-slot>

@@ -21,7 +21,7 @@ class CreateEnviosTable extends Migration
             $table->timestamps();
             $table->unique(['tienda_id','ciudad_id']);
             $table->foreign('ciudad_id')->references('id')->on('ciudades');
-            $table->foreign('tienda_id')->references('id')->on('tiendas');
+            $table->foreign('tienda_id')->references('id')->on('tiendas')->onDelete('cascade');
         });
     }
 

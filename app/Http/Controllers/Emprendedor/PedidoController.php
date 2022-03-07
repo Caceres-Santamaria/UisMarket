@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use Illuminate\Support\Facades\Mail;
 
-class pedidoController extends Controller
+class PedidoController extends Controller
 {
     public function index()
     {
@@ -36,7 +36,7 @@ class pedidoController extends Controller
     {
         $pedido->estado = 3;
         $pedido->save();
-        Mail::to("a1098818855@gmail.com")->queue(new PedidoEnviado($pedido,auth()->user()->tienda));
+//        Mail::to("a1098818855@gmail.com")->queue(new PedidoEnviado($pedido,auth()->user()->tienda));
         // return new PedidoEnviado($pedido,auth()->user()->tienda);
         // $pedido->usuario->email
         return back();

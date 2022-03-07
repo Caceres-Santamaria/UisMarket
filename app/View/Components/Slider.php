@@ -7,30 +7,30 @@ use App\Models\Tienda;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\Component;
 
-class slider extends Component
+class Slider extends Component
 {
     public $id;
-    public $productos;
+    public $productos = [];
     public $tipo;
-    public $nuevas;
-    public $destacadas;
+    public $nuevas = [];
+    public $destacadas = [];
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $tipo = "productos", $data = null)
+    public function __construct($id, $tipo = "productos", $data = [])
     {
         $this->id = $id;
         $this->tipo = $tipo;
-        switch ($tipo) {
-            case 'productos':
+        switch ($this->tipo) {
+            case "productos":
                 $this->productos = $data;
                 break;
-            case 'destacadas':
+            case "destacadas":
                 $this->destacadas = $data;
                 break;
-            case 'nuevas':
+            case "nuevas":
                 $this->nuevas = $data;
                 break;
             default:

@@ -5563,6 +5563,7 @@ window.simpleAlert = function (position, icon, title, text, boton) {
 };
 
 window.confirmacionUserAlert = function (id, type, message) {
+  var funcion = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'eliminar';
   var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
     customClass: {
       confirmButton: 'btn btn-success',
@@ -5581,7 +5582,7 @@ window.confirmacionUserAlert = function (id, type, message) {
   }).then(function (result) {
     if (result.isConfirmed) {
       if (type == 'inhabilitar') {
-        Livewire.emit('eliminar', id);
+        Livewire.emit(funcion, id);
       } else {
         Livewire.emit('activar', id);
       }
