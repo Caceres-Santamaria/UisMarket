@@ -3,7 +3,8 @@
         <div class="flex items-center justify-between px-6 py-2">
             <h1 class="font-semibold text-gray-700 uppercase">{{ $categoria ? $categoria->nombre : 'Productos' }}</h1>
             <div class="flex items-center justify-center">
-                <x-Filtro-desplegable class="w-52" />
+                <x-Filtro-estado class="w-20" />
+                <x-Filtro-desplegable class="w-48 sm:w-52" />
                 <x-tipo-vista :view="$view" />
             </div>
         </div>
