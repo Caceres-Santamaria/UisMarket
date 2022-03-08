@@ -3,6 +3,7 @@
         <div class="flex flex-col items-center px-6 py-2 md:flex-row md:justify-between">
             <x-Filtro-categoria class="w-4/5 mb-2 md:mb-0 md:w-52" />
             <div class="flex items-center justify-center w-full md:w-auto">
+              <x-Filtro-estado class="w-20" />
                 <x-Filtro-desplegable class="w-4/5 md:w-52" />
                 <x-tipo-vista :view="$view" />
             </div>
