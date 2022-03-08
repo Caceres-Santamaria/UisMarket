@@ -65,7 +65,7 @@
                         </h1>
                         <div class="flex items-center justify-center">
                             <x-Filtro-estado class="w-20" />
-                            <x-Filtro-desplegable class="w-4/5 md:w-52" />
+                            <x-Filtro-desplegable class="w-8 sm:w-48 md:w-52" />
                             <x-tipo-vista :view="$view" />
                         </div>
                     </div>

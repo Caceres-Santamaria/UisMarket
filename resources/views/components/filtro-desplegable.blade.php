@@ -6,7 +6,7 @@
         <i id="listaFiltro" class="fas fa-list"></i>
     </p>
     <ul x-show="open" @click.outside="open = false"
-        class="absolute  right-0 bg-gray-100 border border-gray-400 top-100-5 z-8" id="list-orderBy">
+        class="absolute  right-0 w-48 sm:w-52 bg-gray-100 border border-gray-400 top-100-5 z-8" id="list-orderBy">
         @foreach ($filtros as $filtro => $url)
             <li class="w-full h-8 leading-8 text-black border-b border-gray-200 hover:text-white hover:bg-black"
             @click="open = false; text = '{{ $filtro }}'">
