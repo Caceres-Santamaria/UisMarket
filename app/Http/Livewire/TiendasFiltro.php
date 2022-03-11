@@ -27,37 +27,37 @@ class TiendasFiltro extends Component
         switch ($this->sort_by) {
             case '':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->where('estado', '1')->orderBy('nombre', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('estado', '1')->orderBy('nombre', 'asc')->paginate(20);
                 }
                 break;
             case 'nombre_asc':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->where('estado', '1')->orderBy('nombre', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('estado', '1')->orderBy('nombre', 'asc')->paginate(20);
                 }
                 break;
             case 'nombre_desc':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('nombre', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->where('estado', '1')->orderBy('nombre', 'desc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::with('calificaciones')->orderBy('nombre', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('estado', '1')->orderBy('nombre', 'desc')->paginate(20);
                 }
                 break;
             case 'mas_reciente':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->where('estado', '1')->orderBy('created_at', 'desc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::with('calificaciones')->orderBy('created_at', 'desc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('estado', '1')->orderBy('created_at', 'desc')->paginate(20);
                 }
                 break;
             case 'menos_recientes':
                 if ($this->busqueda != '') {
-                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->orderBy('created_at', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('nombre','LIKE',"%".$this->busqueda."%")->where('estado', '1')->orderBy('created_at', 'asc')->paginate(20);
                 } else {
-                    $tiendas = Tienda::with('calificaciones')->orderBy('created_at', 'asc')->paginate(20);
+                    $tiendas = Tienda::with('calificaciones')->where('estado', '1')->orderBy('created_at', 'asc')->paginate(20);
                 }
                 break;
             case 'mejor_valoradas':
@@ -69,6 +69,7 @@ class TiendasFiltro extends Component
                             $join->on('p.id', '=', 'c.pedido_id');
                         })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
                         ->where('p.estado', '4')
+                        ->where('tiendas.estado', '1')
                         ->where('tiendas.nombre','LIKE',"%".$this->busqueda."%")
                         ->groupBy('id')
                         ->orderBy('calificaciones', 'desc')
@@ -81,6 +82,7 @@ class TiendasFiltro extends Component
                             $join->on('p.id', '=', 'c.pedido_id');
                         })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
                         ->where('p.estado', '4')
+                        ->where('tiendas.estado', '1')
                         ->groupBy('id')
                         ->orderBy('calificaciones', 'desc')
                         ->paginate(20);
@@ -95,6 +97,7 @@ class TiendasFiltro extends Component
                             $join->on('p.id', '=', 'c.pedido_id');
                         })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
                         ->where('p.estado', '4')
+                        ->where('tiendas.estado', '1')
                         ->where('tiendas.nombre','LIKE',"%".$this->busqueda."%")
                         ->groupBy('id')
                         ->orderBy('calificaciones', 'asc')
@@ -107,6 +110,7 @@ class TiendasFiltro extends Component
                             $join->on('p.id', '=', 'c.pedido_id');
                         })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
                         ->where('p.estado', '4')
+                        ->where('tiendas.estado', '1')
                         ->groupBy('id')
                         ->orderBy('calificaciones', 'asc')
                         ->paginate(20);

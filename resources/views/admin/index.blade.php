@@ -91,7 +91,17 @@
                 </div>
             </div>
         </div>
-
     </div>
-
+    @if (session()->has('message'))
+        <script>
+            window.addEventListener('DOMContentLoaded', e => {
+                simpleAlert(
+                    'center',
+                    'warning',
+                    '{{ session('message') }}',
+                    '',
+                    true);
+            });
+        </script>
+    @endif
 </x-admin-layout>

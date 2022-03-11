@@ -67,22 +67,37 @@
                     <a href="{{ route('admin.clientes') }}"
                         class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.clientes') }}">
                         <i class="fas fa-user mr-2 text-base opacity-75"></i>
-                        Clientes
+                        Usuarios
                     </a>
                 </li>
-
-                <li class="items-center">
-                    <a href="{{ route('admin.tiendas') }}"
-                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.tiendas') }}">
-                        <i class="fas fa-store mr-2 text-base text-blueGray-300"></i>
-                        TIENDAS
-                    </a>
-                </li>
-
                 <li class="items-center">
                     <a href="./tables.html" class="text-xs uppercase py-3 font-bold block">
                         <i class="fas fa-bell mr-2 text-base text-blueGray-300"></i>
                         Solicitudes (3)
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Divider -->
+            <hr class="my-4 md:min-w-full" />
+            <!-- Heading -->
+            <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                Tiendas
+            </h6>
+            <!-- Navigation -->
+            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li class="items-center">
+                    <a href="{{ route('admin.tiendas') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.tiendas') }}">
+                        <i class="fas fa-store mr-2 text-base text-blueGray-300"></i>
+                        Gestionar
+                    </a>
+                </li>
+                <li class="items-center">
+                    <a href="{{ route('admin.tiendas.suspendidas') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.tiendas.suspendidas') }}">
+                        <i class="fas fa-eye-slash text-blueGray-300 mr-2 text-base"></i>
+                        Suspendidas
                     </a>
                 </li>
             </ul>
@@ -148,21 +163,23 @@
             </ul>
 
             <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
-            <!-- Heading -->
-            <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                cuentas administradoras
-            </h6>
-            <!-- Navigation -->
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-                <li class="inline-flex">
-                    <a href="{{ route('admin.administradores') }}"
-                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.administradores') }}">
-                        <i class="fas fa-users-cog mr-2 text-blueGray-300 text-base"></i>
-                        gestionar cuentas
-                    </a>
-                </li>
-            </ul>
+            @if (auth()->user()->rol == '0')
+                <hr class="my-4 md:min-w-full" />
+                <!-- Heading -->
+                <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                    cuentas administradoras
+                </h6>
+                <!-- Navigation -->
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                    <li class="inline-flex">
+                        <a href="{{ route('admin.administradores') }}"
+                            class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.administradores') }}">
+                            <i class="fas fa-users-cog mr-2 text-blueGray-300 text-base"></i>
+                            gestionar cuentas
+                        </a>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
 </nav>

@@ -96,6 +96,13 @@ class Tienda extends Component
         $this->tienda->ciudad_id = "";
     }
 
+    public function updatedTiendaDireccion()
+    {
+      if($this->tienda->direccion == ''){
+        $this->tienda->recoger_tienda = 0;
+      }
+    }
+
     public function uploadLogo()
     {
         if ($oldLogo = $this->tienda->logo) {
