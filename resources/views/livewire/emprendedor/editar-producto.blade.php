@@ -7,25 +7,25 @@
 @endpush
 <main class="grid-in-contenido">
     <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-                <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-semibold leading-tight text-gray-800">
                     Actualizar producto
                 </h1>
 
                 <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true"
                     wire:click="$emit('eliminarProducto')">
-                    <i class="fas fa-trash mr-1"></i> Eliminar
+                    <i class="mr-1 fas fa-trash"></i> Eliminar
                 </x-boton>
             </div>
         </div>
     </header>
-    <div class="w-full md:w-3/4 md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-        {{-- <h1 class="text-xl md:text-2xl lg:text-3xl text-center font-semibold mb-8">
+    <div class="w-full px-4 py-12 mx-auto text-gray-700 md:w-3/4 md:max-w-4xl sm:px-6 lg:px-8">
+        {{-- <h1 class="mb-8 text-xl font-semibold text-center md:text-2xl lg:text-3xl">
             Complete esta información para actualizar el producto
         </h1> --}}
         @livewire('emprendedor.estado-producto',['producto' => $producto], key('estado-producto-' . $producto->id))
-        <section class="bg-white rounded-lg shadow p-6 mb-4">
+        <section class="p-6 mb-4 bg-white rounded-lg shadow">
             <div class="mb-4">
                 <x-jet-label value="Nombre" />
                 <x-jet-input type="text" class="w-full" wire:model="producto.nombre"
@@ -37,6 +37,19 @@
                 <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
                     placeholder="Ingresa el slug del producto" />
                 <x-jet-input-error for="slug" />
+            </div>
+            <div class="mb-4">
+                <x-jet-label value="Descuento (0-1)" />
+                <x-jet-input type="number" wire:model="producto.descuento" class="w-full"
+                    placeholder="Ingresa el porcentaje de descuento del producto" min="0" max="1" step="0.01" />
+                <x-jet-input-error for="producto.descuento" />
+            </div>
+            <div class="mb-4">
+                <x-jet-label value="Descuento Real" />
+                <div class="flex flex-col items-start content-start justify-start w-auto">
+                    <span class="flex items-center justify-center w-20 h-8 text-sm font-bold text-white rounded-md lg:text-base bg-producto-descuento lg:w-28">{{ intval((($producto->descuento) == '' ? 0 : $producto->descuento) * 100) }}
+                        % OFF</span>
+                </div>
             </div>
             <div class="mb-4">
                 <x-jet-label value="Condición o estado" />
@@ -56,7 +69,7 @@
                 <div wire:ignore>
                     <x-jet-label value="Descripción" />
                     <textarea maxlength="65534" wire:model="producto.descripcion"
-                        class="w-full h-32 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        class="w-full h-32 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         x-data x-init="ClassicEditor.create($refs.editor, {
                             toolbar: {
                                 items: [
@@ -91,11 +104,11 @@
                 </div>
                 <x-jet-input-error for="producto.descripcion" />
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
+            <div class="grid grid-cols-1 gap-6 mb-4 sm:grid-cols-2">
                 <div>
                     <x-jet-label value="Categoría" />
                     <select wire:model="producto.categoria_id"
-                        class="w-full form-control border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        class="w-full border-gray-300 rounded-md shadow-sm form-control focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value="" selected disabled>Selecciona una categoría</option>
                         @foreach ($categorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
@@ -116,7 +129,7 @@
                     <x-jet-input-error for="producto.cantidad" />
                 </div>
             @endif
-            <div class="flex justify-end items-center mt-4">
+            <div class="flex items-center justify-end mt-4">
                 <x-jet-action-message class="mr-3" on="saved">
                     Actualizado
                 </x-jet-action-message>
@@ -125,26 +138,26 @@
                 </x-boton>
             </div>
         </section>
-        <section class="bg-white shadow-xl rounded-lg p-6 mb-4" wire:ignore>
-            <h2 class="text-xl text-center font-semibold mb-2">Subir imágenes</h2>
-            <div class="mb-4 mt-1 flex justify-center px-3 pt-3 pb-3 border-2 border-gray-300 border-dashed rounded-md">
+        <section class="p-6 mb-4 bg-white rounded-lg shadow-xl" wire:ignore>
+            <h2 class="mb-2 text-xl font-semibold text-center">Subir imágenes</h2>
+            <div class="flex justify-center px-3 pt-3 pb-3 mt-1 mb-4 border-2 border-gray-300 border-dashed rounded-md">
                 <form action="{{ route('tienda.productos.imagenes', $producto) }}" method="POST"
-                    class="dropzone w-full border-1 border-gray-100 rounded-md" id="my-dropzone"></form>
+                    class="w-full border-gray-100 rounded-md dropzone border-1" id="my-dropzone"></form>
             </div>
             <x-jet-input-error for="file" />
-            <span class="text-xs text-yellow-600 font-semibold"><i class="fas fa-exclamation-triangle"></i> Sólo puedes
+            <span class="text-xs font-semibold text-yellow-600"><i class="fas fa-exclamation-triangle"></i> Sólo puedes
                 adjuntar máximo 10 imágenes de este producto</span>
         </section>
         @if ($producto->imagenes->count() > 0)
-            <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
-                <h2 class="text-xl text-center font-semibold mb-2">Imagenes del producto</h2>
-                <ul class="flex flex-wrap gap-2 justify-center">
+            <section class="p-6 mb-4 bg-white rounded-lg shadow-xl">
+                <h2 class="mb-2 text-xl font-semibold text-center">Imagenes del producto</h2>
+                <ul class="flex flex-wrap justify-center gap-2">
                     @foreach ($producto->imagenes as $imagen)
                         <li class="relative" wire:key="image-{{ $imagen->id }}">
-                            <img class="w-32 h-32 object-cover object-top" src="{{ Storage::url($imagen->url) }}"
+                            <img class="object-cover object-top w-32 h-32" src="{{ Storage::url($imagen->url) }}"
                                 alt="">
                             <x-boton :active="true" wire:click="deleteImagen({{ $imagen->id }})"
-                                class="absolute right-2 top-2 bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600 rounded-full"
+                                class="absolute bg-red-500 rounded-full right-2 top-2 hover:bg-red-400 active:bg-red-600 focus:border-red-600"
                                 wire:loading.attr="disabled" wire:target="deleteImagen({{ $imagen->id }})">
                                 <i class="fas fa-times"></i>
                             </x-boton>

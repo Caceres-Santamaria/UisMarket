@@ -31,6 +31,7 @@ class EditarProducto extends Component
             'producto.estado' => 'required',
             'producto.cantidad' => [Rule::requiredIf($this->cantidad != null),'min:0'],
             'producto.publicacion' => 'required|in:1,2',
+            'producto.descuento' => 'required|numeric|min:0|max:1',
         ];
     }
 
