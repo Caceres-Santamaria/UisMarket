@@ -16,10 +16,12 @@ class ProductosTiendasFiltro extends Component
     public $categorias;
     public $sort_by = '';
     public $tienda;
+    public $estado = "todos";
 
     protected $queryString = [
         'sort_by' => ['except' => ''],
-        'categoria' => ['except' => '']
+        'categoria' => ['except' => ''],
+        'estado' => ['except' => 'todos']
     ];
 
     public function mount($tienda)
@@ -40,10 +42,10 @@ class ProductosTiendasFiltro extends Component
     public function busqueda()
     {
         if ($this->categoria == '') {
-            $productos = productosTienda($this->sort_by,$this->view,$this->tienda->id);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, null, null, $this->tienda->id);
         } else {
             $categoria_id = Categoria::where('slug',$this->categoria)->first()->id;
-            $productos = categoriaProductosTienda($this->sort_by,$this->view,$this->tienda->id,$categoria_id);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, null, $this->tienda->id);
         }
         return $productos;
     }

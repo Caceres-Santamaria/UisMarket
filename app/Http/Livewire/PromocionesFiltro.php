@@ -13,10 +13,12 @@ class PromocionesFiltro extends Component
     public $view = "grid";
     public $categoria = '';
     public $sort_by;
+    public $estado = "todos";
 
     protected $queryString = [
         'sort_by' => ['except' => ''],
-        'categoria' => ['except' => '']
+        'categoria' => ['except' => ''],
+        'estado' => ['except' => 'todos']
     ];
 
     public function mount($sort_by = '')
@@ -27,10 +29,10 @@ class PromocionesFiltro extends Component
     public function busqueda()
     {
         if ($this->categoria == '') {
-            $productos = productosPromociones($this->sort_by,$this->view);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado , null, null, null);
         } else {
             $categoria_id = Categoria::where('slug',$this->categoria)->first()->id;
-            $productos = categoriaProductosPromociones($this->sort_by,$categoria_id,$this->view);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, null, null);
         }
         return $productos;
     }

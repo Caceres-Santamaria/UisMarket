@@ -15,11 +15,13 @@ Route::get('clientes', [ClientesController::class, 'index'])->name('admin.client
 
 // Route::get('tiendas',Tiendas::class)->name('admin.tiendas');
 Route::view('tiendas', 'admin.tiendas')->name('admin.tiendas');
+Route::view('tiendas/suspendidas', 'admin.tiendas-suspendidas')->name('admin.tiendas.suspendidas');
+
 Route::get('comentarios/{tienda}',[ComentariosController::class,'index'])->name('admin.comentarios');
 
 Route::get('categorias', CrearCategoria::class)->name('admin.categorias');
 
-Route::get('administradores', CrearAdministrador::class)->name('admin.administradores');
+Route::get('administradores', CrearAdministrador::class)->name('admin.administradores')->middleware('super.admin');;
 
 // Route::get('administradores',[AdministradoresController::class,'index'])->name('admin.administradores');
 
