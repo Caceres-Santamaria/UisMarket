@@ -3,7 +3,7 @@
         <div class="flex flex-wrap items-center justify-between px-6 py-2">
             <h1 class="order-1 font-semibold text-gray-700 uppercase">Tiendas</h1>
             <div class="flex items-center justify-center order-2">
-                <x-Filtro-desplegable filtro="tiendas" :sort="$sort_by" class="w-52"/>
+                <x-Filtro-desplegable filtro="tiendas" :sort="$sort_by" class="w-8 sm:w-48 md:w-52"/>
                 <x-tipo-vista :view="$view" />
             </div>
             <div

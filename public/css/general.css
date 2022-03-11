@@ -3991,6 +3991,10 @@ footer>div {
   white-space: normal;
 }
 
+.first-line\:flex::first-line {
+  display: flex;
+}
+
 .last\:right-0:last-child {
   right: 0px;
 }
@@ -4710,6 +4714,10 @@ footer>div {
     display: block;
   }
 
+  .sm\:inline-block {
+    display: inline-block;
+  }
+
   .sm\:inline {
     display: inline;
   }
@@ -4780,6 +4788,10 @@ footer>div {
 
   .sm\:w-2\/5 {
     width: 40%;
+  }
+
+  .sm\:w-48 {
+    width: 12rem;
   }
 
   .sm\:max-w-md {
@@ -5743,8 +5755,8 @@ footer>div {
     width: 3.5rem;
   }
 
-  .lg\:w-24 {
-    width: 6rem;
+  .lg\:w-28 {
+    width: 7rem;
   }
 
   .lg\:w-16 {
@@ -5773,10 +5785,6 @@ footer>div {
 
   .lg\:w-40 {
     width: 10rem;
-  }
-
-  .lg\:w-28 {
-    width: 7rem;
   }
 
   .lg\:w-2\/3 {

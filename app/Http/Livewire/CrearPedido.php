@@ -115,6 +115,7 @@ class CrearPedido extends Component
             }
             Cart::destroy();
             // session()->flash('status', __('Article saved.'));
+            $this->dispatchBrowserEvent('pedido_realizado');
             $this->redirectRoute('pedidos.index');
         }
         else{

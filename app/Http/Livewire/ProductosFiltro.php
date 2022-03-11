@@ -13,10 +13,12 @@ class ProductosFiltro extends Component
     public $categoria;
     public $sort_by;
     public $nombre = '';
+    public $estado = 'todos';
 
     protected $queryString = [
         'sort_by' => ['except' => ''],
-        'nombre' => ['except' => '']
+        'nombre' => ['except' => ''],
+        'estado' => ['except' => 'todos']
     ];
 
     public function mount($categoria = null, $sort_by = '', $nombre = '')
@@ -29,9 +31,9 @@ class ProductosFiltro extends Component
     public function busqueda()
     {
         if (!$this->categoria) {
-            $productos = productos($this->sort_by, $this->nombre, $this->view);
+            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado , null, null, null);
         } else {
-            $productos = categoriaProductos($this->sort_by, $this->nombre, $this->categoria, $this->view);
+            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado, $this->categoria->id, null, null);
         }
         return $productos;
     }

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Scout\Searchable;
+#use Laravel\Scout\Searchable;
 
 class Producto extends Model
 {
-    use Searchable;
+    #use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'productos';
 

@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire\Admin;
 
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
-use Livewire\Component;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class Usuarios extends DataTableComponent
+class Users extends DataTableComponent
 {
-
   protected $listeners = ['eliminar', 'activar'];
 
   public function columns(): array
@@ -19,7 +17,7 @@ class Usuarios extends DataTableComponent
       Column::make('Nombre', 'name')
         ->sortable()
         ->searchable(),
-      Column::make('Correo electronico', 'email')
+      Column::make('Email', 'email')
         ->sortable()
         ->searchable(),
       Column::make('Acciones', 'deleted_at')
@@ -32,13 +30,15 @@ class Usuarios extends DataTableComponent
 
   public function query(): Builder
   {
-    return User::query()->withTrashed()->where('rol', '3')->orWhere('rol', '2');
+    return User::query()->withTrashed()->whereIn('rol', [2, 3]);
   }
-
 
   public function eliminar($id)
   {
     $user = User::where('id', $id)->first();
+    if ($user->tienda) {
+      $user->tienda->delete();
+    }
     $user->delete();
     $this->dispatchBrowserEvent('successUserAlert', 'inhabilitar');
   }

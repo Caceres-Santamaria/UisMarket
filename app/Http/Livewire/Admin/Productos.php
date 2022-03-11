@@ -45,7 +45,7 @@ class Productos extends DataTableComponent
 
     public function query(): Builder
     {
-        return Producto::query()->where('publicacion','2');
+        return Producto::query()->where('publicacion','2')->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1');
     }
 
     public function suspender($id)

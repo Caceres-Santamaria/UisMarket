@@ -45,7 +45,7 @@
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Dirección" />
-            <x-jet-input type="text" class="w-full" wire:model="tienda.direccion"
+            <x-jet-input name="direccion" type="text" class="w-full" wire:model="tienda.direccion"
                 placeholder="Ingresa la dirección de la tienda" />
             <x-jet-input-error for="tienda.direccion" class="mt-2" />
         </div>
@@ -107,20 +107,38 @@
     </div>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
         <h2 class="text-xl font-semibold mb-4 col-span-2">Envíos</h2>
-        <div class="mb-8">
-            <x-jet-label value="¿Tus productos se pueden recoger en la tienda física?*" />
-            <div class="flex gap-2">
-                <x-jet-label>
-                    <input class="mx-2" type="radio" name="recoger_tienda" wire:model="tienda.recoger_tienda"
-                        value="1">Sí
-                </x-jet-label>
-                <x-jet-label>
-                    <input class="mx-2" type="radio" name="recoger_tienda" wire:model="tienda.recoger_tienda"
-                        value="0">No
-                </x-jet-label>
+        @if ($tienda->direccion == '')
+            <div class="mb-8">
+                <x-jet-label value="¿Tus productos se pueden recoger en la tienda física?*" />
+                <div class="flex gap-2">
+                    <x-jet-label>
+                        <input class="mx-2 " disabled type="radio" name="recoger_tienda"
+                            wire:model="tienda.recoger_tienda" value="1">Sí
+                    </x-jet-label>
+                    <x-jet-label>
+                        <input class="mx-2 " disabled  type="radio" name="recoger_tienda"
+                            wire:model="tienda.recoger_tienda" value="0">No
+                    </x-jet-label>
+                </div>
+                <x-jet-input-error for="tienda.recoger_tienda" />
+                <span class="text-red-500 text-sm">¡Escribe una dirección para habilitar esta opción!</span>
             </div>
-            <x-jet-input-error for="tienda.recoger_tienda" />
-        </div>
+        @else
+            <div class="mb-8">
+                <x-jet-label value="¿Tus productos se pueden recoger en la tienda física?*" />
+                <div class="flex gap-2">
+                    <x-jet-label>
+                        <input class="mx-2" type="radio" name="recoger_tienda"
+                            wire:model="tienda.recoger_tienda" value="1">Sí
+                    </x-jet-label>
+                    <x-jet-label>
+                        <input class="mx-2" type="radio" name="recoger_tienda"
+                            wire:model="tienda.recoger_tienda" value="0">No
+                    </x-jet-label>
+                </div>
+                <x-jet-input-error for="tienda.recoger_tienda" />
+            </div>
+        @endif
         <div class="mb-4">
             <x-jet-label value="Costo de envío*" class="pb-3 md:pb-0" />
             <x-jet-input-error for="costos" class="mt-2" />
@@ -143,8 +161,7 @@
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Link de Facebook" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.facebook"
-            title="Ingresa el link de facebook"
-            placeholder="Ingresa el link de facebook" />
+                title="Ingresa el link de facebook" placeholder="Ingresa el link de facebook" />
             <x-jet-input-error for="tienda.facebook" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">
@@ -155,8 +172,8 @@
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Número de Whatsapp" />
-            <x-jet-input type="text" class="w-11/12" wire:model="tienda.whatsapp"
-                title="Número de whatsapp" placeholder="Ingresa el número de contacto" />
+            <x-jet-input type="text" class="w-11/12" wire:model="tienda.whatsapp" title="Número de whatsapp"
+                placeholder="Ingresa el número de contacto" />
             <x-jet-input-error for="tienda.whatsapp" class="mt-2" />
         </div>
         <div class="w-full mb-5 md:mb-0">

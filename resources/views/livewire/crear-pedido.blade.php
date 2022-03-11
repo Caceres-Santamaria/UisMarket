@@ -56,7 +56,7 @@
                     <p class="block mb-4 text-base font-semibold text-black">
                         Tienda: {{ $tiendas[$tienda]->nombre }}
                     </p>
-                    @if ($tiendas[$tienda]->recoger_tienda)
+                    @if ($tiendas[$tienda]->recoger_tienda and $tiendas[$tienda]->direccion)
                         <label class="flex items-center px-6 py-4 mb-4 rounded-lg shadow cursor-pointer">
                             <input id="envio" type="radio" value="1" name="envio_type_{{ $tiendas[$tienda]->id }}"
                                 class="text-gray-600" wire:click="updateCosto({{ $tienda }},0,1)">
@@ -127,7 +127,8 @@
             <hr>
             <p class="mt-2 text-sm text-gray-700">Todos los datos son usados y protegidos conforme es establecido en
                 las
-                <a href="{{ route('politicas') }}" target="_blank" class="font-semibold text-orange-500">Políticas y privacidad</a>
+                <a href="{{ route('politicas') }}" target="_blank" class="font-semibold text-orange-500">Políticas y
+                    privacidad</a>
             </p>
         </div>
     </div>
@@ -179,8 +180,16 @@
             })
         });
         window.addEventListener('ir_arriba', ir_arriba);
+        window.addEventListener('pedido_realizado', e => {
+            simpleAlert(
+                'center',
+                'success',
+                'Pedido realizado exitosamente',
+                '',
+                false,
+                1900);
+        });
         window.addEventListener('agregar_envio', e => {
-            console.log(e.detail);
             simpleAlert(
                 'center',
                 'warning',
