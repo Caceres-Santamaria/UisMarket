@@ -56,6 +56,7 @@ class Ingresos extends Component
             $fechaO->modify('last day of this month');
             $busqueda = Pedido::select(DB::raw("DAY(created_at) as dia, SUM(total) as total"))
                 ->where('tienda_id', $this->tienda->id)
+                ->where('estado', '4')
                 ->groupBy('dia')
                 ->whereBetween('created_at', [$fechaI->format('Y-m-d H:i:s'), $fechaO->format('Y-m-d H:i:s')])
                 ->orderBy('dia')
@@ -77,6 +78,7 @@ class Ingresos extends Component
             $this->hydrate();
             $busqueda = Pedido::select(DB::raw("MONTH(created_at) as mes, SUM(total) as total"))
                 ->where('tienda_id', $this->tienda->id)
+                ->where('estado', '4')
                 ->groupBy('mes')
                 ->whereBetween('created_at', [$this->year . '-01-01 00:00:00', $this->year . '-12-31 23:59:59'])
                 ->orderBy('mes')

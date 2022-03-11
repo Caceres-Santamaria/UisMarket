@@ -51,7 +51,7 @@ Route::get('tiendas/{tienda}', [TiendasController::class, 'show'])->name('tienda
 // Route::get('carrito', [carritoController::class,'index'])->name('carrito');
 Route::get('carrito', CarritoCompras::class)->name('carrito');
 
-// Route::view('comentario', 'crear_comentario');
+// Route::view('comentario', 'crear_comentario')->middleware('verified');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('pedidos/crear', CrearPedido::class)->name('pedidos.create')->middleware('car.is.empty');
@@ -59,7 +59,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('user/mis-pedidos/{pedido}', [PedidoController::class, 'show'])->name('pedidos.show');
     Route::patch('user/mis-pedidos/{pedido}', [PedidoController::class, 'update'])->name('pedidos.update');
     Route::delete('user/mis-pedidos/{pedido}', [PedidoController::class, 'delete'])->name('pedidos.delete');
-
     Route::get('tienda/crear', Tienda::class)->name('tienda.create')->middleware('tienda.no.creada');
 });
 
