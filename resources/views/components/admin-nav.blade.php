@@ -71,9 +71,9 @@
                     </a>
                 </li>
                 <li class="items-center">
-                    <a href="./tables.html" class="text-xs uppercase py-3 font-bold block">
+                    <a href="{{ route('admin.solicitudes') }}" class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.solicitudes') }}">
                         <i class="fas fa-bell mr-2 text-base text-blueGray-300"></i>
-                        Solicitudes (3)
+                        Solicitudes
                     </a>
                 </li>
             </ul>
