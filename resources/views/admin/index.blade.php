@@ -53,7 +53,7 @@
                                 Solicitudes pendientes
                             </h5>
                             <span class="font-semibold text-xl text-blueGray-700">
-                                924
+                              {{ $solicitudes }}
                             </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
