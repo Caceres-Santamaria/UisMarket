@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ComentariosController;
 use App\Http\Livewire\Admin\CrearCategoria;
 use App\Http\Livewire\Admin\CrearAdministrador;
+use App\Http\Livewire\Admin\SolicitudesContenedor;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.dashboard');
 
@@ -13,7 +14,8 @@ Route::view('/profile', 'admin.profile')->name('admin.profile');
 
 Route::get('clientes', [ClientesController::class, 'index'])->name('admin.clientes');
 
-// Route::get('tiendas',Tiendas::class)->name('admin.tiendas');
+Route::get('solicitudes', SolicitudesContenedor::class)->name('admin.solicitudes');
+
 Route::view('tiendas', 'admin.tiendas')->name('admin.tiendas');
 Route::view('tiendas/suspendidas', 'admin.tiendas-suspendidas')->name('admin.tiendas.suspendidas');
 
