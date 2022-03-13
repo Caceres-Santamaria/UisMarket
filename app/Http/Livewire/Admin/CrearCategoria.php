@@ -11,18 +11,22 @@ use Livewire\WithFileUploads;
 
 class CrearCategoria extends Component
 {
-  protected $listeners = ['save'];
     use WithFileUploads;
     public $image;
     public Categoria $categoria;
+
+    protected $listeners = ['save', 'recibirCategoria'];
 
     protected function rules()
     {
         return [
             'image' => [
-                'required', 'image', 'max:2048'
+                'image', 'max:2048', 'nullable',
+                Rule::requiredIf(!$this->categoria->id)
             ],
-            'categoria.nombre' => 'required | max:50| min:3',
+            'categoria.nombre' => [
+                'required', 'max:50', 'min:3',
+                Rule::unique('categorias', 'nombre')->ignore($this->categoria)],
             'categoria.slug' => [
                 'required', 'alpha_dash',
                 Rule::unique('categorias', 'slug')->ignore($this->categoria)
@@ -31,7 +35,6 @@ class CrearCategoria extends Component
     }
     public function mount(Categoria $categoria)
     {
-        // $this->categoria= new Categoria();
         $this->categoria = $categoria;
     }
 
@@ -51,12 +54,17 @@ class CrearCategoria extends Component
     public function save()
     {
         $this->categoria->slug = Str::slug($this->categoria->nombre);
+        // dd($this->rules());
         $this->validate();
         if ($this->image) {
             $this->categoria->imagen = $this->uploadImagen();
         }
         $this->categoria->save();
-        return redirect()->route('admin.categorias')->with('message', 'La categoría se ha creado exitosamente');
+        $this->dispatchBrowserEvent('save','La categoría se ha creado o modificado exitosamente');
+        $this->categoria = new Categoria();
+        $this->image = null;
+        $this->emitTo('admin.categorias','render');
+        // return redirect()->route('admin.categorias')->with('message', 'La categoría se ha creado o modificado exitosamente');
     }
 
     public function render()
@@ -64,5 +72,9 @@ class CrearCategoria extends Component
         // dd($this->categoria);
         return view('livewire.admin.crear-categoria')
             ->layout('layouts.admin', ['title' => 'Categorias']);
+    }
+
+    public function recibirCategoria($slug){
+        $this->categoria = Categoria::where('slug',$slug)->withTrashed()->firstOrFail();
     }
 }
