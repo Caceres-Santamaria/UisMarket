@@ -11,7 +11,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 class Categorias extends DataTableComponent
 {
 
-    protected $listeners = ['eliminar', 'activar'];
+    protected $listeners = ['eliminar', 'activar', 'render'];
 
     public function columns(): array
     {
@@ -45,7 +45,7 @@ class Categorias extends DataTableComponent
 
     public function activar($id)
     {
-        $categoria = Categoria::where('id', $id)->restore();
+        Categoria::where('id', $id)->restore();
         $this->dispatchBrowserEvent('successCategoriaAlert', 'habilitar');
     }
 }
