@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             'usuario_id' => $user2->id
         ]);
 
-        User::factory(50)->create()->each(function(User $usuario){
+        User::factory(30)->create()->each(function(User $usuario){
             Direccion::factory(1)->create([
                 'usuario_id' => $usuario->id
             ]);

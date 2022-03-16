@@ -21,6 +21,7 @@ class Tienda extends Component
     use WithFileUploads;
     public $logo;
     public $portada;
+    public $documento;
     public ModelsTienda $tienda;
     public $costos = [];
     public $ciudades = [];
@@ -32,6 +33,7 @@ class Tienda extends Component
         return [
             'logo' => 'nullable | image | max:2048',
             'portada' => 'nullable | image | max:2048',
+            'documento' => 'nullable | required | image | max:2048',
             'tienda.nombre' => 'required | max:50 | min:3',
             'tienda.descripcion' => 'required | max:2000',
             'tienda.direccion' => 'max:100',
@@ -53,31 +55,28 @@ class Tienda extends Component
 
     public function mount(ModelsTienda $tienda)
     {
-        if($tienda->id == null){
+        if ($tienda->id == null) {
             $this->authorize('create', ModelsTienda::class);
-        }
-        else{
+        } else {
             $this->authorize('update', $tienda);
         }
         $this->tienda = $tienda;
         $this->tienda->user_id = $this->tienda->user_id == null ? auth()->user()->id : $this->tienda->user_id;
 
-        if($this->tienda->ciudad_id != null){
+        if ($this->tienda->ciudad_id != null) {
             $this->departamento_id = $this->tienda->ciudad->departamento->id;
             $this->ciudade = Ciudad::where('departamento_id', $this->departamento_id)->get();
-        }
-        else{
+        } else {
             $this->tienda->ciudad_id = "";
         }
 
-        if(empty($this->tienda->envios->all())){
+        if (empty($this->tienda->envios->all())) {
             foreach (Ciudad::all() as $ciudad) {
                 $this->costos[$ciudad->id] = null;
                 $this->ciudades[$ciudad->id] = $ciudad->nombre;
             }
-        }
-        else{
-            foreach($this->tienda->envios as $ciudad){
+        } else {
+            foreach ($this->tienda->envios as $ciudad) {
                 $this->costos[$ciudad->id] = $ciudad->envio->costo;
                 $this->ciudades[$ciudad->id] = $ciudad->nombre;
             }
@@ -98,9 +97,9 @@ class Tienda extends Component
 
     public function updatedTiendaDireccion()
     {
-      if($this->tienda->direccion == ''){
-        $this->tienda->recoger_tienda = 0;
-      }
+        if ($this->tienda->direccion == '') {
+            $this->tienda->recoger_tienda = 0;
+        }
     }
 
     public function uploadLogo()
@@ -117,6 +116,14 @@ class Tienda extends Component
             Storage::disk('public')->delete($oldPortada);
         }
         return $this->portada->store('/images/portadas', 'public');
+    }
+
+    public function uploadDocumento()
+    {
+        if ($oldDocumento = $this->tienda->carnet) {
+            Storage::disk('public')->delete($oldDocumento);
+        }
+        return $this->documento->store('/images/documentos', 'public');
     }
 
     public function modificarCosto($ciudad, $costo, $nombre)
@@ -140,8 +147,8 @@ class Tienda extends Component
 
     public function validarCostos()
     {
-        foreach ($this->costos as $clave => $valor){
-            if($valor === null){
+        foreach ($this->costos as $clave => $valor) {
+            if ($valor === null) {
                 return false;
             }
         }
@@ -152,36 +159,35 @@ class Tienda extends Component
     {
         $this->tienda->slug = Str::slug($this->tienda->nombre);
         $this->validate();
-        if($this->validarCostos()){
+        if ($this->validarCostos()) {
             if ($this->logo) {
                 $this->tienda->logo = $this->uploadLogo();
             }
-
             if ($this->portada) {
                 $this->tienda->fondo_img = $this->uploadPortada();
             }
+            $this->tienda->carnet = $this->uploadDocumento();
             $this->tienda->save();
-            if(empty($this->tienda->envios->all())){
-                foreach ($this->costos as $clave => $valor){
+            if (empty($this->tienda->envios->all())) {
+                foreach ($this->costos as $clave => $valor) {
                     Envio::create([
                         'costo' => $valor,
                         'ciudad_id' => $clave,
                         'tienda_id' => $this->tienda->id
                     ]);
                 }
-            }
-            else{
-                foreach ($this->costos as $clave => $valor){
+            } else {
+                foreach ($this->costos as $clave => $valor) {
                     $this->tienda->envios()->updateExistingPivot($clave, [
                         'costo' => $valor,
                     ]);
                 }
             }
-            if(auth()->user()->rol == '3'){
+            if (auth()->user()->rol == '3') {
                 User::where('id', auth()->user()->id)->update(['rol' => '2']);
             }
             return redirect()->route('tienda.show');
-        }else{
+        } else {
             $this->addError('costos', 'Error, Verifica el costo de las ciudades');
         }
     }

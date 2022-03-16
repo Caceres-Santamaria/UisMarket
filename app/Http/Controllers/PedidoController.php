@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use Illuminate\Support\Facades\Cache;
 
 class PedidoController extends Controller
 {
@@ -34,6 +35,7 @@ class PedidoController extends Controller
     {
         $pedido->estado = 4;
         $pedido->save();
+        Cache::tags('pedidos-usuario')->flush();
         return back();
     }
 
@@ -42,6 +44,7 @@ class PedidoController extends Controller
         $pedido->estado = 5;
         $pedido->cancelado_autor = 1;
         $pedido->save();
+        Cache::tags('pedidos-usuario')->flush();
         return back();
     }
 }

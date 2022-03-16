@@ -1,12 +1,12 @@
 @push('scriptHeader')
     <script src="{{ asset('js/ckeditor.js') }}"></script>
 @endpush
-<div class="grid-in-contenido w-11/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-    <h1 class="text-3xl text-center font-semibold mb-8">
+<div class="w-11/12 px-4 py-12 mx-auto text-gray-700 grid-in-contenido sm:px-6 lg:px-8">
+    <h1 class="mb-8 text-3xl font-semibold text-center">
         {{ $tienda->id == null? 'Completa esta información para crear tu tienda': 'Completa esta información para modificar tu tienda' }}
     </h1>
-    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
-        <h2 class="text-xl font-semibold mb-4 md:col-span-2">Información de la tienda</h2>
+    <div class="p-6 mb-6 text-gray-700 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
+        <h2 class="mb-4 text-xl font-semibold md:col-span-2">Información de la tienda</h2>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Nombre*" />
             <x-jet-input type="text" class="w-full" wire:model="tienda.nombre"
@@ -21,7 +21,7 @@
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Departamento*" />
-            <select class="form-control w-full" wire:model="departamento_id">
+            <select class="w-full form-control" wire:model="departamento_id">
                 <option value="" disabled selected>Selecciona un Departamento {{-- $departamento_id==''?'selected':'' --}}
                 </option>
                 @foreach ($departamentos as $departamento)
@@ -33,7 +33,7 @@
         </div>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Ciudad*" />
-            <select class="form-control w-full" wire:model="tienda.ciudad_id">
+            <select class="w-full form-control" wire:model="tienda.ciudad_id">
                 <option value="" disabled selected>Selecciona una ciudad {{-- $tienda->ciudad_id==''?'selected':'' --}}
                 </option>
                 @foreach ($ciudade as $ciudad)
@@ -65,8 +65,8 @@
             <x-select-image wire:model="portada" :image="$portada" :existing="$tienda->fondo_img" />
             <x-jet-input-error for="portada" class="mt-2" />
         </div>
-        <div class="w-full md:col-span-2 mb-5 md:mb-0">
-            <div wire:ignore class=" h-48">
+        <div class="w-full mb-5 md:col-span-2 md:mb-0">
+            <div wire:ignore class="h-48 ">
                 <x-jet-label value="Descripción de la tienda*" />
                 <textarea class="w-full form-control " wire:model.defer="tienda.descripcion" x-ref="editor" x-data
                     x-init="ClassicEditor
@@ -105,8 +105,17 @@
             <x-jet-input-error for="tienda.descripcion" />
         </div>
     </div>
-    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
-        <h2 class="text-xl font-semibold mb-4 col-span-2">Envíos</h2>
+    <div class="p-6 mb-6 text-gray-700 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
+        <h2 class="col-span-2 mb-4 text-xl font-semibold">Validación Tienda</h2>
+        <p class="col-span-2 text-sm font-semibold text-yellow-600"><i class="fas fa-exclamation-triangle"></i> Uis Market está destinada exclusivamente a emprendedores Uis, por lo tanto para validar esto, solicitamos que adjuntes una imagen de un documento que valide esto (ej: Carnet)</p>
+        <div class="w-full mb-5 md:mb-0">
+            <x-jet-label value="Documento Uis" />
+            <x-select-image wire:model="documento" :image="$documento" :existing="$tienda->carnet" />
+            <x-jet-input-error for="documento" class="mt-2" />
+        </div>
+    </div>
+    <div class="p-6 mb-6 text-gray-700 bg-white rounded-lg shadow-lg ">
+        <h2 class="col-span-2 mb-4 text-xl font-semibold">Envíos</h2>
         @if ($tienda->direccion == '')
             <div class="mb-8">
                 <x-jet-label value="¿Tus productos se pueden recoger en la tienda física?*" />
@@ -121,7 +130,7 @@
                     </x-jet-label>
                 </div>
                 <x-jet-input-error for="tienda.recoger_tienda" />
-                <span class="text-red-500 text-sm">¡Escribe una dirección para habilitar esta opción!</span>
+                <span class="text-sm text-red-500">¡Escribe una dirección para habilitar esta opción!</span>
             </div>
         @else
             <div class="mb-8">
@@ -142,7 +151,7 @@
         <div class="mb-4">
             <x-jet-label value="Costo de envío*" class="pb-3 md:pb-0" />
             <x-jet-input-error for="costos" class="mt-2" />
-            <div class="md:grid md:grid-cols-2  md:gap-x-12 md:gap-y-5" x-data>
+            <div class="md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5" x-data>
                 @foreach ($ciudades as $clave => $valor)
                     <div class="w-full mb-5 md:mb-0">
                         <x-jet-label value="{{ $valor }}*" />
@@ -156,8 +165,8 @@
             </div>
         </div>
     </div>
-    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 md:grid md:grid-cols-2  md:gap-x-12 md:gap-y-5">
-        <p class="text-xl font-semibold mb-4 col-span-2">Redes sociales</p>
+    <div class="p-6 mb-6 text-gray-700 bg-white rounded-lg shadow-lg md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5">
+        <h2 class="col-span-2 mb-4 text-xl font-semibold">Redes sociales</h2>
         <div class="w-full mb-5 md:mb-0">
             <x-jet-label value="Link de Facebook" />
             <x-jet-input type="text" class="w-11/12" wire:model="tienda.facebook"
@@ -184,7 +193,7 @@
         </div>
     </div>
     <div class="flex mt-4">
-        <x-boton wire:click="save" class=" h-10 w-full" wire:loading.attr="disabled">
+        <x-boton wire:click="save" class="w-full h-10 " wire:loading.attr="disabled">
             {{ $tienda->id == null ? 'Crear tienda' : 'Actualizar tienda' }}
         </x-boton>
     </div>

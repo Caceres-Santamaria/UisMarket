@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: databases
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysqldb
+          image: 'mysql/mysql-server:8.0'
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: '=THds%z(K/K~~4N3'
+            - name: MYSQL_ROOT_HOST
+              value: '%'
+            - name: MYSQL_DATABASE
+              value: uismarket
+            - name: MYSQL_USER
+              value: uis
+            - name: MYSQL_PASSWORD
+              value: '@v;_UYSA/qp3kh~c'
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: '1'
+          volumeMounts:
+            - name: mysql-pvc
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-pvc
+          persistentVolumeClaim:
+            claimName: pvc-uismarket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: databases
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

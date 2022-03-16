@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
-#use Laravel\Scout\Searchable;
+use Laravel\Scout\Searchable;
 
 class Producto extends Model
 {
-    #use Searchable;
+    use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'productos';
 
@@ -46,23 +46,24 @@ class Producto extends Model
         'cantidad'
     ];
 
-    public function getStockAttribute(){
+    public function getStockAttribute()
+    {
         if ($this->talla) {
-            return  ColorTalla::whereHas('talla.producto', function(Builder $query){
-                        $query->where('id', $this->id);
-                    })->sum('cantidad');
-        } elseif($this->color) {
-            return  ColorProducto::whereHas('producto', function(Builder $query){
-                        $query->where('id', $this->id);
-                    })->sum('cantidad');
-        }else{
+            return  ColorTalla::whereHas('talla.producto', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('cantidad');
+        } elseif ($this->color) {
+            return  ColorProducto::whereHas('producto', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('cantidad');
+        } else {
             return $this->cantidad;
         }
     }
 
-    public function getPrioridadAttribute(){
+    public function getPrioridadAttribute()
+    {
         return $this->imagenes->pluck('prioridad')->max();
-
     }
 
     /**
@@ -72,7 +73,8 @@ class Producto extends Model
     /**
      * Obtiene la categoría a la que pertenece el producto
      */
-    public function categoria(){
+    public function categoria()
+    {
         return $this->belongsTo(
             Categoria::class,
             'categoria_id',
@@ -91,10 +93,10 @@ class Producto extends Model
             'producto_id',
             'color_id'
         )
-                    ->using(ColorProducto::class)
-                    ->withPivot('cantidad')
-                    ->withPivot('id')
-                    ->withTimestamps();
+            ->using(ColorProducto::class)
+            ->withPivot('cantidad')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 
     /**
@@ -112,7 +114,8 @@ class Producto extends Model
     /**
      * Obtiene todas las imágenes de un producto
      */
-    public function imagenes(){
+    public function imagenes()
+    {
         return $this->morphMany(
             ImagenProducto::class,
             'imagen_tabla'
@@ -154,13 +157,30 @@ class Producto extends Model
         return 'slug';
     }
 
-        /**
+    /**
      * Get the name of the index associated with the model.
      *
      * @return string
      */
-    public function searchableAs()
+    //     public function searchableAs()
+    //     {
+    //         return 'productos';
+    //     }
+
+    // public function toSearchableArray()
+    // {
+    //     return [
+    //         'id' => $this->id,
+    //         'nombre' => $this->nombre,
+    //         'slug' => $this->slug,
+    //         'categoria_id' => $this->categoria_id,
+    //         'tienda_id' => $this->tienda_id,
+    //         'estado' => $this->estado,
+    //     ];
+    // }
+
+    public function shouldBeSearchable()
     {
-        return 'productos';
+        return ($this->publicacion == '2' and $this->tienda->deleted_at == null and $this->tienda->estado == '1');
     }
 }
