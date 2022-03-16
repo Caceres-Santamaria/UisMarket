@@ -9,6 +9,11 @@ use App\Http\Livewire\Emprendedor\Tienda;
 use App\Http\Livewire\Emprendedor\EditarProducto;
 use App\Http\Livewire\Emprendedor\Rotacion;
 use App\Http\Livewire\Emprendedor\Ingresos;
+use Illuminate\Support\Facades\DB;
+
+// DB::listen(function($query){
+//     echo "<pre>{$query->sql}</pre>";
+// });
 
 Route::get('tienda/editar/{tienda}', Tienda::class)->name('tienda.edit')->middleware('tienda.creada');
 Route::get('tienda/', [TiendaController::class, 'show'])->name('tienda.show');

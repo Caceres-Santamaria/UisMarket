@@ -7,6 +7,7 @@ use App\Models\Departamento;
 use App\Models\Pedido;
 use App\Models\Tienda;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -114,6 +115,7 @@ class CrearPedido extends Component
                 descontarCantidad($item);
             }
             Cart::destroy();
+            Cache::tags('pedidos-usuario')->flush();
             // session()->flash('status', __('Article saved.'));
             $this->dispatchBrowserEvent('pedido_realizado');
             $this->redirectRoute('pedidos.index');

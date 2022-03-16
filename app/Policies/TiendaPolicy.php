@@ -41,7 +41,7 @@ class TiendaPolicy
      */
     public function create(User $user)
     {
-        return $user->rol != 1 and $user->rol != 2;
+        return $user->rol != '0' and $user->rol != '1' and $user->rol != '2';
     }
 
     /**
