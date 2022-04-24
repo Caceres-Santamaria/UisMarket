@@ -70,39 +70,49 @@
                 <x-jet-label value="Descripción de la tienda*" />
                 <textarea class="w-full form-control " wire:model.defer="tienda.descripcion" x-ref="editor" x-data
                     x-init="ClassicEditor
-                .create($refs.editor, {
-                    toolbar: {
-                        items: [
-                            'heading', '|',
-                            'bold', 'italic', '|',
-                            'outdent', 'indent', '|',
-                            'bulletedList', 'numberedList', '|',
-                            'insertTable', '|',
-                            'blockQuote', '|',
-                            'undo', 'redo'
-                        ],
-                        shouldNotGroupWhenFull: false
-                    },
-                    heading: {
-                        options: [
-                            { model: 'paragraph', title: 'Párrafo', class: 'ck-heading_paragraph' },
-                            { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
-                            { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
-                            { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
-                        ]
-                    },
-                })
-                .then( editor => {
-                    editor.model.document.on('change:data', () => {
-                        @this.set('tienda.descripcion', editor.getData())
-                    })
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );">
+                        .create($refs.editor, {
+                            toolbar: {
+                                items: [
+                                    'heading', '|',
+                                    'bold', 'italic', '|',
+                                    'outdent', 'indent', '|',
+                                    'bulletedList', 'numberedList', '|',
+                                    'insertTable', '|',
+                                    'blockQuote', '|',
+                                    'undo', 'redo'
+                                ],
+                                shouldNotGroupWhenFull: false
+                            },
+                            heading: {
+                                options: [
+                                    { model: 'paragraph', title: 'Párrafo', class: 'ck-heading_paragraph' },
+                                    { model: 'heading1', view: 'h1', title: 'Título 1', class: 'ck-heading_heading1' },
+                                    { model: 'heading2', view: 'h2', title: 'Título 2', class: 'ck-heading_heading2' },
+                                    { model: 'heading3', view: 'h3', title: 'Título 3', class: 'ck-heading_heading3' }
+                                ]
+                            },
+                        })
+                        .then(editor => {
+                            editor.model.document.on('change:data', () => {
+                                @this.set('tienda.descripcion', editor.getData())
+                            })
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });">
                 </textarea>
             </div>
             <x-jet-input-error for="tienda.descripcion" />
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
+        <h2 class="text-xl font-semibold mb-4 col-span-2">Validación</h2>
+        <div class="w-full mb-5 md:mb-0">
+            <x-jet-label class="mb-2"
+                value="Para verificar que perteneces a la comunidad UIS por favor adjunta un documento que lo valide. Ej: foto del carnet*" />
+            <x-select-image wire:model="carnet" :image="$carnet" :existing="$tienda->carnet" />
+            <x-jet-input-error for="carnet" class="mt-2" />
         </div>
     </div>
     <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6 ">
@@ -116,7 +126,7 @@
                             wire:model="tienda.recoger_tienda" value="1">Sí
                     </x-jet-label>
                     <x-jet-label>
-                        <input class="mx-2 " disabled  type="radio" name="recoger_tienda"
+                        <input class="mx-2 " disabled type="radio" name="recoger_tienda"
                             wire:model="tienda.recoger_tienda" value="0">No
                     </x-jet-label>
                 </div>
@@ -139,6 +149,19 @@
                 <x-jet-input-error for="tienda.recoger_tienda" />
             </div>
         @endif
+        <div class="mb-8">
+            <x-jet-label value="¿Tus productos se pueden entregar en el campus principal de la UIS?*" />
+            <div class="flex gap-2">
+                <x-jet-label>
+                    <input class="mx-2 " type="radio" name="recoger_uis" wire:model="tienda.recoger_uis"
+                        value="1">Sí
+                </x-jet-label>
+                <x-jet-label>
+                    <input class="mx-2 " type="radio" name="recoger_uis" wire:model="tienda.recoger_uis"
+                        value="0">No
+                </x-jet-label>
+            </div>
+        </div>
         <div class="mb-4">
             <x-jet-label value="Costo de envío*" class="pb-3 md:pb-0" />
             <x-jet-input-error for="costos" class="mt-2" />

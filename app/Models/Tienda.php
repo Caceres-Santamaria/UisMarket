@@ -15,6 +15,7 @@ class Tienda extends Model
     const PENDIENTE = 0;
     const VALIDADA = 1;
     const SUSPENDIDA = 2;
+    const RECHAZADA = 3;
     /**
      * Los descriptores de acceso que se agregarán a la forma de matriz del modelo.
      *
@@ -29,6 +30,7 @@ class Tienda extends Model
      */
     protected $attributes = [
         'recoger_tienda' => 0,
+        'recoger_uis' => 0,
     ];
 
     /**
@@ -75,9 +77,9 @@ class Tienda extends Model
             foreach ($calificaciones as $calificacion) {
                 $suma += $calificacion->calificacion;
             }
-            return [$suma / $cantidad,$cantidad];
+            return [$suma / $cantidad, $cantidad];
         } else {
-            return [0,0];
+            return [0, 0];
         }
     }
 
