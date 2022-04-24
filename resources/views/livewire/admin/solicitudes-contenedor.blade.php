@@ -1,20 +1,20 @@
 <div
-    class="max-w-full mx-auto px-4 sm:px-2 lg:px-8 w-full  relative bg-white rounded-md p-4 border border-gray-400 shadow-md">
+    class="relative w-full max-w-full p-4 px-4 mx-auto bg-white border border-gray-400 rounded-md shadow-md sm:px-2 lg:px-8">
     @livewire('admin.solicitudes')
     <x-jet-dialog-modal wire:model="modal">
         <x-slot name="title">
             <h1>Carnet de la tienda {{ $tienda->nombre }} </h1>
         </x-slot>
         <x-slot name="content">
-            <div class="w-full flex justify-center items-center">
+            <div class="flex items-center justify-center w-full">
                 <img class="imagen-carnet" src="{{ Storage::url($tienda->carnet) }}"
                     alt="Carnet {{ $tienda->nombre }}">
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-jet-button wire:loading.attr="disabled" wire:click="$set('modal', false)">
+            <x-boton wire:loading.attr="disabled" wire:click="$set('modal', false)">
                 Cerrar
-            </x-jet-button>
+            </x-boton>
         </x-slot>
     </x-jet-dialog-modal>
     <script>
