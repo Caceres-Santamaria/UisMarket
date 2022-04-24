@@ -15,7 +15,7 @@ class TiendaSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::where('rol','<>',1)->where('rol','<>',0)->get()->random(20);
+        $users = User::where('rol','<>',1)->where('rol','<>',0)->get()->random(10);
 
         foreach ($users as $user) {
             Tienda::factory(1)->create([

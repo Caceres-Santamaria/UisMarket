@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\PedidoEnviado;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class PedidoController extends Controller
@@ -36,6 +37,7 @@ class PedidoController extends Controller
     {
         $pedido->estado = 3;
         $pedido->save();
+        Cache::tags('pedidos-usuario')->flush();
 //        Mail::to("a1098818855@gmail.com")->queue(new PedidoEnviado($pedido,auth()->user()->tienda));
         // return new PedidoEnviado($pedido,auth()->user()->tienda);
         // $pedido->usuario->email
@@ -47,6 +49,7 @@ class PedidoController extends Controller
         if($pedido->estado != 5){
             $pedido->estado = 2;
             $pedido->save();
+            Cache::tags('pedidos-usuario')->flush();
             return back();
         }
         else{
@@ -59,6 +62,7 @@ class PedidoController extends Controller
         $pedido->estado = 5;
         $pedido->cancelado_autor = 2;
         $pedido->save();
+        Cache::tags('pedidos-usuario')->flush();
         return back();
     }
 }

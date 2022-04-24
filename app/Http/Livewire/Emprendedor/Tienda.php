@@ -165,7 +165,6 @@ class Tienda extends Component
             if ($this->logo) {
                 $this->tienda->logo = $this->uploadLogo();
             }
-
             if ($this->portada) {
                 $this->tienda->fondo_img = $this->uploadPortada();
             }

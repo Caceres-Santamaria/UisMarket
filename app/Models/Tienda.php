@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-#use Laravel\Scout\Searchable;
+use Laravel\Scout\Searchable;
 
 class Tienda extends Model
 {
-    #use Searchable;
+    use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'tiendas';
     const PENDIENTE = 0;
@@ -156,8 +156,8 @@ class Tienda extends Model
         return 'slug';
     }
 
-    public function searchableAs()
-    {
-        return 'tiendas';
-    }
+    // public function searchableAs()
+    // {
+    //     return 'tiendas';
+    // }
 }

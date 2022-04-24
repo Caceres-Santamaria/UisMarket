@@ -11,6 +11,7 @@ use App\Http\Controllers\TTController;
 use App\Http\Livewire\CarritoCompras;
 use App\Http\Livewire\CrearPedido;
 use App\Http\Livewire\Emprendedor\Tienda;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 // use App\Http\Livewire\Emprendedor\CrearProducto;
