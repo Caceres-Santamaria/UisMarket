@@ -3,7 +3,7 @@
     @livewire('admin.solicitudes')
     <x-jet-dialog-modal wire:model="modal">
         <x-slot name="title">
-            <h1>Carnet de la tienda {{$tienda->nombre}} </h1>
+            <h1>Carnet de la tienda {{ $tienda->nombre }} </h1>
         </x-slot>
         <x-slot name="content">
             <div class="w-full flex justify-center items-center">
@@ -41,6 +41,42 @@
                         'center',
                         'success',
                         'Tienda aprobada exitosamente',
+                        '',
+                        false, 1900);
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelado',
+                        'No se ha realizado la acción',
+                        'error'
+                    )
+                }
+            })
+        }
+        const rechazar = function(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
+            swalWithBootstrapButtons.fire({
+                title: '¿Estás seguro?',
+                text: 'La solicitud será rechazada',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, Rechazar!',
+                cancelButtonText: 'No, cancelar!',
+                reverseButtons: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emitTo('admin.solicitudes', 'rechazar', id);
+                    simpleAlert(
+                        'center',
+                        'success',
+                        'Solicitud rechazada exitosamente',
                         '',
                         false, 1900);
                 } else if (
