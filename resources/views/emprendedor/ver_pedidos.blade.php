@@ -103,7 +103,12 @@
                             <p class="text-sm">{{ $pedido->tienda->direccion }}</p>
                             <p class="text-sm">{{ $pedido->tienda->ciudad->departamento->nombre }} -
                                 {{ $pedido->tienda->ciudad->nombre }}</p>
-                        @else
+                        @endif
+                        @if ($pedido->tipo_envio == 3)
+                            <p class="text-sm">Los productos deben ser recogidos en el campus principal de la UIS
+                            </p>
+                        @endif
+                        @if ($pedido->tipo_envio == 2)
                             <p class="text-sm">Los productos Serán enviados a:</p>
                             <p class="text-sm">{{ $envio->direccion }}</p>
                             @if ($envio->referencia)
@@ -125,9 +130,16 @@
                 <div class="py-4 px-2">
                     <p class="py-1">
                         <i
-                            class="fas {{ $pedido->tipo_envio == 1 ? 'fa-people-carry' : 'fa-motorcycle' }} text-xs md:text-lg lg:text-xl"></i>
+                            class="fas {{ $pedido->tipo_envio != 2 ? 'fa-people-carry' : 'fa-motorcycle' }} text-xs md:text-lg lg:text-xl"></i>
                         <span class="font-bold">Tipo de envío:</span>
-                        {{ $pedido->tipo_envio == 1 ? 'Recoge en tienda' : 'Domicilio' }}
+                        @if ($pedido->tipo_envio == 1)
+                            Recoge en tienda
+                        @endif
+                        @if ($pedido->tipo_envio == 3)
+                            Recoge en el campus principal de la UIS
+                        @else
+                            Domicilio
+                        @endif
                     </p>
                     <p class="py-1">
                         <i class="far fa-clock text-xs md:text-lg lg:text-xl"></i>

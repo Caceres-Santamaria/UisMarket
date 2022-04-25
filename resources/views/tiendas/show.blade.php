@@ -1,8 +1,16 @@
 <x-app2-layout title="Informacion tienda">
-    <main x-data="{productos: true, calificaciones: false, informacion: false}"
+    <main x-data="{ productos: true, calificaciones: false, informacion: false }"
         class="grid-in-contenido grid grid-cols-full grid-rows-detalle px-3 py-6 pt-3 place-items-start place-content-start md:grid-rows-auto md:grid-cols-1 md:px-2 md:py-10 md:pt-5 lg:grid-rows-auto lg:grid-cols-1 lg:px-10 lg:py-16 lg:pt-8">
         @php($emprendedor = request()->routeIs('tienda.show'))
         @if ($emprendedor)
+            @if ($tienda->estado == '3')
+                @livewire('emprendedor.modal-comentarios-soli',['tienda'=> $tienda])
+            @endif
+            @if ($tienda->estado == '0')
+                <div class="bg-yellow-500 bg-opacity-30 w-full my-6 p-3"><i
+                        class="text-yellow-600 fas fa-exclamation-triangle"></i> Tu solicitud se encuentra en proceso.
+                </div>
+            @endif
             <div class="w-full flex justify-evenly items-center mb-3 md:mb-5 lg:mb-8">
                 <form method="POST" action="{{ route('tienda.desactivar') }}">
                     @csrf
@@ -68,7 +76,7 @@
                     </a>
                 @endif
                 @if ($tienda->messenger)
-                <a class="mb-1 redes-sociales bg-redes-ms"
+                    <a class="mb-1 redes-sociales bg-redes-ms"
                         href="{{ $tienda->messenger }}" target="_blank">
                         <i class="fab fa-facebook-messenger"></i>
                     </a>
