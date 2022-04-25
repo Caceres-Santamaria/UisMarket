@@ -91,7 +91,7 @@
                             </h6>
                         </div>
                     </div>
-                    <x-grafica-categorias />
+                    <x-Grafica-categorias />
                 </div>
             </div>
             <div
@@ -104,7 +104,7 @@
                             </h6>
                         </div>
                     </div>
-                    <x-grafica-pedidos />
+                    <x-Grafica-pedidos />
                 </div>
             </div>
             <div
@@ -116,7 +116,7 @@
                                 Productos vendidos por categorias </h6>
                         </div>
                     </div>
-                    <x-grafica-categoria-pedidos />
+                    <x-Grafica-categoria-pedidos />
                 </div>
             </div>
         </div>
