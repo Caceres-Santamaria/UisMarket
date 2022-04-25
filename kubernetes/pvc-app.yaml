@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-uismarket-app
-  namespace: databases
+  namespace: app
 spec:
   storageClassName: do-block-storage
   accessModes:
