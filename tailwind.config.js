@@ -22,7 +22,7 @@ module.exports = {
             // => @media (min-width: 992px) { ... }
             'xl': '1200px',
             // => @media (min-width: 1200px) { ... }
-            },
+        },
         extend: {
             inset: {
                 'calc': 'calc(100% + 3px)',
@@ -53,6 +53,7 @@ module.exports = {
                 '18': '4.4rem',
                 '25': '6.2rem',
                 '27': '6.4rem',
+                '95': '95%',
                 'cont-car':'calc(100% - 48px)',
                 'car-items':'calc(100% - 8.7rem)',
             },
@@ -122,14 +123,18 @@ module.exports = {
             },
             gridTemplateAreas: {
                 'layout': [
-                    'header',
-                    'contenido',
-                    'footer',
+                  'header',
+                  'contenido',
+                  'footer',
+                ],
+                'graficas': [
+                    'categorias pedidos',
+                    'categoriasvendidas categoriasvendidas',
                 ],
                 'foot': [
-                    'descripcion',
-                    'nosotros',
-                    'derechos',
+                  'descripcion',
+                  'nosotros',
+                  'derechos',
                 ],
                 'detalle': [
                     'titulo',
@@ -143,7 +148,7 @@ module.exports = {
             fontFamily: {
                 'Delius': ['Delius', 'sans-serif'],
                 'ModernSans': ['ModernSans', 'sans-serif'],
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'sans': ['Nunito', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'xxs': '.45rem',

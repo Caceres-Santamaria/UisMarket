@@ -21,7 +21,7 @@ class Tienda extends Component
     use WithFileUploads;
     public $logo;
     public $portada;
-    public $documento;
+    public $carnet;
     public ModelsTienda $tienda;
     public $costos = [];
     public $ciudades = [];
@@ -33,7 +33,8 @@ class Tienda extends Component
         return [
             'logo' => 'nullable | image | max:2048',
             'portada' => 'nullable | image | max:2048',
-            'documento' => 'nullable | required | image | max:2048',
+            'comentario' => 'nullable| max:2000',
+            'carnet' => 'required | image | max:2048',
             'tienda.nombre' => 'required | max:50 | min:3',
             'tienda.descripcion' => 'required | max:2000',
             'tienda.direccion' => 'max:100',
@@ -48,6 +49,7 @@ class Tienda extends Component
                 Rule::unique('tiendas', 'slug')->ignore($this->tienda)
             ],
             'tienda.recoger_tienda' => ['required', 'in:0,1'],
+            'tienda.recoger_uis' => ['required', 'in:0,1'],
             'tienda.ciudad_id' => 'required',
             'tienda.user_id' => 'required',
         ];
@@ -118,12 +120,12 @@ class Tienda extends Component
         return $this->portada->store('/images/portadas', 'public');
     }
 
-    public function uploadDocumento()
+    public function uploadCarnet()
     {
-        if ($oldDocumento = $this->tienda->carnet) {
-            Storage::disk('public')->delete($oldDocumento);
+        if ($oldCarnet = $this->tienda->carnet) {
+            Storage::disk('public')->delete($oldCarnet);
         }
-        return $this->documento->store('/images/documentos', 'public');
+        return $this->carnet->store('/images/carnets', 'public');
     }
 
     public function modificarCosto($ciudad, $costo, $nombre)
@@ -166,7 +168,9 @@ class Tienda extends Component
             if ($this->portada) {
                 $this->tienda->fondo_img = $this->uploadPortada();
             }
-            $this->tienda->carnet = $this->uploadDocumento();
+            if ($this->carnet) {
+                $this->tienda->carnet = $this->uploadCarnet();
+            }
             $this->tienda->save();
             if (empty($this->tienda->envios->all())) {
                 foreach ($this->costos as $clave => $valor) {

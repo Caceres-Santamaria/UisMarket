@@ -12,18 +12,23 @@
                                     @case(1)
                                         <i class="far fa-clock text-pink-500 opacity-50"></i>
                                     @break
+
                                     @case(2)
                                         <i class="fas fa-box text-blue-500 opacity-50"></i>
                                     @break
+
                                     @case(3)
                                         <i class="fas fa-motorcycle text-yellow-500 opacity-50"></i>
                                     @break
+
                                     @case(4)
                                         <i class="fas fa-check-circle text-green-500 opacity-50"></i>
                                     @break
+
                                     @case(5)
                                         <i class="fas fa-times-circle text-red-500 opacity-50"></i>
                                     @break
+
                                     @default
                                 @endswitch
                             </span>
@@ -35,7 +40,15 @@
                         <div class="flex flex-col justify-center items-center text-sm md:text-base">
                             <p>
                                 <span class="font-bold">Envío:</span>
-                                {{ $pedido->tipo_envio == 1 ? 'Recoge en tienda' : 'Domicilio' }}
+                                @if ($pedido->tipo_envio == 1)
+                                    Recoge en tienda
+                                @endif
+                                @if ($pedido->tipo_envio == 2)
+                                    Domicilio
+                                @endif
+                                @if ($pedido->tipo_envio == 3)
+                                    Recoge en el campus principal de la UIS
+                                @endif
                             </p>
                             <p>
                                 <span class="font-bold">Costo:</span>
@@ -50,23 +63,28 @@
                                         @case(1)
                                             Pendiente
                                         @break
+
                                         @case(2)
                                             Preparando
                                         @break
+
                                         @case(3)
                                             Enviado
                                         @break
+
                                         @case(4)
                                             Entregado
                                         @break
+
                                         @case(5)
                                             Cancelado
                                         @break
+
                                         @default
                                     @endswitch
                                 </span>
                                 <span>
-                                    $ {{ number_format($pedido->total+$pedido->costo_envio) }}
+                                    $ {{ number_format($pedido->total + $pedido->costo_envio) }}
                                 </span>
                             </div>
                             <span>
