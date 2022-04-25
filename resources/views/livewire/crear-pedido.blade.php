@@ -69,6 +69,19 @@
                             </span>
                         </label>
                     @endif
+                    @if ($tiendas[$tienda]->recoger_uis)
+                        <label class="flex items-center px-6 py-4 mb-4 rounded-lg shadow cursor-pointer">
+                            <input id="envio" type="radio" value="1" name="envio_type_{{ $tiendas[$tienda]->id }}"
+                                class="text-gray-600" wire:click="updateCosto({{ $tienda }},0,3)">
+                            <p class="ml-2 text-gray-700">
+                                Recojo en el campus principal de la UIS (<span class="text-xs">ponte en contacto
+                                    con el vendedor</span>)
+                            </p>
+                            <span class="ml-auto font-semibold text-gray-700">
+                                Gratis
+                            </span>
+                        </label>
+                    @endif
                     @if ($ciudad_id != '')
                         @php
                             $costo_ciudad = $tiendas[$tienda]->envios->find($ciudad_id)->envio->costo;

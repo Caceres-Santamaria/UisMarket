@@ -33,14 +33,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <form class="mt-6 mb-4 md:hidden">
-                <div class="mb-3 pt-0">
-                    <input type="text" placeholder="Search"
-                        class=" px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
-                </div>
-            </form> --}}
-            <!-- Divider -->
-            {{-- <hr class="my-4 md:min-w-full" /> --}}
 
             <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 DASHBOARD
@@ -67,15 +59,10 @@
                     <a href="{{ route('admin.clientes') }}"
                         class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.clientes') }}">
                         <i class="fas fa-user mr-2 text-base opacity-75"></i>
-                        Usuarios
+                        Gestionar
                     </a>
                 </li>
-                <li class="items-center">
-                    <a href="{{ route('admin.solicitudes') }}" class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.solicitudes') }}">
-                        <i class="fas fa-bell mr-2 text-base text-blueGray-300"></i>
-                        Solicitudes
-                    </a>
-                </li>
+
             </ul>
 
             <!-- Divider -->
@@ -86,6 +73,13 @@
             </h6>
             <!-- Navigation -->
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li class="items-center">
+                    <a href="{{ route('admin.solicitudes') }}"
+                        class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.solicitudes') }}">
+                        <i class="fas fa-bell mr-2 text-base text-blueGray-300"></i>
+                        Solicitudes
+                    </a>
+                </li>
                 <li class="items-center">
                     <a href="{{ route('admin.tiendas') }}"
                         class="text-xs uppercase py-3 font-bold block {{ setActiveAdmin('admin.tiendas') }}">
@@ -127,22 +121,6 @@
                 </li>
             </ul>
 
-            {{-- <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
-            <!-- Heading -->
-            <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                comentarios
-            </h6>
-            <!-- Navigation -->
-
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-                <li class="items-center">
-                    <a href="../auth/login.html" class="text-xs uppercase py-3 font-bold block">
-                        <i class="fas fa-comment-alt text-blueGray-300 mr-2 text-base"></i>
-                        gestionar comentarios
-                    </a>
-                </li>
-            </ul> --}}
 
             <!-- Divider -->
             <hr class="my-4 md:min-w-full" />

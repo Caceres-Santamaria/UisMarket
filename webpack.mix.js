@@ -31,7 +31,7 @@ mix.js('resources/js/app.js', 'public/js')
         require("autoprefixer"),
     ]);
 
-mix.browserSync('http://uismarket.com');
+mix.browserSync('http://uismarket.test');
 
 if (mix.inProduction()) {
     mix.version();
