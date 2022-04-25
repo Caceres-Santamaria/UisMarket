@@ -95,8 +95,14 @@
                         <p class="text-sm">{{ $pedido->tienda->direccion }}</p>
                         <p class="text-sm">{{ $pedido->tienda->ciudad->departamento->nombre }} -
                             {{ $pedido->tienda->ciudad->nombre }}</p>
+                    @endif
+                    @if ($pedido->tipo_envio == 3)
+                        <p class="text-sm">Los productos deben ser recogidos en el campus principal de la UIS</p>
+                        <x-boton-enlace href="{{ route('tiendas.show', $pedido->tienda) }}"
+                            class="w-4/5 h-16 m-6 md:w-60 lg:h-11 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 focus:border-yellow-500">
+                            Ponerse en contacto con la tienda </x-boton-enlace>
                     @else
-                        <p class="text-sm">Los productos Serán enviados a:</p>
+                        <p class="text-sm">Los productos serán enviados a:</p>
                         <p class="text-sm">{{ $envio->direccion }}</p>
                         @if ($envio->referencia)
                             <p class="text-sm">{{ $envio->referencia }}</p>
@@ -122,9 +128,16 @@
                 </p>
                 <p class="py-1">
                     <i
-                        class="fas {{ $pedido->tipo_envio == 1 ? 'fa-people-carry' : 'fa-motorcycle' }} text-xs md:text-lg lg:text-xl"></i>
+                        class="fas {{ $pedido->tipo_envio != 2 ? 'fa-people-carry' : 'fa-motorcycle' }} text-xs md:text-lg lg:text-xl"></i>
                     <span class="font-bold">Tipo de envío:</span>
-                    {{ $pedido->tipo_envio == 1 ? 'Recoge en tienda' : 'Domicilio' }}
+                    @if ($pedido->tipo_envio == 1)
+                        Recoge en tienda
+                    @endif
+                    @if ($pedido->tipo_envio == 3)
+                        Recoge en el campus principal de la UIS
+                    @else
+                        Domicilio
+                    @endif
                 </p>
                 <p class="py-1">
                     <i class="far fa-clock text-xs md:text-lg lg:text-xl"></i>

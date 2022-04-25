@@ -1,15 +1,15 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-  php:
-    build:
-      context: ./
-      dockerfile: ./docker/php.Dockerfile
-    restart: "no"
-    image: php-uismarket:1.1
-    container_name: php-uismarket
-    ports:
-      - "8081:80"
-    volumes:
-      - ./:/app
-      - ./docker/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+    php:
+        build:
+            context: ./
+            dockerfile: ./docker/php.Dockerfile
+        restart: "no"
+        image: php-uismarket:1.1
+        container_name: php-uismarket
+        ports:
+            - "8081:80"
+        volumes:
+            - ./:/app
+            - ./docker/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro

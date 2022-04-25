@@ -30,7 +30,7 @@ class Users extends DataTableComponent
 
   public function query(): Builder
   {
-    return User::query()->withTrashed()->whereIn('rol', [2, 3]);
+    return User::query()->withTrashed()->whereIn('rol', ['2', '3']);
   }
 
   public function eliminar($id)
