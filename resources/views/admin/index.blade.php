@@ -1,6 +1,6 @@
 <x-admin-layout title="dasboard">
     @push('scriptHeader')
-        <script src="{{ asset('js/Chart.min.js') }}"></script>
+        <script src="{{ asset('js/chart.min.js') }}"></script>
     @endpush
     @slot('cards')
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
