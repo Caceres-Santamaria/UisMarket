@@ -9,7 +9,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class Solicitudes extends DataTableComponent
 {
-    protected $listeners = ['aprobar', 'rechazar'];
+    protected $listeners = ['aprobar','render'];
 
     public function columns(): array
     {
@@ -40,11 +40,6 @@ class Solicitudes extends DataTableComponent
     public function aprobar(Tienda $tienda): void
     {
         $tienda->estado = '1';
-        $tienda->save();
-    }
-    public function rechazar(Tienda $tienda): void
-    {
-        $tienda->estado = '3';
         $tienda->save();
     }
 }

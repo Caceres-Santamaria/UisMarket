@@ -17,6 +17,32 @@
             </x-boton>
         </x-slot>
     </x-jet-dialog-modal>
+    <x-jet-dialog-modal wire:model="modalComentario">
+        <x-slot name="title">
+            <h1>Comentarios de la solicitud </h1>
+        </x-slot>
+        <x-slot name="content">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div wire:ignore>
+                    <x-jet-label value="Por favor escribe los motivos por los cuales se rechaza la solicitud" />
+                    <textarea wire:model='tienda.comentario'
+                        class=" w-full h-32 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                </textarea>
+                </div>
+                <x-jet-input-error for="tienda.comentario" />
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            <x-boton @click="rechazar('{{ $tienda->slug }}')">
+                Enviar
+            </x-boton>
+            <x-jet-button wire:loading.attr="disabled" wire:click="$set('modalComentario', false)">
+                Cerrar
+            </x-jet-button>
+
+        </x-slot>
+    </x-jet-dialog-modal>
+
     <script>
         const aprobar = function(id) {
             const swalWithBootstrapButtons = Swal.mixin({
@@ -72,13 +98,15 @@
                 reverseButtons: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.emitTo('admin.solicitudes', 'rechazar', id);
-                    simpleAlert(
-                        'center',
-                        'success',
-                        'Solicitud rechazada exitosamente',
-                        '',
-                        false, 1900);
+                    Livewire.emit('rechazar', id);
+                    setTimeout(() => {
+                        simpleAlert(
+                            'center',
+                            'success',
+                            'Solicitud rechazada exitosamente',
+                            '',
+                            false, 1900);
+                    }, 1500);
                 } else if (
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
