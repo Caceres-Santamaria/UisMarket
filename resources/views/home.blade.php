@@ -64,7 +64,7 @@
                 window.addEventListener('DOMContentLoaded', e => {
                     simpleAlert(
                         'center',
-                        'warning',
+                        '{{ session('message') == "Tienda desactivada exitosamente" ? "success" : "warning" }}',
                         '{{ session('message') }}',
                         '',
                         true);
