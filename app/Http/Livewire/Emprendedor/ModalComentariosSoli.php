@@ -15,6 +15,8 @@ class ModalComentariosSoli extends Component
     public $carnet;
     public Tienda $tienda;
 
+    protected $listeners = ['render'];
+
     protected function rules()
     {
         return [
@@ -29,11 +31,15 @@ class ModalComentariosSoli extends Component
 
     public function uploadCarnet()
     {
-        dd($this->tienda->comentario);
         if ($oldCarnet = $this->tienda->carnet) {
             Storage::disk('public')->delete($oldCarnet);
         }
-        return $this->carnet->store('/images/carnets', 'public');
+        $this->tienda->carnet=$this->carnet->store('/images/carnets', 'public');
+        $this->tienda->estado = '0';
+        $this->tienda->comentario = null;
+        $this->modal = false;
+        $this->tienda->save();
+        return redirect()->route('tienda.show');
     }
 
     public function render()
