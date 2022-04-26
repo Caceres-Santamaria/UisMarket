@@ -32,10 +32,8 @@ class CalificacionPedido extends Component
     }
 
     public function guardar(){
-      // dd($this->calificacion->contenido);
         $this->calificacion->contenido = $this->calificacion->contenido == "" ? null : $this->calificacion->contenido;
         $this->calificacion->pedido_id = $this->pedido_id;
-        // dd($this->calificacion->contenido);
         $this->validate();
         $this->modal = false;
         $this->calificacion->save();

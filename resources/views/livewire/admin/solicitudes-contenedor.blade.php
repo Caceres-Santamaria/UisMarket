@@ -106,7 +106,7 @@
                             'Solicitud rechazada exitosamente',
                             '',
                             false, 1900);
-                    }, 1500);
+                    }, 1000);
                 } else if (
                     result.dismiss === Swal.DismissReason.cancel
                 ) {

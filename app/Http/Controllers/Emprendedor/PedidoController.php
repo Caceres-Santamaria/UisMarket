@@ -13,7 +13,6 @@ class PedidoController extends Controller
 {
     public function index()
     {
-
         $pedido = Pedido::query()->where('tienda_id', auth()->user()->tienda->id);
         $pendiente = (clone $pedido)->where('estado', 1)->count();
         $preparando = (clone $pedido)->where('estado', 2)->count();
@@ -38,7 +37,7 @@ class PedidoController extends Controller
         $pedido->estado = 3;
         $pedido->save();
         Cache::tags('pedidos-usuario')->flush();
-//        Mail::to("a1098818855@gmail.com")->queue(new PedidoEnviado($pedido,auth()->user()->tienda));
+        //        Mail::to("a1098818855@gmail.com")->queue(new PedidoEnviado($pedido,auth()->user()->tienda));
         // return new PedidoEnviado($pedido,auth()->user()->tienda);
         // $pedido->usuario->email
         return back();
@@ -46,23 +45,26 @@ class PedidoController extends Controller
 
     public function updateConfirmacion(Pedido $pedido)
     {
-        if($pedido->estado != 5){
+        if ($pedido->estado != 5) {
             $pedido->estado = 2;
             $pedido->save();
             Cache::tags('pedidos-usuario')->flush();
             return back();
-        }
-        else{
-            return back()->with('message','El pedido ha sido cancelado por el cliente');
+        } else {
+            return back()->with('message', 'El pedido ha sido cancelado por el cliente');
         }
     }
 
     public function delete(Pedido $pedido)
     {
-        $pedido->estado = 5;
-        $pedido->cancelado_autor = 2;
-        $pedido->save();
-        Cache::tags('pedidos-usuario')->flush();
-        return back();
+        if ($pedido->estado != 5) {
+            $pedido->estado = 5;
+            $pedido->cancelado_autor = 2;
+            $pedido->save();
+            Cache::tags('pedidos-usuario')->flush();
+            return back();
+        } else {
+            return back()->with('message', 'El pedido ya ha sido cancelado por el cliente');
+        }
     }
 }
