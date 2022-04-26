@@ -20,7 +20,7 @@ class CrearProducto extends Component
         return [
             'categoria_id' => 'required',
             'nombre' => 'required',
-            'slug' => 'required|unique:productos',
+            'slug' => 'required|alpha_dash',
             'descripcion' => 'required',
             'precio' => 'required|numeric|min:0',
             'estado' => 'required | in:nuevo,usado',
@@ -39,10 +39,10 @@ class CrearProducto extends Component
         $this->categorias = Categoria::all();
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function updatedNombre($value)
     {
@@ -52,18 +52,16 @@ class CrearProducto extends Component
     public function save()
     {
         $this->validate();
-        if ($this->color == 0 && $this->talla == 0){
+        if ($this->color == 0 && $this->talla == 0) {
             Validator::make(
                 ['cantidad' => $this->cantidad],
                 ['cantidad' => 'required | numeric | min:0']
             )->validate();
-        }
-        else{
+        } else {
             $this->cantidad = null;
         }
         $producto = new Producto();
         $producto->nombre = $this->nombre;
-        $producto->slug = $this->slug;
         $producto->descripcion = $this->descripcion;
         $producto->precio = $this->precio;
         $producto->categoria_id = $this->categoria_id;
@@ -73,6 +71,13 @@ class CrearProducto extends Component
         $producto->talla = $this->talla;
         $producto->tienda_id = auth()->user()->tienda->id;
 
+        $products = Producto::where('slug', $this->slug)->get(['id']);
+        if ($products) {
+            $maxId = $products->max('id');
+            $producto->slug = $this->slug.'-'.$maxId;
+        }else {
+            $producto->slug = $this->slug;
+        }
         $producto->save();
 
         return redirect()->route('tienda.productos.editar', $producto);

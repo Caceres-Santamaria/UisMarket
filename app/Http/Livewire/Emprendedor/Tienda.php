@@ -33,7 +33,7 @@ class Tienda extends Component
         return [
             'logo' => 'nullable | image | max:2048',
             'portada' => 'nullable | image | max:2048',
-            'comentario' => 'nullable| max:2000',
+            // 'comentario' => 'nullable| max:2000',
             'carnet' => 'required | image | max:2048',
             'tienda.nombre' => 'required | max:50 | min:3',
             'tienda.descripcion' => 'required | max:2000',
@@ -46,7 +46,7 @@ class Tienda extends Component
             'tienda.messenger' => 'max:191',
             'tienda.slug' => [
                 'required', 'alpha_dash',
-                Rule::unique('tiendas', 'slug')->ignore($this->tienda)
+                // Rule::unique('tiendas', 'slug')->ignore($this->tienda)
             ],
             'tienda.recoger_tienda' => ['required', 'in:0,1'],
             'tienda.recoger_uis' => ['required', 'in:0,1'],
@@ -86,10 +86,10 @@ class Tienda extends Component
         $this->departamentos = Departamento::all();
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function updatedDepartamentoId($value)
     {
@@ -170,6 +170,11 @@ class Tienda extends Component
             }
             if ($this->carnet) {
                 $this->tienda->carnet = $this->uploadCarnet();
+            }
+            $tiendas = ModelsTienda::where('slug', $this->tienda->slug)->get(['id']);
+            if ($tiendas) {
+                $maxId = $tiendas->max('id');
+                $this->tienda->slug = $this->tienda->slug . '-' . $maxId;
             }
             $this->tienda->save();
             if (empty($this->tienda->envios->all())) {
