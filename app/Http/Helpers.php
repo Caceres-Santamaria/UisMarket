@@ -5,6 +5,7 @@ use App\Models\Producto;
 use App\Models\Talla;
 use Illuminate\Support\Facades\Storage;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
 
 /**
  * comprueba que la sesion de categoria esté creada
@@ -208,30 +209,30 @@ function productos($sort_by, $nombre, $grid, $estado, $categoria_id = null, $des
         case 'precio_asc':
             if ($nombre != '') {
                 if ($estado == 'todos') {
-                    $productos = $productos->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy('precio', 'asc')->paginate(20);
+                    $productos = $productos->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
                 } else {
-                    $productos = $productos->where('estado', $estado)->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy('precio', 'asc')->paginate(20);
+                    $productos = $productos->where('estado', $estado)->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
                 }
             } else {
                 if ($estado == 'todos') {
-                    $productos = $productos->orderBy('precio', 'asc')->paginate(20);
+                    $productos = $productos->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
                 } else {
-                    $productos = $productos->where('estado', $estado)->orderBy('precio', 'asc')->paginate(20);
+                    $productos = $productos->where('estado', $estado)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
                 }
             }
             break;
         case 'precio_desc':
             if ($nombre != '') {
                 if ($estado == 'todos') {
-                    $productos = $productos->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy('precio', 'desc')->paginate(20);
+                    $productos = $productos->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
                 } else {
-                    $productos = $productos->where('estado', $estado)->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy('precio', 'desc')->paginate(20);
+                    $productos = $productos->where('estado', $estado)->where('nombre', 'LIKE', "%" . $nombre . "%")->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
                 }
             } else {
                 if ($estado == 'todos') {
-                    $productos = $productos->orderBy('precio', 'desc')->paginate(20);
+                    $productos = $productos->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
                 } else {
-                    $productos = $productos->where('estado', $estado)->orderBy('precio', 'desc')->paginate(20);
+                    $productos = $productos->where('estado', $estado)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
                 }
             }
             break;
@@ -284,10 +285,10 @@ function productosTienda($sort_by, $grid, $tienda)
             $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'desc')->paginate(20);
             break;
         case 'precio_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('precio', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
             break;
         case 'precio_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('precio', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
             break;
         case 'mas_reciente':
             $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('created_at', 'desc')->paginate(20);
@@ -314,10 +315,10 @@ function categoriaProductosTienda($sort_by, $grid, $tienda, $categoria_id)
             $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'desc')->paginate(20);
             break;
         case 'precio_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('precio', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
             break;
         case 'precio_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('precio', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
             break;
         case 'mas_reciente':
             $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('created_at', 'desc')->paginate(20);

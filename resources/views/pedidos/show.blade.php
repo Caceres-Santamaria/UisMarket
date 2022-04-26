@@ -224,6 +224,18 @@
             </div>
 
         </div>
+        @if (session()->has('message'))
+            <script>
+                window.addEventListener('DOMContentLoaded', e => {
+                    simpleAlert(
+                        'center',
+                        'error',
+                        '{{ session('message') }}',
+                        '',
+                        true);
+                });
+            </script>
+        @endif
     </main>
 
 </x-app2-layout>

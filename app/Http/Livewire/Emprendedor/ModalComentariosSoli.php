@@ -31,10 +31,12 @@ class ModalComentariosSoli extends Component
 
     public function uploadCarnet()
     {
-        if ($oldCarnet = $this->tienda->carnet) {
-            Storage::disk('public')->delete($oldCarnet);
+        if($this->carnet){
+            if ($oldCarnet = $this->tienda->carnet) {
+                Storage::disk('public')->delete($oldCarnet);
+            }
+            $this->tienda->carnet = $this->carnet->store('/images/carnets', 'public');
         }
-        $this->tienda->carnet=$this->carnet->store('/images/carnets', 'public');
         $this->tienda->estado = '0';
         $this->tienda->comentario = null;
         $this->modal = false;

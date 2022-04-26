@@ -41,10 +41,14 @@ class PedidoController extends Controller
 
     public function delete(Pedido $pedido)
     {
-        $pedido->estado = 5;
-        $pedido->cancelado_autor = 1;
-        $pedido->save();
-        Cache::tags('pedidos-usuario')->flush();
-        return back();
+        if ($pedido->estado != 5) {
+            $pedido->estado = 5;
+            $pedido->cancelado_autor = 1;
+            $pedido->save();
+            Cache::tags('pedidos-usuario')->flush();
+            return back();
+        } else {
+            return back()->with('message', 'El pedido ya ha sido cancelado por el emprendedor');
+        }
     }
 }
