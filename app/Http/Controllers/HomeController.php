@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tienda;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -25,7 +24,6 @@ class HomeController extends Controller
 
         $nuevas = Tienda::orderBy('created_at', 'desc')->take(10)->get();
 
-        //dd($nuevas->all());
         // $tiendasNew = Tienda::orderBy('created_at','asc')->take(10)->get();
         return view('home',compact('destacadas','nuevas'));
     }

@@ -32,7 +32,10 @@ class PedidosUsuario extends Component
         $key = 'pedidos-'.$estado.'-'.$this->user->id;
         // dd($key);
         $pedidos = Cache::tags('pedidos-usuario')->rememberForever($key, function() use ($estado) {
-            return Pedido::where('usuario_id',$this->user->id)->where('estado',$estado)->orderBy('created_at', 'desc')->get();
+            return Pedido::where('usuario_id',$this->user->id)
+                ->where('estado',$estado)
+                ->orderBy('created_at', 'desc')
+                ->get(['id', 'estado', 'created_at', 'tipo_envio', 'costo_envio', 'total']);
         });
         return view('livewire.pedidos-usuario',compact('pedidos'));
     }
