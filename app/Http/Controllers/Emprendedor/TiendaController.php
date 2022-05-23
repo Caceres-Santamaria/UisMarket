@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Emprendedor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tienda;
-use Illuminate\Http\Request;
 
 class TiendaController extends Controller
 {
