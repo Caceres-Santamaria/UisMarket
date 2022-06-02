@@ -17,5 +17,19 @@
         </div>
 
         @livewire('emprendedor.productos')
+        @if (session()->has('message'))
+            <script>
+                window.addEventListener('DOMContentLoaded', e => {
+                    simpleAlert(
+                        'center',
+                        'success',
+                        '{{ session('message') }}',
+                        '',
+                        false,
+                        1900
+                    );
+                });
+            </script>
+        @endif
     </div>
 </x-app2-layout>

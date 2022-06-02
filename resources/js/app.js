@@ -9,7 +9,7 @@ Alpine.start();
 // const Swal = window.Swal = require('sweetalert2');
 import Swal from "sweetalert2";
 window.Swal = Swal;
-window.simpleAlert = function (position, icon, title, text, boton, timer = undefined) {
+window.simpleAlert = function(position, icon, title, text, boton, timer = undefined) {
     Swal.fire({
         position: position == 'na' ? 'center' : position,
         icon: icon,
@@ -20,7 +20,7 @@ window.simpleAlert = function (position, icon, title, text, boton, timer = undef
     })
 }
 
-window.confirmacionUserAlert = function (id, type, message,funcion = 'eliminar') {
+window.confirmacionUserAlert = function(id, type, message, funcion = 'eliminar') {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -56,7 +56,7 @@ window.confirmacionUserAlert = function (id, type, message,funcion = 'eliminar')
     })
 }
 
-window.confirmacionAlert = function (event, confirButton, text, textError, livewireEvent = null, livewireEventTo = null,pivot = null) {
+window.confirmacionAlert = function(event, confirButton, text, textError, livewireEvent = null, livewireEventTo = null, pivot = null) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -77,7 +77,7 @@ window.confirmacionAlert = function (event, confirButton, text, textError, livew
         if (result.isConfirmed) {
             if (livewireEvent) {
                 Livewire.emit(livewireEvent);
-            }else if(livewireEventTo){
+            } else if (livewireEventTo) {
                 Livewire.emitTo(livewireEventTo, 'delete', pivot)
             } else {
                 event.target.parentElement.submit();
@@ -94,7 +94,7 @@ window.confirmacionAlert = function (event, confirButton, text, textError, livew
     })
 }
 
-window.successUserAlert = function (type) {
+window.successUserAlert = function(type) {
     Swal.fire({
         position: 'center',
         icon: 'success',
