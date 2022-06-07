@@ -38,10 +38,10 @@ class CrearCategoria extends Component
         $this->categoria = $categoria;
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function uploadImagen()
     {
