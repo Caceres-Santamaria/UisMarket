@@ -32,4 +32,10 @@ class ProductoController extends Controller
             return response()->json(['Failed' => 'No se pueden subir más imágenes']);
         }
     }
+
+    public function delete(Producto $producto) {
+        $this->authorize('delete', $producto);
+        $producto->delete();
+        return redirect()->route('tienda.productos')->with('message','Producto eliminado exitosamente');
+    }
 }
