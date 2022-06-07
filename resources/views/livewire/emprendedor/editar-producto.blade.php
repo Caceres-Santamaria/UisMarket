@@ -8,13 +8,13 @@
 <main class="grid-in-contenido">
     <header class="bg-white shadow">
         <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between" x-data>
                 <h1 class="text-xl font-semibold leading-tight text-gray-800">
                     Actualizar producto
                 </h1>
 
                 <x-boton class="bg-red-500 hover:bg-red-400 active:bg-red-600 focus:border-red-600" :active="true"
-                    wire:click="$emit('eliminarProducto')">
+                    @click="eliminarProducto">
                     <i class="mr-1 fas fa-trash"></i> Eliminar
                 </x-boton>
             </div>
@@ -47,7 +47,7 @@
             <div class="mb-4">
                 <x-jet-label value="Descuento Real" />
                 <div class="flex flex-col items-start content-start justify-start w-auto">
-                    <span class="flex items-center justify-center w-20 h-8 text-sm font-bold text-white rounded-md lg:text-base bg-producto-descuento lg:w-28">{{ intval((($producto->descuento) == '' ? 0 : $producto->descuento) * 100) }}
+                    <span class="flex items-center justify-center w-20 h-8 text-sm font-bold text-white rounded-md lg:text-base bg-producto-descuento lg:w-28">{{ intval(($producto->descuento == '' ? 0 : $producto->descuento) * 100) }}
                         % OFF</span>
                 </div>
             </div>
@@ -169,8 +169,7 @@
         @if ($producto->talla)
             @livewire('emprendedor.talla-producto', ['producto' => $producto], key('talla-' . $producto->id))
         @elseif($producto->color)
-            @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => null], key('color-' .
-            $producto->id))
+            @livewire('emprendedor.color-producto', ['producto' => $producto, 'talla' => null], key('color-' . $producto->id))
         @endif
     </div>
 </main>
@@ -202,7 +201,7 @@
                 'No se ha eliminado la talla', null, 'emprendedor.talla-producto', pivot);
         });
 
-        Livewire.on('eliminarProducto', () => {
+        const eliminarProducto = () => {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',
@@ -221,23 +220,15 @@
                 reverseButtons: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.emit('delete');
-                    simpleAlert(
-                        'center',
-                        'success',
-                        'Producto eliminado exitosamente',
-                        '',
-                        false, 1900);
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
+                    window.location.href = "{{ route('tienda.productos.delete',['producto' => $producto]) }}";
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
                         'Cancelado',
                         'No se ha eliminado el producto',
                         'error'
-                    )
+                    );
                 }
-            })
-        });
+            });
+        };
     </script>
 @endpush

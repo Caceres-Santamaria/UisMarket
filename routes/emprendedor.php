@@ -27,6 +27,7 @@ Route::middleware(['is.tienda.activa'])->group(function () {
     Route::get('tienda/productos/crear', CrearProducto::class)->name('tienda.productos.crear');
     Route::get('tienda/productos/editar/{producto}', EditarProducto::class)->name('tienda.productos.editar');
     Route::post('tienda/productos/imagenes/{producto}', [ProductoController::class, 'store'])->name('tienda.productos.imagenes');
+    Route::get('tienda/productos/delete/{producto}', [ProductoController::class, 'delete'])->name('tienda.productos.delete');
 
     Route::controller(PedidoController::class)->group(function () {
         Route::get('pedidos', 'index')->name('emprendedor.pedidos');
