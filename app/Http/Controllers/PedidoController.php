@@ -13,7 +13,7 @@ class PedidoController extends Controller
     {
         // $pedido = Pedido::query()->where('usuario_id', auth()->user()->id);
         $pedido = DB::table('pedidos')
-            ->select('estado',DB::raw('count(*) as count'))
+            ->select('estado', DB::raw('count(*) as count'))
             ->where('usuario_id', auth()->user()->id)
             ->whereIn('estado', ['1', '2', '3', '4', '5'])
             ->groupBy('estado')
@@ -55,6 +55,9 @@ class PedidoController extends Controller
         if ($pedido->estado != 5) {
             $pedido->estado = 5;
             $pedido->cancelado_autor = 1;
+            for ($i = 0; $i < sizeof(json_decode($pedido->detalle)); $i++) {
+                incrementarCantidad(json_decode($pedido->detalle)[$i]);
+            }
             $pedido->save();
             Cache::tags('pedidos-usuario')->flush();
             return back();

@@ -42,9 +42,9 @@ class CrearPedido extends Component
         $this->departamentos = Departamento::all();
     }
 
-    public function updated($item){
-        $this->validateOnly($item);
-    }
+    // public function updated($item){
+    //     $this->validateOnly($item);
+    // }
 
     public function updatedDepartamentoId($value)
     {

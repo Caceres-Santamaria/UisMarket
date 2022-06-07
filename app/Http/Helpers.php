@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Categoria;
+use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Talla;
 use Illuminate\Support\Facades\Storage;
@@ -112,6 +113,30 @@ function descontarCantidad($item)
 {
     $producto = Producto::find($item->id);
     $cantidad_disponible = cantidad_disponible($item->id, $item->options->color_id, $item->options->talla_id);
+    if ($item->options->talla_id) {
+        $talla = Talla::find($item->options->talla_id);
+        $talla->colores()->updateExistingPivot($item->options->color_id, [
+            'cantidad' => $cantidad_disponible,
+        ]);
+    } elseif ($item->options->color_id) {
+        $producto->colores()->updateExistingPivot($item->options->color_id, [
+            'cantidad' => $cantidad_disponible,
+        ]);
+    } else {
+        $producto->cantidad = $cantidad_disponible;
+        $producto->save();
+    }
+}
+
+function cantidad_disponible_incrementar($item,$producto_id, $color_id = null, $talla_id = null)
+{
+    return cantidad($producto_id, $color_id, $talla_id) + $item->qty;
+}
+
+function incrementarCantidad($item)
+{
+    $producto = Producto::find($item->id);
+    $cantidad_disponible = cantidad_disponible_incrementar($item,$item->id, $item->options->color_id, $item->options->talla_id);
     if ($item->options->talla_id) {
         $talla = Talla::find($item->options->talla_id);
         $talla->colores()->updateExistingPivot($item->options->color_id, [

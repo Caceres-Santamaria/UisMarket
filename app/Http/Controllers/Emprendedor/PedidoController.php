@@ -70,6 +70,9 @@ class PedidoController extends Controller
         if ($pedido->estado != 5) {
             $pedido->estado = 5;
             $pedido->cancelado_autor = 2;
+            for ($i = 0; $i < sizeof(json_decode($pedido->detalle)); $i++) {
+                incrementarCantidad(json_decode($pedido->detalle)[$i]);
+            }
             $pedido->save();
             Cache::tags('pedidos-usuario')->flush();
             return back();

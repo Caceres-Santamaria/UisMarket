@@ -27,9 +27,9 @@ class CalificacionPedido extends Component
         $this->pedido_id = $id;
     }
 
-    public function updated($item){
-        $this->validateOnly($item);
-    }
+    // public function updated($item){
+    //     $this->validateOnly($item);
+    // }
 
     public function guardar(){
         $this->calificacion->contenido = $this->calificacion->contenido == "" ? null : $this->calificacion->contenido;

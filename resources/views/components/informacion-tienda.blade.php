@@ -22,4 +22,44 @@
             </p>
         </div>
     </div>
+    <h2 class="font-bold text-2xl pb-4">Entregas</h2>
+    <div class="text-base m-3">
+        <div class="mb-1 w-full flex justify-start items-start">
+            <i class="text-sm text-green-600 fas fa-check pr-2"></i>
+            <p class="">
+                Domicilios
+            </p>
+        </div>
+        @if ($tienda->recoger_tienda)
+            <div class="mb-1 w-full flex justify-start items-start">
+                <i class="text-sm text-green-600 fas fa-check pr-2"></i>
+                <p class="">
+                    Recoger en tienda
+                </p>
+            </div>
+        @else
+            <div class="mb-1 w-full flex justify-start items-start">
+                <i class="text-sm text-red-600 fas fa-times pr-2"></i>
+                <p class="">
+                    Recoger en tienda
+                </p>
+            </div>
+        @endif
+
+        @if ($tienda->recoger_uis)
+            <div class="mb-1 w-full flex justify-start items-start">
+                <i class="text-green-600 fas fa-check"></i>
+                <p class="">
+                    Recoger en la UIS
+                </p>
+            </div>
+        @else
+            <div class="mb-1 w-full flex justify-start items-start">
+                <i class="text-sm text-red-600 fas fa-times pr-2"></i>
+                <p class="">
+                    Recoger en la UIS
+                </p>
+            </div>
+        @endif
+    </div>
 </div>

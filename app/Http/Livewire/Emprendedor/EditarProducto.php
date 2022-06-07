@@ -42,10 +42,10 @@ class EditarProducto extends Component
         $this->slug = $this->producto->slug;
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function updatedProductoNombre($value)
     {

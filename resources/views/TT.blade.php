@@ -62,8 +62,8 @@
             <li class="font-bold  my-3">
                 <h3 class="text-base lg:text-lg">Publicación de bienes y/o servicios</h3>
                 <p class="font-light">El Usuario deberá ofrecer a la venta, los bienes y/o servicios en las
-                    categorías y subcategorías apropiadas.
-                    Las publicaciones podrán incluir textos descriptivos, gráficos, fotografías y otros contenidos
+                    categorías apropiadas.
+                    Las publicaciones podrán incluir textos descriptivos, fotografías y otros contenidos
                     pertinentes para
                     la venta del bien o la contratación del servicio, siempre que no violen ninguna regla o política de
                     UIS Market.
@@ -101,13 +101,13 @@
                     <li>Medicamentos y productos para la salud</li>
                     <li>Productos y servicios financieros</li>
                     <li>Listas de correos y base de datos personales</li>
-                    <li>Productos o servicios para adultos</li>
+                    <li>Servicios para adultos</li>
                     <li>Violencia y discriminación</li>
                     <li>Publicaciones que violen derechos de propiedad intelectual</li>
                     <li>Documentos legales y personales</li>
                     <li>Programas o servicios para hackear dispositivos electrónicos</li>
                     <li>Loterías o productos de azar</li>
-                    <li>Publicaciones con fines distintos a la venta de un producto y servicio</li>
+                    <li>Publicaciones con fines distintos a la venta de un producto o servicio</li>
                     <li>Productos que requieran autorización de organismos estatales</li>
                     <li>Seguros</li>
                     <li>Vehículos</li>
@@ -208,7 +208,7 @@
                     sistema o los servicios brindados por UIS Market.
                     El único que puede eliminar comentarios de las tiendas es el usuario que realizó dicho comentario y
                     el administrador,
-                    si este comentario viola alguna de las normas o políticas the UIS Market.
+                    si este comentario viola alguna de las normas o políticas de UIS Market.
 
                 </p>
             </li>
@@ -220,9 +220,9 @@
                     definitivamente
                     la cuenta de un usuario, una tienda o una publicación, si (a) se quebrantara alguna ley, o
                     cualquiera de las
-                    estipulaciones de los Términos y Condiciones Generales y demás políticas de UIS Market; (b) si
+                    estipulaciones de los Términos y Condiciones y demás políticas de UIS Market; (b) si
                     incumpliera sus
-                    compromisos como Usuario; (c) si se incurriera a criterio de Mercado Libre en conductas o actos
+                    compromisos como Usuario; (c) si se incurriera a criterio de UIS Market en conductas o actos
                     fraudulentos;
                     (d) no pudiera verificarse la identidad del emprendedor o cualquier información proporcionada por el
                     mismo fuere
@@ -252,8 +252,7 @@
                 <h3 class="text-base lg:text-lg">Obligaciones del Comprador</h3>
                 <p class="font-light">Al comprar un artículo el usuario acepta la obligación dada por las
                     condiciones de venta incluidas en la descripción del
-                    artículo en la medida en que las mismas no infrinjan las leyes o los Términos y Condiciones
-                    Generales y demás políticas
+                    artículo en la medida en que las mismas no infrinjan las leyes o los Términos y Condiciones y demás políticas
                     de UIS Market. La compra es irrevocable excepto en circunstancias extraordinarias, tales como que el
                     vendedor cambie
                     sustancialmente la descripción del artículo después de realizada alguna compra, que exista un claro
