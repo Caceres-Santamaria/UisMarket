@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class ProductoController extends Controller
 {
@@ -32,5 +31,11 @@ class ProductoController extends Controller
         else{
             return response()->json(['Failed' => 'No se pueden subir más imágenes']);
         }
+    }
+
+    public function delete(Producto $producto) {
+        $this->authorize('delete', $producto);
+        $producto->delete();
+        return redirect()->route('tienda.productos')->with('message','Producto eliminado exitosamente');
     }
 }

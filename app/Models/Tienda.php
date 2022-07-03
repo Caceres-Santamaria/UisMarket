@@ -31,6 +31,7 @@ class Tienda extends Model
     protected $attributes = [
         'recoger_tienda' => 0,
         'recoger_uis' => 0,
+        'comentario' => null
     ];
 
     /**

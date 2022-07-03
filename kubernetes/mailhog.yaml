@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mailhog-deployment
-  namespace: databases
+  namespace: server-email
   labels:
     app: mailhog
 spec:
@@ -26,7 +26,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mailhog-service-cip
-  namespace: databases
+  namespace: server-email
 spec:
   type: ClusterIP
   selector:
@@ -40,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mailhog-service-np
-  namespace: databases
+  namespace: server-email
 spec:
   type: NodePort
   selector:

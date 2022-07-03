@@ -1,5 +1,5 @@
 @push('scriptHeader')
-    <script src="{{ asset('js/Chart.min.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
 @endpush
 <main class="grid-in-contenido">
     <h1 class="text-black text-center text-2xl lg:text-3xl m-8 font-semibold">Informe de ingresos</h1>

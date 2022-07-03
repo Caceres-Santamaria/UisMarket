@@ -1855,6 +1855,10 @@ select {
   max-width: 72rem;
 }
 
+.max-w-5xl {
+  max-width: 64rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -5825,6 +5829,10 @@ footer>div {
     width: 5rem;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:max-w-4xl {
     max-width: 56rem;
   }
@@ -5879,6 +5887,10 @@ footer>div {
 
   .lg\:justify-center {
     justify-content: center;
+  }
+
+  .lg\:justify-between {
+    justify-content: space-between;
   }
 
   .lg\:gap-6 {

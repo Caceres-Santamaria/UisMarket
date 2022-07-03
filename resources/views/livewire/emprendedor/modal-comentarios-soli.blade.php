@@ -10,7 +10,6 @@
         <x-slot name="content">
             <div class="w-full rounded-md my-5 border border-gray-500 p-3">
                 <p class="">{{$tienda->comentario}}</p>
-                <p>{{ $carnet }}</p>
             </div>
             <div class="w-full mb-5 md:mb-0">
                 <x-jet-label class="mb-2"

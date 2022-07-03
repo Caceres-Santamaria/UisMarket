@@ -38,10 +38,10 @@ class CrearAdministrador extends Component
         $this->users = $users;
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function save()
     {

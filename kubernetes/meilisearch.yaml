@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: meilisearch
-          image: 'getmeili/meilisearch:latest'
+          image: 'getmeili/meilisearch:v0.26.0'
           ports:
             - containerPort: 7700
           volumeMounts:
@@ -34,10 +34,11 @@ metadata:
   name: meilisearch-service
   namespace: databases
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: meilisearch
   ports:
     - protocol: TCP
       port: 7700
       targetPort: 7700
+      nodePort: 30001

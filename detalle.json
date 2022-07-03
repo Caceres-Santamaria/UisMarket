@@ -1,0 +1,48 @@
+[
+    {
+        "id": 100,
+        "qty": 1,
+        "tax": 1769,
+        "name": "Dolorum nihil.",
+        "price": 8425,
+        "rowId": "4d5d84909f5eca3f8ece219f6ac7106b",
+        "weight": 550,
+        "options": {
+            "slug": "dolorum-nihil",
+            "color": "rojo",
+            "image": "/storage/images/productos/773d0f1e0e6929ff7be750322d4cc265.png",
+            "color_id": 3,
+            "talla_id": null,
+            "tienda_id": 10,
+            "tienda_slug": "autem-doloribus",
+            "tienda_nombre": "Autem doloribus."
+        },
+        "discount": 0,
+        "subtotal": 8425
+    },
+    {
+        "id": 100,
+        "qty": 1,
+        "tax": 1769,
+        "name": "Dolorum nihil.",
+        "price": 8425,
+        "rowId": "dfff1a02549f8a175094a5fb0ed61c04",
+        "weight": 550,
+        "options": {
+            "slug": "dolorum-nihil",
+            "color": "blanco",
+            "image": "/storage/images/productos/773d0f1e0e6929ff7be750322d4cc265.png",
+            "color_id": 1,
+            "talla_id": null,
+            "tienda_id": 10,
+            "tienda_slug": "autem-doloribus",
+            "tienda_nombre": "Autem doloribus."
+        },
+        "discount": 0,
+        "subtotal": 8425
+    }
+]
+
+productos => cantidad
+color_tallas => cantidad
+color_productos => cantidad
