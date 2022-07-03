@@ -43,20 +43,20 @@ class ActualizarCantidad extends Component
     public function decrementar()
     {
         if($this->qty > 1){
-            $this->qty = $this->qty - 1;
+            $this->qty -= 1;
             Cart::update($this->rowId, $this->qty);
             $this->emit('render');
-            $this->emitTo('actualizar-cantidad','actualizarCantidad');
+            // $this->emitTo('actualizar-cantidad','actualizarCantidad');
         }
     }
 
     public function incrementar()
     {
         if($this->qty < $this->cantidad){
-            $this->qty = $this->qty + 1;
+            $this->qty += 1;
             Cart::update($this->rowId, $this->qty);
             $this->emit('render');
-            $this->emitTo('actualizar-cantidad','actualizarCantidad');
+            // $this->emitTo('actualizar-cantidad','actualizarCantidad');
         }
     }
 

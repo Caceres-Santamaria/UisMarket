@@ -36,7 +36,7 @@ class ProductosTiendasFiltro extends Component
             $ids[$loop] = $categoria;
             $loop++;
         }
-        $this->categorias = Categoria::whereIn('id',$ids)->orderBy('nombre','asc')->get();
+        $this->categorias = Categoria::whereIn('id',$ids)->orderBy('nombre','asc')->get(['id','slug', 'nombre']);
     }
 
     public function busqueda()
@@ -44,7 +44,7 @@ class ProductosTiendasFiltro extends Component
         if ($this->categoria == '') {
             $productos = productos($this->sort_by, '', $this->view, $this->estado, null, null, $this->tienda->id);
         } else {
-            $categoria_id = Categoria::where('slug',$this->categoria)->first()->id;
+            $categoria_id = Categoria::where('slug',$this->categoria)->first(['id','slug', 'nombre'])->id;
             $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, null, $this->tienda->id);
         }
         return $productos;

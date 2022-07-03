@@ -112,7 +112,7 @@
                                             </span>
                                             |
                                             <span>
-                                                ${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}
+                                                ${{ number_format($producto->precioTotal) }}
                                             </span>
                                         @else
                                             <span>${{ number_format($producto->precio) }}</span>

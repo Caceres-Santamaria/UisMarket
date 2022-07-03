@@ -16,7 +16,7 @@ class EditarProducto extends Component
     public Producto $producto;
     public $categorias, $cantidad, $slug;
 
-    protected $listeners = ['refrescarProducto', 'delete','render'];
+    protected $listeners = ['refrescarProducto','render'];
 
     protected function rules()
     {
@@ -42,10 +42,10 @@ class EditarProducto extends Component
         $this->slug = $this->producto->slug;
     }
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function updatedProductoNombre($value)
     {
@@ -65,11 +65,6 @@ class EditarProducto extends Component
         $this->producto->slug = $this->slug;
         $this->producto->save();
         $this->emit('saved');
-    }
-
-    public function delete(){
-        $this->producto->delete();
-        return redirect()->route('tienda.productos');
     }
 
     public function deleteImagen(ImagenProducto $imagen){

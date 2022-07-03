@@ -6,12 +6,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: backend
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: frontend
+  name: app
 ---
 apiVersion: v1
 kind: Namespace

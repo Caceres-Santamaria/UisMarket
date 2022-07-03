@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ClientesController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ComentariosController;
 use App\Http\Livewire\Admin\CrearCategoria;
@@ -12,7 +11,7 @@ Route::get('/', [HomeController::class, 'index'])->name('admin.dashboard');
 
 Route::view('/profile', 'admin.profile')->name('admin.profile');
 
-Route::get('clientes', [ClientesController::class, 'index'])->name('admin.clientes');
+Route::view('clientes', 'admin.clientes')->name('admin.clientes');
 
 Route::get('solicitudes', SolicitudesContenedor::class)->name('admin.solicitudes');
 
@@ -23,9 +22,6 @@ Route::get('comentarios/{tienda}',[ComentariosController::class,'index'])->name(
 
 Route::get('categorias', CrearCategoria::class)->name('admin.categorias');
 
-Route::get('administradores', CrearAdministrador::class)->name('admin.administradores')->middleware('super.admin');;
-
-// Route::get('administradores',[AdministradoresController::class,'index'])->name('admin.administradores');
-
+Route::get('administradores', CrearAdministrador::class)->name('admin.administradores')->middleware('super.admin');
 Route::view('productos', 'admin.productos')->name('admin.productos');
 Route::view('productos/suspendidos', 'admin.productos-suspendidos')->name('admin.productos.suspendidos');

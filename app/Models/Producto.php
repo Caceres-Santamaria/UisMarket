@@ -66,6 +66,10 @@ class Producto extends Model
         return $this->imagenes->pluck('prioridad')->max();
     }
 
+    public function getPrecioTotalAttribute(){
+        return $this->precio - ($this->precio*$this->descuento );
+    }
+
     /**
      * Relaciones
      */

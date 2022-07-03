@@ -9,7 +9,7 @@ use Livewire\Component;
 class PedidosTienda extends Component
 {
 
-  public $estado = '';
+    public $estado = '';
     public User $usuario;
     protected $queryString = [
         'estado' => ['except' => ''],
@@ -17,22 +17,23 @@ class PedidosTienda extends Component
 
     protected $listeners = ['setiar'];
 
-    public function setiar($id){
+    public function setiar($id)
+    {
         $this->estado = $id;
     }
 
-    public function mount(){
+    public function mount()
+    {
         $this->user = auth()->user();
     }
-    
+
     public function render()
     {
-        if($this->estado == ''){
-            $pedidos = Pedido::where('tienda_id',$this->user->tienda->id)->where('estado',1)->orderBy('created_at', 'asc')->get();
+        if ($this->estado == '') {
+            $pedidos = Pedido::where('tienda_id', $this->user->tienda->id)->where('estado', 1)->orderBy('created_at', 'asc')->get();
+        } else {
+            $pedidos = Pedido::where('tienda_id', $this->user->tienda->id)->where('estado', $this->estado)->orderBy('created_at', 'asc')->get();
         }
-        else{
-            $pedidos = Pedido::where('tienda_id',$this->user->tienda->id)->where('estado',$this->estado)->orderBy('created_at', 'asc')->get();
-        }
-        return view('livewire.emprendedor.pedidos-tienda',compact('pedidos'));
+        return view('livewire.emprendedor.pedidos-tienda', compact('pedidos'));
     }
 }

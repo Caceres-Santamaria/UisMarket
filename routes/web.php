@@ -71,9 +71,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 // })->name('dashboard');
 
 
-Route::get('job', function() {
-    dispatch(new App\Jobs\EnviarCorreo);
-    return "listo";
-});
+// Route::get('job', function() {
+//     dispatch(new App\Jobs\EnviarCorreo);
+//     return "listo";
+// });
 
 

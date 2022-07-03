@@ -14,30 +14,31 @@ class Tiendas extends Component
     public $modal = false;
     public $tienda = null;
 
-    public function mount(Tienda $tienda){
-      $this->tienda = $tienda;
+    public function mount(Tienda $tienda)
+    {
+        $this->tienda = $tienda;
     }
 
-    public function cancelar(){
-      $this->modal = false;
-  }
+    public function cancelar()
+    {
+        $this->modal = false;
+    }
 
-  public function abrir($id){
-    $this->tienda = Tienda::findOrFail($id);
-    // $this->tienda->calificaciones()->where('contenido','<>', null)->paginate(15);
-    // dd($this->calificaciones->all());
-    $this->modal = true;
-    // dd($this->tienda->calificaciones);
-  }
+    public function abrir($id)
+    {
+        $this->tienda = Tienda::findOrFail($id);
+        $this->modal = true;
+    }
 
-  public function eliminar($calificacion){
-    $this->tienda->calificaciones->where('id',$calificacion)->first()->update(['contenido' => null]);
-  }
+    public function eliminar($calificacion)
+    {
+        $this->tienda->calificaciones->where('id', $calificacion)->first()->update(['contenido' => null]);
+    }
 
     public function render()
     {
         return view('livewire.admin.tiendas')
-        ->layout('layouts.admin')
-        ->layoutData(['title' => 'Tiendas']);
+            ->layout('layouts.admin')
+            ->layoutData(['title' => 'Tiendas']);
     }
 }

@@ -36,7 +36,7 @@
                     @if ($producto->descuento > 0)
                         <span class="opacity-50 line-through">${{ number_format($producto->precio) }}</span>
                         |
-                        <span>${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}</span>
+                        <span>${{ number_format($producto->precioTotal) }}</span>
                     @else
                         <span>${{ number_format($producto->precio) }}</span>
                     @endif

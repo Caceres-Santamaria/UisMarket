@@ -5,8 +5,8 @@
             <h4 class="">
                 Productos en el carrito:<span>({{ Cart::count() }})</span>
             </h4>
-            <div class="bg-white border border-gray-300 rounded-2xl w-11/12 md:w-4/5 pt-2 mt-2 lg:w-9/12">
-                <div class="p-4 ">
+            <div class="bg-white border border-gray-300 rounded-2xl w-11/12 md:w-4/5 pt-2 mt-2 lg:w-9/12" style="min-width: 290px">
+                <div class="p-4">
                     <div class="flex uppercase font-semibold mb-4 ">
                         <div class="w-3/5 lg:w-2/5 text-center">
                             <h3>Producto</h3>
@@ -33,7 +33,7 @@
                                                 src="{{ $item->options->image }}">
                                         </a>
                                     </div>
-                                    <div class="w-3/5 ">
+                                    <div class="w-3/5">
                                         <a href="{{ route('productos.show', $item->options->slug) }}">
                                             <span class="text-xs uppercase line-clamp-1 lg:text-base">
                                                 {{ $item->name }}
@@ -41,42 +41,46 @@
                                         </a>
                                         @if ($item->options->talla)
                                             <span class="text-sm  lg:text-base block line-clamp-1">Talla:
-                                                {{ $item->options->talla }}</span>
+                                                {{ $item->options->talla }}
+                                            </span>
                                         @endif
                                         @if ($item->options->color)
                                             <span class="text-sm  lg:text-base block line-clamp-1">Color:
-                                                {{ $item->options->color }}</span>
+                                                {{ $item->options->color }}
+                                            </span>
                                         @endif
                                         <div class="lg:hidden">
                                             <button type="submit" class="text-sm lg:text-base"
                                                 wire:click="delete('{{ $item->rowId }}')"
                                                 wire:loading.class="text-red-600 opacity-25"
-                                                wire:target="delete('{{ $item->rowId }}')">
+                                                >
                                                 <i class="far fa-trash-alt text-red-600 cursor-pointer"> Eliminar</i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" w-2/5 lg:w-1/5 lg:block">
-                                    <span class=" block text-center text-sm lg:text-base">
-                                        ${{ number_format($item->price) }}
-                                    </span>
-                                    <div class="lg:hidden flex justify-center items-center">
-                                        @livewire('actualizar-cantidad',['rowId' => $item->rowId], key($item->rowId))
-                                    </div>
-                                </div>
-                                <div class="hidden lg:block lg:w-1/5">
-                                    <div class="lg:w-full lg:flex lg:justify-center">
-                                        @livewire('actualizar-cantidad',['rowId' => $item->rowId],
-                                        key($item->rowId.'1000'))
-                                    </div>
-                                    <div class="lg:flex lg:justify-center">
-                                        <button type="submit" class="text-sm lg:text-base"
-                                            wire:click="delete('{{ $item->rowId }}')"
-                                            wire:loading.class="text-red-600 opacity-25"
-                                            wire:target="delete('{{ $item->rowId }}')">
-                                            <i class="far fa-trash-alt text-red-600 cursor-pointer"> Eliminar</i>
-                                        </button>
+                                <div class="w-2/5 flex justify-center lg:justify-between items-center">
+                                    <div class="flex flex-col lg:flex-row lg:justify-between w-full">
+                                        <span class="block text-center text-sm lg:text-base lg:w-1/2">
+                                            ${{ number_format($item->price) }}
+                                        </span>
+                                        <div class="lg:w-1/2">
+                                            <div class="flex justify-center items-center lg:w-full">
+                                                @livewire('actualizar-cantidad',['rowId' => $item->rowId],
+                                                key($item->rowId.'1000'))
+                                            </div>
+                                            <div class="hidden lg:flex lg:justify-center w-full">
+                                                <button type="submit" class="text-sm lg:text-base"
+                                                    wire:click="delete('{{ $item->rowId }}')"
+                                                    wire:loading.class="text-red-600 opacity-25"
+                                                    >
+                                                    <i class="far fa-trash-alt text-red-600 cursor-pointer"> Eliminar</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <span class="block lg:hidden text-center text-sm lg:text-base item-subtotal">
+                                            ${{ number_format($item->qty * $item->price) }}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="hidden lg:block lg:w-1/5">

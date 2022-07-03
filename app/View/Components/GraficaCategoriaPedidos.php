@@ -8,21 +8,14 @@ use Illuminate\View\Component;
 
 class graficaCategoriaPedidos extends Component
 {
-    // public $data;
+    public $categorias;
+    public $cantidades;
     /**
      * Create a new component instance.
      *
      * @return void
      */
     public function __construct()
-    {
-    }
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
-    public function render()
     {
         $data = DB::table('pedidos as pe')
             ->join('productos as p', 'p.id', '=', DB::raw("(JSON_VALUE(pe.detalle, '$[*].id'))"))
@@ -39,11 +32,16 @@ class graficaCategoriaPedidos extends Component
                 array_push($cantidades, 0);
             }
         }
-        $categorias = implode(",", $categorias);
-        $cantidades = implode(",", $cantidades);
-
-
-        // dd($categorias,$cantidades);
-        return view('components.grafica-categoria-pedidos', compact('categorias', 'cantidades'));
+        $this->categorias = implode(",", $categorias);
+        $this->cantidades = implode(",", $cantidades);
+    }
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.grafica-categoria-pedidos');
     }
 }

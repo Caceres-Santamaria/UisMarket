@@ -52,12 +52,7 @@
                 Pedido-N°{{ $pedido->id }}
             </p>
             @if ($pedido->estado == 4)
-                @if ($pedido->calificacion != null)
-                    @livewire('calificacion-pedido',['calificacion' => $pedido->calificacion,'id' =>
-                    $pedido->id],key(1))
-                @else
-                    @livewire('calificacion-pedido',['id' => $pedido->id],key(2))
-                @endif
+                @livewire('calificacion-pedido',['pedido' => $pedido])
             @elseif($pedido->estado == 3)
                 <form action="{{ route('pedidos.update', $pedido->id) }}" class="ml-auto" method="post" x-data
                     x-on:click.prevent="confirmacionAlert(event,'Sí, confirmar!','Se confirmará la recepción del pedido','No se ha confirmado la recepción del pedido')">
@@ -224,6 +219,18 @@
             </div>
 
         </div>
+        @if (session()->has('message'))
+            <script>
+                window.addEventListener('DOMContentLoaded', e => {
+                    simpleAlert(
+                        'center',
+                        'error',
+                        '{{ session('message') }}',
+                        '',
+                        true);
+                });
+            </script>
+        @endif
     </main>
 
 </x-app2-layout>

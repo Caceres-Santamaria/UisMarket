@@ -73,7 +73,7 @@
                             class="m-0 p-2 text-lg xl:text-xl opacity-50 line-through">${{ number_format($producto->precio) }}</span>
                         -
                         <span
-                            class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio - $producto->precio * $producto->descuento) }}</span>
+                            class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precioTotal) }}</span>
                     @else
                         <span class="m-0 p-2 text-lg xl:text-xl">${{ number_format($producto->precio) }}</span>
                     @endif
