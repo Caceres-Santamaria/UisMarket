@@ -8,7 +8,7 @@
                             @foreach ($productos as $producto)
                                 <li class="splide__slide">
                                     <div class="p-1 border-2 border-gray-200 rounded-md card-producto">
-                                        <a href="{{ route('productos.show', $producto) }}"
+                                        <a href="{{ route('productos.show', $producto->slug) }}"
                                             class="relative block w-full h-cardsm md:h-cardmd lg:h-cardlg">
                                             @if ($producto->stock > 0 || $producto->descuento <= 0)
                                                 <div class="complements">
@@ -91,7 +91,7 @@
                             @foreach ($nuevas as $tienda)
                                 <li class="splide__slide">
                                     <div class="p-1 border-2 border-gray-200 rounded-md card-producto">
-                                        <a href="{{ route('tiendas.show', $tienda) }}"
+                                        <a href="{{ route('tiendas.show', $tienda->slug) }}"
                                             class="relative block w-full h-cardsm md:h-cardmd lg:h-cardlg">
                                             @if ($tienda->logo)
                                                 <img class="object-cover object-center w-full h-full card-producto__img"

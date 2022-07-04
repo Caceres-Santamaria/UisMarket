@@ -12,7 +12,7 @@ class CrearProducto extends Component
 {
     public $categorias;
     public $categoria_id = "";
-    public $nombre, $slug, $descripcion, $precio, $estado, $color = 0, $talla = 0, $cantidad;
+    public $nombre, $slug, $descripcion, $precio, $estado, $color = '', $talla = '', $cantidad;
 
 
     protected function rules()
@@ -51,6 +51,9 @@ class CrearProducto extends Component
 
     public function save()
     {
+        if($this->talla == 1) {
+            $this->color = 1;
+        }
         $this->validate();
         if ($this->color == 0 && $this->talla == 0) {
             Validator::make(

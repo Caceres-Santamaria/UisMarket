@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DapartamentoSeeder::class);
         $this->call(ColorSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(TiendaSeeder::class);
-        $this->call(ProductoSeeder::class);
-        $this->call(TallaSeeder::class);
-        $this->call(ColorProductoSeeder::class);
-        $this->call(ColorTallaSeeder::class);
-        $this->call(EnvioSeeder::class);
+        // $this->call(TiendaSeeder::class);
+        // $this->call(ProductoSeeder::class);
+        // $this->call(TallaSeeder::class);
+        // $this->call(ColorProductoSeeder::class);
+        // $this->call(ColorTallaSeeder::class);
+        // $this->call(EnvioSeeder::class);
     }
 }

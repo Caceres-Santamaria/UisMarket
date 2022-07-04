@@ -24,6 +24,21 @@ class ProductosTiendasFiltro extends Component
         'estado' => ['except' => 'todos']
     ];
 
+    public function updatingSortBy()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingEstado()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingCategoria()
+    {
+        $this->resetPage();
+    }
+
     public function mount($tienda)
     {
         $this->sort_by = '';
@@ -42,10 +57,10 @@ class ProductosTiendasFiltro extends Component
     public function busqueda()
     {
         if ($this->categoria == '') {
-            $productos = productos($this->sort_by, '', $this->view, $this->estado, null, null, $this->tienda->id);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, null, false, $this->tienda->id);
         } else {
             $categoria_id = Categoria::where('slug',$this->categoria)->first(['id','slug', 'nombre'])->id;
-            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, null, $this->tienda->id);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, false, $this->tienda->id);
         }
         return $productos;
     }

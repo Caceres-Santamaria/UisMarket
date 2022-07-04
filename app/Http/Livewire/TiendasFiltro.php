@@ -15,8 +15,19 @@ class TiendasFiltro extends Component
     public $busqueda = '';
 
     protected $queryString = [
-        'sort_by' => ['except' => '']
+        'sort_by' => ['except' => ''],
+        'busqueda' => ['except' => '']
     ];
+
+    public function updatingSortBy()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingBusqueda()
+    {
+        $this->resetPage();
+    }
 
     public function mount($sort_by = '')
     {

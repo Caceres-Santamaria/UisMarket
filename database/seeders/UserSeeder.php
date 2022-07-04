@@ -20,28 +20,28 @@ class UserSeeder extends Seeder
             'name' => 'Alexis Cáceres',
             'email' => 'nelsonalexiscacerzcarreo37@gmail.com',
             'rol' => '0',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('Flaminio1098818855'),
         ]);
 
-        Direccion::factory(1)->create([
-            'usuario_id' => $user->id
-        ]);
+        // Direccion::factory(1)->create([
+        //     'usuario_id' => $user->id
+        // ]);
 
         $user2 = User::create([
             'name' => 'Jenny Santamaría',
             'email' => 'jennysantamaria06@gmail.com',
             'rol' => '1',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('6330557Jenny'),
         ]);
 
-        Direccion::factory(1)->create([
-            'usuario_id' => $user2->id
-        ]);
+        // Direccion::factory(1)->create([
+        //     'usuario_id' => $user2->id
+        // ]);
 
-        User::factory(30)->create()->each(function(User $usuario){
-            Direccion::factory(1)->create([
-                'usuario_id' => $usuario->id
-            ]);
-        });
+        // User::factory(30)->create()->each(function(User $usuario){
+        //     Direccion::factory(1)->create([
+        //         'usuario_id' => $usuario->id
+        //     ]);
+        // });
     }
 }

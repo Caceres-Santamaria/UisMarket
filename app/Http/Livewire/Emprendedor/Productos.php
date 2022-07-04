@@ -49,6 +49,6 @@ class Productos extends DataTableComponent
 
     public function query(): Builder
     {
-        return Producto::query()->where('tienda_id',auth()->user()->tienda->id);
+        return Producto::query()->whereRelation('categoria','deleted_at',null)->where('tienda_id',auth()->user()->tienda->id);
     }
 }

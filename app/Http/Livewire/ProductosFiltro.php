@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Producto;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,19 +20,35 @@ class ProductosFiltro extends Component
         'estado' => ['except' => 'todos']
     ];
 
+    public function updatingSortBy()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingNombre()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingEstado()
+    {
+        $this->resetPage();
+    }
+
     public function mount($categoria = null, $sort_by = '', $nombre = '')
     {
         $this->categoria = $categoria;
         $this->sort_by = $sort_by;
+        $this->estado = 'todos';
         $this->nombre = $nombre;
     }
 
     public function busqueda()
     {
         if (!$this->categoria) {
-            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado , null, null, null);
+            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado , null, false, null);
         } else {
-            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado, $this->categoria->id, null, null);
+            $productos = productos($this->sort_by, $this->nombre, $this->view, $this->estado, $this->categoria->id, false, null);
         }
         return $productos;
     }

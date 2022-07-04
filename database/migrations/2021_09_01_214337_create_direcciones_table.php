@@ -13,20 +13,20 @@ class CreateDireccionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('direcciones', function (Blueprint $table) {
-            $table->id();
-            $table->string('contacto',100);
-            $table->string('telefono',20);
-            $table->string('direccion',100);
-            $table->string('especificacion',100)->nullable();
-            $table->unsignedTinyInteger('ciudad_id');
-            $table->string('codigo_postal')->nullable();
-            $table->enum('predeterminado', [1,2]);
-            $table->unsignedBigInteger('usuario_id');
-            $table->timestamps();
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ciudad_id')->references('id')->on('ciudades');
-        });
+        // Schema::create('direcciones', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('contacto',100);
+        //     $table->string('telefono',20);
+        //     $table->string('direccion',100);
+        //     $table->string('especificacion',100)->nullable();
+        //     $table->unsignedTinyInteger('ciudad_id');
+        //     $table->string('codigo_postal')->nullable();
+        //     $table->enum('predeterminado', [1,2]);
+        //     $table->unsignedBigInteger('usuario_id');
+        //     $table->timestamps();
+        //     $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
+        //     $table->foreign('ciudad_id')->references('id')->on('ciudades');
+        // });
     }
 
     /**
@@ -36,6 +36,6 @@ class CreateDireccionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('direcciones');
+        // Schema::dropIfExists('direcciones');
     }
 }

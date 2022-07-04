@@ -20,7 +20,9 @@ class Admin
             return $next($request);
         }
         else{
-            return redirect()->route('home')->with('message','No tienes permiso de acceder a esta ruta');
+            return abort(403);
+            // return response('No tienes permiso de acceder a esta ruta',401);
+            // return redirect()->route('home')->with('message','No tienes permiso de acceder a esta ruta');
         }
     }
 }

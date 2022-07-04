@@ -7,17 +7,17 @@ use Illuminate\View\Component;
 
 class FiltroEstado extends Component
 {
-    public $filtros;
+    // public $filtros;
     public $sort;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($sort = 'Todos')
+    public function __construct($sort = 'todos')
     {
         $this->sort = $sort;
-        $this->filtros = array('todos', 'nuevo', 'usado');
+        // $this->filtros = array('todos', 'nuevo', 'usado');
     }
 
     /**
