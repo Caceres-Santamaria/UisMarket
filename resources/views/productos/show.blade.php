@@ -113,12 +113,12 @@
                 </p>
             </div>
         </section>
-        @php($otros = $producto->tienda->productos->except([$producto->id]))
-        @if ($otros->count() > 0)
+        {{-- @php($otros = $producto->tienda->productos->except([$producto->id])) --}}
+        @if ($productosRelacionados->count() > 0)
             <section class="md:col-span-2 lg:col-span-2 w-full">
                 <hr class="my-10 text-black w-full px-6">
                 <h3 class="text-bold my-2 px-6">Otros productos de esta tienda</h3>
-                <x-slider id="mas_productos" :data="$otros->toQuery()->take(10)->get()" />
+                <x-Slider id="mas_productos" tipo="productos" :data="$productosRelacionados" />
             </section>
             @push('scripts')
                 <script>

@@ -20,7 +20,8 @@ class Emprendedor
             return $next($request);
         }
         else{
-            return redirect()->route('home')->with('message','No tienes permiso de acceder a esta ruta');
+            return abort(403);
+            // return redirect()->route('home')->with('message','No tienes permiso de acceder a esta ruta');
         }
     }
 }

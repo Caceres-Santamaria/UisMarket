@@ -7,13 +7,14 @@ use Illuminate\View\Component;
 class filtroDesplegable extends Component
 {
     public array $filtros = [];
+    public array $keys = [];
     public $sort;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($filtro = 'productos', $sort = 'Alfabéticamente: A-Z')
+    public function __construct($filtro = 'productos', $sort = 'nombre_asc')
     {
         if ($filtro == 'tiendas') {
             switch ($sort) {
@@ -40,12 +41,21 @@ class filtroDesplegable extends Component
             }
 
             $this->filtros = [
-                'Alfabéticamente: A-Z' => 'nombre_asc',
-                'Alfabéticamente: Z-A' => 'nombre_desc',
-                'Más nuevas' => 'mas_reciente',
-                'Más antiguas' => 'menos_recientes',
-                'Mejor valoradas' => 'mejor_valoradas',
-                'Menor valoradas' => 'menor_valoradas'
+                'Alfabéticamente: A-Z',
+                'Alfabéticamente: Z-A',
+                'Más nuevas',
+                'Más antiguas',
+                'Mejor valoradas',
+                'Menor valoradas'
+            ];
+
+            $this->keys = [
+                'nombre_asc',
+                'nombre_desc',
+                'mas_reciente',
+                'menos_recientes',
+                'mejor_valoradas',
+                'menor_valoradas'
             ];
         } elseif ($filtro == 'productos') {
             switch ($sort) {
@@ -66,15 +76,25 @@ class filtroDesplegable extends Component
             }
 
             $this->filtros = [
-                'Alfabéticamente: A-Z' => 'nombre_asc',
-                'Alfabéticamente: Z-A' => 'nombre_desc',
-                'Precio: Menor a mayor' => 'precio_asc',
-                'Precio: Mayor a menor' => 'precio_desc',
-                'Más recientes' => 'mas_reciente',
-                'Más antiguos' => 'menos_recientes'
+                'Alfabéticamente: A-Z',
+                'Alfabéticamente: Z-A',
+                'Precio: Menor a mayor',
+                'Precio: Mayor a menor',
+                'Más recientes',
+                'Más antiguos'
+            ];
+
+            $this->keys = [
+                'nombre_asc',
+                'nombre_desc',
+                'precio_asc',
+                'precio_desc',
+                'mas_reciente',
+                'menos_recientes'
             ];
         } else {
             $this->filtros = [];
+            $this->keys = [];
         }
     }
 

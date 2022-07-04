@@ -34,17 +34,17 @@
             @endif
         </li>
         <li
-            class="{{ setActive('tiendas*') }} list-item border-b-2-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('tiendas*') }} list-item border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('tiendas') }}"><span>Tiendas</span></a>
         </li>
         <li
-            class="{{ setActive('promociones') }} list-item border-b-2-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('promociones') }} list-item border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('promociones') }}"><span>Promociones</span></a>
         </li>
         <li
-            class="{{ setActive('about') }} list-item border-b-2-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            class="{{ setActive('about') }} list-item border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('about') }}"><span>¿Quiénes somos?</span></a>
         </li>

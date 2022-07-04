@@ -91,18 +91,6 @@
             </div>
         </div>
         <div class="mb-4">
-            <x-jet-label value="¿Tu producto tiene color?" />
-            <div class="flex gap-2">
-                <x-jet-label>
-                    <input class="mx-2" type="radio" name="color" value="1" wire:model="color">Sí
-                </x-jet-label>
-                <x-jet-label>
-                    <input class="mx-2" type="radio" name="color" value="0" wire:model="color">No
-                </x-jet-label>
-            </div>
-            <x-jet-input-error for="color" />
-        </div>
-        <div class="mb-4">
             <x-jet-label value="¿Tu producto tiene talla?" />
             <div class="flex gap-2">
                 <x-jet-label>
@@ -114,7 +102,21 @@
             </div>
             <x-jet-input-error for="talla" />
         </div>
-        @if ($color == 0 && $talla == 0)
+        @if ($talla == 0)
+            <div class="mb-4">
+                <x-jet-label value="¿Tu producto tiene color?" />
+                <div class="flex gap-2">
+                    <x-jet-label>
+                        <input class="mx-2" type="radio" name="color" value="1" wire:model="color">Sí
+                    </x-jet-label>
+                    <x-jet-label>
+                        <input class="mx-2" type="radio" name="color" value="0" wire:model="color">No
+                    </x-jet-label>
+                </div>
+                <x-jet-input-error for="color" />
+            </div>
+        @endif
+        @if (($color == 0 || $color == '') && ($talla == 0 || $talla == ''))
             <div>
                 <x-jet-label value="Cantidad" />
                 <x-jet-input wire:model="cantidad" type="number" class="w-full" />

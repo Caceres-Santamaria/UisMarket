@@ -171,7 +171,7 @@
                         <x-jet-label value="{{ $valor }}*" />
                         <x-jet-input id="costo" type="number" min=0 class="w-full"
                             x-ref="costo{{ $clave }}"
-                            x-on:keyup="$wire.modificarCosto({{ $clave }},$refs.costo{{ $clave }}.value,'{{ $valor }}')"
+                            x-on:blur="$wire.modificarCosto({{ $clave }},$refs.costo{{ $clave }}.value,'{{ $valor }}')"
                             placeholder="Ingresa el costo de envío de sus productos" :value="$costos[$clave]" />
                         <x-jet-input-error for="costo-{{ $clave }}" class="mt-2" />
                     </div>

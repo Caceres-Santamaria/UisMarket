@@ -17,9 +17,9 @@
             </div>
             <h1 class="flex justify-center my-4 text-2xl font-semibold text-primario-n lg:text-4xl lg:my-8"> UIS Market
             </h1>
-            <h1 class="flex justify-center mb-10 text-xl font-medium text-center text-gray-600 lg:text-3xl">Apoyamos
-                las
-                marcas y emprendimientos UIS con el fin de activar la economía local.</h1>
+            <h1 class="flex justify-center mb-10 text-xl font-medium text-center text-gray-600 lg:text-3xl">
+                Apoyamos las marcas y emprendimientos UIS con el fin de activar la economía local.
+            </h1>
             <h2 class="my-2 text-lg font-normal text-gray-600 lg:text-2xl"> Tiendas destacadas </h2>
             <div id="content-products" class="w-full">
                 @if ($destacadas->count() > 0)

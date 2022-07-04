@@ -18,7 +18,7 @@ class Producto extends Model
     const PUBLICADO = 2;
     const SUSPENDIDO = 3;
 
-    // protected $with = ['imagenes'];
+    protected $with = ['imagenes'];
 
     /**
      * Los valores predeterminados del modelo para los atributos.
@@ -185,6 +185,11 @@ class Producto extends Model
 
     public function shouldBeSearchable()
     {
-        return ($this->publicacion == '2' and $this->tienda->deleted_at == null and $this->tienda->estado == '1');
+        if($this->tienda){
+            return ($this->publicacion == '2' and $this->tienda->estado == '1' and $this->categoria != null);
+        }
+        else {
+            return ($this->publicacion == '2' and $this->tienda != null and $this->categoria != null);
+        }
     }
 }

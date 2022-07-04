@@ -18,7 +18,7 @@ class CartIsEmpty
     public function handle(Request $request, Closure $next)
     {
         if(Cart::count() == 0){
-            return redirect()->route('carrito')->with('message','El carrito está vacío');
+            return redirect()->route('carrito')->with('message','1');
         }
         return $next($request);
     }

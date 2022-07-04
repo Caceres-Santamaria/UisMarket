@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -39,6 +40,7 @@ class Categorias extends DataTableComponent
     public function eliminar($id)
     {
         $categoria = Categoria::where('id', $id)->first();
+        Producto::where('categoria_id', $categoria->id)->unsearchable();
         $categoria->delete();
         $this->dispatchBrowserEvent('successCategoriaAlert', 'inhabilitar');
     }
@@ -46,6 +48,7 @@ class Categorias extends DataTableComponent
     public function activar($id)
     {
         Categoria::where('id', $id)->restore();
+        Producto::where('categoria_id', $id)->searchable();
         $this->dispatchBrowserEvent('successCategoriaAlert', 'habilitar');
     }
 }

@@ -71,9 +71,11 @@ function setActiveAdmin($route)
     return request()->routeIs($route) ? 'text-primario-n hover:text-primario-dark2' : '';
 }
 
-function cantidad($producto_id, $color_id = null, $talla_id = null)
+function cantidad($producto_id, $color_id = null, $talla_id = null, $producto = null)
 {
-    $producto = Producto::find($producto_id);
+    if(!$producto) {
+        $producto = Producto::find($producto_id);
+    }
 
     if ($talla_id) {
         $talla = Talla::find($talla_id);
@@ -103,16 +105,16 @@ function cantidad_agregada($producto_id, $color_id = null, $talla_id = null)
     }
 }
 
-function cantidad_disponible($producto_id, $color_id = null, $talla_id = null)
+function cantidad_disponible($producto_id, $color_id = null, $talla_id = null, $producto = null)
 {
 
-    return cantidad($producto_id, $color_id, $talla_id) - cantidad_agregada($producto_id, $color_id, $talla_id);
+    return cantidad($producto_id, $color_id, $talla_id, $producto) - cantidad_agregada($producto_id, $color_id, $talla_id);
 }
 
-function descontarCantidad($item)
+function descontarCantidad($item,$producto)
 {
-    $producto = Producto::find($item->id);
-    $cantidad_disponible = cantidad_disponible($item->id, $item->options->color_id, $item->options->talla_id);
+    // $producto = Producto::find($item->id);
+    $cantidad_disponible = cantidad_disponible($item->id, $item->options->color_id, $item->options->talla_id, $producto);
     if ($item->options->talla_id) {
         $talla = Talla::find($item->options->talla_id);
         $talla->colores()->updateExistingPivot($item->options->color_id, [
@@ -133,6 +135,7 @@ function cantidad_disponible_incrementar($item,$producto_id, $color_id = null, $
     return cantidad($producto_id, $color_id, $talla_id) + $item->qty;
 }
 
+
 function incrementarCantidad($item)
 {
     $producto = Producto::find($item->id);
@@ -152,36 +155,36 @@ function incrementarCantidad($item)
     }
 }
 
-function productos($sort_by, $nombre, $grid, $estado, $categoria_id = null, $descuento = null, $tienda_id = null)
+function productos($sort_by, $nombre, $grid, $estado, $categoria_id = null, $descuento = false, $tienda_id = null)
 {
     if(!$categoria_id){
         if (!$descuento){
             if(!$tienda_id){
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2);
             }else{
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda_id);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda_id);
             }
         }
         else{
             if(!$tienda_id){
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('descuento', '>', 0);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('descuento', '>', 0);
             }else{
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('descuento', '>', 0)->where('tienda_id', $tienda_id);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('descuento', '>', 0)->where('tienda_id', $tienda_id);
             }
         }
     }else{
         if (!$descuento){
             if(!$tienda_id){
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id);
             }else{
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('tienda_id', $tienda_id);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('tienda_id', $tienda_id);
             }
         }
         else{
             if(!$tienda_id){
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('descuento', '>', 0);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('descuento', '>', 0);
             }else{
-                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('descuento', '>', 0)->where('tienda_id', $tienda_id);
+                $productos = Producto::query()->with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('categoria_id', $categoria_id)->where('descuento', '>', 0)->where('tienda_id', $tienda_id);
             }
         }
     }
@@ -301,25 +304,25 @@ function productosTienda($sort_by, $grid, $tienda)
 {
     switch ($sort_by) {
         case '':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'asc')->paginate(20);
             break;
         case 'nombre_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'asc')->paginate(20);
             break;
         case 'nombre_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('nombre', 'desc')->paginate(20);
             break;
         case 'precio_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
             break;
         case 'precio_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
             break;
         case 'mas_reciente':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('created_at', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('created_at', 'desc')->paginate(20);
             break;
         case 'menos_recientes':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('created_at', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->orderBy('created_at', 'asc')->paginate(20);
             break;
         default:
             $productos = [];
@@ -331,25 +334,25 @@ function categoriaProductosTienda($sort_by, $grid, $tienda, $categoria_id)
 {
     switch ($sort_by) {
         case '':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'asc')->paginate(20);
             break;
         case 'nombre_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'asc')->paginate(20);
             break;
         case 'nombre_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('nombre', 'desc')->paginate(20);
             break;
         case 'precio_asc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'asc')->paginate(20);
             break;
         case 'precio_desc':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy(DB::raw('(precio - (precio*descuento))'), 'desc')->paginate(20);
             break;
         case 'mas_reciente':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('created_at', 'desc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('created_at', 'desc')->paginate(20);
             break;
         case 'menos_recientes':
-            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('created_at', 'asc')->paginate(20);
+            $productos = Producto::with($grid == 'grid' ? ['imagenes'] : ['categoria', 'tienda', 'imagenes'])->whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->whereRelation('tienda', 'estado', '1')->where('publicacion', 2)->where('tienda_id', $tienda)->where('categoria_id', $categoria_id)->orderBy('created_at', 'asc')->paginate(20);
             break;
         default:
             $productos = [];

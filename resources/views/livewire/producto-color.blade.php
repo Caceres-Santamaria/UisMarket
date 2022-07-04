@@ -19,6 +19,10 @@
                             <span aria-hidden="true"
                                 class="h-8 w-8 {{ $color->codigo }} border border-gray-400 border-opacity-40 rounded-full">
                             </span>
+                        @elseif ($color->codigo == 'mix')
+                            <span aria-hidden="true"
+                                class="h-8 w-8 bg-amber-100 border border-black border-opacity-40 rounded-full" style="background-image: url('/storage/images/website/mix.png');background-position: center;">
+                            </span>
                         @else
                             <span aria-hidden="true"
                                 class="h-8 w-8 {{ $color->codigo }} border border-black border-opacity-40 rounded-full">

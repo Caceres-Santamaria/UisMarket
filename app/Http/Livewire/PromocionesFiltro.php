@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Categoria;
-use App\Models\Producto;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,6 +20,21 @@ class PromocionesFiltro extends Component
         'estado' => ['except' => 'todos']
     ];
 
+    public function updatingCategoria()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSortBy()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingEstado()
+    {
+        $this->resetPage();
+    }
+
     public function mount($sort_by = '')
     {
         $this->sort_by = $sort_by;
@@ -29,10 +43,10 @@ class PromocionesFiltro extends Component
     public function busqueda()
     {
         if ($this->categoria == '') {
-            $productos = productos($this->sort_by, '', $this->view, $this->estado , null, null, null);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado , null, true, null);
         } else {
             $categoria_id = Categoria::where('slug',$this->categoria)->first()->id;
-            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, null, null);
+            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, true, null);
         }
         return $productos;
     }
