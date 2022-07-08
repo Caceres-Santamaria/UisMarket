@@ -34,7 +34,7 @@ class Tienda extends Component
             'logo' => 'nullable | image | max:2048',
             'portada' => 'nullable | image | max:2048',
             // 'comentario' => 'nullable| max:2000',
-            'carnet' => 'required | image | max:2048',
+            'carnet' => ['nullable', Rule::requiredIf(!$this->tienda->carnet),'image','max:2048'],
             'tienda.nombre' => 'required | max:50 | min:3',
             'tienda.descripcion' => 'required | max:2000',
             'tienda.direccion' => 'max:100',

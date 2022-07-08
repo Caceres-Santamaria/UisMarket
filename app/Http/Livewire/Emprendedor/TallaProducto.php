@@ -13,7 +13,8 @@ class TallaProducto extends Component
     public $open = false;
     public Producto $producto;
     public $talla = "";
-    public $modelTalla, $editTalla;
+    public Talla $modelTalla;
+    public $editTalla;
     protected $listeners = ['delete'];
 
     protected function rules(){
@@ -35,6 +36,7 @@ class TallaProducto extends Component
         else{
             $this->producto = $producto;
         }
+        $this->modelTalla = new Talla();
     }
 
     public function save()
@@ -69,13 +71,16 @@ class TallaProducto extends Component
         $this->modelTalla->nombre = $this->editTalla;
         $this->modelTalla->save();
         $this->producto = $this->producto->fresh();
+        $this->modelTalla = new Talla();
         $this->open = false;
     }
 
     public function delete(Talla $talla){
         // $talla->delete();
+        $this->modelTalla = new Talla();
         $talla->forceDelete();
         $this->producto = $this->producto->fresh();
+        // dd($this->producto);
     }
 
     public function render()

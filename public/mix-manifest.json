@@ -1,13 +1,13 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/sliderDetalle.js": "/js/sliderDetalle.js",
-    "/js/home.js": "/js/home.js",
-    "/css/fontawesome.css": "/css/fontawesome.css",
-    "/css/general.css": "/css/general.css",
-    "/js/ckeditor.js": "/js/ckeditor.js",
-    "/js/chart.min.js": "/js/chart.min.js",
-    "/js/splide.min.js": "/js/splide.min.js",
-    "/css/splide.min.css": "/css/splide.min.css",
-    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css",
-    "/css/dropzone.css": "/css/dropzone.css"
+    "/js/app.js": "/js/app.js?id=386b45bd7f31e92014b3",
+    "/js/sliderDetalle.js": "/js/sliderDetalle.js?id=7f2c569efa88ad98c3ef",
+    "/js/home.js": "/js/home.js?id=cb605dd30bb17e319606",
+    "/css/fontawesome.css": "/css/fontawesome.css?id=82cbb85dc4742208d2ea",
+    "/css/general.css": "/css/general.css?id=9f52f324ee5e6d6c134e",
+    "/js/ckeditor.js": "/js/ckeditor.js?id=32630588afb295aabb12",
+    "/js/chart.min.js": "/js/chart.min.js?id=4328ece7a486aa04b358",
+    "/js/splide.min.js": "/js/splide.min.js?id=4923882623f0eae972c3",
+    "/css/splide.min.css": "/css/splide.min.css?id=b466577b6fbe98f2e456",
+    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css?id=245f413c4157667d3f36",
+    "/css/dropzone.css": "/css/dropzone.css?id=833d31955eedacfcf2ca"
 }

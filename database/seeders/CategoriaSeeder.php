@@ -61,8 +61,18 @@ class CategoriaSeeder extends Seeder
             ],
 
             [
-                'nombre' => 'Accesorios electrónicos',
-                'slug' => Str::slug('Accesorios electrónicos')
+                'nombre' => 'Tecnología',
+                'slug' => Str::slug('Tecnología')
+            ],
+
+            [
+                'nombre' => 'Servicios',
+                'slug' => Str::slug('Servicios')
+            ],
+
+            [
+                'nombre' => 'Productos varios',
+                'slug' => Str::slug('Productos varios')
             ],
         ];
 

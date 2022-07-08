@@ -3,11 +3,19 @@
         class="grid-in-contenido grid grid-cols-full grid-rows-detalle px-3 py-6 pt-3 place-items-start place-content-start md:grid-rows-auto md:grid-cols-1 md:px-2 md:py-10 md:pt-5 lg:grid-rows-auto lg:grid-cols-1 lg:px-10 lg:py-16 lg:pt-8">
         @php($emprendedor = request()->routeIs('tienda.show'))
         @if ($emprendedor)
-            @if ($tienda->estado == '3')
+            @isset($productosI)
+                @if($productosI > 0)
+                    <div class="bg-yellow-500 bg-opacity-30 w-full my-2 p-3 rounded-sm">
+                        <i class="text-yellow-600 fas fa-exclamation-triangle"></i>
+                        Tienes {{ $productosI }} productos suspendidos por incumplir los <a class="cursor-pointer font-bold" href="{{ route('TyT') }}" target="__blank">términos y condiciones</a>, <a class="underline cursor-pointer" href="{{ route('tienda.productos') }}">ver más detalles</a>
+                    </div>
+                @endif
+            @endisset
+            @if ($tienda->estado == '3' || $tienda->estado == '2')
                 @livewire('emprendedor.modal-comentarios-soli',['tienda'=> $tienda])
             @endif
             @if ($tienda->estado == '0')
-                <div class="bg-yellow-500 bg-opacity-30 w-full my-6 p-3"><i
+                <div class="bg-yellow-500 bg-opacity-30 w-full my-2 p-3 rounded-sm"><i
                         class="text-yellow-600 fas fa-exclamation-triangle"></i> Tu solicitud se encuentra en proceso.
                 </div>
             @endif

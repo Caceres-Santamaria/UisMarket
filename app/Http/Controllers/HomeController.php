@@ -17,12 +17,13 @@ class HomeController extends Controller
             $join->on('p.id', '=', 'c.pedido_id');
         })->select(DB::raw("tiendas.*,avg(c.calificacion) as calificaciones,count(c.calificacion) as total"))
         ->where('p.estado', '4')
+        ->where('tiendas.estado','1')
         ->groupBy('id')
         ->orderBy('calificaciones', 'desc')
         ->take(10)
         ->get();
 
-        $nuevas = Tienda::orderBy('created_at', 'desc')->take(10)->get();
+        $nuevas = Tienda::where('estado','1')->orderBy('created_at', 'desc')->take(10)->get();
 
         // $tiendasNew = Tienda::orderBy('created_at','asc')->take(10)->get();
         return view('home',compact('destacadas','nuevas'));
