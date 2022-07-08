@@ -166,7 +166,7 @@
                 class="mr-1 fas fa-exclamation-circle"></i>Prenda No Disponible
         </p>
     @endif
-    @if ($producto->publicacion == '2')
+    @if ($producto->publicacion == '2' && $producto->categoria->nombre !== 'Servicios')
         @auth
             @if (auth()->user()->tienda)
                 @if (auth()->user()->tienda->id != $producto->tienda_id)

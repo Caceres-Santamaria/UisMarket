@@ -1,9 +1,9 @@
 <div class="w-full">
     <div class="w-full border border-gray-300 border-box">
-        <ul x-data="{categorias: false}"
+        <ul x-data="{ categorias: false }"
             class="relative flex flex-row w-full text-sm list-none justify-evenly md:text-lg lg:text-lg">
             <li @click="productos=true; calificaciones=false; informacion=false"
-                class="relative md:p-1.5 lg:p-1.5 z-5 hover:no-underline outline-none m-0 border-b hover:border-gray-900"
+                class="relative md:p-1.5 lg:p-1.5 hover:no-underline outline-none m-0 border-b hover:border-gray-900"
                 :class="{ 'border-gray-900': (productos == true) }">
                 <a class="flex items-center justify-center h-full p-1 font-normal leading-6 text-gray-800 no-underline outline-none hover:cursor-pointer md:h-full lg:h-full md:px-4 md:py-1 lg:py-1 lg:px-4"
                     href="javascript::void(0);">
@@ -64,7 +64,27 @@
                             {{ $categoria == '' ? 'Productos' : slugToName($categoria) }}
                         </h1>
                         <div class="flex items-center justify-center">
-                            <x-Filtro-estado class="w-20" />
+                            {{-- <x-Filtro-estado class="w-20" :sort="$estado" /> --}}
+                            <div class="flex relative justify-center items-center h-8 p-1 cursor-pointer mr-3"
+                                id="filtro_estado" x-data="{ open: false, text: @entangle('estado'), filtros: ['todos', 'nuevo', 'usado'] }">
+                                <p @click="open = true" class="w-full h-full text-base text-gray-400" id="cont-orderBy">
+                                    <i id="listaFiltro" class="fas fa-filter"></i>
+                                </p>
+                                <ul x-show="open" @click.outside="open = false"
+                                    class='w-20 absolute right-0 bg-gray-100 border border-gray-400 top-100-5 z-8'
+                                    id="list-orderBy">
+                                    <template x-for="filtro in filtros">
+                                        <li class="w-full h-8 leading-8 capitalize border-b border-gray-200 hover:text-white hover:bg-black"
+                                            :class="{ 'text-white bg-black': (text === filtro) }"
+                                            @click="open = false; text = filtro">
+                                            <a class="inline-block capitalize w-full h-full px-4 py-0 text-sm"
+                                                href="javascript:void(0)" @click="$wire.set('estado', filtro)"
+                                                x-text="filtro">
+                                            </a>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
                             <x-Filtro-desplegable class="w-8 sm:w-48 md:w-52" />
                             <x-tipo-vista :view="$view" />
                         </div>

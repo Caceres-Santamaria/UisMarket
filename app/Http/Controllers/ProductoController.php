@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
@@ -17,12 +18,30 @@ class ProductoController extends Controller
     public function show($producto){
         comprobarCategoria();
         $slug = $producto;
-        $producto = Producto::with(['colores','tallas'])
-            ->whereRelation('tienda','deleted_at',null)
-            ->whereRelation('categoria','deleted_at',null)
-            ->where('publicacion', '2')
-            ->where('slug',$slug)
-            ->firstOrFail();
+        if(Auth::check()) {
+            if(auth()->user()->rol == '1' || auth()->user()->rol == '0') {
+                $producto = Producto::with(['colores','tallas'])
+                ->whereRelation('tienda','deleted_at',null)
+                ->whereRelation('categoria','deleted_at',null)
+                // ->where('publicacion', '2')
+                ->where('slug',$slug)
+                ->firstOrFail();
+            } else {
+                $producto = Producto::with(['colores','tallas'])
+                ->whereRelation('tienda','deleted_at',null)
+                ->whereRelation('categoria','deleted_at',null)
+                ->where('publicacion', '2')
+                ->where('slug',$slug)
+                ->firstOrFail();
+            }
+        } else {
+            $producto = Producto::with(['colores','tallas'])
+                ->whereRelation('tienda','deleted_at',null)
+                ->whereRelation('categoria','deleted_at',null)
+                ->where('publicacion', '2')
+                ->where('slug',$slug)
+                ->firstOrFail();
+        }
 
         if($producto) {
             $productosRelacionados = Producto::whereRelation('tienda','deleted_at',null)

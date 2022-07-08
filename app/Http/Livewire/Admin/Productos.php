@@ -53,5 +53,6 @@ class Productos extends DataTableComponent
         $producto = Producto::where('id', $id)->first();
         $producto->publicacion = '3';
         $producto->save();
+        $producto->unsearchable();
     }
 }

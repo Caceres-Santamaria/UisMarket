@@ -57,5 +57,6 @@ class ProductosSuspendidos extends DataTableComponent
         $producto->publicacion = '2';
         $producto->revision = '0';
         $producto->save();
+        $producto->searchable();
     }
 }

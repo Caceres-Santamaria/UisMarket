@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,6 +18,7 @@ class ProductosTiendasFiltro extends Component
     public $sort_by = '';
     public $tienda;
     public $estado = "todos";
+    public $admin;
 
     protected $queryString = [
         'sort_by' => ['except' => ''],
@@ -37,30 +39,37 @@ class ProductosTiendasFiltro extends Component
     public function updatingCategoria()
     {
         $this->resetPage();
+        $this->reset('estado');
     }
 
     public function mount($tienda)
     {
+        $this->admin = Auth::check() ? ((auth()->user()->rol == '0' || auth()->user()->rol == '1') ? true : false) : false;
         $this->sort_by = '';
         $this->categoria = '';
         $this->tienda = $tienda;
-        $categorias = DB::table('productos')->distinct()->where('tienda_id',$this->tienda->id)->pluck('categoria_id');
-        $ids = array();
-        $loop = 0;
-        foreach($categorias as $categoria){
-            $ids[$loop] = $categoria;
-            $loop++;
+        if($this->admin) {
+            $categorias = Producto::whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->where('publicacion', '2')->where('tienda_id', $this->tienda->id)->pluck('categoria_id');
+        } else {
+            $categorias = Producto::whereRelation('categoria', 'deleted_at', null)->whereRelation('tienda', 'deleted_at', null)->where('publicacion', '2')->where('tienda_id', $this->tienda->id)->whereRelation('tienda', 'estado', '1')->pluck('categoria_id');
         }
-        $this->categorias = Categoria::whereIn('id',$ids)->orderBy('nombre','asc')->get(['id','slug', 'nombre']);
+        // $categorias1 = DB::table('productos')->distinct()->where('tienda_id',$this->tienda->id)->where('publicacion','2')->pluck('categoria_id');
+        // dd($categorias->unique()->all(),$categorias1->unique()->all());
+        $this->categorias = Categoria::whereIn('id',$categorias->unique()->all())->orderBy('nombre','asc')->get(['id','slug', 'nombre']);
     }
 
     public function busqueda()
     {
         if ($this->categoria == '') {
-            $productos = productos($this->sort_by, '', $this->view, $this->estado, null, false, $this->tienda->id);
+            $productos = productosTienda($this->sort_by, $this->view, $this->tienda->id, $this->estado, $this->admin);
         } else {
-            $categoria_id = Categoria::where('slug',$this->categoria)->first(['id','slug', 'nombre'])->id;
-            $productos = productos($this->sort_by, '', $this->view, $this->estado, $categoria_id, false, $this->tienda->id);
+            $categoria_id = $this->categorias->where('slug',trim($this->categoria))->first();
+            if($categoria_id) {
+                $categoria_id = $categoria_id->id;
+            } else {
+                $categoria_id = null;
+            }
+            $productos = categoriaProductosTienda($this->sort_by, $this->view, $this->tienda->id, $this->estado, $categoria_id, $this->admin);
         }
         return $productos;
     }

@@ -23,6 +23,9 @@
                 class="block px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out border-b border-gray-400 hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
                 <div>{{ Auth::user()->name }}</div>
             </span>
+            <x-dropdown-link :href="route('home')">
+                Página principal
+            </x-dropdown-link>
             <x-dropdown-link :href="route('admin.profile')">
                 Información personal
             </x-dropdown-link>

@@ -44,6 +44,12 @@ class ModalComentariosSoli extends Component
         return redirect()->route('tienda.show');
     }
 
+    public function solicitarRevision()
+    {
+        $this->tienda->revision = 1;
+        $this->tienda->save();
+    }
+
     public function render()
     {
         return view('livewire.emprendedor.modal-comentarios-soli');
