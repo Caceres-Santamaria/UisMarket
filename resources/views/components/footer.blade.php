@@ -6,7 +6,7 @@
     </div>
     <div class="grid-in-nosotros ">
         <h2 class="lg:text-base text-sm font-semibold text-center tracking-wide m-0">NOSOTROS</h2>
-        <p class="m-0 lg:text-sm md:text-sm text-center	block text-xs">Email: uismarket@uismarket.com</p>
+        <p class="m-0 lg:text-sm md:text-sm text-center	block text-xs">Email: soporte@uismarket.store</p>
         <p class="m-0 lg:text-sm md:text-sm text-center	block text-xs"><a class="no-underline"
                 href="{{ route('TyT') }}">Términos y condiciones</a></p>
         <p class="m-0 lg:text-sm md:text-sm text-center	block text-xs"><a class="no-underline"
@@ -14,7 +14,7 @@
     </div>
     <div class="grid-in-derechos h-xl justify-center bg-gray-600 leading-5	w-full h-6 ">
         <div class="reservados flex justify-center align-center text-xs  w-full h-full items-center">
-            <i class="fas fa-copyright"></i> Copyright 2022<span class="px-1"> UIS market </span> todos los
+            <i class="fas fa-copyright mr-1"></i> Copyright 2022<span class="px-1"> UIS market </span> todos los
             derechos reservados
         </div>
     </div>
