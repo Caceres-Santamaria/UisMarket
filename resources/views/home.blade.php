@@ -53,7 +53,7 @@
                     <div class="flex flex-col items-center justify-start w-full">
                         <x-svg.new-shopping />
                         <h5 class="pt-1 text-sm text-center text-gray-600 uppercase line-clamp-1 lg:text-sm">
-                            Aún no hay tiendas nuevas aún
+                            Aún no hay tiendas nuevas
                         </h5>
                     </div>
                 @endif
