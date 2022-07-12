@@ -46,16 +46,19 @@ class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
                         <span>Promociones</span>
                     </a>
                 </li>
+                <li class="list-none text-black hover:bg-gray-300">
+                    <a class="py-3 px-6 text-inherit no-underline text-sm block w-full h-full"
+                        href="{{ route('about') }}"
+                        class="menu-main__link flex justify-between items-center">
+                        <span>¿Quiénes somos?</span>
+                    </a>
+                </li>
                 @auth
-                    {{-- <li class=""><a href="{{ route('rotacion') }}" class="menu-main__link flex justify-between items-center"><span>Informe de
-                                Rotación</span></a></li>
-                    <li class=""><a href="{{ route('ingresos') }}" class="menu-main__link flex justify-between items-center"><span>Informe de
-                                Ingresos</span></a></li> --}}
                     <li class="list-none text-black hover:bg-gray-300">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
-                                class="menu-main__link flex justify-between items-center" onclick="event.preventDefault();
+                                class="py-3 px-6 text-inherit no-underline text-sm block w-full h-full" onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
                                 {{ __('Logout') }}
                             </x-dropdown-link>
