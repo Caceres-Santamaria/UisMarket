@@ -27,7 +27,7 @@ class CreateTiendasTable extends Migration
             $table->boolean('recoger_uis')->default(0);
             $table->enum('estado',[Tienda::PENDIENTE,Tienda::VALIDADA,Tienda::SUSPENDIDA,Tienda::RECHAZADA])->default(Tienda::PENDIENTE);
             $table->string('carnet',255);
-            $table->text('comentario');
+            $table->text('comentario')->nullable();
             $table->boolean('revision')->default(false);
             $table->string('email');
             $table->string('facebook')->nullable();
