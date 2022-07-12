@@ -31,8 +31,8 @@ class CategoriaSeeder extends Seeder
             ],
 
             [
-                'nombre' => 'Joyas y accesocios',
-                'slug' => Str::slug('Joyas y accesocios')
+                'nombre' => 'Joyas y accesorios',
+                'slug' => Str::slug('Joyas y accesorios')
             ],
 
             [
