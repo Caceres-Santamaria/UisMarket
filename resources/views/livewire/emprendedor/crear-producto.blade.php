@@ -13,12 +13,12 @@
                 placeholder="Ingresa el nombre del producto" />
             <x-jet-input-error for="nombre" />
         </div>
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <x-jet-label value="Slug" />
             <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
                 placeholder="Ingresa el slug del producto" />
             <x-jet-input-error for="slug" />
-        </div>
+        </div> --}}
         <div class="mb-4">
             <x-jet-label value="Condición o estado" />
             <div class="flex gap-2">

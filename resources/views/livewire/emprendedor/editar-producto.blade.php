@@ -32,12 +32,12 @@
                     placeholder="Ingresa el nombre del producto" />
                 <x-jet-input-error for="producto.nombre" />
             </div>
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <x-jet-label value="Slug" />
                 <x-jet-input type="text" disabled wire:model="slug" class="w-full bg-gray-200"
                     placeholder="Ingresa el slug del producto" />
                 <x-jet-input-error for="slug" />
-            </div>
+            </div> --}}
             <div class="mb-4">
                 <x-jet-label value="Descuento (0-1)" />
                 <x-jet-input type="number" wire:model="producto.descuento" class="w-full"

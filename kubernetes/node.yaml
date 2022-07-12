@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: composer
+  name: node-16
 spec:
   containers:
-  - name: composer
-    image: composer:2.2.7
+  - name: nodejs
+    image: node:16.14.0-alpine
     workingDir: /app
-    command: ["composer"]
-    args: ["install", "--ignore-platform-reqs", "--no-scripts"]
     volumeMounts:
     - name: php-pvc
       mountPath: /app

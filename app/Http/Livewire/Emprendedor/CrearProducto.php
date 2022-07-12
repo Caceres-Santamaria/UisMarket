@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Emprendedor;
 
 use App\Models\Categoria;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Producto;
 
@@ -12,7 +11,7 @@ class CrearProducto extends Component
 {
     public $categorias;
     public $categoria_id = "";
-    public $nombre, $slug, $descripcion, $precio, $estado, $color = '', $talla = '', $cantidad;
+    public $nombre, $descripcion, $precio, $estado, $color = '', $talla = '', $cantidad;
 
 
     protected function rules()
@@ -20,7 +19,7 @@ class CrearProducto extends Component
         return [
             'categoria_id' => 'required',
             'nombre' => 'required',
-            'slug' => 'required|alpha_dash',
+            // 'slug' => 'required|alpha_dash',
             'descripcion' => 'required',
             'precio' => 'required|numeric|min:0',
             'estado' => 'required | in:nuevo,usado',
@@ -44,10 +43,10 @@ class CrearProducto extends Component
     //     $this->validateOnly($propertyName);
     // }
 
-    public function updatedNombre($value)
-    {
-        $this->slug = Str::slug($value);
-    }
+    // public function updatedNombre($value)
+    // {
+    //     $this->slug = Str::slug($value);
+    // }
 
     public function save()
     {
@@ -74,14 +73,9 @@ class CrearProducto extends Component
         $producto->talla = $this->talla;
         $producto->tienda_id = auth()->user()->tienda->id;
 
-        $products = Producto::where('slug', $this->slug)->get(['id']);
-        if ($products) {
-            $maxId = $products->max('id');
-            $producto->slug = $this->slug.'-'.$maxId;
-        }else {
-            $producto->slug = $this->slug;
-        }
         $producto->save();
+        // $producto->slug = $this->slug.'-'.$producto->id;
+        // $producto->save();
 
         return redirect()->route('tienda.productos.editar', $producto);
     }
