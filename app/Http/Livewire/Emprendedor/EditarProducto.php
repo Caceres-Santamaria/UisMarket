@@ -7,14 +7,12 @@ use App\Models\ImagenProducto;
 use App\Models\Producto;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
 class EditarProducto extends Component
 {
     public Producto $producto;
-    public $categorias, $cantidad, $slug;
+    public $categorias, $cantidad;
 
     protected $listeners = ['refrescarProducto','render'];
 
@@ -23,7 +21,7 @@ class EditarProducto extends Component
         return [
             'producto.categoria_id' => 'required',
             'producto.nombre' => 'required',
-            'slug' => ['required',Rule::unique('productos', 'slug')->ignore($this->producto->id)],
+            // 'slug' => ['required',Rule::unique('productos', 'slug')->ignore($this->producto->id)],
             'producto.descripcion' => 'required',
             'producto.precio' => 'required|numeric|min:0',
             'producto.descuento' => 'required|numeric|min:0|max:1',
@@ -39,7 +37,7 @@ class EditarProducto extends Component
         $this->producto = $producto;
         $this->categorias = Categoria::all();
         $this->cantidad = $this->producto->cantidad;
-        $this->slug = $this->producto->slug;
+        // $this->slug = $this->producto->slug;
     }
 
     // public function updated($propertyName)
@@ -47,10 +45,10 @@ class EditarProducto extends Component
     //     $this->validateOnly($propertyName);
     // }
 
-    public function updatedProductoNombre($value)
-    {
-        $this->slug = Str::slug($value);
-    }
+    // public function updatedProductoNombre($value)
+    // {
+    //     $this->slug = Str::slug($value).'-'.$this->producto->id;
+    // }
 
     public function refrescarProducto(){
         $this->producto = $this->producto->fresh();
@@ -58,11 +56,11 @@ class EditarProducto extends Component
 
     public function save(){
         $this->validate();
-        Validator::make(
-            ['slug' => $this->producto->slug],
-            ['slug' => ['required',Rule::unique('productos', 'slug')->ignore($this->producto->id)]]
-        )->validate();
-        $this->producto->slug = $this->slug;
+        // Validator::make(
+        //     ['slug' => $this->producto->slug],
+        //     ['slug' => ['required',Rule::unique('productos', 'slug')->ignore($this->producto->id)]]
+        // )->validate();
+        // $this->producto->slug = $this->slug;
         $this->producto->save();
         $this->emit('saved');
     }

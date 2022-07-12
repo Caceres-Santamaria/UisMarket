@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-deployment
-  namespace: databases
   labels:
     app: php
 spec:
@@ -33,12 +32,12 @@ spec:
       volumes:
         - name: php-pvc
           persistentVolumeClaim:
-            claimName: pvc-uismarket
+            claimName: pvc-uismarket-app
         - name: config
           configMap:
             name: php-config
             items:
-            - key: "config"
+            - key: config
               path: "www.conf"
         - name: env
           configMap:
@@ -50,8 +49,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: php-service
-  namespace: databases
+  name: php
 spec:
   type: ClusterIP
   selector:

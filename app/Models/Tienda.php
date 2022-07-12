@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Tienda extends Model
 {
+    use Sluggable;
     use Searchable;
     use HasFactory, SoftDeletes;
     protected $table = 'tiendas';
@@ -155,6 +157,20 @@ class Tienda extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nombre'
+            ]
+        ];
     }
 
     // public function searchableAs()

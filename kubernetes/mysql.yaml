@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
-  namespace: databases
+  name: mysql-service
 spec:
   type: ClusterIP
   selector:
@@ -15,16 +14,15 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
-  namespace: databases
+  name: mysql-state
   labels:
     app: mysql
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: mysql
-  serviceName: "mysql"
+  serviceName: "mysql-service"
+  replicas: 1
   template:
     metadata:
       labels:
@@ -42,24 +40,24 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: base-secret
-                  key: MYSQL_PASSWORD #'=THds%z(K/K~~4N3'
+                  key: mysql-password
             - name: MYSQL_ROOT_HOST
               value: "%"
             - name: MYSQL_DATABASE
               valueFrom:
-                secretKeyRef:
-                  name: base-secret
-                  key: MYSQL_DATABASE #uismarket
+                configMapKeyRef:
+                  name: base-config
+                  key: mysql-database
             - name: MYSQL_USER
               valueFrom:
-                secretKeyRef:
-                  name: base-secret
-                  key: MYSQL_USER #AlexJenn2022
+                configMapKeyRef:
+                  name: base-config
+                  key: mysql-user
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: base-secret
-                  key: MYSQL_PASSWORD
+                  key: mysql-password
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: "1"
           volumeMounts:

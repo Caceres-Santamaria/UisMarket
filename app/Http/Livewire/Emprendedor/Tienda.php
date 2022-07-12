@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 
 class Tienda extends Component
 {
@@ -44,10 +45,6 @@ class Tienda extends Component
             'tienda.whatsapp' => 'max:191',
             'tienda.instagram' => 'max:191',
             'tienda.messenger' => 'max:191',
-            'tienda.slug' => [
-                'required', 'alpha_dash',
-                // Rule::unique('tiendas', 'slug')->ignore($this->tienda)
-            ],
             'tienda.recoger_tienda' => ['required', 'in:0,1'],
             'tienda.recoger_uis' => ['required', 'in:0,1'],
             'tienda.ciudad_id' => 'required',
@@ -159,7 +156,11 @@ class Tienda extends Component
 
     public function save()
     {
-        $this->tienda->slug = Str::slug($this->tienda->nombre);
+        // if ($this->tienda->id){
+        //     $this->tienda->slug = Str::slug($this->tienda->nombre).'-'.$this->tienda->id;
+        // } else {
+        //     $this->tienda->slug = Str::slug($this->tienda->nombre);
+        // }
         $this->validate();
         if ($this->validarCostos()) {
             if ($this->logo) {
@@ -171,11 +172,15 @@ class Tienda extends Component
             if ($this->carnet) {
                 $this->tienda->carnet = $this->uploadCarnet();
             }
-            $tiendas = ModelsTienda::where('slug', $this->tienda->slug)->get(['id']);
-            if ($tiendas) {
-                $maxId = $tiendas->max('id');
-                $this->tienda->slug = $this->tienda->slug . '-' . $maxId;
-            }
+            // $tiendas = DB::table('tiendas')->select('id')->where('slug', $this->tienda->slug)->get();
+            // if ($tiendas->count() > 0) {
+            //     if ($this->tienda->id) {
+            //         $this->tienda->slug = $this->tienda->slug . '-' . $this->tienda->id;
+            //     } else {
+            //         $this->tienda->save();
+            //         $this->tienda->slug = $this->tienda->slug . '-' . $this->tienda->id;
+            //     }
+            // }
             $this->tienda->save();
             if (empty($this->tienda->envios->all())) {
                 foreach ($this->costos as $clave => $valor) {
