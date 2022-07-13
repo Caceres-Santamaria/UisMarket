@@ -145,8 +145,11 @@
                     class="w-full border-gray-100 rounded-md dropzone border-1" id="my-dropzone"></form>
             </div>
             <x-jet-input-error for="file" />
-            <span class="text-xs font-semibold text-yellow-600"><i class="fas fa-exclamation-triangle"></i> Sólo puedes
+            <span class="text-xs font-semibold text-yellow-600 block"><i class="fas fa-exclamation-triangle"></i> Sólo puedes
                 adjuntar máximo 10 imágenes de este producto</span>
+            <span class="text-xs font-semibold text-yellow-600 block">
+                <i class="fas fa-exclamation-triangle"></i> Tamaño máximo de las imágenes 2MB
+            </span>
         </section>
         @if ($producto->imagenes->count() > 0)
             <section class="p-6 mb-4 bg-white rounded-lg shadow-xl">

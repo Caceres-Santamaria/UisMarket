@@ -30,7 +30,7 @@ module.exports = {
                 'calc1': 'calc(100% + .5rem)',
                 '-logosm': 'calc(-1px - 3rem)',
                 '-logomd': 'calc(-1px - 5rem)',
-                'c-des':'calc(100% - 320px)',
+                'c-des': 'calc(100% - 320px)',
             },
             zIndex: {
                 '1': '1',
@@ -54,8 +54,8 @@ module.exports = {
                 '25': '6.2rem',
                 '27': '6.4rem',
                 '95': '95%',
-                'cont-car':'calc(100% - 48px)',
-                'car-items':'calc(100% - 8.7rem)',
+                'cont-car': 'calc(100% - 48px)',
+                'car-items': 'calc(100% - 8.7rem)',
             },
             width: {
                 'cardsm': 'calc((100vw - 4.6rem) / 2)',
@@ -91,6 +91,7 @@ module.exports = {
                     fb: '#2E406E',
                     ws: '#4BCA5A',
                     ig: '#D82571',
+                    ms: '#0084ff',
                 },
                 'black2': {
                     '87': 'rgba(0, 0, 0, 0.87)',
@@ -123,18 +124,18 @@ module.exports = {
             },
             gridTemplateAreas: {
                 'layout': [
-                  'header',
-                  'contenido',
-                  'footer',
+                    'header',
+                    'contenido',
+                    'footer',
                 ],
                 'graficas': [
                     'categorias pedidos',
                     'categoriasvendidas categoriasvendidas',
                 ],
                 'foot': [
-                  'descripcion',
-                  'nosotros',
-                  'derechos',
+                    'descripcion',
+                    'nosotros',
+                    'derechos',
                 ],
                 'detalle': [
                     'titulo',
