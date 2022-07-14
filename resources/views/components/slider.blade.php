@@ -42,7 +42,7 @@
                                                 {{ $producto->nombre }}
                                             </h5>
                                             <p class="text-center card-producto__precio">
-                                                <span>{{ $producto->precio }}</span>
+                                                <span>${{ number_format($producto->precio) }}</span>
                                             </p>
                                         </div>
                                     </div>
