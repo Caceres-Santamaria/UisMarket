@@ -44,6 +44,11 @@
                 href="{{ route('promociones') }}"><span>Promociones</span></a>
         </li>
         <li
+            class="{{ setActive('guia') }} list-item border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
+            <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
+                href="{{ route('guia') }}"><span>¿Cómo publicar productos?</span></a>
+        </li>
+        <li
             class="{{ setActive('about') }} list-item border-b-2 hover:border-white lg:outline-none lg:relative lg:p-1.5 lg:m-0 lg:z-1 last:right-0 last:left-auto">
             <a class="list-item__link lg:outline-none lg:no-underline lg:text-white lg:h-6 lg:leading-6 lg:px-4 lg:font-normal"
                 href="{{ route('about') }}"><span>¿Quiénes somos?</span></a>

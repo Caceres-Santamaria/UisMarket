@@ -39,6 +39,7 @@ Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name
 Route::get('politicas', [PoliticaController::class, 'index'])->name('politicas');
 
 Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::get('guia', [AboutController::class, 'guia'])->name('guia');
 
 Route::get('terminos&condiciones', [TTController::class, 'index'])->name('TyT');
 
