@@ -9,4 +9,10 @@ class AboutController extends Controller
         comprobarCategoria();
         return view('about');
     }
+
+    public function guia()
+    {
+        comprobarCategoria();
+        return view('guia');
+    }
 }
