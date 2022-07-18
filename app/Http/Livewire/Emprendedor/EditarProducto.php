@@ -8,9 +8,11 @@ use App\Models\Producto;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class EditarProducto extends Component
 {
+    use AuthorizesRequests;
     public Producto $producto;
     public $categorias, $cantidad;
 
@@ -34,6 +36,7 @@ class EditarProducto extends Component
     }
 
     public function mount(Producto $producto){
+        $this->authorize('update', $producto);
         $this->producto = $producto;
         $this->categorias = Categoria::all();
         $this->cantidad = $this->producto->cantidad;
