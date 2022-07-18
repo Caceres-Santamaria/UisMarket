@@ -50,7 +50,7 @@ class="fixed left-0 top-0 bg-black2-50 h-screen w-screen z-100">
                     <a class="py-3 px-6 text-inherit no-underline text-sm block w-full h-full"
                         href="{{ route('guia') }}"
                         class="menu-main__link flex justify-between items-center">
-                        <span>¿Cómo publicar productos?</span>
+                        <span>Guía</span>
                     </a>
                 </li>
                 <li class="list-none text-black hover:bg-gray-300">

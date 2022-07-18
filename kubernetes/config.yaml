@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: base-config
-data:
-  mysql-database: uismarket
-  mysql-user: AlexJenn2022
