@@ -163,7 +163,7 @@
                         @endforelse
                     </section>
                 @endif
-                @if (!empty($productos) and count($productos) == 20)
+                @if (!empty($productos))
                     <div class="m-4">
                         {{ $productos->links() }}
                     </div>
